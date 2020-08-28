@@ -5,10 +5,7 @@ country_decisions =
 		major = yes
 		potential =
 		{
-			not =
-			{
-				has_country_modifier = my_global_modifier
-			}
+			not = { has_country_modifier = my_global_modifier }
 		}
 		effect =
 		{
@@ -18,29 +15,17 @@ country_decisions =
 				duration = -1
 			}
 		}
-		ai_will_do =
-		{
-			factor = 100
-		}
+		ai_will_do = { factor = 100 }
 	}
 	remove_my_global_modifier =
 	{
 		major = yes
 		potential =
 		{
-			if =
-			{
-				has_country_modifier = my_global_modifier
-			}
+			if = { has_country_modifier = my_global_modifier }
 		}
-		effect =
-		{
-			remove_country_modifier = my_global_modifier
-		}
-		ai_will_do =
-		{
-			factor = 0
-		}
+		effect = { remove_country_modifier = my_global_modifier }
+		ai_will_do = { factor = 0 }
 	}
 
 	add_my_monomer_modifier =
@@ -48,10 +33,7 @@ country_decisions =
 		major = yes
 		potential = 
 		{
-			not =
-			{
-				has_country_modifier = my_monomer_modifier
-			}
+			not = { has_country_modifier = my_monomer_modifier }
 		}
 		effect =
 		{
@@ -61,28 +43,47 @@ country_decisions =
 				duration = -1
 			}
 		}
-		ai_will_do =
-		{
-			factor = 0
-		}
+		ai_will_do = { factor = 0 }
 	}
 	remove_my_monomer_modifier =
 	{
 		major = yes
 		potential = 
 		{
-			if =
-			{
-				has_country_modifier = my_monomer_modifier
-			}
+			if = { has_country_modifier = my_monomer_modifier }
 		}
-		effect =
-		{
-			remove_country_modifier = my_monomer_modifier
-		}
-		ai_will_do =
-		{
-			factor = 100
-		}
+		effect = { remove_country_modifier = my_monomer_modifier }
+		ai_will_do = { factor = 100 }
+	}
+	
+	add_adm =
+	{
+		major = yes
+		effect = { add_adm_power = 1000 }
+		ai_will_do = { factor = 0 }
+	}
+	add_dip =
+	{
+		major = yes
+		effect = { add_dip_power = 1000 }
+		ai_will_do = { factor = 0 }
+	}
+	add_mil =
+	{
+		major = yes
+		effect = { add_mil_power = 1000 }
+		ai_will_do = { factor = 0 }
+	}
+	add_cash =
+	{
+		major = yes
+		effect = { add_treasury = 1000000 }
+		ai_will_do = { factor = 0 }
+	}
+	add_manpower =
+	{
+		major = yes
+		effect = { add_manpower = 1000 }
+		ai_will_do = { factor = 0 }
 	}
 }
