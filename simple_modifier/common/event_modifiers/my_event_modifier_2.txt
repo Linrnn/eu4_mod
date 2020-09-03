@@ -36,6 +36,7 @@ my_monomer_modifier =
 {
 	governing_capacity = 1000					#行政容量上限													加法
 	num_accepted_cultures = 10					#增加可接受文化的最大值											加法
+	diplomatic_upkeep = 10						#外交关系数量													加法
 	#max_absolutism = 50						#最大专制度上限													加法
 	#free_leader_pool = 10						#不需付出额外军事点数来维持的将领数量							加法
 	#years_of_nationalism = -10					#征服省份造成的分离主义基础值									加法
