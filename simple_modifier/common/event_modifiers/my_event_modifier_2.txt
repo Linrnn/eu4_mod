@@ -5,7 +5,7 @@ my_global_modifier =
 	global_manpower = -10						#全国人力（基础值 1=1000人力）									加法
 	#country_admin_power = -3					#每月额外获得行政君主力量点数									加法
 	#country_diplomatic_power = -3				#每月额外获得外交君主力量点数									加法
-	#country_military_power = -3					#每月额外获得军事君主力量点数									加法
+	#country_military_power = -3				#每月额外获得军事君主力量点数									加法
 
 	development_cost = 5.0						#提升发展度花费 												乘法
 	build_cost = 10.0							#建筑花费														乘法
@@ -37,13 +37,14 @@ my_monomer_modifier =
 	governing_capacity = 1000					#行政容量上限													加法
 	num_accepted_cultures = 10					#增加可接受文化的最大值											加法
 	diplomatic_upkeep = 10						#外交关系数量													加法
+	imperial_mandate = 0.5						#月度天命值：中华帝国专用										加法
 	#max_absolutism = 50						#最大专制度上限													加法
 	#free_leader_pool = 10						#不需付出额外军事点数来维持的将领数量							加法
 	#years_of_nationalism = -10					#征服省份造成的分离主义基础值									加法
 	
 	build_time = -1.5							#建筑时间														乘法
 	development_cost = -5.5						#提升发展度花费 												乘法
-	culture_conversion_cost = -1.5				#转化省份文化的外交点数花费										乘法	
+	culture_conversion_cost = -1.5				#转化省份文化的外交点数花费										乘法
 	#core_creation = -1.5						#建造核心花费													乘法
 	#province_warscore_cost = -0.5				#省份战争分数花费：割取敌方省份战争分数花费，此为全局buff		乘法
 	#colonist_placement_chance = 0.25			#殖民过程中移民的安置概率，只在殖民过程中起效					乘法
