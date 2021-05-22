@@ -2,10 +2,11 @@ my_global_modifier =
 {
 	land_forcelimit = -6						#陆军上限（基础值）												加法
 	naval_forcelimit = -12						#海军上限（基础值）												加法
-	global_manpower = -10						#全国人力（基础值 1=1000人力）									加法
+	global_manpower = -10						#全国人力（基础值1=1000人力）									加法
 	#country_admin_power = -3					#每月额外获得行政君主力量点数									加法
 	#country_diplomatic_power = -3				#每月额外获得外交君主力量点数									加法
 	#country_military_power = -3				#每月额外获得军事君主力量点数									加法
+	#colonists = -10							#殖民队数量														加法
 
 	development_cost = 5.0						#提升发展度花费 												乘法
 	build_cost = 10.0							#建筑花费														乘法
@@ -21,16 +22,14 @@ my_global_modifier =
 	#global_regiment_recruit_speed = 1.0		#陆军征召时间													乘法
 	#global_ship_recruit_speed = 4.0			#全国船只建造时间												乘法
 	#province_warscore_cost = 0.5				#省份战争分数花费：割取敌方省份战争分数花费，此为全局buff		乘法
-
-	may_recruit_female_generals = yes			#允许招募女将军													恒定
-
-	#colonists = -10							#殖民队数量														加法
 	#missionary_maintenance_cost = 5.0			#传教维护费														乘法
 	#adm_tech_cost_modifier = 1.0				#升级各项科技所需花费的行政君主点数：adm为行政科技花费			乘法
 	#dip_tech_cost_modifier = 1.0				#升级各项科技所需花费的行政君主点数：dip为外交科技花费			乘法
 	#mil_tech_cost_modifier = 1.0				#升级各项科技所需花费的行政君主点数：mil为军事科技花费			乘法
 	#all_power_cost = 1.0						#所有需花费的君主点数											乘法
 	#land_maintenance_modifier = 1.0			#陆军维护费修正													乘法
+
+	may_recruit_female_generals = yes			#允许招募女将军													恒定
 }
 my_monomer_modifier =
 {
@@ -41,15 +40,15 @@ my_monomer_modifier =
 	#max_absolutism = 50						#最大专制度上限													加法
 	#free_leader_pool = 10						#不需付出额外军事点数来维持的将领数量							加法
 	#years_of_nationalism = -10					#征服省份造成的分离主义基础值									加法
+	#allowed_num_of_buildings = 5				#当地可建筑格子上限												加法
+	#colonists = 10								#殖民队数量														加法
 	
 	build_time = -1.5							#建筑时间														乘法
-	development_cost = -5.5						#提升发展度花费 												乘法
 	culture_conversion_cost = -1.5				#转化省份文化的外交点数花费										乘法
+	#development_cost = -5.5					#提升发展度花费 												乘法
 	#core_creation = -1.5						#建造核心花费													乘法
 	#province_warscore_cost = -0.5				#省份战争分数花费：割取敌方省份战争分数花费，此为全局buff		乘法
 	#colonist_placement_chance = 0.25			#殖民过程中移民的安置概率，只在殖民过程中起效					乘法
 
-	#allowed_num_of_buildings = 5				#当地可建筑格子上限												加法
-	#colonists = 10								#殖民队数量														加法
 	#can_colony_boost_development = yes 		#完成殖民的省份生产、税收、人力都+1								恒定
 }
