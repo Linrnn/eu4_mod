@@ -1,21 +1,24 @@
 my_global_modifier =
 {
+	num_accepted_cultures = 100					#增加可接受文化的最大值											加法
 	land_forcelimit = -6						#陆军上限（基础值）												加法
 	naval_forcelimit = -12						#海军上限（基础值）												加法
 	global_manpower = -10						#全国人力（基础值1=1000人力）									加法
-	governing_capacity = 10000					#行政容量上限													加法
-	num_accepted_cultures = 100					#增加可接受文化的最大值											加法
+	country_admin_power = -3					#每月额外获得行政君主力量点数									加法
+	country_diplomatic_power = -3				#每月额外获得外交君主力量点数									加法
+	country_military_power = -3					#每月额外获得军事君主力量点数									加法
+	core_creation = -2.0						#建造核心花费													乘法
+	#governing_capacity = 10000					#行政容量上限													加法
 	#diplomatic_upkeep = 100					#外交关系数量													加法
-	#country_admin_power = -3					#每月额外获得行政君主力量点数									加法
-	#country_diplomatic_power = -3				#每月额外获得外交君主力量点数									加法
-	#country_military_power = -3				#每月额外获得军事君主力量点数									加法
 	#colonists = -10							#殖民队数量														加法
 
-	development_cost = 5.0						#提升发展度花费 												乘法
-	build_cost = 10.0							#建筑花费														乘法
-	technology_cost = 0.5						#升级所有科技所需花费的君主点数									乘法
-	core_creation = -2.0						#建造核心花费													乘法
-	#culture_conversion_cost = 1.0				#转化省份文化的外交点数花费										乘法
+	development_cost = 10.0						#提升发展度花费 												乘法
+	culture_conversion_cost = 10.0				#转化省份文化的外交点数花费										乘法
+	build_cost = 2.0							#建筑花费														乘法
+	trade_company_investment_cost = 1000		#贸易公司投资花费												乘法
+	#all_power_cost = 0.5						#所有需花费的君主点数											乘法
+	#land_maintenance_modifier = 1.0			#陆军维护费修正													乘法
+	#technology_cost = 0.5						#升级所有科技所需花费的君主点数									乘法
 	#embracement_cost = 1.0						#接纳思潮的金币花费												乘法
 	#build_time = 1.0							#建筑时间														乘法
 	#global_institution_spread = -0.5			#全局思潮传播速度												乘法
@@ -29,8 +32,6 @@ my_global_modifier =
 	#adm_tech_cost_modifier = 1.0				#升级各项科技所需花费的行政君主点数：adm为行政科技花费			乘法
 	#dip_tech_cost_modifier = 1.0				#升级各项科技所需花费的行政君主点数：dip为外交科技花费			乘法
 	#mil_tech_cost_modifier = 1.0				#升级各项科技所需花费的行政君主点数：mil为军事科技花费			乘法
-	#all_power_cost = 1.0						#所有需花费的君主点数											乘法
-	#land_maintenance_modifier = 1.0			#陆军维护费修正													乘法
 
 	may_recruit_female_generals = yes			#允许招募女将军													恒定
 }
@@ -43,7 +44,7 @@ my_monomer_modifier =
 	#allowed_num_of_buildings = 5				#当地可建筑格子上限												加法
 	#colonists = 10								#殖民队数量														加法
 	
-	culture_conversion_cost = -1.5				#转化省份文化的外交点数花费										乘法
+	culture_conversion_cost = -12				#转化省份文化的外交点数花费										乘法
 	#build_time = -1.5							#建筑时间														乘法
 	#development_cost = -5.5					#提升发展度花费 												乘法
 	#core_creation = -1.5						#建造核心花费													乘法
