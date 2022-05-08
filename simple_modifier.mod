@@ -1,3 +1,3 @@
 name="Simple Modifier"
 path="mod/simple_modifier"
-supported_version="1.31.*.*"
+supported_version="1.33.*.*"
