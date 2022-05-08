@@ -56,3 +56,7 @@ my_monomer_modifier =
 
 	#can_colony_boost_development = yes 		#完成殖民的省份生产、税收、人力都+1								恒定
 }
+my_global_unrest_modifier =
+{
+	global_unrest = 1000						#全国叛乱度														加法
+}
