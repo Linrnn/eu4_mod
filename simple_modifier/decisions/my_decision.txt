@@ -105,13 +105,13 @@ country_decisions =
 	add_cash =
 	{
 		major = yes
-		effect = { add_treasury = 1000000 }
+		effect = { add_treasury = 1000 }
 		ai_will_do = { factor = 0 }
 	}
 	add_manpower =
 	{
 		major = yes
-		effect = { add_manpower = 1000 }
+		effect = { add_manpower = 10 }
 		ai_will_do = { factor = 0 }
 	}
 }
