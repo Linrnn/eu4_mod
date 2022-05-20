@@ -1,8 +1,8 @@
 fort_15th = {
 	cost = 200
-	time = 30
+	time = 1
 	modifier = {
-		fort_level = 2
+		fort_level = 1
 	}
 
 	onmap = yes
@@ -15,10 +15,10 @@ fort_15th = {
 
 fort_16th = {
 	cost = 400
-	time = 30
+	time = 1
 	make_obsolete = fort_15th
 	modifier = {
-		fort_level = 4
+		fort_level = 2
 	}
 
 	onmap = yes
@@ -32,12 +32,12 @@ fort_16th = {
 
 fort_17th = {
 	cost = 600
-	time = 30
+	time = 1
 
 	make_obsolete = fort_16th
 
 	modifier = {
-		fort_level = 6
+		fort_level = 3
 	}
 
 	onmap = yes
@@ -51,12 +51,12 @@ fort_17th = {
 
 fort_18th = {
 	cost = 800
-	time = 30
+	time = 1
 
 	make_obsolete = fort_17th
 
 	modifier = {
-		fort_level = 8
+		fort_level = 4
 	}
 
 	onmap = yes
