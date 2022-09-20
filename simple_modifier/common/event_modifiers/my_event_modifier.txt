@@ -14,13 +14,13 @@ my_global_modifier =
 
 	development_cost = 2000.0					#提升发展度花费 												乘法
 	culture_conversion_cost = 10.0				#转化省份文化的外交点数花费										乘法
-	build_cost = 5.0							#建筑花费														乘法
+	build_cost = 10								#建筑花费														乘法
 	trade_company_investment_cost = 1000		#贸易公司投资花费												乘法
 	#all_power_cost = 0.5						#所有需花费的君主点数											乘法
-	land_maintenance_modifier = 1				#陆军维护费修正													乘法
-	reinforce_cost_modifier = 2.0				#补员花费														乘法
+	land_maintenance_modifier = 1.5				#陆军维护费修正													乘法
+	reinforce_cost_modifier = 3.0				#补员花费														乘法
 	fort_maintenance_modifier = 1				#堡垒维护费														乘法
-	naval_maintenance_modifier = 1.0			#海军维护费														乘法
+	naval_maintenance_modifier = 2.0			#海军维护费														乘法
 	#technology_cost = 0.5						#升级所有科技所需花费的君主点数									乘法
 	#embracement_cost = 1.0						#接纳思潮的金币花费												乘法
 	#build_time = 1.0							#建筑时间														乘法
@@ -45,14 +45,15 @@ my_monomer_modifier =
 	#free_leader_pool = 10						#不需付出额外军事点数来维持的将领数量							加法
 	#years_of_nationalism = -10					#征服省份造成的分离主义基础值									加法
 	#allowed_num_of_buildings = 5				#当地可建筑格子上限												加法
-	#colonists = 10								#殖民队数量														加法
-	
+	colonists = 1								#殖民队数量														加法
+
 	culture_conversion_cost = -12				#转化省份文化的外交点数花费										乘法
 	#build_time = -1.5							#建筑时间														乘法
 	#development_cost = -5.5					#提升发展度花费 												乘法
 	#core_creation = -1.5						#建造核心花费													乘法
 	#province_warscore_cost = -0.5				#省份战争分数花费：割取敌方省份战争分数花费，此为全局buff		乘法
 	#colonist_placement_chance = 0.25			#殖民过程中移民的安置概率，只在殖民过程中起效					乘法
+	build_cost = 10								#建筑花费
 
 	#can_colony_boost_development = yes 		#完成殖民的省份生产、税收、人力都+1								恒定
 }
