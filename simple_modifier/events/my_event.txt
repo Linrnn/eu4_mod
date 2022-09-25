@@ -1,0 +1,42 @@
+namespace = my_event
+
+country_event =
+ {
+	id = my_event.1
+
+	option =
+	{
+		name = my_add_adm
+		add_adm_power = 1000
+		ai_chance = { factor = 0 }
+	}
+	option =
+	{
+		name = my_add_dip
+		add_dip_power = 1000
+		ai_chance = { factor = 0 }
+	}
+	option =
+	{
+		name = my_add_mil
+		add_mil_power = 1000
+		ai_chance = { factor = 0 }
+	}
+	option =
+	{
+		name = my_add_cash
+		add_treasury = 10000
+		ai_chance = { factor = 0 }
+	}
+	option =
+	{
+		name = my_add_manpower
+		add_manpower = 10000
+		ai_chance = { factor = 0 }
+	}
+	option =
+	{
+		name = my_close
+		ai_chance = { factor = 100 }
+	}
+}

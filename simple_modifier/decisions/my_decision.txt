@@ -55,6 +55,30 @@ country_decisions =
 		effect = { remove_country_modifier = my_monomer_modifier }
 		ai_will_do = { factor = 100 }
 	}
+	
+	get_some_modifier =
+	{
+		major = yes
+		effect =
+		{
+			country_event = { id = my_event.1 }
+		}
+		ai_will_do = { factor = 0 }
+	}
+	set_tpm = #改成event实现会奔溃
+	{
+		major = yes
+		effect =
+		{
+			every_province =
+			{
+				set_base_tax = 1
+				set_base_production = 1
+				set_base_manpower = 1
+			}
+		}
+		ai_will_do = { factor = 0 }
+	}
 
 	#add_my_global_unrest_modifier =
 	#{
@@ -83,49 +107,35 @@ country_decisions =
 	#	effect = { remove_country_modifier = my_global_unrest_modifier }
 	#	ai_will_do = { factor = 100 }
 	#}
-	set_tpm =
-	{
-		major = yes
-		effect =
-		{
-			every_province =
-			{
-				set_base_tax = 1
-				set_base_production = 1
-				set_base_manpower = 1
-			}
-		}
-		ai_will_do = { factor = 0 }
-	}
 
-	add_adm =
-	{
-		major = yes
-		effect = { add_adm_power = 1000 }
-		ai_will_do = { factor = 0 }
-	}
-	add_dip =
-	{
-		major = yes
-		effect = { add_dip_power = 1000 }
-		ai_will_do = { factor = 0 }
-	}
-	add_mil =
-	{
-		major = yes
-		effect = { add_mil_power = 1000 }
-		ai_will_do = { factor = 0 }
-	}
-	add_cash =
-	{
-		major = yes
-		effect = { add_treasury = 1000 }
-		ai_will_do = { factor = 0 }
-	}
-	add_manpower =
-	{
-		major = yes
-		effect = { add_manpower = 10 }
-		ai_will_do = { factor = 0 }
-	}
+	#add_adm =
+	#{
+	#	major = yes
+	#	effect = { add_adm_power = 1000 }
+	#	ai_will_do = { factor = 0 }
+	#}
+	#add_dip =
+	#{
+	#	major = yes
+	#	effect = { add_dip_power = 1000 }
+	#	ai_will_do = { factor = 0 }
+	#}
+	#add_mil =
+	#{
+	#	major = yes
+	#	effect = { add_mil_power = 1000 }
+	#	ai_will_do = { factor = 0 }
+	#}
+	#add_cash =
+	#{
+	#	major = yes
+	#	effect = { add_treasury = 1000 }
+	#	ai_will_do = { factor = 0 }
+	#}
+	#add_manpower =
+	#{
+	#	major = yes
+	#	effect = { add_manpower = 10 }
+	#	ai_will_do = { factor = 0 }
+	#}
 }
