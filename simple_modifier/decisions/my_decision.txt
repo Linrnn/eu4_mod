@@ -90,12 +90,9 @@ country_decisions =
 		{
 			every_province =
 			{
-				add_base_tax = -100
-				add_base_production = -100
-				add_base_manpower = -100
-				add_base_tax = 1
-				add_base_production = 1
-				add_base_manpower = 1
+				set_base_tax = 1
+				set_base_production = 1
+				set_base_manpower = 1
 			}
 		}
 		ai_will_do = { factor = 0 }
