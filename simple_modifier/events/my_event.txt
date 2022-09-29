@@ -3,6 +3,7 @@ namespace = my_event
 country_event =
  {
 	id = my_event.1
+	is_triggered_only = yes
 
 	option =
 	{
