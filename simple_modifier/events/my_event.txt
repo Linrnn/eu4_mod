@@ -32,7 +32,7 @@ country_event =
 	option =
 	{
 		name = my_add_manpower
-		add_manpower = 10000
+		add_manpower = 10
 		ai_chance = { factor = 0 }
 	}
 	option =
