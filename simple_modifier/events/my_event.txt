@@ -37,6 +37,12 @@ country_event =
 	}
 	option =
 	{
+		name = my_add_prestige
+		add_prestige = 100
+		ai_chance = { factor = 0 }
+	}
+	option =
+	{
 		name = my_close
 		ai_chance = { factor = 100 }
 	}
