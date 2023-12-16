@@ -1,31 +1,75 @@
-country_decisions =
-{
-	add_my_global_modifier =
-	{
+country_decisions = {
+	add_global_modifier = {
 		major = yes
-		potential =
-		{
-			not = { has_country_modifier = my_global_modifier }
+		potential = {
+			not = {
+				has_country_modifier = my_global_modifier
+			}
 		}
-		effect =
-		{
-			add_country_modifier =
-			{
+		effect = {
+			add_country_modifier = {
 				name = my_global_modifier
 				duration = -1
 			}
 		}
-		ai_will_do = { factor = 100 }
+		ai_will_do = {
+			factor = 100
+		}
 	}
-	remove_my_global_modifier =
+	# remove_global_modifier = {
+	# 	major = yes
+	# 	potential = {
+	# 		if = {
+	# 			has_country_modifier = my_global_modifier
+	# 		}
+	# 	}
+	# 	effect = {
+	# 		remove_country_modifier = my_global_modifier
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
+
+	get_thing = {
+		major = yes
+		effect = {
+			country_event = {
+				id = my_event.1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	set_tpm =
 	{
 		major = yes
-		potential =
-		{
-			if = { has_country_modifier = my_global_modifier }
+		effect = {
+			every_province = {
+				if = {
+					limit = {
+						base_tax = 2			# 该省份的“基础税收”是至少X
+					}
+					set_base_tax = 1
+				}
+				if = {
+					limit = {
+						base_production = 2		# 该省份的“基础生产”是至少X
+					}
+					set_base_production = 1
+				}
+				if = {
+					limit = {
+						base_manpower = 2		# 该省份的“基础人力”是至少X
+					}
+					set_base_manpower = 1
+				}
+			}
 		}
-		effect = { remove_country_modifier = my_global_modifier }
-		ai_will_do = { factor = 0 }
+		ai_will_do = {
+			factor = 0
+		}
 	}
 
 	# add_my_monomer_modifier =
@@ -56,30 +100,6 @@ country_decisions =
 	# 	ai_will_do = { factor = 100 }
 	# }
 	
-	get_some_modifier =
-	{
-		major = yes
-		effect =
-		{
-			country_event = { id = my_event.1 }
-		}
-		ai_will_do = { factor = 0 }
-	}
-	set_tpm =
-	{
-		major = yes
-		effect =
-		{
-			every_province =
-			{
-				set_base_tax = 1
-				set_base_production = 1
-				set_base_manpower = 1
-			}
-		}
-		ai_will_do = { factor = 0 }
-	}
-
 	#add_my_global_unrest_modifier =
 	#{
 	#	major = yes
@@ -106,36 +126,5 @@ country_decisions =
 	#	}
 	#	effect = { remove_country_modifier = my_global_unrest_modifier }
 	#	ai_will_do = { factor = 100 }
-	#}
-
-	#add_adm =
-	#{
-	#	major = yes
-	#	effect = { add_adm_power = 1000 }
-	#	ai_will_do = { factor = 0 }
-	#}
-	#add_dip =
-	#{
-	#	major = yes
-	#	effect = { add_dip_power = 1000 }
-	#	ai_will_do = { factor = 0 }
-	#}
-	#add_mil =
-	#{
-	#	major = yes
-	#	effect = { add_mil_power = 1000 }
-	#	ai_will_do = { factor = 0 }
-	#}
-	#add_cash =
-	#{
-	#	major = yes
-	#	effect = { add_treasury = 1000 }
-	#	ai_will_do = { factor = 0 }
-	#}
-	#add_manpower =
-	#{
-	#	major = yes
-	#	effect = { add_manpower = 10 }
-	#	ai_will_do = { factor = 0 }
 	#}
 }

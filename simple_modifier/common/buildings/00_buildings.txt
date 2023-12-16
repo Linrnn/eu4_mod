@@ -1,69 +1,28 @@
-fort_15th = {
-	cost = 200
-	time = 1
+fort_14th = {
+	cost = 1
+	time = 0
+	onmap = yes
+	influencing_fort = yes
+
 	modifier = {
 		fort_level = 1
 	}
-
-	onmap = yes
-	influencing_fort = yes
-
 	ai_will_do = {
-		factor = 1 #Lots of logic in code instead, that multiplies with this value
+		factor = 1
 	}
 }
 
-fort_16th = {
-	cost = 400
-	time = 1
-	make_obsolete = fort_15th
-	modifier = {
-		fort_level = 2
-	}
-
+fort_15th = {
+	cost = 1
+	time = 0
 	onmap = yes
-
 	influencing_fort = yes
-
-	ai_will_do = {
-		factor = 1 #Lots of logic in code instead, that multiplies with this value
-	}
-}
-
-fort_17th = {
-	cost = 600
-	time = 1
-
-	make_obsolete = fort_16th
+	make_obsolete = fort_14th
 
 	modifier = {
-		fort_level = 3
+		fort_level = 1
 	}
-
-	onmap = yes
-
-	influencing_fort = yes
-
 	ai_will_do = {
-		factor = 1 #Lots of logic in code instead, that multiplies with this value
-	}
-}
-
-fort_18th = {
-	cost = 800
-	time = 1
-
-	make_obsolete = fort_17th
-
-	modifier = {
-		fort_level = 4
-	}
-
-	onmap = yes
-
-	influencing_fort = yes
-
-	ai_will_do = {
-		factor = 1 #Lots of logic in code instead, that multiplies with this value
+		factor = 1
 	}
 }

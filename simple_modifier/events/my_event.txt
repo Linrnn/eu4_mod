@@ -1,49 +1,55 @@
 namespace = my_event
 
-country_event =
-{
+country_event = {
 	id = my_event.1
 	is_triggered_only = yes
 
-	option =
-	{
+	option = {
 		name = my_add_adm
-		add_adm_power = 1000
-		ai_chance = { factor = 0 }
+		add_adm_power = 1000	# 增加行政点
+		ai_chance = {
+			factor = 0
+		}
 	}
-	option =
-	{
+	option = {
 		name = my_add_dip
-		add_dip_power = 1000
-		ai_chance = { factor = 0 }
+		add_dip_power = 1000	# 增加外交点
+		ai_chance = {
+			factor = 0
+		}
 	}
-	option =
-	{
+	option = {
 		name = my_add_mil
-		add_mil_power = 1000
-		ai_chance = { factor = 0 }
+		add_mil_power = 1000	# 增加军事点
+		ai_chance = {
+			factor = 0
+		}
 	}
-	option =
-	{
+	option = {
 		name = my_add_cash
-		add_treasury = 10000
-		ai_chance = { factor = 0 }
+		add_treasury = 10000	# 增加金币
+		ai_chance = {
+			factor = 0
+		}
 	}
-	option =
-	{
+	option = {
 		name = my_add_manpower
-		add_manpower = 10
-		ai_chance = { factor = 0 }
+		add_manpower = 10		# 增加人力
+		ai_chance = {
+			factor = 0
+		}
 	}
-	option =
-	{
+	option = {
 		name = my_add_prestige
-		add_prestige = 100
-		ai_chance = { factor = 0 }
+		add_prestige = 100		# 增加个人威望
+		ai_chance = {
+			factor = 0
+		}
 	}
-	option =
-	{
+	option = {
 		name = my_close
-		ai_chance = { factor = 100 }
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
