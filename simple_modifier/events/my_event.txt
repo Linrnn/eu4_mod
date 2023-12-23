@@ -53,3 +53,391 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = my_event.2
+	is_triggered_only = yes
+
+	option = {
+		name = my_christian
+		country_event = {
+			id = my_event.11
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_muslim
+		country_event = {
+			id = my_event.12
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_eastern
+		country_event = {
+			id = my_event.13
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_dharmic
+		country_event = {
+			id = my_event.14
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_pagan
+		country_event = {
+			id = my_event.15
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_other
+		country_event = {
+			id = my_event.16
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_close
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = my_event.11
+	is_triggered_only = yes
+
+	option = {
+		name = my_catholic
+		change_religion = catholic
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_protestant
+		change_religion = protestant
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_reformed
+		change_religion = reformed
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_anglican
+		change_religion = anglican
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_hussite
+		change_religion = hussite
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_orthodox
+		change_religion = orthodox
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_coptic
+		change_religion = coptic
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_back
+		country_event = {
+			id = my_event.2
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_close
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = my_event.12
+	is_triggered_only = yes
+
+	option = {
+		name = my_sunni
+		change_religion = sunni
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_shiite
+		change_religion = shiite
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_ibadi
+		change_religion = ibadi
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_back
+		country_event = {
+			id = my_event.2
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_close
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = my_event.13
+	is_triggered_only = yes
+
+	option = {
+		name = my_buddhism
+		change_religion = buddhism
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_vajrayana
+		change_religion = vajrayana
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_mahayana
+		change_religion = mahayana
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_confucianism
+		change_religion = confucianism
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_shinto
+		change_religion = shinto
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_back
+		country_event = {
+			id = my_event.2
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_close
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = my_event.14
+	is_triggered_only = yes
+
+	option = {
+		name = my_hinduism
+		change_religion = hinduism
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_sikhism
+		change_religion = sikhism
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_back
+		country_event = {
+			id = my_event.2
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_close
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = my_event.15
+	is_triggered_only = yes
+
+	option = {
+		name = my_animism
+		change_religion = animism
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_shamanism
+		change_religion = shamanism
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_totemism
+		change_religion = totemism
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_inti
+		change_religion = inti
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_nahuatl
+		change_religion = nahuatl
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_mesoamerican_religion
+		change_religion = mesoamerican_religion
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_norse_pagan_reformed
+		change_religion = norse_pagan_reformed
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_dreamtime
+		change_religion = dreamtime
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_tengri_pagan_reformed
+		change_religion = tengri_pagan_reformed
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_back
+		country_event = {
+			id = my_event.2
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_close
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = my_event.16
+	is_triggered_only = yes
+
+	option = {
+		name = my_jewish
+		change_religion = jewish
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_zoroastrian
+		change_religion = zoroastrian
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_back
+		country_event = {
+			id = my_event.2
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_close
+		ai_chance = {
+			factor = 100
+		}
+	}
+}

@@ -6,3 +6,44 @@
  my_add_manpower:0 "add manpower"
  my_add_prestige:0 "add prestige"
  my_close:0 "close"
+ my_back:0 "back"
+
+ my_christian:0 "christian"                             # 基督教组
+ my_catholic:0 "catholic"                               # 天主教
+ my_protestant:0 "protestant"                           # 新教
+ my_reformed:0 "reformed"                               # 改革宗
+ my_anglican:0 "anglican"                               # 圣公宗
+ my_hussite:0 "hussite"                                 # 胡斯派
+ my_orthodox:0 "orthodox"                               # 东正教
+ my_coptic:0 "coptic"                                   # 科普特正教
+
+ my_muslim:0 "muslim"                                   # 伊斯兰教组
+ my_sunni:0 "sunni"                                     # 逊尼派
+ my_shiite:0 "shiite"                                   # 什叶派
+ my_ibadi:0 "ibadi"                                     # 伊巴德派
+
+ my_eastern:0 "eastern"                                 # 东方宗教组
+ my_buddhism:0 "buddhism"                               # 上座部佛教
+ my_vajrayana:0 "vajrayana"                             # 金刚乘佛教
+ my_mahayana:0 "mahayana"                               # 大乘佛教
+ my_confucianism:0 "confucianism"                       # 儒教
+ my_shinto:0 "shinto"                                   # 神道教
+
+ my_dharmic:0 "dharmic"                                 # 达摩宗教组
+ my_hinduism:0 "hinduism"                               # 印度教
+ my_sikhism:0 "sikhism"                                 # 锡克教
+
+ my_pagan:0 "pagan"                                     # 原始宗教组
+ my_animism:0 "animism"                                 # 泛灵教
+ my_shamanism:0 "shamanism"                             # 萨满教
+ my_totemism:0 "totemism"                               # 图腾崇拜
+ my_inti:0 "inti"                                       # 因蒂
+ my_nahuatl:0 "nahuatl"                                 # 纳瓦特尔
+ my_mesoamerican_religion:0 "mesoamerican religion"     # 玛雅
+ my_norse_pagan_reformed:0 "norse pagan reformed"       # 诺斯
+ my_dreamtime:0 "dreamtime"                             # 梦创神话
+ my_tengri_pagan_reformed:0 "tengri pagan reformed"     # 长生天/腾格里
+
+ my_other:0 "jewish zoroastrian"                        # 其他宗教组
+ my_jewish:0 "jewish"                                   # 犹太教
+ my_zoroastrian:0 "zoroastrian"                         # 祆教
