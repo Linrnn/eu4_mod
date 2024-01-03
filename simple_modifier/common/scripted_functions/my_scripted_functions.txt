@@ -1,0 +1,86 @@
+can_improve_tax = {
+	condition = {
+		allow = {
+			OR = {
+				AND = {
+					NOT = { development = 5 }
+					FROM = { treasury = 1000 }
+				}
+				AND = {
+					NOT = { development = 20 }
+					FROM = { treasury = 5000 }
+				}
+				AND = {
+					NOT = { development = 45 }
+					FROM = { treasury = 20000 }
+				}
+				AND = {
+					NOT = { development = 100 }
+					FROM = { treasury = 50000 }
+				}
+				AND = {
+					NOT = { development = 1000 }
+					FROM = { treasury = 1000000 }
+				}
+			}
+		}
+	}
+}
+
+can_improve_production = {
+	condition = {
+		allow = {
+			OR = {
+				AND = {
+					NOT = { development = 5 }
+					FROM = { treasury = 1000 }
+				}
+				AND = {
+					NOT = { development = 20 }
+					FROM = { treasury = 5000 }
+				}
+				AND = {
+					NOT = { development = 45 }
+					FROM = { treasury = 20000 }
+				}
+				AND = {
+					NOT = { development = 100 }
+					FROM = { treasury = 50000 }
+				}
+				AND = {
+					NOT = { development = 1000 }
+					FROM = { treasury = 1000000 }
+				}
+			}
+		}
+	}
+}
+
+can_improve_manpower = {
+	condition = {
+		allow = {
+			OR = {
+				AND = {
+					NOT = { development = 5 }
+					FROM = { treasury = 1000 }
+				}
+				AND = {
+					NOT = { development = 20 }
+					FROM = { treasury = 5000 }
+				}
+				AND = {
+					NOT = { development = 45 }
+					FROM = { treasury = 20000 }
+				}
+				AND = {
+					NOT = { development = 100 }
+					FROM = { treasury = 50000 }
+				}
+				AND = {
+					NOT = { development = 1000 }
+					FROM = { treasury = 1000000 }
+				}
+			}
+		}
+	}
+}

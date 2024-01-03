@@ -1,6 +1,6 @@
 my_global_modifier = {
 	# 加法
-	num_accepted_cultures = 50					# 增加可接受文化的最大值
+	num_accepted_cultures = 100					# 增加可接受文化的最大值
 	global_tax_income = -12		           		# 年度税收
 	global_manpower = -10						# 全国人力（基础值1=1000人力）
 	land_forcelimit = -6						# 陆军上限（基础值）
@@ -8,41 +8,43 @@ my_global_modifier = {
 	country_admin_power = -3					# 每月额外获得行政君主力量点数
 	country_diplomatic_power = -3				# 每月额外获得外交君主力量点数
 	country_military_power = -3					# 每月额外获得军事君主力量点数
-	tribal_development_growth - 10				# 部落发展度增长
+	#tribal_development_growth - 10				# 部落发展度增长
 	#governing_capacity = 1000					# 行政容量上限
 	#diplomatic_upkeep = 100					# 外交关系数量
 	#colonists = -10							# 殖民队数量
 
 	# 乘法
-	core_creation = -2.0						# 建造核心花费
-	development_cost = 2000.0					# 提升发展度花费
-	build_cost = 100							# 建筑花费
 	trade_company_investment_cost = 1000		# 贸易公司投资花费
 	promote_culture_cost = -10					# 接受文化的外交点数花费
+	land_maintenance_modifier = 1.5				# 陆军维护费修正
+	reinforce_cost_modifier = 3					# 补员花费
+	fort_maintenance_modifier = 2				# 堡垒维护费
+	naval_maintenance_modifier = 2				# 海军维护费
+	global_regiment_recruit_speed = 2			# 陆军征召时间
+	global_ship_recruit_speed = 4				# 全国船只建造时间
+	#core_creation = -2							# 建造核心花费
+	#build_cost = 100							# 建筑花费
+	#development_cost = 2000.					# 提升发展度花费
 	#culture_conversion_cost = -2				# 转化省份文化的外交点数花费
 	#culture_conversion_time = -2				# 转文化所需的时间
-	#land_maintenance_modifier = 1.5			# 陆军维护费修正
-	#reinforce_cost_modifier = 3.0				# 补员花费
-	#fort_maintenance_modifier = 2.0			# 堡垒维护费
-	#naval_maintenance_modifier = 2.0			# 海军维护费
 	#all_power_cost = 0.5						# 所有需花费的君主点数
 	#technology_cost = 0.5						# 升级所有科技所需花费的君主点数
-	#embracement_cost = 1.0						# 接纳思潮的金币花费
-	#build_time = 1.0							# 建筑时间
+	#embracement_cost = 1						# 接纳思潮的金币花费
+	#build_time = 1								# 建筑时间
 	#global_institution_spread = -0.5			# 全局思潮传播速度
-	#institution_spread_from_true_faith = 1.0	# 国教省份思潮传播速度
+	#institution_spread_from_true_faith = 1		# 国教省份思潮传播速度
 	#idea_cost = 0.5							# 开启理念所需花费的君主点数
 	#colonist_placement_chance = -0.25			# 殖民过程中移民的安置概率，只在殖民过程中起效
-	#global_regiment_recruit_speed = 1.0		# 陆军征召时间
-	#global_ship_recruit_speed = 4.0			# 全国船只建造时间
 	#province_warscore_cost = 0.5				# 省份战争分数花费：割取敌方省份战争分数花费，此为全局buff
 	#missionary_maintenance_cost = 5.0			# 传教维护费
-	#adm_tech_cost_modifier = 1.0				# 升级各项科技所需花费的行政君主点数：adm为行政科技花费
-	#dip_tech_cost_modifier = 1.0				# 升级各项科技所需花费的行政君主点数：dip为外交科技花费
-	#mil_tech_cost_modifier = 1.0				# 升级各项科技所需花费的行政君主点数：mil为军事科技花费
+	#adm_tech_cost_modifier = 1					# 升级各项科技所需花费的行政君主点数：adm为行政科技花费
+	#dip_tech_cost_modifier = 1					# 升级各项科技所需花费的行政君主点数：dip为外交科技花费
+	#mil_tech_cost_modifier = 1					# 升级各项科技所需花费的行政君主点数：mil为军事科技花费
 
 	# 恒定
 	may_recruit_female_generals = yes			# 允许招募女将军
+	#allow_settlement_growth = no				# 允许垦殖
+	#block_settlement_growth = yes				# 阻止垦殖
 }
 
 # my_monomer_modifier = {

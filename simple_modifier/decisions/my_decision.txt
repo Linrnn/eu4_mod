@@ -16,6 +16,7 @@ country_decisions = {
 			factor = 100
 		}
 	}
+
 	# remove_global_modifier = {
 	# 	major = yes
 	# 	potential = {
@@ -31,61 +32,74 @@ country_decisions = {
 	# 	}
 	# }
 
-	get_thing = {
-		major = yes
-		effect = {
-			country_event = {
-				id = my_event.1
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	set_religion = {
-		major = yes
-		effect = {
-			country_event = {
-				id = my_event.2
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	set_tax_production_manpower = {
-		major = yes
-		effect = {
-			every_province = {
-				if = {
-					limit = {
-						base_tax = 2			# 该省份的“基础税收”是至少X
-					}
-					set_base_tax = 1
-				}
-				if = {
-					limit = {
-						base_production = 2		# 该省份的“基础生产”是至少X
-					}
-					set_base_production = 1
-				}
-				if = {
-					limit = {
-						base_manpower = 2		# 该省份的“基础人力”是至少X
-					}
-					set_base_manpower = 1
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
+	# get_thing = {
+	# 	major = yes
+	# 	effect = {
+	# 		country_event = {
+	# 			id = my_event.1
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
 
+	# set_religion = {
+	# 	major = yes
+	# 	effect = {
+	# 		country_event = {
+	# 			id = my_event.2
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
+
+	# set_tax_production_manpower = {
+	# 	major = yes
+	# 	effect = {
+	# 		every_province = {
+	# 			if = {
+	# 				limit = {
+	# 					base_tax = 2			# 该省份的“基础税收”是至少X
+	# 				}
+	# 				set_base_tax = 1
+	# 			}
+	# 			if = {
+	# 				limit = {
+	# 					base_production = 2		# 该省份的“基础生产”是至少X
+	# 				}
+	# 				set_base_production = 1
+	# 			}
+	# 			if = {
+	# 				limit = {
+	# 					base_manpower = 2		# 该省份的“基础人力”是至少X
+	# 				}
+	# 				set_base_manpower = 1
+	# 			}
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
+
+	# set_tripitaka_koreana = {
+	# 	major = yes
+	# 	effect ={
+	# 		capital_scope = {
+	# 			add_permanent_province_modifier = {
+	# 				name = tripitaka_koreana
+	# 				duration = -1
+	# 			}
+	# 		}
+	# 	}
+	# }
 	# add_my_monomer_modifier =
 	# {
 	# 	major = yes
-	# 	potential = 
+	# 	potential =
 	# 	{
 	# 		not = { has_country_modifier = my_monomer_modifier }
 	# 	}
@@ -102,18 +116,18 @@ country_decisions = {
 	# remove_my_monomer_modifier =
 	# {
 	# 	major = yes
-	# 	potential = 
+	# 	potential =
 	# 	{
 	# 		if = { has_country_modifier = my_monomer_modifier }
 	# 	}
 	# 	effect = { remove_country_modifier = my_monomer_modifier }
 	# 	ai_will_do = { factor = 100 }
 	# }
-	
+
 	#add_my_global_unrest_modifier =
 	#{
 	#	major = yes
-	#	potential = 
+	#	potential =
 	#	{
 	#		not = { has_country_modifier = my_global_unrest_modifier }
 	#	}
@@ -130,7 +144,7 @@ country_decisions = {
 	#remove_my_global_unrest_modifier =
 	#{
 	#	major = yes
-	#	potential = 
+	#	potential =
 	#	{
 	#		if = { has_country_modifier = my_global_unrest_modifier }
 	#	}

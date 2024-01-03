@@ -1,3 +1,5 @@
+# 不要修改文件名！请保持以下名字“00_buildings.txt”
+
 fort_14th = {
 	cost = 1
 	time = 0
@@ -13,7 +15,7 @@ fort_14th = {
 }
 
 fort_15th = {
-	cost = 1
+	cost = 100
 	time = 0
 	onmap = yes
 	influencing_fort = yes
