@@ -99,6 +99,7 @@ on_adm_development = {
 	else = {
 		owner = { add_treasury = -1000 }
 	}
+	owner = { add_manpower = -1 }
 }
 
 # province
@@ -158,6 +159,7 @@ on_dip_development = {
 	else = {
 		owner = { add_treasury = -1000 }
 	}
+	owner = { add_manpower = -1 }
 }
 
 # province
@@ -217,4 +219,5 @@ on_mil_development = {
 	else = {
 		owner = { add_treasury = -1000 }
 	}
+	owner = { add_manpower = -1 }
 }
