@@ -35,9 +35,9 @@ courthouse = {
 	cost = 400
 	time = 0
 	modifier = {
-		local_state_maintenance_modifier = -0.25
+		local_state_maintenance_modifier = 1
 		local_autonomy = -0.1
-		local_governing_cost = -0.4
+		local_governing_cost = -0.25
 		allowed_num_of_buildings = 1
 	}
 	on_built = {
@@ -46,13 +46,13 @@ courthouse = {
 			type = tax
 			value = 1
 		}
-		if = { 
-			limit = { 
+		if = {
+			limit = {
 				FROM = { has_country_flag = fra_courthouse_bonus_flag }
 			}
 			add_province_modifier = {
 				name = fra_improved_court_houses_modifier
-				duration = -1 
+				duration = -1
 			}
 		}
 	}
@@ -135,9 +135,9 @@ town_hall = {
 	make_obsolete = courthouse
 
 	modifier = {
-		local_state_maintenance_modifier = -0.5
+		local_state_maintenance_modifier = 1
 		local_autonomy = -0.2
-		local_governing_cost = -0.8
+		 local_governing_cost= -0.5
 		allowed_num_of_buildings = 1
 	}
 
@@ -149,14 +149,14 @@ town_hall = {
 			value = 2
 			upgrade_value = 1
 		}
-		if = { 
-			limit = { 
+		if = {
+			limit = {
 				FROM = { has_country_flag = fra_courthouse_bonus_flag }
 				NOT = { has_province_modifier = fra_improved_court_houses_modifier }
 			}
 			add_province_modifier = {
 				name = fra_improved_court_houses_modifier
-				duration = -1 
+				duration = -1
 			}
 		}
 	}
@@ -166,7 +166,7 @@ town_hall = {
 			type = tax
 			value = 2
 		}
-		remove_province_modifier = fra_improved_court_houses_modifier 
+		remove_province_modifier = fra_improved_court_houses_modifier
 	}
 	on_obsolete = {
 	}
@@ -242,6 +242,7 @@ university = {
 	modifier = {
 		local_development_cost = -0.20
 		allowed_num_of_buildings = 1
+		local_state_maintenance_modifier = 1
 	}
 
 	on_built = {
@@ -325,5 +326,93 @@ university = {
 				}
 			}
 		}
+	}
+}
+
+# 工厂
+manufactory = {
+	cost = 500
+	time = 0
+	modifier = {
+		local_state_maintenance_modifier = 1
+	}
+}
+
+# 州议会
+state_house = {
+	manufactory = {
+		all
+	}
+
+	bonus_manufactory = { # Will apply an extra modifier if these goods
+		paper
+		glass
+		gems
+	}
+
+	build_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = state_house
+					has_construction = state_house
+				}
+			}
+		}
+	}
+
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = state_house
+					has_construction = state_house
+				}
+			}
+		}
+	}
+
+	modifier = {
+		statewide_governing_cost = -0.2
+		min_local_autonomy = -5
+		local_governing_cost = -0.15
+		local_governing_cost_increase = -10
+		allowed_num_of_buildings = 1
+		local_state_maintenance_modifier = 1
+	}
+	bonus_modifier = {
+		statewide_governing_cost = -0.2
+		min_local_autonomy = -5
+		local_governing_cost = -0.15
+		local_governing_cost_increase = -10
+	}
+	onmap = no
+	show_separate = yes # Means as a manufactory it will be shown according to the old way
+	on_built = {
+		add_development_from_building = {
+			building = state_house
+			type = tax
+			value = 2
+		}
+	}
+	on_destroyed = {
+		remove_development_from_building = {
+			building = state_house
+			type = tax
+			value = 2
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1
 	}
 }
