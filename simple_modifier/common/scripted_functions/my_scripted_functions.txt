@@ -2,29 +2,11 @@ can_improve_tax = {
 	condition = {
 		allow = {
 			AND = {
-				OR = {
-					AND = {
-						NOT = { development = 5 }
-						FROM = { treasury = 1000 }
-					}
-					AND = {
-						NOT = { development = 20 }
-						FROM = { treasury = 5000 }
-					}
-					AND = {
-						NOT = { development = 45 }
-						FROM = { treasury = 20000 }
-					}
-					AND = {
-						NOT = { development = 100 }
-						FROM = { treasury = 50000 }
-					}
-					AND = {
-						NOT = { development = 1000 }
-						FROM = { treasury = 1000000 }
-					}
+				FROM = {
+					was_player = yes
+					treasury = 1000
+					manpower = 10
 				}
-				FROM = { manpower = 1 }
 			}
 		}
 	}
@@ -34,29 +16,11 @@ can_improve_production = {
 	condition = {
 		allow = {
 			AND = {
-				OR = {
-					AND = {
-						NOT = { development = 5 }
-						FROM = { treasury = 1000 }
-					}
-					AND = {
-						NOT = { development = 20 }
-						FROM = { treasury = 5000 }
-					}
-					AND = {
-						NOT = { development = 45 }
-						FROM = { treasury = 20000 }
-					}
-					AND = {
-						NOT = { development = 100 }
-						FROM = { treasury = 50000 }
-					}
-					AND = {
-						NOT = { development = 1000 }
-						FROM = { treasury = 1000000 }
-					}
+				FROM = {
+					was_player = yes
+					treasury = 1000
+					manpower = 10
 				}
-				FROM = { manpower = 1 }
 			}
 		}
 	}
@@ -66,29 +30,11 @@ can_improve_manpower = {
 	condition = {
 		allow = {
 			AND = {
-				OR = {
-					AND = {
-						NOT = { development = 5 }
-						FROM = { treasury = 1000 }
-					}
-					AND = {
-						NOT = { development = 20 }
-						FROM = { treasury = 5000 }
-					}
-					AND = {
-						NOT = { development = 45 }
-						FROM = { treasury = 20000 }
-					}
-					AND = {
-						NOT = { development = 100 }
-						FROM = { treasury = 50000 }
-					}
-					AND = {
-						NOT = { development = 1000 }
-						FROM = { treasury = 1000000 }
-					}
+				FROM = {
+					was_player = yes
+					treasury = 1000
+					manpower = 10
 				}
-				FROM = { manpower = 1 }
 			}
 		}
 	}

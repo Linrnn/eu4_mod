@@ -84,22 +84,10 @@ on_adm_development = {
 		}
 	}
 	# ============以上原版所有，以下拓展新增============
-	if = {
-		limit = { development = 45 }
-		owner = { add_treasury = -50000 }
+	owner = {
+		add_treasury = -1000
+		add_manpower = -10
 	}
-	else_if = {
-		limit = { development = 20 }
-		owner = { add_treasury = -20000 }
-	}
-	else_if = {
-		limit = { development = 5 }
-		owner = { add_treasury = -5000 }
-	}
-	else = {
-		owner = { add_treasury = -1000 }
-	}
-	owner = { add_manpower = -1 }
 }
 
 # province
@@ -144,22 +132,10 @@ on_dip_development = {
 		}
 	}
 	# ============以上原版所有，以下拓展新增============
-	if = {
-		limit = { development = 45 }
-		owner = { add_treasury = -50000 }
+	owner = {
+		add_treasury = -1000
+		add_manpower = -10
 	}
-	else_if = {
-		limit = { development = 20 }
-		owner = { add_treasury = -20000 }
-	}
-	else_if = {
-		limit = { development = 5 }
-		owner = { add_treasury = -5000 }
-	}
-	else = {
-		owner = { add_treasury = -1000 }
-	}
-	owner = { add_manpower = -1 }
 }
 
 # province
@@ -204,20 +180,8 @@ on_mil_development = {
 		}
 	}
 	# ============以上原版所有，以下拓展新增============
-	if = {
-		limit = { development = 45 }
-		owner = { add_treasury = -50000 }
+	owner = {
+		add_treasury = -1000
+		add_manpower = -10
 	}
-	else_if = {
-		limit = { development = 20 }
-		owner = { add_treasury = -20000 }
-	}
-	else_if = {
-		limit = { development = 5 }
-		owner = { add_treasury = -5000 }
-	}
-	else = {
-		owner = { add_treasury = -1000 }
-	}
-	owner = { add_manpower = -1 }
 }
