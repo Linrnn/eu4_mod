@@ -7,6 +7,7 @@
  my_add_prestige:0 "add prestige"
  my_close:0 "close"
  my_back:0 "back"
+ my_estate:0 "estate"
 
  my_christian:0 "christian"                             # 基督教组
  my_catholic:0 "catholic"                               # 天主教

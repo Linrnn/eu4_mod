@@ -1,0 +1,3 @@
+all_nations = {
+	# 放空，无buff
+}

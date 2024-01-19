@@ -47,6 +47,36 @@ country_event = {
 		}
 	}
 	option = {
+		name = my_estate
+		change_estate_land_share = {	# 领地百分比
+			estate = estate_burghers	# 市民
+			share = -100
+		}
+		change_estate_land_share = {
+			estate = estate_nobles		# 贵族
+			share = -100
+		}
+		change_estate_land_share = {
+			estate = estate_church		# 教士
+			share = -100
+		}
+		add_estate_loyalty = {			# 忠诚度
+			estate = estate_burghers
+			loyalty = 100
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 100
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = 100
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
 		name = my_close
 		ai_chance = {
 			factor = 100

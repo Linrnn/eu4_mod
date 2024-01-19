@@ -1,13 +1,13 @@
 my_global_modifier = {
 	# 加法
 	num_accepted_cultures = 100					# 增加可接受文化的最大值
-	global_tax_income = -12		           		# 年度税收
 	global_manpower = -10						# 全国人力（基础值1=1000人力）
-	land_forcelimit = -6						# 陆军上限（基础值）
-	naval_forcelimit = -12						# 海军上限（基础值）
 	country_admin_power = -3					# 每月额外获得行政君主力量点数
 	country_diplomatic_power = -3				# 每月额外获得外交君主力量点数
 	country_military_power = -3					# 每月额外获得军事君主力量点数
+	#global_tax_income = -12		           		# 年度税收
+	#land_forcelimit = -6						# 陆军上限（基础值）
+	#naval_forcelimit = -12						# 海军上限（基础值）
 	#tribal_development_growth - 10				# 部落发展度增长
 	#governing_capacity = 1000					# 行政容量上限
 	#diplomatic_upkeep = 100					# 外交关系数量
@@ -23,6 +23,7 @@ my_global_modifier = {
 	global_regiment_recruit_speed = 2			# 陆军征召时间
 	global_ship_recruit_speed = 4				# 全国船只建造时间
 	missionary_maintenance_cost = 1				# 传教维护费
+	female_advisor_chance = 0.5					# 出现女性顾问几率
 	#state_maintenance_modifier = 1				# 直辖维护费
 	#land_maintenance_modifier = 0.5			# 陆军维护费修正
 	#core_creation = -2							# 建造核心花费

@@ -7,6 +7,8 @@ NDefines.NCountry.RAZE_PROVINCE_COOLDOWN_YRS = 0                        -- 剥�
 NDefines.NCountry.EXPLOIT_COOLDOWN_MONTHS = 0                           -- 游牧烧地（月）
 --NDefines.NCountry.TRIBE_STARTING_DEV = 0				                -- 最低部落发展度
 
+NDefines.NMilitary.ARMY_DRILL_MAX_MORALE = 2							-- 陆军演习最大士气
+
 NDefines.NNationDesigner.POINTS_AVAILABLE = 1000                        -- 自建国点数
 
 NDefines.NReligion.MIN_HARMONIZE_DEVELOPMENT = 1                        -- 和谐宗教所需的最小发展度
