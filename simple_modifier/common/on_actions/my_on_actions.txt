@@ -4,8 +4,8 @@ on_adm_development = {
 	on_development_effect = { type = adm }
 	# ============以上原版所有，以下拓展新增============
 	owner = {
-		add_treasury = -1000
-		add_manpower = -10
+		add_treasury = -100
+		add_manpower = -1
 	}
 }
 
@@ -14,8 +14,8 @@ on_dip_development = {
 	on_development_effect = { type = dip }
 	# ============以上原版所有，以下拓展新增============
 	owner = {
-		add_treasury = -1000
-		add_manpower = -10
+		add_treasury = -100
+		add_manpower = -1
 	}
 }
 
@@ -24,8 +24,8 @@ on_mil_development = {
 	on_development_effect = { type = mil }
 	# ============以上原版所有，以下拓展新增============
 	owner = {
-		add_treasury = -1000
-		add_manpower = -10
+		add_treasury = -100
+		add_manpower = -1
 	}
 }
 
