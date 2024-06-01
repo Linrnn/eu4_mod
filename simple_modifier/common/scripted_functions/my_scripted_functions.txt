@@ -3,7 +3,6 @@ can_improve_tax = {
 		allow = {
 			AND = {
 				FROM = {
-					was_player = yes
 					treasury = 1000
 					manpower = 10
 				}
@@ -17,7 +16,6 @@ can_improve_production = {
 		allow = {
 			AND = {
 				FROM = {
-					was_player = yes
 					treasury = 1000
 					manpower = 10
 				}
@@ -31,7 +29,6 @@ can_improve_manpower = {
 		allow = {
 			AND = {
 				FROM = {
-					was_player = yes
 					treasury = 1000
 					manpower = 10
 				}

@@ -471,3 +471,20 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = my_event.31
+	is_triggered_only = yes
+
+	option = {
+		ai_chance = {
+			factor = 100
+		}
+		FROM = {
+			add_devastation = 100
+			add_base_tax = -1
+			add_base_production = -1
+			add_base_power = -1
+		}
+	}
+}

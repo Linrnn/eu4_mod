@@ -1,88 +1,7 @@
 
 # province
 on_adm_development = {
-	on_adm_development_effect = yes
-	on_development_effect = yes
-	if = {
-		limit = { owner = { has_country_flag = enable_supplemental_development_flag } }
-		random_list = {
-			20 = { add_base_tax = 1 }
-			80 = { }
-		}
-	}
-	if = {
-		limit = { 
-			owner = { has_country_modifier = lit_increased_dev_modifier }
-		}
-		add_base_tax = 1 
-	}
-	if = { 
-		limit = { has_state_edict = chinese_industrialization } 
-		random_list = {
-			10 = { add_base_tax = 1 } 
-			10 = { add_prosperity = 1 } 
-			10 = { add_province_modifier = { name = qng_center_of_industrialization_modifier duration = 3650 } }
-			70 = {  } 
-		}
-	}
-	if = {
-		limit = { owner = { has_country_modifier = JAP_cadastral_surveys has_dlc = "Domination" } }
-		owner = {
-			change_estate_land_share = {
-				estate = all 
-				share = -0.2
-			}
-		}
-	}
-	
-	if = {
-		limit = { owner = { has_country_modifier = jap_20_years_devving_tax_yields_twice_bonus_1_burgher_loyalt_modifier } }
-		add_base_tax = 1 
-		owner = {
-			add_estate_loyalty = {
-				estate = estate_burghers 
-				loyalty = 1 
-			}
-		}
-	}
-	
-	if = { 
-		limit = { 
-			owner = { has_country_modifier = pru_victory_lower_saxony_modifier }
-			OR = { 
-				culture = saxon
-				culture = lower_saxon
-			}
-		}
-		add_nationalism = -3
-		add_local_autonomy = -5
-		add_prosperity = 1
-	}
-	if = {
-		limit = {
-			religion = ROOT
-			owner = {
-				has_country_flag = geo_orthodox_dev
-			}
-		}
-		random_list = {
-			10 = { add_base_tax = 1 }
-			90 = { }
-		}
-	}
-	if = {
-		limit = {
-			OR = {
-				trade_goods = cloth
-				trade_goods = silk
-			}
-			owner = { has_country_modifier = turkoman_expanding_industry }
-		}
-		random_list = {
-			20 = { add_base_tax = 1 } 
-			80 = {  } 
-		}
-	}
+	on_development_effect = { type = adm }
 	# ============以上原版所有，以下拓展新增============
 	owner = {
 		add_treasury = -1000
@@ -92,45 +11,7 @@ on_adm_development = {
 
 # province
 on_dip_development = {
-	on_dip_development_effect = yes
-	on_development_effect = yes
-	if = { 
-		limit = { 
-			owner = { has_country_modifier = pru_victory_lower_saxony_modifier }
-			OR = { 
-				culture = saxon
-				culture = lower_saxon
-			}
-		}
-		add_nationalism = -3
-		add_local_autonomy = -5
-		add_prosperity = 1
-	}
-	if = {
-		limit = {
-			religion = ROOT
-			owner = {
-				has_country_flag = geo_orthodox_dev
-			}
-		}
-		random_list = {
-			10 = { add_base_production = 1 }
-			90 = { }
-		}
-	}
-	if = {
-		limit = {
-			OR = {
-				trade_goods = cloth
-				trade_goods = silk
-			}
-			owner = { has_country_modifier = turkoman_expanding_industry }
-		}
-		random_list = {
-			20 = { add_base_production = 1 } 
-			80 = {  } 
-		}
-	}
+	on_development_effect = { type = dip }
 	# ============以上原版所有，以下拓展新增============
 	owner = {
 		add_treasury = -1000
@@ -140,48 +21,130 @@ on_dip_development = {
 
 # province
 on_mil_development = {
-	on_mil_development_effect = yes
-	on_development_effect = yes
-	if = { 
-		limit = { 
-			owner = { has_country_modifier = pru_victory_lower_saxony_modifier }
-			OR = { 
-				culture = saxon
-				culture = lower_saxon
-			}
-		}
-		add_nationalism = -3
-		add_local_autonomy = -5
-		add_prosperity = 1
-	}
-	if = {
-		limit = {
-			religion = ROOT
-			owner = {
-				has_country_flag = geo_orthodox_dev
-			}
-		}
-		random_list = {
-			10 = { add_base_manpower = 1 }
-			90 = { }
-		}
-	}
-	if = {
-		limit = {
-			OR = {
-				trade_goods = cloth
-				trade_goods = silk
-			}
-			owner = { has_country_modifier = turkoman_expanding_industry }
-		}
-		random_list = {
-			20 = { add_base_manpower = 1 } 
-			80 = {  } 
-		}
-	}
+	on_development_effect = { type = mil }
 	# ============以上原版所有，以下拓展新增============
 	owner = {
 		add_treasury = -1000
 		add_manpower = -10
+	}
+}
+
+# country
+# root = winning country, from = location
+on_siege_won_country = {
+	if = {
+		limit = {
+			from = { owned_by = SAX }
+			OR = {
+				is_in_war = {
+					defenders = root
+					defenders = THU
+					defenders = emperor
+					attackers = SAX
+				}
+				is_in_war = {
+					attackers = root
+					attackers = THU
+					attackers = emperor
+					defenders = SAX
+				}
+			}
+			THU = {
+				dynasty = "von Wettin"
+				is_elector = no
+				is_emperor = no
+				alliance_with = emperor
+			}
+			SAX = {
+				is_elector = yes
+				all_owned_province = {
+					NOT = { controlled_by = SAX }
+					OR = {
+						controlled_by = THU
+						controller = {
+							OR = {
+								is_in_war = {
+									defenders = this
+									defenders = THU
+									defenders = emperor
+									attackers = SAX
+								}
+								is_in_war = {
+									attackers = this
+									attackers = THU
+									attackers = emperor
+									defenders = SAX
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		THU = { country_event = { id = flavor_sax.10 } } # Ask Emperor for Saxon Electorate
+	}
+	if = {
+		limit = {
+			ROOT = {
+				religion = jewish
+				has_church_aspect = judaism_remember_passover_aspect
+			}
+			FROM = {
+				owner = {
+					war_with = ROOT
+				}
+				fort_level = 1
+			}
+		}
+		ROOT = {
+			add_church_power = 5
+		}
+	}
+	grant_manpower_from_besieging_fort = yes
+	if = {
+		limit = {
+			has_dlc = "Domination"
+			not = { tag = MAM }
+			exists = MAM
+			NOT = { exists = EGY }
+			FROM = {
+				is_capital = yes
+				owner = { tag = MAM }
+			}
+			root = {
+				or = {
+					tag = TUR
+					and = {
+						is_subject = yes
+						is_subject_of = TUR
+						is_subject_other_than_tributary_trigger = yes
+					}
+				}
+				is_in_war = {
+					casus_belli = cb_ottoman_invasion
+					attacker_leader = TUR
+					defender_leader = MAM
+				}
+			}
+		}
+		TUR = {
+			country_event = { id = flavor_tur.240 }	#Collapse of the Mamluks
+		}
+	}
+	events = {
+		tyw_events.14 # Fall of Prague in Religious War
+		flavor_oir.5 # Oirats capture Beijing
+		flavor_lna.1 # Emerald Buddha
+		flavor_son.14 # Djenne surrenders to Songhai Trigger
+		flavor_teu.25 # Payback for the Hussite Wars
+		flavor_kor.16 # Tripitaka Koreana
+		flavor_tur.211 # Fall of Vienna
+		# 以下是非原版
+		my_event.31 # 扣省份发展度
+
+	}
+	random_events = {
+		10 = army_professionalism_events.1 #City Sacked
+		100 = 0
 	}
 }
