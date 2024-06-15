@@ -6,7 +6,7 @@ all_nations = {
 	country_admin_power = -3					# 每月额外获得行政君主力量点数
 	country_diplomatic_power = -3				# 每月额外获得外交君主力量点数
 	country_military_power = -3					# 每月额外获得军事君主力量点数
-	diplomatic_upkeep = -4						# 外交关系数量
+	#diplomatic_upkeep = -4						# 外交关系数量
 	#global_tax_income = -12		           	# 年度税收
 	#land_forcelimit = -6						# 陆军上限（基础值）
 	#naval_forcelimit = -12						# 海军上限（基础值）
@@ -16,11 +16,11 @@ all_nations = {
 
 	# 乘法
 	reinforce_cost_modifier = 1					# 补员花费
-	merc_maintenance_modifier = 1				# 雇佣兵维护费
 	global_regiment_recruit_speed = 2			# 陆军征召时间
 	global_ship_recruit_speed = 4				# 全国船只建造时间
 	missionary_maintenance_cost = 1				# 传教维护费
 	female_advisor_chance = 0.2					# 出现女性顾问几率
+	#merc_maintenance_modifier = 1				# 雇佣兵维护费
 	#aval_maintenance_modifier = 1				# 海军维护费
 	#fort_maintenance_modifier = 1				# 堡垒维护费
 	# promote_culture_cost = -10				# 接受文化的外交点数花费
@@ -58,6 +58,6 @@ all_nations = {
 
 # 最近的叛乱
 recent_uprising = {
-	local_unrest = -10
+	#local_unrest = -100
 	picture = "recent_uprising"
 }

@@ -481,10 +481,73 @@ country_event = {
 			factor = 100
 		}
 		FROM = {
-			add_devastation = 100
-			add_base_tax = -1
-			add_base_production = -1
-			add_base_manpower = -1
+			add_base_tax = -1			# 基础税收
+			add_base_production = -1	# 基础生产
+
+			# 发展度
+			add_base_manpower = -1		# 基础人力
+			add_prosperity = -100		# 繁荣度
+			add_devastation = 100		# 荒废度
+
+			remove_province_modifier = my_local_unrest_modifier
+			add_permanent_province_modifier = { 
+				name = my_local_unrest_modifier
+				duration = 5000			# 天
+    			#desc = annoyed_people_tooltip
+				#hidden = no
+			}
+
+			# native building
+			remove_building = native_earthwork
+			remove_building = native_palisade
+			remove_building = native_fortified_house
+			remove_building = native_ceremonial_fire_pit
+			remove_building = native_irrigation
+			remove_building = native_storehouse
+			remove_building = native_longhouse
+			remove_building = native_sweat_lodge
+			remove_building = native_great_trail
+
+			# building
+			remove_building = marketplace
+			remove_building = workshop
+			remove_building = temple
+			remove_building = barracks
+			remove_building = shipyard
+			remove_building = fort_15th
+			remove_building = coastal_defence
+			remove_building = courthouse
+			remove_building = dock
+			remove_building = regimental_camp
+			remove_building = fort_16th
+			remove_building = naval_battery
+			remove_building = cathedral
+			remove_building = university
+			remove_building = trade_depot
+			remove_building = grand_shipyard
+			remove_building = training_fields
+			remove_building = fort_17th
+			remove_building = stock_exchange
+			remove_building = counting_house
+			remove_building = town_hall
+			remove_building = drydock
+			remove_building = conscription_center
+			remove_building = fort_18th
+			remove_building = manufactory
+
+			# manufactory
+			# remove_building = wharf
+			# remove_building = weapons
+			# remove_building = textile
+			# remove_building = plantations
+			# remove_building = tradecompany
+			# remove_building = farm_estate
+			# remove_building = mills
+			# remove_building = furnace
+			# remove_building = ramparts
+			# remove_building = soldier_households
+			# remove_building = impressment_offices
+			# remove_building = state_house
 		}
 	}
 }

@@ -29,3 +29,8 @@
 #	# 加法
 # 	global_unrest = 200							# 全国叛乱度
 # }
+
+my_local_unrest_modifier = {
+	# 加法
+	local_unrest = 15							# 本地叛乱度
+}
