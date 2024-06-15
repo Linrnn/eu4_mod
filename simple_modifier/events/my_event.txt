@@ -533,21 +533,20 @@ country_event = {
 			remove_building = drydock
 			remove_building = conscription_center
 			remove_building = fort_18th
-			remove_building = manufactory
 
 			# manufactory
-			# remove_building = wharf
-			# remove_building = weapons
-			# remove_building = textile
-			# remove_building = plantations
-			# remove_building = tradecompany
-			# remove_building = farm_estate
-			# remove_building = mills
-			# remove_building = furnace
-			# remove_building = ramparts
-			# remove_building = soldier_households
-			# remove_building = impressment_offices
-			# remove_building = state_house
+			remove_building = wharf
+			remove_building = weapons
+			remove_building = textile
+			remove_building = plantations
+			remove_building = tradecompany
+			remove_building = farm_estate
+			remove_building = mills
+			remove_building = furnace
+			remove_building = ramparts
+			remove_building = soldier_households
+			remove_building = impressment_offices
+			remove_building = state_house
 		}
 	}
 }
