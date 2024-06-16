@@ -481,21 +481,9 @@ country_event = {
 			factor = 100
 		}
 		FROM = {
-			add_base_tax = -1			# 基础税收
-			add_base_production = -1	# 基础生产
-
-			# 发展度
-			add_base_manpower = -1		# 基础人力
 			add_prosperity = -100		# 繁荣度
 			add_devastation = 100		# 荒废度
-
-			remove_province_modifier = my_local_unrest_modifier
-			add_permanent_province_modifier = { 
-				name = my_local_unrest_modifier
-				duration = 5000			# 天
-    			#desc = annoyed_people_tooltip
-				#hidden = no
-			}
+			add_local_autonomy = 100	# 自治度
 
 			# native building
 			remove_building = native_earthwork
@@ -547,6 +535,19 @@ country_event = {
 			remove_building = soldier_households
 			remove_building = impressment_offices
 			remove_building = state_house
+
+			# remove_province_modifier = my_local_unrest_modifier
+			# add_permanent_province_modifier = { 
+			# 	name = my_local_unrest_modifier
+			# 	duration = 5000			# 天
+    		# 	#desc = annoyed_people_tooltip
+			# 	#hidden = no
+			# }
+
+			# 发展度
+			# add_base_tax = -1			# 基础税收
+			# add_base_production = -1	# 基础生产
+			# add_base_manpower = -1	# 基础人力
 		}
 	}
 }
