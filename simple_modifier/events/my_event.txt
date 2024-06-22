@@ -481,9 +481,10 @@ country_event = {
 			factor = 100
 		}
 		FROM = {
-			add_prosperity = -100		# 繁荣度
-			add_devastation = 100		# 荒废度
-			add_local_autonomy = 100	# 自治度
+			add_prosperity = -100			# 繁荣度
+			add_devastation = 100			# 荒废度
+			add_local_autonomy = 100		# 自治度
+			add_center_of_trade_level = -3	# 要更改的贸易中心的等级数值
 
 			# native building
 			remove_building = native_earthwork
