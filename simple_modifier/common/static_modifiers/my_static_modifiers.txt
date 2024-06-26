@@ -20,6 +20,7 @@ all_nations = {
 	global_ship_recruit_speed = 4				# 全国船只建造时间
 	missionary_maintenance_cost = 1				# 传教维护费
 	female_advisor_chance = 0.2					# 出现女性顾问几率
+	drill_decay_modifier = -0.5					# 陆军操练度损失
 	#merc_maintenance_modifier = 1				# 雇佣兵维护费
 	#aval_maintenance_modifier = 1				# 海军维护费
 	#fort_maintenance_modifier = 1				# 堡垒维护费
