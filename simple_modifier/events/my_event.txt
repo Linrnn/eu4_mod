@@ -546,6 +546,9 @@ country_event = {
 			# }
 
 			# 发展度
+			set_base_tax = 1			# 基础税收
+			set_base_production = 1		# 基础生产
+			set_base_manpower = 1		# 基础人力
 			# add_base_tax = -1			# 基础税收
 			# add_base_production = -1	# 基础生产
 			# add_base_manpower = -1	# 基础人力
