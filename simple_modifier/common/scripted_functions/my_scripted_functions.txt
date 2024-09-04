@@ -1,41 +1,41 @@
-can_improve_tax = {
-	condition = {
-		allow = {
-			AND = {
-				FROM = {
-					was_player = yes
-					treasury = 100
-					manpower = 1
-				}
-			}
-		}
-	}
-}
+# can_improve_tax = {
+# 	condition = {
+# 		allow = {
+# 			AND = {
+# 				FROM = {
+# 					was_player = yes
+# 					treasury = 100
+# 					manpower = 1
+# 				}
+# 			}
+# 		}
+# 	}
+# }
 
-can_improve_production = {
-	condition = {
-		allow = {
-			AND = {
-				FROM = {
-					was_player = yes
-					treasury = 100
-					manpower = 1
-				}
-			}
-		}
-	}
-}
+# can_improve_production = {
+# 	condition = {
+# 		allow = {
+# 			AND = {
+# 				FROM = {
+# 					was_player = yes
+# 					treasury = 100
+# 					manpower = 1
+# 				}
+# 			}
+# 		}
+# 	}
+# }
 
-can_improve_manpower = {
-	condition = {
-		allow = {
-			AND = {
-				FROM = {
-					was_player = yes
-					treasury = 100
-					manpower = 1
-				}
-			}
-		}
-	}
-}
+# can_improve_manpower = {
+# 	condition = {
+# 		allow = {
+# 			AND = {
+# 				FROM = {
+# 					was_player = yes
+# 					treasury = 100
+# 					manpower = 1
+# 				}
+# 			}
+# 		}
+# 	}
+# }

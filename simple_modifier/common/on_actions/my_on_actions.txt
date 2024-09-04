@@ -1,33 +1,32 @@
+# # province
+# on_adm_development = {
+# 	on_development_effect = { type = adm }
+# 	# ============以上原版所有，以下拓展新增============
+# 	owner = {
+# 		add_treasury = -100
+# 		add_manpower = -1
+# 	}
+# }
 
-# province
-on_adm_development = {
-	on_development_effect = { type = adm }
-	# ============以上原版所有，以下拓展新增============
-	owner = {
-		add_treasury = -100
-		add_manpower = -1
-	}
-}
+# # province
+# on_dip_development = {
+# 	on_development_effect = { type = dip }
+# 	# ============以上原版所有，以下拓展新增============
+# 	owner = {
+# 		add_treasury = -100
+# 		add_manpower = -1
+# 	}
+# }
 
-# province
-on_dip_development = {
-	on_development_effect = { type = dip }
-	# ============以上原版所有，以下拓展新增============
-	owner = {
-		add_treasury = -100
-		add_manpower = -1
-	}
-}
-
-# province
-on_mil_development = {
-	on_development_effect = { type = mil }
-	# ============以上原版所有，以下拓展新增============
-	owner = {
-		add_treasury = -100
-		add_manpower = -1
-	}
-}
+# # province
+# on_mil_development = {
+# 	on_development_effect = { type = mil }
+# 	# ============以上原版所有，以下拓展新增============
+# 	owner = {
+# 		add_treasury = -100
+# 		add_manpower = -1
+# 	}
+# }
 
 # country
 # root = winning country, from = location
