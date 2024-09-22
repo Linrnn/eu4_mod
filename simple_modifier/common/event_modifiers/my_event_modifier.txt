@@ -34,3 +34,6 @@
 # 	# 加法
 # 	local_unrest = 15							# 本地叛乱度
 # }
+
+my_province_buff = {
+}
