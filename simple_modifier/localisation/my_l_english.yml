@@ -48,3 +48,6 @@
  my_other:0 "jewish zoroastrian"                        # 其他宗教组
  my_jewish:0 "jewish"                                   # 犹太教
  my_zoroastrian:0 "zoroastrian"                         # 祆教
+
+my_event_31_title:0 "not controlled province"
+my_event_31_desc:0 "province set state, add modifier, remove building, update variable, balance development"

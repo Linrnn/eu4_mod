@@ -13,8 +13,8 @@ NDefines.NCountry.PILLAGE_CAPITAL_DEVELOPMENT_DECREASE = 0              -- 掠�
 
 --NDefines.NMilitary.ARMY_DRILL_MAX_MORALE = 2							-- 陆军演习最大士气
 
-NDefines.DEVELOPMENT_CAP_BASE = 3                                       -- AI不会发展比这个或DEVELOPMENT_CAP_MULT*原始发展度更多的省份（以较大者为准）
-NDefines.DEVELOPMENT_CAP_MULT = 1
+--NDefines.DEVELOPMENT_CAP_BASE = 3                                       -- AI不会发展比这个或DEVELOPMENT_CAP_MULT*原始发展度更多的省份（以较大者为准）
+--NDefines.DEVELOPMENT_CAP_MULT = 1
 
 NDefines.NNationDesigner.POINTS_AVAILABLE = 2000                        -- 自建国点数
 

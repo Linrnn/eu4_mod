@@ -1,397 +1,578 @@
-# country_decisions = {
-# 	# add_global_modifier = {
-# 	# 	major = yes
-# 	# 	potential = {
-# 	# 		not = {
-# 	# 			has_country_modifier = my_global_modifier
-# 	# 		}
-# 	# 	}
-# 	# 	effect = {
-# 	# 		add_country_modifier = {
-# 	# 			name = my_global_modifier
-# 	# 			duration = -1
-# 	# 		}
-# 	# 	}
-# 	# 	ai_will_do = {
-# 	# 		factor = 100
-# 	# 	}
-# 	# }
+country_decisions = {
+	my_save_development = {
+		major = yes
+		potential = {
+			ai = no
+			NOT = {
+				has_global_flag = my_province_init_development
+			}
+		}
+		effect = {
+			# clr_global_flag
+			# set_country_flag
+			# set_province_flag
+			set_global_flag = my_province_init_development
+			every_province = {
+				# set_variable
+				# change_variable
+				# subtract_variable
+				# divide_variable
+				# multiply_variable
+				export_to_variable = {
+					which = my_init_tax
+					value = base_tax
+				}
+				export_to_variable = {
+					which = my_init_production
+					value = base_production
+				}
+				export_to_variable = {
+					which = my_init_manpower
+					value = base_manpower
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	my_update_development = {
+		major = yes
+		potential = {
+			ai = no
+			has_global_flag = my_province_init_development
+			NOT = {
+				has_global_flag = my_province_curr_development
+			}
+			ai = yes # 故意添加，隐藏决议
+		}
+		effect = {
+			set_global_flag = my_province_curr_development
+			every_province = {
+				export_to_variable = {
+					which = my_curr_tax
+					value = base_tax
+				}
+				export_to_variable = {
+					which = my_curr_production
+					value = base_production
+				}
+				export_to_variable = {
+					which = my_curr_manpower
+					value = base_manpower
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	my_balance_development = {
+		major = yes
+		potential = {
+			ai = no
+			has_global_flag = my_province_init_development
+			has_global_flag = my_province_curr_development
+			ai = yes # 故意添加，隐藏决议
+		}
+		effect = {
+			clr_global_flag = my_province_curr_development
+			every_province = {
+				if = {
+					limit = {
+						check_variable = {
+							which = my_curr_tax
+							which = my_init_tax
+						}
+						NOT = {
+							is_variable_equal = {
+								which = my_curr_tax
+								which = my_init_tax
+							}
+						}
+					}
+					add_base_tax = -1
+				}
+				else_if = {
+					limit = {
+						NOT = {
+							check_variable = {
+								which = my_curr_tax
+								which = my_init_tax
+							}
+						}
+					}
+					add_base_tax = 1
+				}
 
-# 	# remove_global_modifier = {
-# 	# 	major = yes
-# 	# 	potential = {
-# 	# 		if = {
-# 	# 			has_country_modifier = my_global_modifier
-# 	# 		}
-# 	# 	}
-# 	# 	effect = {
-# 	# 		remove_country_modifier = my_global_modifier
-# 	# 	}
-# 	# 	ai_will_do = {
-# 	# 		factor = 0
-# 	# 	}
-# 	# }
+				if = {
+					limit = {
+						check_variable = {
+							which = my_curr_production
+							which = my_init_production
+						}
+						NOT = {
+							is_variable_equal = {
+								which = my_curr_production
+								which = my_init_production
+							}
+						}
+					}
+					add_base_production = -1
+				}
+				else_if = {
+					limit = {
+						NOT = {
+							check_variable = {
+								which = my_curr_production
+								which = my_init_production
+							}
+						}
+					}
+					add_base_production = 1
+				}
 
-# 	# get_thing = {
-# 	# 	major = yes
-# 	# 	effect = {
-# 	# 		country_event = {
-# 	# 			id = my_event.1
-# 	# 		}
-# 	# 	}
-# 	# 	ai_will_do = {
-# 	# 		factor = 0
-# 	# 	}
-# 	# }
+				if = {
+					limit = {
+						check_variable = {
+							which = my_curr_manpower
+							which = my_init_manpower
+						}
+						NOT = {
+							is_variable_equal = {
+								which = my_curr_manpower
+								which = my_init_manpower
+							}
+						}
+					}
+					add_base_manpower = -1
+				}
+				else_if = {
+					limit = {
+						NOT = {
+							check_variable = {
+								which = my_curr_manpower
+								which = my_init_manpower
+							}
+						}
+					}
+					add_base_manpower = 1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	my_clear_development_tag = {
+		major = yes
+		potential = {
+			ai = no
+			has_global_flag = my_province_init_development
+			has_global_flag = my_province_curr_development
+			ai = yes # 故意添加，隐藏决议
+		}
+		effect = {
+			clr_global_flag = my_province_curr_development
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 
-# 	# set_religion = {
-# 	# 	major = yes
-# 	# 	effect = {
-# 	# 		country_event = {
-# 	# 			id = my_event.2
-# 	# 		}
-# 	# 	}
-# 	# 	ai_will_do = {
-# 	# 		factor = 0
-# 	# 	}
-# 	# }
+	# add_global_modifier = {
+	# 	major = yes
+	# 	potential = {
+	# 		NOT = {
+	# 			has_country_modifier = my_global_modifier
+	# 		}
+	# 	}
+	# 	effect = {
+	# 		add_country_modifier = {
+	# 			name = my_global_modifier
+	# 			duration = -1
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 100
+	# 	}
+	# }
 
-# 	# set_tax_production_manpower = {
-# 	# 	major = yes
-# 	# 	effect = {
-# 	# 		every_province = {
-# 	# 			if = {
-# 	# 				limit = {
-# 	# 					base_tax = 2			# 该省份的“基础税收”是至少X
-# 	# 				}
-# 	# 				set_base_tax = 1
-# 	# 			}
-# 	# 			if = {
-# 	# 				limit = {
-# 	# 					base_production = 2		# 该省份的“基础生产”是至少X
-# 	# 				}
-# 	# 				set_base_production = 1
-# 	# 			}
-# 	# 			if = {
-# 	# 				limit = {
-# 	# 					base_manpower = 2		# 该省份的“基础人力”是至少X
-# 	# 				}
-# 	# 				set_base_manpower = 1
-# 	# 			}
-# 	# 		}
-# 	# 	}
-# 	# 	ai_will_do = {
-# 	# 		factor = 0
-# 	# 	}
-# 	# }
+	# remove_global_modifier = {
+	# 	major = yes
+	# 	potential = {
+	# 		if = {
+	# 			has_country_modifier = my_global_modifier
+	# 		}
+	# 	}
+	# 	effect = {
+	# 		remove_country_modifier = my_global_modifier
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
 
-# 	# set_tripitaka_koreana = {
-# 	# 	major = yes
-# 	# 	effect ={
-# 	# 		capital_scope = {
-# 	# 			add_permanent_province_modifier = {
-# 	# 				name = tripitaka_koreana
-# 	# 				duration = -1
-# 	# 			}
-# 	# 		}
-# 	# 	}
-# 	# }
-# 	# add_my_monomer_modifier =
-# 	# {
-# 	# 	major = yes
-# 	# 	potential =
-# 	# 	{
-# 	# 		not = { has_country_modifier = my_monomer_modifier }
-# 	# 	}
-# 	# 	effect =
-# 	# 	{
-# 	# 		add_country_modifier =
-# 	# 		{
-# 	# 			name = my_monomer_modifier
-# 	# 			duration = -1
-# 	# 		}
-# 	# 	}
-# 	# 	ai_will_do = { factor = 0 }
-# 	# }
-# 	# remove_my_monomer_modifier =
-# 	# {
-# 	# 	major = yes
-# 	# 	potential =
-# 	# 	{
-# 	# 		if = { has_country_modifier = my_monomer_modifier }
-# 	# 	}
-# 	# 	effect = { remove_country_modifier = my_monomer_modifier }
-# 	# 	ai_will_do = { factor = 100 }
-# 	# }
+	# get_thing = {
+	# 	major = yes
+	# 	effect = {
+	# 		country_event = {
+	# 			id = my_event.1
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
 
-# 	#add_my_global_unrest_modifier =
-# 	#{
-# 	#	major = yes
-# 	#	potential =
-# 	#	{
-# 	#		not = { has_country_modifier = my_global_unrest_modifier }
-# 	#	}
-# 	#	effect =
-# 	#	{
-# 	#		add_country_modifier =
-# 	#		{
-# 	#			name = my_global_unrest_modifier
-# 	#			duration = -1
-# 	#		}
-# 	#	}
-# 	#	ai_will_do = { factor = 0 }
-# 	#}
-# 	#remove_my_global_unrest_modifier =
-# 	#{
-# 	#	major = yes
-# 	#	potential =
-# 	#	{
-# 	#		if = { has_country_modifier = my_global_unrest_modifier }
-# 	#	}
-# 	#	effect = { remove_country_modifier = my_global_unrest_modifier }
-# 	#	ai_will_do = { factor = 100 }
-# 	#}
+	# set_religion = {
+	# 	major = yes
+	# 	effect = {
+	# 		country_event = {
+	# 			id = my_event.2
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
 
-# 	# german_nation_0 = {
-# 	# 	major = yes
-# 	# 	potential = {
-# 	# 		normal_or_historical_nations = yes
-# 	# 		was_never_end_game_tag_trigger = yes
-# 	# 		NOT = { has_country_flag = formed_germany_flag }
-# 	# 		OR = {
-# 	# 			ai = no
-# 	# 			is_playing_custom_nation = no
-# 	# 		}
-# 	# 		OR = {
-# 	# 			is_free_or_tributary_trigger = yes
-# 	# 			ai = no
-# 	# 		}
-# 	# 		NOT = { exists = GER }
-# 	# 		NOT = { tag = PAP }
-# 	# 		NOT = { tag = HLR }
-# 	# 		NOT = { tag = ROM }
-# 	# 		OR = {
-# 	# 			ai = no
-# 	# 			AND = {
-# 	# 				ai = yes
-# 	# 				num_of_cities = 15
-# 	# 				adm_tech = 20
-# 	# 			}
-# 	# 		}
-# 	# 		culture_group = germanic
-# 	# 		NOT = { primary_culture = dutch }
-# 	# 		is_colonial_nation = no
-# 	# 		OR = {
-# 	# 			is_former_colonial_nation = no
-# 	# 			AND = {
-# 	# 				is_former_colonial_nation = yes
-# 	# 				ai = no
-# 	# 			}
-# 	# 		}
-# 	# 		OR = {
-# 	# 			has_country_flag = teu_can_form_germany
-# 	# 			NOT = { has_mission = teu_pru_an_empire_of_blood_and_iron }	#Mission already makes you to Germany
-# 	# 		}
-# 	# 	}
-# 	# 	provinces_to_highlight = {
-# 	# 		OR = {
-# 	# 			AND = {
-# 	# 				OR = {
-# 	# 					region = north_german_region
-# 	# 					region = south_german_region
-# 	# 				}
-# 	# 				root = {
-# 	# 					NOT = {
-# 	# 						num_of_owned_provinces_with = {
-# 	# 							is_core = ROOT
-# 	# 							OR = {
-# 	# 								region = north_german_region
-# 	# 								region = south_german_region
-# 	# 							}
-# 	# 							value = 50
-# 	# 						}
-# 	# 					}
-# 	# 				}
-# 	# 			}
-# 	# 			province_id = 50
-# 	# 			province_id = 57
-# 	# 			province_id = 65
-# 	# 			AND = {
-# 	# 				ROOT = {
-# 	# 					NOT = { owns_core_province = 75 }
-# 	# 					NOT = { owns_core_province = 41 }
-# 	# 				}
-# 	# 				OR = {
-# 	# 					province_id = 75
-# 	# 					province_id = 41
-# 	# 				}
-# 	# 			}
-# 	# 			AND = {
-# 	# 				ROOT = {
-# 	# 					NOT = { owns_core_province = 1868 }
-# 	# 					NOT = { owns_core_province = 70 }
-# 	# 				}
-# 	# 				OR = {
-# 	# 					province_id = 1868
-# 	# 					province_id = 70
-# 	# 				}
-# 	# 			}
-# 	# 			AND = {
-# 	# 				ROOT = {
-# 	# 					NOT = { owns_core_province = 1876 }
-# 	# 					NOT = { owns_core_province = 67 }
-# 	# 				}
-# 	# 				OR = {
-# 	# 					province_id = 1876
-# 	# 					province_id = 67
-# 	# 				}
-# 	# 			}
-# 	# 			AND = {
-# 	# 				ROOT = {
-# 	# 					NOT = { owns_core_province = 1762 }
-# 	# 					NOT = { owns_core_province = 85 }
-# 	# 				}
-# 	# 				OR = {
-# 	# 					province_id = 1762
-# 	# 					province_id = 85
-# 	# 				}
-# 	# 			}
-# 	# 			AND = {
-# 	# 				ROOT = {
-# 	# 					NOT = { owns_core_province = 41 }
-# 	# 					NOT = { owns_core_province = 75 }
-# 	# 				}
-# 	# 				OR = {
-# 	# 					province_id = 41
-# 	# 					province_id = 75
-# 	# 				}
-# 	# 			}
-# 	# 			AND = {
-# 	# 				ROOT = {
-# 	# 					NOT = { owns_core_province = 44 }
-# 	# 					NOT = { owns_core_province = 45 }
-# 	# 				}
-# 	# 				OR = {
-# 	# 					province_id = 44
-# 	# 					province_id = 45
-# 	# 				}
-# 	# 			}
-# 	# 			AND = {
-# 	# 				ROOT = {
-# 	# 					NOT = { owns_core_province = 61 }
-# 	# 					NOT = { owns_core_province = 63 }
-# 	# 				}
-# 	# 				OR = {
-# 	# 					province_id = 61
-# 	# 					province_id = 63
-# 	# 				}
-# 	# 			}
-# 	# 		}
-# 	# 		OR = {
-# 	# 			NOT = { owned_by = ROOT }
-# 	# 			NOT = { is_core = ROOT }
-# 	# 		}
-# 	# 	}
-# 	# 	allow = {
-# 	# 		adm_tech = 20
-# 	# 		is_free_or_tributary_trigger = yes
-# 	# 		is_nomad = no
-# 	# 		is_at_war = no
-# 	# 		owns_core_province = 50	# Berlin
-# 	# 		owns_core_province = 57	# Brunswick
-# 	# 		owns_core_province = 65	# M�nchen
-# 	# 		OR = {
-# 	# 			owns_core_province = 1868 # Augsburg
-# 	# 			owns_core_province = 70 # Wurttemberg
-# 	# 		}
-# 	# 		OR = {
-# 	# 			owns_core_province = 67	# N�rnberg
-# 	# 			owns_core_province = 1876 # Frankfurt
-# 	# 		}
-# 	# 		OR = {
-# 	# 			owns_core_province = 1762 # Niederhessen
-# 	# 			owns_core_province = 85	# K�ln
-# 	# 		}
-# 	# 		OR = {
-# 	# 			owns_core_province = 41	# K�nigsberg
-# 	# 			owns_core_province = 75	# Strassburg
-# 	# 		}
-# 	# 		OR = {
-# 	# 			owns_core_province = 44	# Hamburg
-# 	# 			owns_core_province = 45	# Lubeck
-# 	# 		}
-# 	# 		OR = {
-# 	# 			owns_core_province = 61	# Dresden
-# 	# 			owns_core_province = 63	# Th�ringen
-# 	# 		}
-# 	# 		num_of_owned_provinces_with = {
-# 	# 			is_core = ROOT
-# 	# 			OR = {
-# 	# 				region = north_german_region
-# 	# 				region = south_german_region
-# 	# 			}
-# 	# 			value = 50
-# 	# 		}
-# 	# 	}
-# 	# 	effect = {
-# 	# 		change_tag = GER
-# 	# 		on_change_tag_effect = yes
-# 	# 		restore_country_name_effect = yes
-# 	# 		if = {
-# 	# 			limit = {
-# 	# 				is_emperor = yes
-# 	# 			}
-# 	# 			# dismantle_hre = yes
-# 	# 		}
-# 	# 		else = {
-# 	# 			emperor = {
-# 	# 				add_opinion = {
-# 	# 					who = root
-# 	# 					modifier = opinion_left_empire
-# 	# 				}
-# 	# 			}
-# 	# 			set_in_empire = no
-# 	# 			emperor = {
-# 	# 				country_event = { id = hre_event.5 }
-# 	# 			}
-# 	# 		}
-# 	# 		# GER = { set_government_rank = 3 }
-# 	# 		north_german_region = {
-# 	# 			limit = {
-# 	# 				NOT = { owned_by = ROOT }
-# 	# 			}
-# 	# 			add_permanent_claim = GER
-# 	# 		}
-# 	# 		south_german_region = {
-# 	# 			limit = {
-# 	# 				NOT = { owned_by = ROOT }
-# 	# 			}
-# 	# 			add_permanent_claim = GER
-# 	# 		}			
-# 	# 		add_country_modifier = {
-# 	# 			name = "centralization_modifier"
-# 	# 			duration = 7300
-# 	# 		}
-# 	# 		add_prestige = 25
-# 	# 		set_country_flag = formed_germany_flag
-# 	# 		if = {
-# 	# 			limit = {
-# 	# 				has_custom_ideas = no
-# 	# 			}
-# 	# 			country_event = { id = ideagroups.1 } #Swap Ideas
-# 	# 		}
-# 	# 		swap_non_generic_missions = yes
-# 	# 	}
-# 	# 	ai_will_do = {
-# 	# 		factor = 100
-# 	# 		modifier = {
-# 	# 			factor = 0
-# 	# 			NOT = { adm_tech = 18 }
-# 	# 		}
-# 	# 		modifier = {
-# 	# 			factor = 0
-# 	# 			NOT = { num_of_owned_provinces_with = { OR = { region = north_german_region region = south_german_region } value = 25 } }
-# 	# 		}
-# 	# 	}
-# 	# }
-# }
+	# set_tax_production_manpower = {
+	# 	major = yes
+	# 	effect = {
+	# 		every_province = {
+	# 			if = {
+	# 				limit = {
+	# 					base_tax = 2			# 该省份的“基础税收”是至少X
+	# 				}
+	# 				set_base_tax = 1
+	# 			}
+	# 			if = {
+	# 				limit = {
+	# 					base_production = 2		# 该省份的“基础生产”是至少X
+	# 				}
+	# 				set_base_production = 1
+	# 			}
+	# 			if = {
+	# 				limit = {
+	# 					base_manpower = 2		# 该省份的“基础人力”是至少X
+	# 				}
+	# 				set_base_manpower = 1
+	# 			}
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
+
+	# set_tripitaka_koreana = {
+	# 	major = yes
+	# 	effect ={
+	# 		capital_scope = {
+	# 			add_permanent_province_modifier = {
+	# 				name = tripitaka_koreana
+	# 				duration = -1
+	# 			}
+	# 		}
+	# 	}
+	# }
+	# add_my_monomer_modifier =
+	# {
+	# 	major = yes
+	# 	potential =
+	# 	{
+	# 		not = { has_country_modifier = my_monomer_modifier }
+	# 	}
+	# 	effect =
+	# 	{
+	# 		add_country_modifier =
+	# 		{
+	# 			name = my_monomer_modifier
+	# 			duration = -1
+	# 		}
+	# 	}
+	# 	ai_will_do = { factor = 0 }
+	# }
+	# remove_my_monomer_modifier =
+	# {
+	# 	major = yes
+	# 	potential =
+	# 	{
+	# 		if = { has_country_modifier = my_monomer_modifier }
+	# 	}
+	# 	effect = { remove_country_modifier = my_monomer_modifier }
+	# 	ai_will_do = { factor = 100 }
+	# }
+
+	#add_my_global_unrest_modifier =
+	#{
+	#	major = yes
+	#	potential =
+	#	{
+	#		not = { has_country_modifier = my_global_unrest_modifier }
+	#	}
+	#	effect =
+	#	{
+	#		add_country_modifier =
+	#		{
+	#			name = my_global_unrest_modifier
+	#			duration = -1
+	#		}
+	#	}
+	#	ai_will_do = { factor = 0 }
+	#}
+	#remove_my_global_unrest_modifier =
+	#{
+	#	major = yes
+	#	potential =
+	#	{
+	#		if = { has_country_modifier = my_global_unrest_modifier }
+	#	}
+	#	effect = { remove_country_modifier = my_global_unrest_modifier }
+	#	ai_will_do = { factor = 100 }
+	#}
+
+	# german_nation_0 = {
+	# 	major = yes
+	# 	potential = {
+	# 		normal_or_historical_nations = yes
+	# 		was_never_end_game_tag_trigger = yes
+	# 		NOT = { has_country_flag = formed_germany_flag }
+	# 		OR = {
+	# 			ai = no
+	# 			is_playing_custom_nation = no
+	# 		}
+	# 		OR = {
+	# 			is_free_or_tributary_trigger = yes
+	# 			ai = no
+	# 		}
+	# 		NOT = { exists = GER }
+	# 		NOT = { tag = PAP }
+	# 		NOT = { tag = HLR }
+	# 		NOT = { tag = ROM }
+	# 		OR = {
+	# 			ai = no
+	# 			AND = {
+	# 				ai = yes
+	# 				num_of_cities = 15
+	# 				adm_tech = 20
+	# 			}
+	# 		}
+	# 		culture_group = germanic
+	# 		NOT = { primary_culture = dutch }
+	# 		is_colonial_nation = no
+	# 		OR = {
+	# 			is_former_colonial_nation = no
+	# 			AND = {
+	# 				is_former_colonial_nation = yes
+	# 				ai = no
+	# 			}
+	# 		}
+	# 		OR = {
+	# 			has_country_flag = teu_can_form_germany
+	# 			NOT = { has_mission = teu_pru_an_empire_of_blood_and_iron }	#Mission already makes you to Germany
+	# 		}
+	# 	}
+	# 	provinces_to_highlight = {
+	# 		OR = {
+	# 			AND = {
+	# 				OR = {
+	# 					region = north_german_region
+	# 					region = south_german_region
+	# 				}
+	# 				root = {
+	# 					NOT = {
+	# 						num_of_owned_provinces_with = {
+	# 							is_core = ROOT
+	# 							OR = {
+	# 								region = north_german_region
+	# 								region = south_german_region
+	# 							}
+	# 							value = 50
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 			province_id = 50
+	# 			province_id = 57
+	# 			province_id = 65
+	# 			AND = {
+	# 				ROOT = {
+	# 					NOT = { owns_core_province = 75 }
+	# 					NOT = { owns_core_province = 41 }
+	# 				}
+	# 				OR = {
+	# 					province_id = 75
+	# 					province_id = 41
+	# 				}
+	# 			}
+	# 			AND = {
+	# 				ROOT = {
+	# 					NOT = { owns_core_province = 1868 }
+	# 					NOT = { owns_core_province = 70 }
+	# 				}
+	# 				OR = {
+	# 					province_id = 1868
+	# 					province_id = 70
+	# 				}
+	# 			}
+	# 			AND = {
+	# 				ROOT = {
+	# 					NOT = { owns_core_province = 1876 }
+	# 					NOT = { owns_core_province = 67 }
+	# 				}
+	# 				OR = {
+	# 					province_id = 1876
+	# 					province_id = 67
+	# 				}
+	# 			}
+	# 			AND = {
+	# 				ROOT = {
+	# 					NOT = { owns_core_province = 1762 }
+	# 					NOT = { owns_core_province = 85 }
+	# 				}
+	# 				OR = {
+	# 					province_id = 1762
+	# 					province_id = 85
+	# 				}
+	# 			}
+	# 			AND = {
+	# 				ROOT = {
+	# 					NOT = { owns_core_province = 41 }
+	# 					NOT = { owns_core_province = 75 }
+	# 				}
+	# 				OR = {
+	# 					province_id = 41
+	# 					province_id = 75
+	# 				}
+	# 			}
+	# 			AND = {
+	# 				ROOT = {
+	# 					NOT = { owns_core_province = 44 }
+	# 					NOT = { owns_core_province = 45 }
+	# 				}
+	# 				OR = {
+	# 					province_id = 44
+	# 					province_id = 45
+	# 				}
+	# 			}
+	# 			AND = {
+	# 				ROOT = {
+	# 					NOT = { owns_core_province = 61 }
+	# 					NOT = { owns_core_province = 63 }
+	# 				}
+	# 				OR = {
+	# 					province_id = 61
+	# 					province_id = 63
+	# 				}
+	# 			}
+	# 		}
+	# 		OR = {
+	# 			NOT = { owned_by = ROOT }
+	# 			NOT = { is_core = ROOT }
+	# 		}
+	# 	}
+	# 	allow = {
+	# 		adm_tech = 20
+	# 		is_free_or_tributary_trigger = yes
+	# 		is_nomad = no
+	# 		is_at_war = no
+	# 		owns_core_province = 50	# Berlin
+	# 		owns_core_province = 57	# Brunswick
+	# 		owns_core_province = 65	# M�nchen
+	# 		OR = {
+	# 			owns_core_province = 1868 # Augsburg
+	# 			owns_core_province = 70 # Wurttemberg
+	# 		}
+	# 		OR = {
+	# 			owns_core_province = 67	# N�rnberg
+	# 			owns_core_province = 1876 # Frankfurt
+	# 		}
+	# 		OR = {
+	# 			owns_core_province = 1762 # Niederhessen
+	# 			owns_core_province = 85	# K�ln
+	# 		}
+	# 		OR = {
+	# 			owns_core_province = 41	# K�nigsberg
+	# 			owns_core_province = 75	# Strassburg
+	# 		}
+	# 		OR = {
+	# 			owns_core_province = 44	# Hamburg
+	# 			owns_core_province = 45	# Lubeck
+	# 		}
+	# 		OR = {
+	# 			owns_core_province = 61	# Dresden
+	# 			owns_core_province = 63	# Th�ringen
+	# 		}
+	# 		num_of_owned_provinces_with = {
+	# 			is_core = ROOT
+	# 			OR = {
+	# 				region = north_german_region
+	# 				region = south_german_region
+	# 			}
+	# 			value = 50
+	# 		}
+	# 	}
+	# 	effect = {
+	# 		change_tag = GER
+	# 		on_change_tag_effect = yes
+	# 		restore_country_name_effect = yes
+	# 		if = {
+	# 			limit = {
+	# 				is_emperor = yes
+	# 			}
+	# 			# dismantle_hre = yes
+	# 		}
+	# 		else = {
+	# 			emperor = {
+	# 				add_opinion = {
+	# 					who = root
+	# 					modifier = opinion_left_empire
+	# 				}
+	# 			}
+	# 			set_in_empire = no
+	# 			emperor = {
+	# 				country_event = { id = hre_event.5 }
+	# 			}
+	# 		}
+	# 		# GER = { set_government_rank = 3 }
+	# 		north_german_region = {
+	# 			limit = {
+	# 				NOT = { owned_by = ROOT }
+	# 			}
+	# 			add_permanent_claim = GER
+	# 		}
+	# 		south_german_region = {
+	# 			limit = {
+	# 				NOT = { owned_by = ROOT }
+	# 			}
+	# 			add_permanent_claim = GER
+	# 		}
+	# 		add_country_modifier = {
+	# 			name = "centralization_modifier"
+	# 			duration = 7300
+	# 		}
+	# 		add_prestige = 25
+	# 		set_country_flag = formed_germany_flag
+	# 		if = {
+	# 			limit = {
+	# 				has_custom_ideas = no
+	# 			}
+	# 			country_event = { id = ideagroups.1 } #Swap Ideas
+	# 		}
+	# 		swap_non_generic_missions = yes
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 100
+	# 		modifier = {
+	# 			factor = 0
+	# 			NOT = { adm_tech = 18 }
+	# 		}
+	# 		modifier = {
+	# 			factor = 0
+	# 			NOT = { num_of_owned_provinces_with = { OR = { region = north_german_region region = south_german_region } value = 25 } }
+	# 		}
+	# 	}
+	# }
+}

@@ -474,8 +474,9 @@ country_event = {
 
 country_event = {
 	id = my_event.31
-	title = "not controlled province"
-	desc = "set province data, add modifier, remove building"
+	title = my_event_31_title
+	desc = my_event_31_desc
+
 	# fire_only_once = yes		# 只触发一次
 	# is_triggered_only = yes	# 只能调用触发
 
@@ -506,13 +507,110 @@ country_event = {
 					}
 				}
 
+				# 当前发展度保存至变量，需要最早执行
+				hidden_effect = {
+					export_to_variable = {
+						which = my_curr_tax
+						value = base_tax
+					}
+					export_to_variable = {
+						which = my_curr_production
+						value = base_production
+					}
+					export_to_variable = {
+						which = my_curr_manpower
+						value = base_manpower
+					}
+				}
+
+				if = {
+					limit = {
+						check_variable = {
+							which = my_curr_tax
+							which = my_init_tax
+						}
+						NOT = {
+							is_variable_equal = {
+								which = my_curr_tax
+								which = my_init_tax
+							}
+						}
+					}
+					add_base_tax = -1
+				}
+				else_if = {
+					limit = {
+						NOT = {
+							check_variable = {
+								which = my_curr_tax
+								which = my_init_tax
+							}
+						}
+					}
+					add_base_tax = 1
+				}
+
+				if = {
+					limit = {
+						check_variable = {
+							which = my_curr_production
+							which = my_init_production
+						}
+						NOT = {
+							is_variable_equal = {
+								which = my_curr_production
+								which = my_init_production
+							}
+						}
+					}
+					add_base_production = -1
+				}
+				else_if = {
+					limit = {
+						NOT = {
+							check_variable = {
+								which = my_curr_production
+								which = my_init_production
+							}
+						}
+					}
+					add_base_production = 1
+				}
+
+				if = {
+					limit = {
+						check_variable = {
+							which = my_curr_manpower
+							which = my_init_manpower
+						}
+						NOT = {
+							is_variable_equal = {
+								which = my_curr_manpower
+								which = my_init_manpower
+							}
+						}
+					}
+					add_base_manpower = -1
+				}
+				else_if = {
+					limit = {
+						NOT = {
+							check_variable = {
+								which = my_curr_manpower
+								which = my_init_manpower
+							}
+						}
+					}
+					add_base_manpower = 1
+				}
+
 				# 加modifier
 				# add_permanent_province_modifier = {
 				# 	hidden = no
 				# }
 				add_province_modifier = {
 					name = my_province_buff
-					duration = 100				# 天
+					duration = 365				# 天
 				}
 
 				# 处理省份
@@ -523,8 +621,8 @@ country_event = {
 				# set_base_production = 1		# 基础生产
 				# set_base_manpower = 1			# 基础人力
 				# add_prosperity = -10			# 繁荣度
-				add_devastation = 10			# 荒废度
-				add_local_autonomy = 5			# 自治度
+				add_devastation = 20			# 荒废度
+				add_local_autonomy = 10			# 自治度
 				add_center_of_trade_level = -1	# 贸易中心等级
 
 				# building
@@ -603,7 +701,7 @@ country_event = {
 		}
 	}
 	option = {
-		name = "exit"
+		name = my_close
 		ai_chance = {
 			factor = 100
 		}
