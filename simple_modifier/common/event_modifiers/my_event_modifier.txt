@@ -36,4 +36,5 @@
 # }
 
 my_province_buff = {
+	local_unrest = 10
 }

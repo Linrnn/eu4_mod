@@ -604,11 +604,7 @@ country_event = {
 					add_base_manpower = 1
 				}
 
-				# 加modifier
-				# add_permanent_province_modifier = {
-				# 	hidden = no
-				# }
-				add_province_modifier = {
+				add_permanent_province_modifier = {
 					name = my_province_buff
 					duration = 365				# 天
 				}
@@ -691,6 +687,7 @@ country_event = {
 				remove_building = native_three_sisters_field
 
 				# remove_province_modifier = my_local_unrest_modifier
+				# add_province_modifier
 				# add_permanent_province_modifier = { 
 				# 	name = my_local_unrest_modifier
 				# 	duration = 5000			# 天

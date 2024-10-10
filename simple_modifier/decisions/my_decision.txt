@@ -1,6 +1,7 @@
 country_decisions = {
 	my_save_development = {
 		major = yes
+		color = { 0 255 255 }
 		potential = {
 			ai = no
 			NOT = {
@@ -30,6 +31,10 @@ country_decisions = {
 					which = my_init_manpower
 					value = base_manpower
 				}
+				export_to_variable = {
+					which = my_init_development
+					value = development
+				}
 			}
 		}
 		ai_will_do = {
@@ -38,6 +43,7 @@ country_decisions = {
 	}
 	my_update_development = {
 		major = yes
+		color = { 0 255 255 }
 		potential = {
 			ai = no
 			has_global_flag = my_province_init_development
@@ -61,6 +67,11 @@ country_decisions = {
 					which = my_curr_manpower
 					value = base_manpower
 				}
+
+				export_to_variable = {
+					which = my_curr_development
+					value = development
+				}
 			}
 		}
 		ai_will_do = {
@@ -69,6 +80,7 @@ country_decisions = {
 	}
 	my_balance_development = {
 		major = yes
+		color = { 0 255 255 }
 		potential = {
 			ai = no
 			has_global_flag = my_province_init_development
@@ -164,8 +176,9 @@ country_decisions = {
 			factor = 0
 		}
 	}
-	my_clear_development_tag = {
+	my_balance_developed_times = {
 		major = yes
+		color = { 0 255 255 }
 		potential = {
 			ai = no
 			has_global_flag = my_province_init_development
@@ -174,6 +187,84 @@ country_decisions = {
 		}
 		effect = {
 			clr_global_flag = my_province_curr_development
+			every_province = {
+				subtract_variable = {
+					which = my_curr_development
+					which = my_init_development
+				}
+				set_variable = {
+					which = num_of_times_developed_var
+					which = my_curr_development
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	my_clear_development_tag = {
+		major = yes
+		color = { 0 255 255 }
+		potential = {
+			ai = no
+			has_global_flag = my_province_init_development
+			has_global_flag = my_province_curr_development
+		}
+		effect = {
+			clr_global_flag = my_province_curr_development
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	my_change_heir = {
+		major = yes
+		color = { 0 255 255 }
+		potential = {
+			ai = no
+			has_heir = yes
+		}
+		allow = {
+			OR = {
+				NOT = {
+					heir_adm = 6
+				}
+				NOT = {
+					heir_dip = 6
+				}
+				NOT = {
+					heir_mil = 6
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						heir_adm = 6
+					}
+				}
+				change_heir_adm = 1
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						heir_dip = 6
+					}
+				}
+				change_heir_dip = 1
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						heir_mil = 6
+					}
+				}
+				change_heir_mil = 1
+			}
 		}
 		ai_will_do = {
 			factor = 0
