@@ -538,17 +538,17 @@ country_event = {
 					}
 					add_base_tax = -1
 				}
-				else_if = {
-					limit = {
-						NOT = {
-							check_variable = {
-								which = my_curr_tax
-								which = my_init_tax
-							}
-						}
-					}
-					add_base_tax = 1
-				}
+				# else_if = {
+				# 	limit = {
+				# 		NOT = {
+				# 			check_variable = {
+				# 				which = my_curr_tax
+				# 				which = my_init_tax
+				# 			}
+				# 		}
+				# 	}
+				# 	add_base_tax = 1
+				# }
 
 				if = {
 					limit = {
@@ -565,17 +565,17 @@ country_event = {
 					}
 					add_base_production = -1
 				}
-				else_if = {
-					limit = {
-						NOT = {
-							check_variable = {
-								which = my_curr_production
-								which = my_init_production
-							}
-						}
-					}
-					add_base_production = 1
-				}
+				# else_if = {
+				# 	limit = {
+				# 		NOT = {
+				# 			check_variable = {
+				# 				which = my_curr_production
+				# 				which = my_init_production
+				# 			}
+				# 		}
+				# 	}
+				# 	add_base_production = 1
+				# }
 
 				if = {
 					limit = {
@@ -592,17 +592,17 @@ country_event = {
 					}
 					add_base_manpower = -1
 				}
-				else_if = {
-					limit = {
-						NOT = {
-							check_variable = {
-								which = my_curr_manpower
-								which = my_init_manpower
-							}
-						}
-					}
-					add_base_manpower = 1
-				}
+				# else_if = {
+				# 	limit = {
+				# 		NOT = {
+				# 			check_variable = {
+				# 				which = my_curr_manpower
+				# 				which = my_init_manpower
+				# 			}
+				# 		}
+				# 	}
+				# 	add_base_manpower = 1
+				# }
 
 				add_permanent_province_modifier = {
 					name = my_province_buff

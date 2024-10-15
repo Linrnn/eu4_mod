@@ -218,6 +218,57 @@ country_decisions = {
 		}
 	}
 
+	my_change_ruler = {
+		major = yes
+		color = { 0 255 255 }
+		potential = {
+			ai = no
+		}
+		allow = {
+			OR = {
+				NOT = {
+					adm = 6
+				}
+				NOT = {
+					dip = 6
+				}
+				NOT = {
+					mil = 6
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						adm = 6
+					}
+				}
+				change_adm = 1
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						dip = 6
+					}
+				}
+				change_dip = 1
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						mil = 6
+					}
+				}
+				change_mil = 1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 	my_change_heir = {
 		major = yes
 		color = { 0 255 255 }
