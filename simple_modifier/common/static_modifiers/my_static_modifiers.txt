@@ -1,7 +1,8 @@
 # 全局国家修正
 all_nations = {
 	# 加法
-	num_accepted_cultures = 10					# 增加可接受文化的最大值
+	possible_policy = 2							# 可选政策数量
+	# num_accepted_cultures = 10				# 增加可接受文化的最大值
 	# global_manpower = -10						# 全国人力（基础值1=1000人力）
 	# country_admin_power = -3					# 每月额外获得行政君主力量点数
 	# country_diplomatic_power = -3				# 每月额外获得外交君主力量点数
@@ -16,11 +17,11 @@ all_nations = {
 
 	# 乘法
 	reinforce_cost_modifier = 1					# 补员花费
-	global_regiment_recruit_speed = 2			# 陆军征召时间
-	global_ship_recruit_speed = 4				# 全国船只建造时间
 	missionary_maintenance_cost = 1				# 传教维护费
 	female_advisor_chance = 0.2					# 出现女性顾问几率
 	drill_decay_modifier = -0.5					# 陆军操练度损失
+	# global_regiment_recruit_speed = 2			# 陆军征召时间
+	# global_ship_recruit_speed = 4				# 全国船只建造时间
 	# merc_maintenance_modifier = 1				# 雇佣兵维护费
 	# aval_maintenance_modifier = 1				# 海军维护费
 	# fort_maintenance_modifier = 1				# 堡垒维护费

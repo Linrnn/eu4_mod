@@ -619,6 +619,7 @@ country_event = {
 				# add_prosperity = -10			# 繁荣度
 				add_devastation = 20			# 荒废度
 				add_local_autonomy = 10			# 自治度
+				add_nationalism = 5				# 分离主义
 				add_center_of_trade_level = -1	# 贸易中心等级
 
 				# building
