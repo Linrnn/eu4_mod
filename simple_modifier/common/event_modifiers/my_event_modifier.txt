@@ -2,28 +2,28 @@
 # 	# 在static_modifier.all_nations实现
 # }
 
-# my_monomer_modifier = {
-#	# 加法
-# 	#colonists = 1								# 殖民队数量
-# 	#imperial_mandate = 0.5						# 月度天命值：中华帝国专用
-# 	#max_absolutism = 50						# 最大专制度上限
-# 	#free_leader_pool = 10						# 不需付出额外军事点数来维持的将领数量
-# 	#years_of_nationalism = -10					# 征服省份造成的分离主义基础值
-# 	#allowed_num_of_buildings = 5				# 当地可建筑格子上限
+my_monomer_modifier = {
+	# 加法
+	colonists = 20								# 殖民队数量
+	#imperial_mandate = 0.5						# 月度天命值：中华帝国专用
+	#max_absolutism = 50						# 最大专制度上限
+	#free_leader_pool = 10						# 不需付出额外军事点数来维持的将领数量
+	#years_of_nationalism = -10					# 征服省份造成的分离主义基础值
+	#allowed_num_of_buildings = 5				# 当地可建筑格子上限
 
-# 	# 乘法
-# 	culture_conversion_cost = -12				# 转化省份文化的外交点数花费
-# 	build_cost = -10							# 建筑花费
-# 	development_cost = -2000.0					# 提升发展度花费
-# 	#build_time = -1.5							# 建筑时间
-# 	#development_cost = -5.5					# 提升发展度花费
-# 	#core_creation = -1.5						# 建造核心花费
-# 	#province_warscore_cost = -0.5				# 省份战争分数花费：割取敌方省份战争分数花费，此为全局buff
-# 	#colonist_placement_chance = 0.25			# 殖民过程中移民的安置概率，只在殖民过程中起效
+	# 乘法
+	#culture_conversion_cost = -12				# 转化省份文化的外交点数花费
+	#build_cost = -10							# 建筑花费
+	#development_cost = -2000.0					# 提升发展度花费
+	#build_time = -1.5							# 建筑时间
+	#development_cost = -5.5					# 提升发展度花费
+	#core_creation = -1.5						# 建造核心花费
+	#province_warscore_cost = -0.5				# 省份战争分数花费：割取敌方省份战争分数花费，此为全局buff
+	#colonist_placement_chance = 0.25			# 殖民过程中移民的安置概率，只在殖民过程中起效
 
-#	# 恒定
-# 	#can_colony_boost_development = yes 		# 完成殖民的省份生产、税收、人力都+1
-# }
+	# 恒定
+	#can_colony_boost_development = yes 		# 完成殖民的省份生产、税收、人力都+1
+}
 
 # my_global_unrest_modifier = {
 #	# 加法
