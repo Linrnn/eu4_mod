@@ -4,7 +4,9 @@
 
 my_monomer_modifier = {
 	# 加法
-	colonists = 20								# 殖民队数量
+	colonists = 30								# 殖民队数量
+	diplomatic_upkeep = 10						# 外交关系数量
+	missionaries = 5
 	#imperial_mandate = 0.5						# 月度天命值：中华帝国专用
 	#max_absolutism = 50						# 最大专制度上限
 	#free_leader_pool = 10						# 不需付出额外军事点数来维持的将领数量

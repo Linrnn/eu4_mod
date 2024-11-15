@@ -60,6 +60,6 @@ all_nations = {
 
 # 最近的叛乱
 recent_uprising = {
-	# local_unrest = -100
+	local_unrest = -10
 	picture = "recent_uprising"
 }

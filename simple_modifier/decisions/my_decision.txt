@@ -421,7 +421,8 @@ country_decisions = {
 	# }
 
 	my_monomer_modifier = {
-		color = { 0 127 127 }
+		major = yes
+		color = { 127 0 127 }
 		potential = {
 			ai = no
 		}
@@ -455,8 +456,73 @@ country_decisions = {
 			factor = 0
 		}
 	}
+	my_move_capital = {
+		major = yes
+		color = { 127 0 127 }
+		potential = {
+			ai = no
+			ai = yes	# 屏蔽决议
+		}
+		effect = {
+			# 97 = {	# 阿姆斯特丹
+			# 	move_capital_effect = yes
+			# }
+			# 217 = {	# 马德里
+			# 	move_capital_effect = yes
+			# }
+			# 1765 = {	# 索菲亚
+			# 	move_capital_effect = yes
+			# }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	my_war_exhaustion = {
+		major = yes
+		color = { 127 0 127 }
+		potential = {
+			ai = no
+		}
+		effect = {
+			every_subject_country = {
+				add_war_exhaustion = -20
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	my_remove_estate_privilege = {
+		major = yes
+		color = { 127 0 127 }
+		potential = {
+			ai = no
+		}
+		effect = {
+			every_subject_country = {
+				if = {
+					limit = {
+						NOT = {
+							religion_group = muslim		# 不是穆斯林宗教组
+						}
+					}
+					every_owned_province = {
+						if = {
+							has_province_modifier = estate_dhimmi_guaranteed_autonomy_mod
+						}
+						remove_province_modifier = estate_dhimmi_guaranteed_autonomy_mod	# 移除“保证齐米自治”
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 
-	my_add_cash = {
+	my_cash_add = {
+		major = yes
 		color = { 0 127 127 }
 		potential = {
 			ai = no
@@ -472,7 +538,8 @@ country_decisions = {
 			factor = 0
 		}
 	}
-	my_remove_cash = {
+	my_cash_remove = {
+		major = yes
 		color = { 0 127 127 }
 		potential = {
 			ai = no
