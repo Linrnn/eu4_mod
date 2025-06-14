@@ -1,0 +1,54 @@
+sub_province_development_with_tag = {
+	sub_province_development = { peek_value = 20 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 19 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 18 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 17 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 16 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 15 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 14 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 13 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 12 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 11 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 10 flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 9  flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 8  flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 7  flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 6  flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 5  flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 4  flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 3  flag_value = $with_tag_value$ }
+	sub_province_development = { peek_value = 2  flag_value = $with_tag_value$ }
+	clr_province_flag = $with_tag_value$
+}
+
+sub_province_development = {
+	if = {
+		limit = {
+			NOT = {
+				has_province_flag = $flag_value$
+			}
+		}
+
+		if = {
+			limit = {
+				base_tax = $peek_value$
+			}
+			add_base_tax = -1
+			set_province_flag = $flag_value$
+		}
+		else_if = {
+			limit = {
+				base_production = $peek_value$
+			}
+			add_base_production = -1
+			set_province_flag = $flag_value$
+		}
+		else_if = {
+			limit = {
+				base_manpower = $peek_value$
+			}
+			add_base_manpower = -1
+			set_province_flag = $flag_value$
+		}
+	}
+}

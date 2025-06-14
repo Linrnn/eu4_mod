@@ -472,20 +472,249 @@ country_event = {
 	}
 }
 
+# country_event = {
+# 	id = my_event.31
+# 	title = my_event_31_title
+# 	desc = my_event_31_desc
+
+# 	# fire_only_once = yes		# 只触发一次
+# 	# is_triggered_only = yes	# 只能调用触发
+
+# 	mean_time_to_happen = {
+# 		# days = 1
+# 		months = 1
+# 	}
+# 	trigger = {
+# 		# tag = ROOT
+# 		any_owned_province = {
+# 			NOT = {
+# 				has_province_modifier = my_province_buff
+# 			}
+# 			NOT = {
+# 				controlled_by = ROOT
+# 			}
+# 		}
+# 	}
+# 	immediate  = {
+# 		every_owned_province = {
+# 			if = {
+# 				limit = {
+# 					NOT = {
+# 						has_province_modifier = my_province_buff
+# 					}
+# 					NOT = {
+# 						controlled_by = ROOT
+# 					}
+# 				}
+
+# 				# 当前发展度保存至变量，需要最早执行
+# 				hidden_effect = {
+# 					export_to_variable = {
+# 						which = my_curr_tax
+# 						value = base_tax
+# 					}
+# 					export_to_variable = {
+# 						which = my_curr_production
+# 						value = base_production
+# 					}
+# 					export_to_variable = {
+# 						which = my_curr_manpower
+# 						value = base_manpower
+# 					}
+# 				}
+
+# 				if = {
+# 					limit = {
+# 						check_variable = {
+# 							which = my_curr_tax
+# 							which = my_init_tax
+# 						}
+# 						NOT = {
+# 							is_variable_equal = {
+# 								which = my_curr_tax
+# 								which = my_init_tax
+# 							}
+# 						}
+# 					}
+# 					add_base_tax = -1
+# 				}
+# 				# else_if = {
+# 				# 	limit = {
+# 				# 		NOT = {
+# 				# 			check_variable = {
+# 				# 				which = my_curr_tax
+# 				# 				which = my_init_tax
+# 				# 			}
+# 				# 		}
+# 				# 	}
+# 				# 	add_base_tax = 1
+# 				# }
+
+# 				if = {
+# 					limit = {
+# 						check_variable = {
+# 							which = my_curr_production
+# 							which = my_init_production
+# 						}
+# 						NOT = {
+# 							is_variable_equal = {
+# 								which = my_curr_production
+# 								which = my_init_production
+# 							}
+# 						}
+# 					}
+# 					add_base_production = -1
+# 				}
+# 				# else_if = {
+# 				# 	limit = {
+# 				# 		NOT = {
+# 				# 			check_variable = {
+# 				# 				which = my_curr_production
+# 				# 				which = my_init_production
+# 				# 			}
+# 				# 		}
+# 				# 	}
+# 				# 	add_base_production = 1
+# 				# }
+
+# 				if = {
+# 					limit = {
+# 						check_variable = {
+# 							which = my_curr_manpower
+# 							which = my_init_manpower
+# 						}
+# 						NOT = {
+# 							is_variable_equal = {
+# 								which = my_curr_manpower
+# 								which = my_init_manpower
+# 							}
+# 						}
+# 					}
+# 					add_base_manpower = -1
+# 				}
+# 				# else_if = {
+# 				# 	limit = {
+# 				# 		NOT = {
+# 				# 			check_variable = {
+# 				# 				which = my_curr_manpower
+# 				# 				which = my_init_manpower
+# 				# 			}
+# 				# 		}
+# 				# 	}
+# 				# 	add_base_manpower = 1
+# 				# }
+
+# 				add_permanent_province_modifier = {
+# 					name = my_province_buff
+# 					duration = 365				# 天
+# 				}
+
+# 				# 处理省份
+# 				# add_base_tax = -1				# 基础税收
+# 				# add_base_production = -1		# 基础生产
+# 				# add_base_manpower = -1		# 基础人力
+# 				# set_base_tax = 1				# 基础税收
+# 				# set_base_production = 1		# 基础生产
+# 				# set_base_manpower = 1			# 基础人力
+# 				# add_prosperity = -10			# 繁荣度
+# 				add_devastation = 20			# 荒废度
+# 				add_local_autonomy = 10			# 自治度
+# 				add_nationalism = 5				# 分离主义
+# 				add_center_of_trade_level = -1	# 贸易中心等级
+
+# 				# building
+# 				remove_building = marketplace
+# 				remove_building = workshop
+# 				remove_building = temple
+# 				remove_building = barracks
+# 				remove_building = shipyard
+# 				remove_building = fort_15th
+# 				remove_building = coastal_defence
+# 				remove_building = courthouse
+# 				remove_building = dock
+# 				remove_building = regimental_camp
+# 				remove_building = fort_16th
+# 				remove_building = naval_battery
+# 				remove_building = cathedral
+# 				remove_building = university
+# 				remove_building = trade_depot
+# 				remove_building = grand_shipyard
+# 				remove_building = training_fields
+# 				remove_building = fort_17th
+# 				remove_building = stock_exchange
+# 				remove_building = counting_house
+# 				remove_building = town_hall
+# 				remove_building = drydock
+# 				remove_building = conscription_center
+# 				remove_building = fort_18th
+# 				# manufactory
+# 				remove_building = wharf
+# 				remove_building = weapons
+# 				remove_building = textile
+# 				remove_building = plantations
+# 				remove_building = tradecompany
+# 				remove_building = farm_estate
+# 				remove_building = mills
+# 				remove_building = furnace
+# 				remove_building = ramparts
+# 				remove_building = soldier_households
+# 				remove_building = impressment_offices
+# 				remove_building = state_house
+# 				# native building
+# 				remove_building = native_earthwork
+# 				remove_building = native_palisade
+# 				remove_building = native_fortified_house
+# 				remove_building = native_ceremonial_fire_pit
+# 				remove_building = native_irrigation
+# 				remove_building = native_storehouse
+# 				remove_building = native_longhouse
+# 				remove_building = native_sweat_lodge
+# 				remove_building = native_great_trail
+
+# 				# 伏尔泰的噩梦
+# 				# building
+# 				remove_building = fort_14th
+# 				remove_building = road_network
+# 				remove_building = post_office
+# 				remove_building = harbour
+# 				remove_building = armory
+# 				remove_building = college
+# 				remove_building = customs_house
+# 				remove_building = arsenal
+# 				remove_building = monument
+# 				remove_building = artisan
+# 				remove_building = watchman
+# 				# native building
+# 				remove_building = native_three_sisters_field
+
+# 				# remove_province_modifier = my_local_unrest_modifier
+# 				# add_province_modifier
+# 				# add_permanent_province_modifier = { 
+# 				# 	name = my_local_unrest_modifier
+# 				# 	duration = 5000			# 天
+# 				# 	#desc = annoyed_people_tooltip
+# 				# 	#hidden = no
+# 				# }
+# 			}
+# 		}
+# 	}
+# 	option = {
+# 		name = my_close
+# 		ai_chance = {
+# 			factor = 100
+# 		}
+# 	}
+# }
+
 country_event = {
-	id = my_event.31
+	id = my_event.32
 	title = my_event_31_title
 	desc = my_event_31_desc
 
-	# fire_only_once = yes		# 只触发一次
-	# is_triggered_only = yes	# 只能调用触发
-
 	mean_time_to_happen = {
-		# days = 1
 		months = 1
 	}
 	trigger = {
-		# tag = ROOT
 		any_owned_province = {
 			NOT = {
 				has_province_modifier = my_province_buff
@@ -507,116 +736,16 @@ country_event = {
 					}
 				}
 
-				# 当前发展度保存至变量，需要最早执行
-				hidden_effect = {
-					export_to_variable = {
-						which = my_curr_tax
-						value = base_tax
-					}
-					export_to_variable = {
-						which = my_curr_production
-						value = base_production
-					}
-					export_to_variable = {
-						which = my_curr_manpower
-						value = base_manpower
-					}
+				sub_province_development_with_tag = {
+					with_tag_value = sub_province_development_flag
 				}
-
-				if = {
-					limit = {
-						check_variable = {
-							which = my_curr_tax
-							which = my_init_tax
-						}
-						NOT = {
-							is_variable_equal = {
-								which = my_curr_tax
-								which = my_init_tax
-							}
-						}
-					}
-					add_base_tax = -1
-				}
-				# else_if = {
-				# 	limit = {
-				# 		NOT = {
-				# 			check_variable = {
-				# 				which = my_curr_tax
-				# 				which = my_init_tax
-				# 			}
-				# 		}
-				# 	}
-				# 	add_base_tax = 1
-				# }
-
-				if = {
-					limit = {
-						check_variable = {
-							which = my_curr_production
-							which = my_init_production
-						}
-						NOT = {
-							is_variable_equal = {
-								which = my_curr_production
-								which = my_init_production
-							}
-						}
-					}
-					add_base_production = -1
-				}
-				# else_if = {
-				# 	limit = {
-				# 		NOT = {
-				# 			check_variable = {
-				# 				which = my_curr_production
-				# 				which = my_init_production
-				# 			}
-				# 		}
-				# 	}
-				# 	add_base_production = 1
-				# }
-
-				if = {
-					limit = {
-						check_variable = {
-							which = my_curr_manpower
-							which = my_init_manpower
-						}
-						NOT = {
-							is_variable_equal = {
-								which = my_curr_manpower
-								which = my_init_manpower
-							}
-						}
-					}
-					add_base_manpower = -1
-				}
-				# else_if = {
-				# 	limit = {
-				# 		NOT = {
-				# 			check_variable = {
-				# 				which = my_curr_manpower
-				# 				which = my_init_manpower
-				# 			}
-				# 		}
-				# 	}
-				# 	add_base_manpower = 1
-				# }
-
 				add_permanent_province_modifier = {
 					name = my_province_buff
 					duration = 365				# 天
 				}
 
 				# 处理省份
-				# add_base_tax = -1				# 基础税收
-				# add_base_production = -1		# 基础生产
-				# add_base_manpower = -1		# 基础人力
-				# set_base_tax = 1				# 基础税收
-				# set_base_production = 1		# 基础生产
-				# set_base_manpower = 1			# 基础人力
-				# add_prosperity = -10			# 繁荣度
+				add_prosperity = -10			# 繁荣度
 				add_devastation = 20			# 荒废度
 				add_local_autonomy = 10			# 自治度
 				add_nationalism = 5				# 分离主义
