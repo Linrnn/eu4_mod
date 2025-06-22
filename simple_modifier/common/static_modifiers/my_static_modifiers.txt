@@ -1,15 +1,15 @@
 # 全局国家修正
 all_nations = {
 	# 加法
-	#possible_policy = 4						# 可选政策数量
+	num_accepted_cultures = 20					# 增加可接受文化的最大值
+	# possible_policy = 4						# 可选政策数量
 	# colonists = -10							# 殖民队数量
-	# num_accepted_cultures = 10				# 增加可接受文化的最大值
 	# global_manpower = -10						# 全国人力（基础值1=1000人力）
 	# country_admin_power = -3					# 每月额外获得行政君主力量点数
 	# country_diplomatic_power = -3				# 每月额外获得外交君主力量点数
 	# country_military_power = -3				# 每月额外获得军事君主力量点数
 	# diplomatic_upkeep = -4					# 外交关系数量
-	# global_tax_income = -12		           	# 年度税收
+	# global_tax_income = -12					# 年度税收
 	# land_forcelimit = -6						# 陆军上限（基础值）
 	# naval_forcelimit = -12					# 海军上限（基础值）
 	# tribal_development_growth - 10			# 部落发展度增长

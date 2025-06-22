@@ -52,3 +52,81 @@ sub_province_development = {
 		}
 	}
 }
+
+alloc_colonial_province = {
+	$range_value$ = {
+		if = {
+			limit = {
+				NOT = {
+					owned_by = $tag_value$
+				}
+			}
+			cede_province = $tag_value$
+		}
+	}
+}
+
+alloc_province = {
+	$range_value$ = {
+		if = {
+			limit = {
+				NOT = {
+					owned_by = $tag_value$
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						is_core = $tag_value$
+					}
+				}
+				add_core = $tag_value$
+			}
+			cede_province = $tag_value$
+		}
+	}
+}
+
+alloc_capital = {
+	alloc_province = {
+		range_value = $province_value$
+		tag_value = $tag_value$
+	}
+	$tag_value$ = {
+		if = {
+			limit = {
+				NOT = {
+					capital = $province_value$
+				}
+			}
+			set_capital = $province_value$
+			# $province_value$ = {
+			# 	move_capital_effect = yes
+			# }
+		}
+	}
+}
+
+alloc_emperor = {
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = $tag_value$
+				is_emperor = no
+			}
+			set_emperor = yes
+		}
+	}
+}
+
+alloc_elector = {
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = $tag_value$
+				is_elector = no
+			}
+			elector = yes
+		}
+	}
+}

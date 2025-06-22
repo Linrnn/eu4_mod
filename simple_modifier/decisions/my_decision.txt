@@ -218,104 +218,55 @@ country_decisions = {
 	# 	}
 	# }
 
-	my_change_ruler = {
+	my_change_ruler_heir = {
 		major = yes
 		color = { 0 255 255 }
 		potential = {
 			ai = no
+			OR = {
+				has_heir = yes
+				# has_consort = yes
+			}
 		}
 		allow = {
 			OR = {
-				NOT = {
-					adm = 6
+				NOT = { adm = 6 }
+				NOT = { dip = 6 }
+				NOT = { mil = 6 }
+				if = {
+					limit = { has_heir = yes }
+					OR = {
+						NOT = { heir_adm = 6 }
+						NOT = { heir_dip = 6 }
+						NOT = { heir_mil = 6 }
+					}
 				}
-				NOT = {
-					dip = 6
-				}
-				NOT = {
-					mil = 6
-				}
+				# if = {
+				# 	limit = { has_consort = yes }
+				# 	OR = {
+				# 		NOT = { consort_adm = 6 }
+				# 		NOT = { consort_dip = 6 }
+				# 		NOT = { consort_mil = 6 }
+				# 	}
+				# }
 			}
 		}
 		effect = {
+			if = { limit = { NOT = { adm = 6 } } change_adm = 1 }
+			if = { limit = { NOT = { dip = 6 } } change_dip = 1 }
+			if = { limit = { NOT = { mil = 6 } } change_mil = 1 }
 			if = {
-				limit = {
-					NOT = {
-						adm = 6
-					}
-				}
-				change_adm = 1
+				limit = { has_heir = yes }
+				if = { limit = { NOT = { heir_adm = 6 } } change_heir_adm = 1 }
+				if = { limit = { NOT = { heir_dip = 6 } } change_heir_dip = 1 }
+				if = { limit = { NOT = { heir_mil = 6 } } change_heir_mil = 1 }
 			}
-
-			if = {
-				limit = {
-					NOT = {
-						dip = 6
-					}
-				}
-				change_dip = 1
-			}
-
-			if = {
-				limit = {
-					NOT = {
-						mil = 6
-					}
-				}
-				change_mil = 1
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	my_change_heir = {
-		major = yes
-		color = { 0 255 255 }
-		potential = {
-			ai = no
-			has_heir = yes
-		}
-		allow = {
-			OR = {
-				NOT = {
-					heir_adm = 6
-				}
-				NOT = {
-					heir_dip = 6
-				}
-				NOT = {
-					heir_mil = 6
-				}
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					NOT = {
-						heir_adm = 6
-					}
-				}
-				change_heir_adm = 1
-			}
-
-			if = {
-				limit = {
-					NOT = {
-						heir_dip = 6
-					}
-				}
-				change_heir_dip = 1
-			}
-
-			if = {
-				limit = {
-					NOT = {
-						heir_mil = 6
-					}
-				}
-				change_heir_mil = 1
-			}
+			# if = {
+			# 	limit = { has_consort = yes }
+			# 	if = { limit = { NOT = { consort_adm = 6 } } change_consort_adm = 1 }
+			# 	if = { limit = { NOT = { consort_dip = 6 } } change_consort_dip = 1 }
+			# 	if = { limit = { NOT = { consort_mil = 6 } } change_consort_mil = 1 }
+			# }
 		}
 		ai_will_do = {
 			factor = 0
@@ -355,17 +306,31 @@ country_decisions = {
 	# 	}
 	# }
 
-	# get_thing = {
-	# 	major = yes
-	# 	effect = {
-	# 		country_event = {
-	# 			id = my_event.1
-	# 		}
-	# 	}
-	# 	ai_will_do = {
-	# 		factor = 0
-	# 	}
-	# }
+	my_get_thing = {
+		major = yes
+		color = { 0 255 255 }
+		effect = {
+			country_event = {
+				id = my_event.1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	my_own_province = {
+		major = yes
+		color = { 0 255 255 }
+		effect = {
+			country_event = {
+				id = my_event.3
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 
 	# set_religion = {
 	# 	major = yes
