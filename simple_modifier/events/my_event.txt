@@ -128,28 +128,85 @@ country_event = {
 	id = my_event.3
 	is_triggered_only = yes
 
-	option = { # 神罗
+	option = { # 中国皇帝
+		name = my_emperor_of_china
+		alloc_emperor_of_china = { tag_value = QNG }
+		alloc_tributary = { main_tag = QNG subject_tag = EGY }
+		alloc_tributary = { main_tag = QNG subject_tag = ETH }
+		alloc_tributary = { main_tag = QNG subject_tag = ARB }
+		alloc_tributary = { main_tag = QNG subject_tag = PER }
+		alloc_tributary = { main_tag = QNG subject_tag = TMB }
+		alloc_tributary = { main_tag = QNG subject_tag = MAL }
+		alloc_tributary = { main_tag = QNG subject_tag = BEN }
+		alloc_tributary = { main_tag = QNG subject_tag = KON }
+		alloc_tributary = { main_tag = QNG subject_tag = ZAN }
+		alloc_tributary = { main_tag = QNG subject_tag = KIT }
+		alloc_tributary = { main_tag = QNG subject_tag = BUG }
+		alloc_tributary = { main_tag = QNG subject_tag = GZI }
+		alloc_tributary = { main_tag = QNG subject_tag = SIB }
+		alloc_tributary = { main_tag = QNG subject_tag = KZH }
+		alloc_tributary = { main_tag = QNG subject_tag = JAP }
+		alloc_tributary = { main_tag = QNG subject_tag = MUG }
+		alloc_tributary = { main_tag = QNG subject_tag = BHA }
+		alloc_tributary = { main_tag = QNG subject_tag = AVA }
+		alloc_tributary = { main_tag = QNG subject_tag = DAI }
+		alloc_tributary = { main_tag = QNG subject_tag = AYU }
+		alloc_tributary = { main_tag = QNG subject_tag = MSA }
+		alloc_tributary = { main_tag = QNG subject_tag = MNA }
+		alloc_tributary = { main_tag = QNG subject_tag = UHW }
+	}
+	option = { # 神罗国家
+		name = my_country_emperor
+		alloc_emperor = { tag_value = FRA }			# 获得神罗皇帝地位
+		alloc_elector = { tag_value = FRA }			# 授予或取消选帝侯地位
+		# alloc_march = { main_tag = HAB subject_tag = VEN }
+		# alloc_march = { main_tag = HAB subject_tag = BUR }
+		# alloc_march = { main_tag = HAB subject_tag = LOR }
+		# alloc_march = { main_tag = HAB subject_tag = PRO }
+		# alloc_march = { main_tag = HAB subject_tag = BRB }
+		# alloc_march = { main_tag = HAB subject_tag = HOL }
+		# alloc_march = { main_tag = HAB subject_tag = SHL }
+		# alloc_march = { main_tag = HAB subject_tag = TEU }
+
+		if = {
+			limit = {
+				hre_religion = catholic				# 神罗宗教
+			}
+			cancel_all_elector = { tag_hold = FRA }
+			alloc_elector = { tag_value = SPA }
+			alloc_elector = { tag_value = ITA }
+			alloc_elector = { tag_value = SWA }
+			alloc_elector = { tag_value = AUH }
+			alloc_elector = { tag_value = PLC }
+			# alloc_elector = { tag_value = GBR }
+		}
+		else_if = {
+			limit = {
+				hre_religion_locked = no			# 神罗宗教锁定
+				hre_religion_treaty = yes			# 神罗宗教条约
+			}
+			cancel_all_elector = { tag_hold = FRA }
+		 	alloc_elector = { tag_value = RUS }
+		 	alloc_elector = { tag_value = PRU }
+		 	alloc_elector = { tag_value = NED }
+		 	alloc_elector = { tag_value = GBR }
+		 	# alloc_elector = { tag_value = SPA }
+		 	# alloc_elector = { tag_value = ITA }
+		}
+	}
+	option = { # 神罗省份
 		name = my_province_emperor
-		europe = {
+		europe = {											# 大陆
 			if = {
 				limit = {
-					is_part_of_hre = no
-					NOT = { superregion = africa_superregion }
+					NOT = {
+						superregion = africa_superregion	# 大区
+					}
+					is_part_of_hre = no						# 是神罗的一部分
 				}
-				set_in_empire = yes
+				set_in_empire = yes							# 把省份加进神罗
 			}
 		}
-		alloc_emperor = { tag_value = FRA }		# 获得神罗皇帝地位
-		alloc_elector = { tag_value = FRA }		# 授予或取消选帝侯地位
-		alloc_elector = { tag_value = SPA }
-		alloc_elector = { tag_value = ITA }
-		alloc_elector = { tag_value = SWA }
-		alloc_elector = { tag_value = AUH }
-		alloc_elector = { tag_value = PLC }
-		# alloc_elector = { tag_value = PRU }
-		# alloc_elector = { tag_value = RUS }
-		# alloc_elector = { tag_value = NED }
-		# alloc_elector = { tag_value = GBR }
 	}
 	option = { # 殖民领
 		name = my_colonial_capital
@@ -157,18 +214,18 @@ country_event = {
 		alloc_province = { range_value = 481								tag_value = C06 }
 		alloc_province = { range_value = 2002								tag_value = C08 }
 		alloc_province = { range_value = south_atlantic_islands_area		tag_value = C09 }
-		alloc_capital = { tag_value = C00 province_value = 873 }	# 奇努克
-		alloc_capital = { tag_value = C01 province_value = 993 }	# 蒙特利尔
-		alloc_capital = { tag_value = C02 province_value = 953 }	# 皮斯卡塔韦
-		alloc_capital = { tag_value = C03 province_value = 893 }	# 新奥尔良
-		alloc_capital = { tag_value = C04 province_value = 4637 }	# 奥洛内
-		alloc_capital = { tag_value = C05 province_value = 852 }	# 墨西哥
-		alloc_capital = { tag_value = C06 province_value = 492 }	# 波多黎各
-		alloc_capital = { tag_value = C07 province_value = 828 }	# 卡塔赫内
-		alloc_capital = { tag_value = C08 province_value = 809 }	# 利马
-		alloc_capital = { tag_value = C09 province_value = 778 }	# 拉普拉塔河
-		alloc_capital = { tag_value = C10 province_value = 756 }	# 巴伊亚
-		alloc_capital = { tag_value = C11 province_value = 1090 }	# 约拉
+		alloc_capital = { province_value = 873 tag_value = C00 }	# 奇努克
+		alloc_capital = { province_value = 993 tag_value = C01 }	# 蒙特利尔
+		alloc_capital = { province_value = 953 tag_value = C02 }	# 皮斯卡塔韦
+		alloc_capital = { province_value = 893 tag_value = C03 }	# 新奥尔良
+		alloc_capital = { province_value = 4637 tag_value = C04 }	# 奥洛内
+		alloc_capital = { province_value = 852 tag_value = C05 }	# 墨西哥
+		alloc_capital = { province_value = 492 tag_value = C06 }	# 波多黎各
+		alloc_capital = { province_value = 828 tag_value = C07 }	# 卡塔赫内
+		alloc_capital = { province_value = 809 tag_value = C08 }	# 利马
+		alloc_capital = { province_value = 778 tag_value = C09 }	# 拉普拉塔河
+		alloc_capital = { province_value = 756 tag_value = C10 }	# 巴伊亚
+		alloc_capital = { province_value = 1090 tag_value = C11 }	# 约拉
 		ai_chance = { factor = 0 }
 	}
 	option = { # 新大陆
@@ -189,7 +246,7 @@ country_event = {
 	}
 	option = { # 法兰西
 		name = my_province_own_FRA
-		alloc_capital = { tag_value = FRA province_value = 183 }
+		alloc_capital = { province_value = 183 tag_value = FRA }
 		alloc_province = { range_value = france_region						tag_value = FRA }
 		alloc_province = { range_value = wallonia_area						tag_value = FRA }
 		alloc_province = { range_value = flanders_area						tag_value = FRA }
@@ -197,25 +254,29 @@ country_event = {
 	}
 	option = { # 西班牙
 		name = my_province_own_SPA
-		alloc_capital = { tag_value = SPA province_value = 217 }
+		alloc_tag = { cur_tag = CAS new_tag = SPA }
+		alloc_capital = { province_value = 217 tag_value = SPA }
 		alloc_province = { range_value = iberia_region					tag_value = SPA }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 大不列颠
 		name = my_province_own_GBR
-		alloc_capital = { tag_value = GBR province_value = 236 }
+		alloc_tag = { cur_tag = ENG new_tag = GBR }
+		alloc_capital = { province_value = 236 tag_value = GBR }
 		alloc_province = { range_value = british_isles_region			tag_value = GBR }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 意大利
 		name = my_province_own_ITA
-		alloc_capital = { tag_value = ITA province_value = 118 }
+		alloc_tag = { cur_tag = SAV new_tag = ITA }
+		alloc_capital = { province_value = 118 tag_value = ITA }
 		alloc_province = { range_value = italy_region					tag_value = ITA }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 尼德兰
 		name = my_province_own_NED
-		alloc_capital = { tag_value = NED province_value = 97 }
+		alloc_tag = { cur_tag = HOL new_tag = NED }
+		alloc_capital = { province_value = 97 tag_value = NED }
 		alloc_province = { range_value = holland_area					tag_value = NED }
 		alloc_province = { range_value = frisia_area					tag_value = NED }
 		alloc_province = { range_value = brabant_area					tag_value = NED }
@@ -224,7 +285,8 @@ country_event = {
 	}
 	option = { # 施瓦本
 		name = my_province_own_SWA
-		alloc_capital = { tag_value = SWA province_value = 1872 }
+		alloc_tag = { cur_tag = ULM new_tag = SWA }
+		alloc_capital = { province_value = 1872 tag_value = SWA }
 		alloc_province = { range_value = switzerland_area				tag_value = SWA }
 		alloc_province = { range_value = lower_bavaria_area				tag_value = SWA }
 		alloc_province = { range_value = upper_bavaria_area				tag_value = SWA }
@@ -241,7 +303,8 @@ country_event = {
 	}
 	option = { # 汉诺威
 		name = my_province_own_HAN
-		alloc_capital = { tag_value = HAN province_value = 1874 }
+		alloc_tag = { cur_tag = BRE new_tag = HAN }
+		alloc_capital = { province_value = 1874 tag_value = HAN }
 		alloc_province = { range_value = north_rhine_area				tag_value = HAN }
 		alloc_province = { range_value = lower_rhineland_area			tag_value = HAN }
 		alloc_province = { range_value = westphalia_area				tag_value = HAN }
@@ -255,13 +318,14 @@ country_event = {
 	}
 	option = { # 突尼斯
 		name = my_province_own_TUN
-		alloc_capital = { tag_value = TUN province_value = 341 }
+		alloc_capital = { province_value = 341 tag_value = TUN }
 		alloc_province = { range_value = maghreb_region					tag_value = TUN }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 普鲁士
 		name = my_province_own_PRU
-		alloc_capital = { tag_value = PRU province_value = 50 }
+		alloc_tag = { cur_tag = BRA new_tag = PRU }
+		alloc_capital = { province_value = 50 tag_value = PRU }
 		alloc_province = { range_value = south_saxony_area				tag_value = PRU }
 		alloc_province = { range_value = northern_saxony_area			tag_value = PRU }
 		alloc_province = { range_value = thuringia_area					tag_value = PRU }
@@ -277,7 +341,8 @@ country_event = {
 	}
 	option = { # 斯堪的纳维亚
 		name = my_province_own_SCA
-		alloc_capital = { tag_value = SCA province_value = 1 }
+		alloc_tag = { cur_tag = SWE new_tag = SCA }
+		alloc_capital = { province_value = 1 tag_value = SCA }
 		alloc_province = { range_value = scandinavia_region				tag_value = SCA }
 		alloc_province = { range_value = livonia_area					tag_value = SCA }
 		alloc_province = { range_value = estonia_ingria_area			tag_value = SCA }
@@ -286,7 +351,8 @@ country_event = {
 	}
 	option = { # 奥地利-匈牙利
 		name = my_province_own_AUH
-		alloc_capital = { tag_value = AUH province_value = 134 }
+		alloc_tag = { cur_tag = HAB new_tag = AUH }
+		alloc_capital = { province_value = 134 tag_value = AUH }
 		alloc_province = { range_value = tirol_area						tag_value = AUH }
 		alloc_province = { range_value = austria_proper_area			tag_value = AUH }
 		alloc_province = { range_value = inner_austria_area				tag_value = AUH }
@@ -300,12 +366,14 @@ country_event = {
 		alloc_province = { range_value = transylvania_area				tag_value = AUH }
 		alloc_province = { range_value = southern_transylvania_area		tag_value = AUH }
 		alloc_province = { range_value = croatia_area					tag_value = AUH }
+		alloc_province = { range_value = east_adriatic_coast_area		tag_value = AUH }
 		alloc_province = { range_value = slavonia_area					tag_value = AUH }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 俄罗斯
 		name = my_province_own_RUS
-		alloc_capital = { tag_value = RUS province_value = 295 }
+		alloc_tag = { cur_tag = MOS new_tag = RUS }
+		alloc_capital = { province_value = 295 tag_value = RUS }
 		alloc_province = { range_value = russia_region					tag_value = RUS }
 		alloc_province = { range_value = ural_region					tag_value = RUS }
 		alloc_province = { range_value = crimea_region					tag_value = RUS }
@@ -324,7 +392,8 @@ country_event = {
 	}
 	option = { # 波兰立陶宛联邦
 		name = my_province_own_PLC
-		alloc_capital = { tag_value = PLC province_value = 257 }
+		alloc_tag = { cur_tag = POL new_tag = PLC }
+		alloc_capital = { province_value = 257 tag_value = PLC }
 		alloc_province = { range_value = wielkopolska_area				tag_value = PLC }
 		alloc_province = { range_value = malopolska_area				tag_value = PLC }
 		alloc_province = { range_value = red_ruthenia_area				tag_value = PLC }
@@ -340,8 +409,8 @@ country_event = {
 	}
 	option = { # 保加利亚
 		name = my_province_own_BUL
-		alloc_capital = { tag_value = BUL province_value = 4703 }
-		alloc_province = { range_value = east_adriatic_coast_area		tag_value = BUL }
+		alloc_release = { range_value = 4703 tag_value = BUL}
+		alloc_capital = { province_value = 4703 tag_value = BUL }
 		alloc_province = { range_value = wallachia_area					tag_value = BUL }
 		alloc_province = { range_value = moldavia_area					tag_value = BUL }
 		alloc_province = { range_value = bosnia_area					tag_value = BUL }
@@ -358,88 +427,94 @@ country_event = {
 	}
 	option = { # 奥斯曼
 		name = my_province_own_TUR
-		alloc_capital = { tag_value = TUR province_value = 317 }
+		alloc_capital = { province_value = 317 tag_value = TUR }
 		alloc_province = { range_value = anatolia_region				tag_value = TUR }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 埃及
 		name = my_province_own_EGY
-		alloc_capital = { tag_value = EGY province_value = 361 }
+		alloc_tag = { cur_tag = MAM new_tag = EGY }
+		alloc_capital = { province_value = 361 tag_value = EGY }
 		alloc_province = { range_value = egypt_region					tag_value = EGY }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 埃塞俄比亚
 		name = my_province_own_ETH
-		alloc_capital = { tag_value = ETH province_value = 1224 }
+		alloc_capital = { province_value = 1224 tag_value = ETH }
 		alloc_province = { range_value = horn_of_africa_region			tag_value = ETH }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 阿拉伯
 		name = my_province_own_ARB
-		alloc_capital = { tag_value = ARB province_value = 410 }
+		alloc_tag = { cur_tag = HED new_tag = ARB }
+		alloc_capital = { province_value = 410 tag_value = ARB }
 		alloc_province = { range_value = arabia_region					tag_value = ARB }
 		alloc_province = { range_value = mashriq_region					tag_value = ARB }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 波斯
 		name = my_province_own_PER
-		alloc_capital = { tag_value = PER province_value = 429 }
+		alloc_release = { range_value = 429 tag_value = PER}
+		alloc_capital = { province_value = 429 tag_value = PER }
 		alloc_province = { range_value = khorasan_region				tag_value = PER }
 		alloc_province = { range_value = persia_region					tag_value = PER }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 廷巴克图
 		name = my_province_own_TMB
-		alloc_capital = { tag_value = TMB province_value = 1132 }
+		alloc_capital = { province_value = 1132 tag_value = TMB }
 		alloc_province = { range_value = sahel_region					tag_value = TMB }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 马里
 		name = my_province_own_MAL
-		alloc_capital = { tag_value = MAL province_value = 1124 }
+		alloc_capital = { province_value = 1124 tag_value = MAL }
 		alloc_province = { range_value = niger_region					tag_value = MAL }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 贝宁
 		name = my_province_own_BEN
-		alloc_capital = { tag_value = BEN province_value = 1147 }
+		alloc_capital = { province_value = 1147 tag_value = BEN }
 		alloc_province = { range_value = guinea_region					tag_value = BEN }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 刚果
 		name = my_province_own_KON
-		alloc_capital = { tag_value = KON province_value = 1170 }
+		alloc_capital = { province_value = 1170 tag_value = KON }
 		alloc_province = { range_value = kongo_region					tag_value = KON }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 基尔瓦
 		name = my_province_own_ZAN
-		alloc_capital = { tag_value = ZAN province_value = 1196 }
+		alloc_capital = { province_value = 1196 tag_value = ZAN }
 		alloc_province = { range_value = east_africa_region				tag_value = ZAN }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 基塔拉
 		name = my_province_own_KIT
-		alloc_capital = { tag_value = KIT province_value = 4064 }
+		alloc_capital = { province_value = 4064 tag_value = KIT }
 		alloc_province = { range_value = central_africa_region			tag_value = KIT }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 津巴布韦
 		name = my_province_own_GZI
-		alloc_capital = { tag_value = GZI province_value = 1184 }
+		alloc_tag = { cur_tag = ZIM new_tag = GZI }
+		alloc_capital = { province_value = 1184 tag_value = GZI }
 		alloc_province = { range_value = south_africa_region			tag_value = GZI }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 西伯利亚
 		name = my_province_own_SIB
-		alloc_capital = { tag_value = SIB province_value = 1060 }
+		alloc_release = { range_value = 1075 tag_value = SIB}
+		alloc_capital = { province_value = 1060 tag_value = SIB }
 		alloc_province = { range_value = west_siberia_region			tag_value = SIB }
 		alloc_province = { range_value = east_siberia_region			tag_value = SIB }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 哈萨克
 		name = my_province_own_KZH
-		alloc_capital = { tag_value = KZH province_value = 454 }
+		alloc_release = { range_value = 454 tag_value = KZH}
+		alloc_capital = { province_value = 454 tag_value = KZH }
 		alloc_province = { range_value = nogai_area						tag_value = KZH }
 		alloc_province = { range_value = transcaspia_area				tag_value = KZH }
 		alloc_province = { range_value = transoxiana_area				tag_value = KZH }
@@ -456,7 +531,8 @@ country_event = {
 	}
 	option = { # 大清
 		name = my_province_own_QNG
-		alloc_capital = { tag_value = QNG province_value = 1816 }
+		alloc_tag = { cur_tag = MJZ new_tag = QNG }
+		alloc_capital = { province_value = 1816 tag_value = QNG }
 		alloc_province = { range_value = manchuria_region				tag_value = QNG }
 		alloc_province = { range_value = mongolia_region				tag_value = QNG }
 		alloc_province = { range_value = tibet_region					tag_value = QNG }
@@ -471,21 +547,24 @@ country_event = {
 	}
 	option = { # 日本
 		name = my_province_own_JAP
-		alloc_capital = { tag_value = JAP province_value = 1020 }
+		alloc_tag = { cur_tag = ASK new_tag = JAP }
+		alloc_capital = { province_value = 1020 tag_value = JAP }
 		alloc_province = { range_value = japan_region					tag_value = JAP }
 		alloc_province = { range_value = korea_region					tag_value = JAP }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 莫卧儿
 		name = my_province_own_MUG
-		alloc_capital = { tag_value = MUG province_value = 524 }
+		alloc_tag = { cur_tag = TIM new_tag = MUG }
+		alloc_capital = { province_value = 524 tag_value = MUG }
 		alloc_province = { range_value = hindusthan_region				tag_value = MUG }
 		alloc_province = { range_value = bengal_region					tag_value = MUG }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 婆罗多
 		name = my_province_own_BHA
-		alloc_capital = { tag_value = BHA province_value = 543 }
+		alloc_tag = { cur_tag = VIJ new_tag = BHA }
+		alloc_capital = { province_value = 543 tag_value = BHA }
 		alloc_province = { range_value = west_india_region					tag_value = BHA }
 		alloc_province = { range_value = deccan_region						tag_value = BHA }
 		alloc_province = { range_value = coromandel_region					tag_value = BHA }
@@ -493,13 +572,13 @@ country_event = {
 	}
 	option = { # 阿瓦
 		name = my_province_own_AVA
-		alloc_capital = { tag_value = AVA province_value = 584 }
+		alloc_capital = { province_value = 584 tag_value = AVA }
 		alloc_province = { range_value = burma_region						tag_value = AVA }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 大越
 		name = my_province_own_DAI
-		alloc_capital = { tag_value = DAI province_value = 613 }
+		alloc_capital = { province_value = 613 tag_value = DAI }
 		alloc_province = { range_value = vietnam_area						tag_value = DAI }
 		alloc_province = { range_value = north_laos_area					tag_value = DAI }
 		alloc_province = { range_value = cambodia_area						tag_value = DAI }
@@ -514,7 +593,7 @@ country_event = {
 	}
 	option = { # 阿瑜陀耶
 		name = my_province_own_AYU
-		alloc_capital = { tag_value = AYU province_value = 600 }
+		alloc_capital = { province_value = 600 tag_value = AYU }
 		alloc_province = { range_value = central_thai_area						tag_value = AYU }
 		alloc_province = { range_value = northern_thai_area						tag_value = AYU }
 		alloc_province = { range_value = khorat_area							tag_value = AYU }
@@ -525,7 +604,8 @@ country_event = {
 	}
 	option = { # 马来亚
 		name = my_province_own_MSA
-		alloc_capital = { tag_value = MSA province_value = 596 }
+		alloc_tag = { cur_tag = MLC new_tag = MSA }
+		alloc_capital = { province_value = 596 tag_value = MSA }
 		alloc_province = { range_value = indonesia_region						tag_value = MSA }
 		alloc_province = { range_value = north_sumatra_area						tag_value = MSA }
 		alloc_province = { range_value = central_sumatra_area					tag_value = MSA }
@@ -541,14 +621,15 @@ country_event = {
 		ai_chance = { factor = 0 }
 	}
 	option = { # 马尼拉
-		name = my_province_own_MNA
-		alloc_capital = { tag_value = MNA province_value = 656 }
-		alloc_province = { range_value = moluccas_region						tag_value = MNA }
+		name = my_province_own_BTU
+		alloc_capital = { province_value = 2702 tag_value = BTU }
+		alloc_province = { range_value = moluccas_region						tag_value = BTU }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 夏威夷
 		name = my_province_own_UHW
-		alloc_capital = { tag_value = UHW province_value = 4935 }
+		alloc_tag = { cur_tag = HAW new_tag = UHW }
+		alloc_capital = { province_value = 4935 tag_value = UHW }
 		alloc_province = { range_value = polynesia_area							tag_value = UHW }
 		alloc_province = { range_value = micronesia_area						tag_value = UHW }
 		alloc_province = { range_value = west_micronesia_area					tag_value = UHW }

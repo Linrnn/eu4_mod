@@ -53,10 +53,41 @@ sub_province_development = {
 	}
 }
 
+alloc_release = {
+	$range_value$ = {
+		if = {
+			limit = {
+				is_core = $tag_value$
+				NOT = {
+					exists = $tag_value$
+				}
+			}
+			owner = {
+				release = $tag_value$
+			}
+		}
+	}
+}
+
+alloc_tag = {
+	if = {
+		limit = {
+			exists = $cur_tag$
+			NOT = {
+				exists = $new_tag$
+			}
+		}
+		$cur_tag$ = {
+			change_tag = $new_tag$	# 变更控制的TAG
+		}
+	}
+}
+
 alloc_colonial_province = {
 	$range_value$ = {
 		if = {
 			limit = {
+				exists = yes
 				NOT = {
 					owned_by = $tag_value$
 				}
@@ -70,6 +101,7 @@ alloc_province = {
 	$range_value$ = {
 		if = {
 			limit = {
+				exists = $tag_value$
 				NOT = {
 					owned_by = $tag_value$
 				}
@@ -95,6 +127,7 @@ alloc_capital = {
 	$tag_value$ = {
 		if = {
 			limit = {
+				exists = yes
 				NOT = {
 					capital = $province_value$
 				}
@@ -107,11 +140,11 @@ alloc_capital = {
 	}
 }
 
-alloc_emperor = {
+alloc_emperor = {			# 神罗皇帝
 	$tag_value$ = {
 		if = {
 			limit = {
-				exists = $tag_value$
+				exists = yes
 				is_emperor = no
 			}
 			set_emperor = yes
@@ -119,14 +152,86 @@ alloc_emperor = {
 	}
 }
 
-alloc_elector = {
-	$tag_value$ = {
+alloc_elector = {			# 神罗帝选侯
+	if = {
+		limit = {
+			NOT = {
+				num_of_electors = 8
+			}
+		}
+		$tag_value$ = {
+			if = {
+				limit = {
+					exists = yes
+					is_elector = no
+				}
+				elector = yes
+			}
+		}
+	}
+}
+
+cancel_all_elector = {
+	every_elector = {
 		if = {
 			limit = {
-				exists = $tag_value$
-				is_elector = no
+				NOT = {
+					tag = $tag_hold$
+				}
 			}
-			elector = yes
+			elector = no
 		}
+	}
+}
+
+alloc_emperor_of_china = {	# 中华帝国
+	if = {
+		limit = {
+			$tag_value$ = {
+				exists = yes
+				is_emperor_of_china = no	# 是中国皇帝
+			}
+		}
+		dismantle_empire_of_china = no
+		set_emperor_of_china = $tag_value$
+	}
+}
+
+alloc_tributary = {			# 朝贡国
+	$main_tag$ = {
+		if = {
+			limit = {
+				exists = yes
+				is_subject = no						# 是附属国
+				$subject_tag$ = {
+					exists = yes
+					NOT = {
+						is_subject_of = $main_tag$	# 是某国的属国
+					}
+				}
+			}
+			create_subject = {
+    			subject_type = tributary_state
+    			subject = $subject_tag$
+			}
+		}	
+	}
+}
+
+alloc_march = {				# 卫戍国
+	$main_tag$ = {
+		if = {
+			limit = {
+				exists = yes
+				is_subject = no
+				$subject_tag$ = {
+					exists = yes
+					NOT = {
+						is_subject_of = $main_tag$
+					}
+				}
+			}
+			create_march = $subject_tag$
+		}	
 	}
 }

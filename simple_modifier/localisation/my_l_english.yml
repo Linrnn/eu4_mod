@@ -49,6 +49,8 @@
  my_jewish:0 "jewish"                                   # 犹太教
  my_zoroastrian:0 "zoroastrian"                         # 祆教
 
+ my_emperor_of_china:0 "emperor of china"
+ my_country_emperor:0 "country emperor"
  my_province_emperor:0 "province emperor"
  my_colonial_capital:0 "colonial capital"
  my_colonial_own_FRA:0 "colonial own FRA"
@@ -76,6 +78,7 @@
  my_province_own_BEN:0 "province own BEN"
  my_province_own_KON:0 "province own KON"
  my_province_own_ZAN:0 "province own ZAN"
+ my_province_own_KIT:0 "province own KIT"
  my_province_own_BUG:0 "province own BUG"
  my_province_own_GZI:0 "province own GZI"
  my_province_own_SIB:0 "province own SIB"
@@ -88,7 +91,7 @@
  my_province_own_DAI:0 "province own DAI"
  my_province_own_AYU:0 "province own AYU"
  my_province_own_MSA:0 "province own MSA"
- my_province_own_MNA:0 "province own MNA"
+ my_province_own_BTU:0 "province own BTU"
  my_province_own_UHW:0 "province own UHW"
 
  my_event_31_title:0 "not controlled province"

@@ -309,6 +309,9 @@ country_decisions = {
 	my_get_thing = {
 		major = yes
 		color = { 0 255 255 }
+		potential = {
+			ai = no
+		}
 		effect = {
 			country_event = {
 				id = my_event.1
@@ -322,6 +325,9 @@ country_decisions = {
 	my_own_province = {
 		major = yes
 		color = { 0 255 255 }
+		potential = {
+			ai = no
+		}
 		effect = {
 			country_event = {
 				id = my_event.3
@@ -331,6 +337,23 @@ country_decisions = {
 			factor = 0
 		}
 	}
+
+	# my_religion_reformed = {
+	# 	major = yes
+	# 	color = { 0 255 255 }
+	# 	potential = {
+	# 		ai = no
+	# 	}
+	# 	allow = {
+	# 		# 是启用的宗教
+	# 		is_religion_enabled = protestant	# 新教
+	# 		is_religion_enabled = reformed		# 改革宗
+	# 		is_religion_enabled = anglican		# 圣公宗
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
 
 	# set_religion = {
 	# 	major = yes
