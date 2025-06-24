@@ -163,6 +163,7 @@ alloc_elector = {			# 神罗帝选侯
 			if = {
 				limit = {
 					exists = yes
+					is_part_of_hre = yes
 					is_elector = no
 				}
 				elector = yes

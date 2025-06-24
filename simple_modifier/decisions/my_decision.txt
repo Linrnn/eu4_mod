@@ -355,6 +355,46 @@ country_decisions = {
 	# 	}
 	# }
 
+	# my_hre_test = {
+	# 	major = yes
+	# 	color = { 0 255 255 }
+	# 	potential = {
+	# 		ai = no
+	# 	}
+	# 	effect = {
+	# 		# every_province = {
+	# 		# 	if = {
+	# 		# 		limit = {
+	# 		# 			is_part_of_hre = yes
+	# 		# 			owner = {
+	# 		# 				is_part_of_hre = no
+	# 		# 			}
+	# 		# 		}
+	# 		# 		owner = {
+	# 		# 			add_treasury = 1
+	# 		# 		}
+	# 		# 	}
+	# 		# }
+	# 		# every_country  = {
+	# 		# 	if = {
+	# 		# 		limit = {
+	# 		# 			is_part_of_hre = yes
+	# 		# 			overlord = {
+	# 		# 				is_part_of_hre = no
+	# 		# 			}
+	# 		# 		}
+	# 		# 		add_treasury = 1
+	# 		# 	}
+	# 		# }
+	# 		every_country  = {
+	# 			set_in_empire = yes
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
+
 	# set_religion = {
 	# 	major = yes
 	# 	effect = {
@@ -526,6 +566,7 @@ country_decisions = {
 			factor = 0
 		}
 	}
+
 	my_cash_remove = {
 		major = yes
 		color = { 0 127 127 }
