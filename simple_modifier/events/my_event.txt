@@ -138,42 +138,48 @@ country_event = {
 	option = { # 中国皇帝
 		name = my_emperor_of_china
 		alloc_emperor_of_china = { tag_value = QNG }
-		alloc_tributary = { main_tag = QNG subject_tag = EGY }
-		alloc_tributary = { main_tag = QNG subject_tag = ETH }
-		alloc_tributary = { main_tag = QNG subject_tag = ARB }
-		alloc_tributary = { main_tag = QNG subject_tag = PER }
-		alloc_tributary = { main_tag = QNG subject_tag = TMB }
-		alloc_tributary = { main_tag = QNG subject_tag = MAL }
-		alloc_tributary = { main_tag = QNG subject_tag = BEN }
-		alloc_tributary = { main_tag = QNG subject_tag = KON }
-		alloc_tributary = { main_tag = QNG subject_tag = ZAN }
-		alloc_tributary = { main_tag = QNG subject_tag = KIT }
-		alloc_tributary = { main_tag = QNG subject_tag = BUG }
-		alloc_tributary = { main_tag = QNG subject_tag = GZI }
-		alloc_tributary = { main_tag = QNG subject_tag = SIB }
-		alloc_tributary = { main_tag = QNG subject_tag = KZH }
-		alloc_tributary = { main_tag = QNG subject_tag = JAP }
-		alloc_tributary = { main_tag = QNG subject_tag = MUG }
-		alloc_tributary = { main_tag = QNG subject_tag = BHA }
-		alloc_tributary = { main_tag = QNG subject_tag = AVA }
-		alloc_tributary = { main_tag = QNG subject_tag = DAI }
-		alloc_tributary = { main_tag = QNG subject_tag = AYU }
-		alloc_tributary = { main_tag = QNG subject_tag = MSA }
-		alloc_tributary = { main_tag = QNG subject_tag = MNA }
-		alloc_tributary = { main_tag = QNG subject_tag = UHW }
+		alloc_march = { main_tag = QNG subject_tag = EGY }
+		alloc_march = { main_tag = QNG subject_tag = ETH }
+		alloc_march = { main_tag = QNG subject_tag = ARB }
+		alloc_march = { main_tag = QNG subject_tag = PER }
+		alloc_march = { main_tag = QNG subject_tag = TMB }
+		alloc_march = { main_tag = QNG subject_tag = MAL }
+		alloc_march = { main_tag = QNG subject_tag = BEN }
+		alloc_march = { main_tag = QNG subject_tag = KON }
+		alloc_march = { main_tag = QNG subject_tag = ZAN }
+		alloc_march = { main_tag = QNG subject_tag = KIT }
+		alloc_march = { main_tag = QNG subject_tag = BUG }
+		alloc_march = { main_tag = QNG subject_tag = GZI }
+		alloc_march = { main_tag = QNG subject_tag = SIB }
+		alloc_march = { main_tag = QNG subject_tag = KZH }
+		alloc_march = { main_tag = QNG subject_tag = JAP }
+		alloc_march = { main_tag = QNG subject_tag = MUG }
+		alloc_march = { main_tag = QNG subject_tag = BHA }
+		alloc_march = { main_tag = QNG subject_tag = AVA }
+		alloc_march = { main_tag = QNG subject_tag = DAI }
+		alloc_march = { main_tag = QNG subject_tag = AYU }
+		alloc_march = { main_tag = QNG subject_tag = MSA }
+		alloc_march = { main_tag = QNG subject_tag = MNA }
+		alloc_march = { main_tag = QNG subject_tag = UHW }
+		alloc_tributary = { main_tag = QNG subject_tag = RUS }
 	}
 	option = { # 神罗国家
 		name = my_country_emperor
 		alloc_emperor = { tag_value = FRA }			# 获得神罗皇帝地位
 		alloc_elector = { tag_value = FRA }			# 授予或取消选帝侯地位
-		# alloc_march = { main_tag = HAB subject_tag = VEN }
-		# alloc_march = { main_tag = HAB subject_tag = BUR }
-		# alloc_march = { main_tag = HAB subject_tag = LOR }
-		# alloc_march = { main_tag = HAB subject_tag = PRO }
-		# alloc_march = { main_tag = HAB subject_tag = BRB }
-		# alloc_march = { main_tag = HAB subject_tag = HOL }
-		# alloc_march = { main_tag = HAB subject_tag = SHL }
-		# alloc_march = { main_tag = HAB subject_tag = TEU }
+		alloc_march = { main_tag = FRA subject_tag = TUN }
+		alloc_march = { main_tag = FRA subject_tag = SPA }
+		alloc_march = { main_tag = FRA subject_tag = GBR }
+		alloc_march = { main_tag = FRA subject_tag = ITA }
+		alloc_march = { main_tag = FRA subject_tag = SWA }
+		alloc_march = { main_tag = FRA subject_tag = HAN }
+		alloc_march = { main_tag = FRA subject_tag = NED }
+		alloc_march = { main_tag = RUS subject_tag = TUR }
+		alloc_march = { main_tag = RUS subject_tag = BUL }
+		alloc_march = { main_tag = RUS subject_tag = SCA }
+		alloc_march = { main_tag = RUS subject_tag = PLC }
+		alloc_march = { main_tag = RUS subject_tag = PRU }
+		alloc_march = { main_tag = RUS subject_tag = AUH }
 
 		if = {
 			limit = {
@@ -185,6 +191,7 @@ country_event = {
 			alloc_elector = { tag_value = SWA }
 			alloc_elector = { tag_value = AUH }
 			alloc_elector = { tag_value = PLC }
+			# 非历史天主教国家
 			alloc_elector = { tag_value = GBR }
 		}
 		else_if = {
@@ -197,6 +204,7 @@ country_event = {
 		 	alloc_elector = { tag_value = PRU }
 		 	alloc_elector = { tag_value = NED }
 		 	alloc_elector = { tag_value = GBR }
+			# 非历史其他宗教国家
 		 	alloc_elector = { tag_value = SPA }
 		 	alloc_elector = { tag_value = ITA }
 		}
@@ -207,7 +215,6 @@ country_event = {
 			if = {
 				limit = {
 					is_capital = yes
-					is_part_of_hre = no						# 是神罗的一部分
 				}
 				owner = {
 					set_in_empire = yes						# 把省份加进神罗
@@ -469,8 +476,7 @@ country_event = {
 	}
 	option = { # 波斯 -> PER
 		name = my_province_own_PER
-		alloc_release = { range_value = 429 tag_value = PER}
-		alloc_capital = { province_value = 429 tag_value = PER }
+		force_alloc_capital = { province_value = 429 tag_value = PER }
 		alloc_province = { range_value = khorasan_region				tag_value = PER }
 		alloc_province = { range_value = persia_region					tag_value = PER }
 		ai_chance = { factor = 0 }
@@ -529,7 +535,7 @@ country_event = {
 	}
 	option = { # 哈萨克 -> KZH
 		name = my_province_own_KZH
-		alloc_release = { range_value = 454 tag_value = KZH}
+		alloc_release = { range_value = 456 tag_value = KZH }
 		alloc_capital = { province_value = 454 tag_value = KZH }
 		alloc_province = { range_value = nogai_area						tag_value = KZH }
 		alloc_province = { range_value = transcaspia_area				tag_value = KZH }

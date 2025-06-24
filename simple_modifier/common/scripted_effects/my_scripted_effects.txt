@@ -119,8 +119,50 @@ alloc_province = {
 	}
 }
 
+force_alloc_province = {
+	$range_value$ = {
+		if = {
+			limit = {
+				NOT = {
+					owned_by = $tag_value$
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						is_core = $tag_value$
+					}
+				}
+				add_core = $tag_value$
+			}
+			cede_province = $tag_value$
+		}
+	}
+}
+
 alloc_capital = {
 	alloc_province = {
+		range_value = $province_value$
+		tag_value = $tag_value$
+	}
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				NOT = {
+					capital = $province_value$
+				}
+			}
+			set_capital = $province_value$
+			# $province_value$ = {
+			# 	move_capital_effect = yes
+			# }
+		}
+	}
+}
+
+force_alloc_capital = {
+	force_alloc_province = {
 		range_value = $province_value$
 		tag_value = $tag_value$
 	}
@@ -228,7 +270,7 @@ alloc_march = {				# 卫戍国
 				$subject_tag$ = {
 					exists = yes
 					NOT = {
-						is_subject_of = $main_tag$
+						march_of = $main_tag$
 					}
 				}
 			}
