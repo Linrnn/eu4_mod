@@ -278,3 +278,136 @@ alloc_march = {				# 卫戍国
 		}	
 	}
 }
+
+alloc_country_province_religion = {		# 宗教
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				is_religion_enabled = $religion_value$
+			}
+			if = {
+				limit = {
+					NOT = {
+						religion = $religion_value$
+					}
+				}
+				change_religion = $religion_value$
+				force_converted = yes
+			}
+			every_owned_province = {
+				if = {
+					limit = {
+						has_owner_religion = no
+					}
+					change_religion = $religion_value$
+				}
+			}
+		}
+	}
+}
+
+alloc_country_religion = {				# 宗教
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				is_religion_enabled = $religion_value$
+			}
+			if = {
+				limit = {
+					NOT = {
+						religion = $religion_value$
+					}
+				}
+				change_religion = $religion_value$
+				force_converted = yes
+			}
+		}
+	}
+}
+
+alloc_province_religion = {				# 宗教
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				is_religion_enabled = $religion_value$
+			}
+			every_owned_province = {
+				if = {
+					limit = {
+						NOT = {
+							religion = $religion_value$
+						}
+					}
+					change_religion = $religion_value$
+				}
+			}
+		}
+	}
+}
+
+alloc_harmonized_religion = {			# 宗教和谐
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				is_religion_enabled = $religion_value$
+			}
+			if = {
+				limit = {
+					NOT = {
+						religion = $religion_value$
+						has_harmonized_with = $religion_value$
+					}
+				}
+				add_harmonized_religion = $religion_value$
+			}
+		}
+	}
+}
+
+save_province_religion = {
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+			}
+			every_owned_province = {
+				export_to_variable = {
+					which = my_province_religion
+					value = religion
+				}
+			}
+		}
+	}
+}
+
+load_province_religion = {
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+			}
+			every_owned_province = {
+				change_religion = variable:my_province_religion
+			}
+		}
+	}
+}
+
+alloc_government_rank = {			# 政府等级
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				is_subject = no
+				NOT = {
+					government_rank = $rank_value$
+				}
+			}
+			set_government_rank = $rank_value$
+		}
+	}
+}

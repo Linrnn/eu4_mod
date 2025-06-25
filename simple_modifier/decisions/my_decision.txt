@@ -322,7 +322,7 @@ country_decisions = {
 		}
 	}
 
-	my_own_province = {
+	my_set_province = {
 		major = yes
 		color = { 0 255 255 }
 		potential = {
@@ -338,7 +338,23 @@ country_decisions = {
 		}
 	}
 
-	# my_religion_reformed = {
+	my_set_country = {
+		major = yes
+		color = { 0 255 255 }
+		potential = {
+			ai = no
+		}
+		effect = {
+			country_event = {
+				id = my_event.4
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	# my_test_religion_reformed = {
 	# 	major = yes
 	# 	color = { 0 255 255 }
 	# 	potential = {
@@ -355,7 +371,7 @@ country_decisions = {
 	# 	}
 	# }
 
-	# my_hre_test = {
+	# my_test_hre = {
 	# 	major = yes
 	# 	color = { 0 255 255 }
 	# 	potential = {
@@ -392,6 +408,28 @@ country_decisions = {
 	# 	}
 	# 	ai_will_do = {
 	# 		factor = 0
+	# 	}
+	# }
+
+	# my_test_religion = {
+	# 	effect = {
+	# 		every_province = {
+	# 			if = {
+	# 				limit = {
+	# 					has_owner_religion = no
+	# 					NOT = {
+	# 						has_province_modifier = estate_dhimmi_guaranteed_autonomy_mod
+	# 					}
+	# 					owner = {
+	# 						NOT = {
+	# 							religion = confucianism
+	# 							religion = tengri_pagan_reformed
+	# 						}
+	# 					}
+	# 				}
+	# 				add_base_tax = 0
+	# 			}
+	# 		}
 	# 	}
 	# }
 

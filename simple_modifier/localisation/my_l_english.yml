@@ -6,6 +6,7 @@
  my_add_manpower:0 "add manpower"
  my_add_prestige:0 "add prestige"
  my_add_imperial_influence:0 "add imperial influence"
+ my_test:0 "test"
  my_close:0 "close"
  my_back:0 "back"
  my_estate:0 "estate"
@@ -36,15 +37,15 @@
  my_sikhism:0 "sikhism"                                 # 锡克教
 
  my_pagan:0 "pagan"                                     # 原始宗教组
- my_animism:0 "animism"                                 # 泛灵教
- my_shamanism:0 "shamanism"                             # 萨满教
+ my_animism:0 "animism"                                 # 泛灵论
+ my_shamanism:0 "shamanism"                             # 拜物教/萨满教
  my_totemism:0 "totemism"                               # 图腾崇拜
- my_inti:0 "inti"                                       # 因蒂
- my_nahuatl:0 "nahuatl"                                 # 纳瓦特尔
- my_mesoamerican_religion:0 "mesoamerican religion"     # 玛雅
- my_norse_pagan_reformed:0 "norse pagan reformed"       # 诺斯
+ my_inti:0 "inti"                                       # 因蒂崇拜
+ my_nahuatl:0 "nahuatl"                                 # 纳瓦特尔宗教
+ my_mesoamerican_religion:0 "mesoamerican religion"     # 玛雅宗教
+ my_norse_pagan_reformed:0 "norse pagan reformed"       # 诺斯信仰
  my_dreamtime:0 "dreamtime"                             # 梦创神话
- my_tengri_pagan_reformed:0 "tengri pagan reformed"     # 长生天/腾格里
+ my_tengri_pagan_reformed:0 "tengri pagan reformed"     # 腾格里/长生天
 
  my_other:0 "jewish zoroastrian"                        # 其他宗教组
  my_jewish:0 "jewish"                                   # 犹太教
@@ -53,6 +54,13 @@
  my_emperor_of_china:0 "emperor of china"
  my_country_emperor:0 "country emperor"
  my_province_emperor:0 "province emperor"
+ my_country_religion_before:0 "province religion before"
+ my_country_religion_after:0 "province religion after"
+ my_save_province_religion:0 "save province religion"
+ my_load_province_religion:0 "load province religion"
+ my_save_country_religion:0 "save country religion"
+ my_load_country_religion:0 "load country religion"
+ my_government_rank:0 "government rank"
  my_colonial_capital:0 "colonial capital"
  my_colonial_own_FRA:0 "colonial own FRA"
  my_province_own_FRA:0 "province own ______ FRA"

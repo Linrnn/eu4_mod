@@ -135,101 +135,6 @@ country_event = {
 	id = my_event.3
 	is_triggered_only = yes
 
-	option = { # 中国皇帝
-		name = my_emperor_of_china
-		alloc_emperor_of_china = { tag_value = QNG }
-		alloc_march = { main_tag = QNG subject_tag = EGY }
-		alloc_march = { main_tag = QNG subject_tag = ETH }
-		alloc_march = { main_tag = QNG subject_tag = ARB }
-		alloc_march = { main_tag = QNG subject_tag = PER }
-		alloc_march = { main_tag = QNG subject_tag = TMB }
-		alloc_march = { main_tag = QNG subject_tag = MAL }
-		alloc_march = { main_tag = QNG subject_tag = BEN }
-		alloc_march = { main_tag = QNG subject_tag = KON }
-		alloc_march = { main_tag = QNG subject_tag = ZAN }
-		alloc_march = { main_tag = QNG subject_tag = KIT }
-		alloc_march = { main_tag = QNG subject_tag = BUG }
-		alloc_march = { main_tag = QNG subject_tag = GZI }
-		alloc_march = { main_tag = QNG subject_tag = SIB }
-		alloc_march = { main_tag = QNG subject_tag = KZH }
-		alloc_march = { main_tag = QNG subject_tag = JAP }
-		alloc_march = { main_tag = QNG subject_tag = MUG }
-		alloc_march = { main_tag = QNG subject_tag = BHA }
-		alloc_march = { main_tag = QNG subject_tag = AVA }
-		alloc_march = { main_tag = QNG subject_tag = DAI }
-		alloc_march = { main_tag = QNG subject_tag = AYU }
-		alloc_march = { main_tag = QNG subject_tag = MSA }
-		alloc_march = { main_tag = QNG subject_tag = MNA }
-		alloc_march = { main_tag = QNG subject_tag = UHW }
-		alloc_tributary = { main_tag = QNG subject_tag = RUS }
-	}
-	option = { # 神罗国家
-		name = my_country_emperor
-		alloc_emperor = { tag_value = FRA }			# 获得神罗皇帝地位
-		alloc_elector = { tag_value = FRA }			# 授予或取消选帝侯地位
-		alloc_march = { main_tag = FRA subject_tag = TUN }
-		alloc_march = { main_tag = FRA subject_tag = SPA }
-		alloc_march = { main_tag = FRA subject_tag = GBR }
-		alloc_march = { main_tag = FRA subject_tag = ITA }
-		alloc_march = { main_tag = FRA subject_tag = SWA }
-		alloc_march = { main_tag = FRA subject_tag = HAN }
-		alloc_march = { main_tag = FRA subject_tag = NED }
-		alloc_march = { main_tag = RUS subject_tag = TUR }
-		alloc_march = { main_tag = RUS subject_tag = BUL }
-		alloc_march = { main_tag = RUS subject_tag = SCA }
-		alloc_march = { main_tag = RUS subject_tag = PLC }
-		alloc_march = { main_tag = RUS subject_tag = PRU }
-		alloc_march = { main_tag = RUS subject_tag = AUH }
-
-		if = {
-			limit = {
-				hre_religion = catholic				# 神罗宗教
-			}
-			cancel_all_elector = { tag_hold = FRA }
-			alloc_elector = { tag_value = SPA }
-			alloc_elector = { tag_value = ITA }
-			alloc_elector = { tag_value = SWA }
-			alloc_elector = { tag_value = AUH }
-			alloc_elector = { tag_value = PLC }
-			# 非历史天主教国家
-			alloc_elector = { tag_value = GBR }
-		}
-		else_if = {
-			limit = {
-				hre_religion_locked = no			# 神罗宗教锁定
-				hre_religion_treaty = yes			# 神罗宗教条约
-			}
-			cancel_all_elector = { tag_hold = FRA }
-		 	alloc_elector = { tag_value = RUS }
-		 	alloc_elector = { tag_value = PRU }
-		 	alloc_elector = { tag_value = NED }
-		 	alloc_elector = { tag_value = GBR }
-			# 非历史其他宗教国家
-		 	alloc_elector = { tag_value = SPA }
-		 	alloc_elector = { tag_value = ITA }
-		}
-	}
-	option = { # 神罗省份
-		name = my_province_emperor
-		europe = {											# 大陆
-			if = {
-				limit = {
-					is_capital = yes
-				}
-				owner = {
-					set_in_empire = yes						# 把省份加进神罗
-				}
-			}
-		}
-		macaronesia_area = {
-			if = {
-				limit = {
-					is_part_of_hre = yes
-				}
-				set_in_empire = no
-			}
-		}
-	}
 	option = { # 殖民领
 		name = my_colonial_capital
 		alloc_province = { range_value = greenland_area						tag_value = C01 }
@@ -668,6 +573,229 @@ country_event = {
 }
 
 country_event = {
+	id = my_event.4
+	is_triggered_only = yes
+
+	option = { # 中国皇帝
+		name = my_emperor_of_china
+		alloc_emperor_of_china = { tag_value = QNG }
+		alloc_march = { main_tag = QNG subject_tag = EGY }
+		alloc_march = { main_tag = QNG subject_tag = ETH }
+		alloc_march = { main_tag = QNG subject_tag = ARB }
+		alloc_march = { main_tag = QNG subject_tag = PER }
+		alloc_march = { main_tag = QNG subject_tag = TMB }
+		alloc_march = { main_tag = QNG subject_tag = MAL }
+		alloc_march = { main_tag = QNG subject_tag = BEN }
+		alloc_march = { main_tag = QNG subject_tag = KON }
+		alloc_march = { main_tag = QNG subject_tag = ZAN }
+		alloc_march = { main_tag = QNG subject_tag = KIT }
+		alloc_march = { main_tag = QNG subject_tag = BUG }
+		alloc_march = { main_tag = QNG subject_tag = GZI }
+		alloc_march = { main_tag = QNG subject_tag = SIB }
+		alloc_march = { main_tag = QNG subject_tag = KZH }
+		alloc_march = { main_tag = QNG subject_tag = JAP }
+		alloc_march = { main_tag = QNG subject_tag = MUG }
+		alloc_march = { main_tag = QNG subject_tag = BHA }
+		alloc_march = { main_tag = QNG subject_tag = AVA }
+		alloc_march = { main_tag = QNG subject_tag = DAI }
+		alloc_march = { main_tag = QNG subject_tag = AYU }
+		alloc_march = { main_tag = QNG subject_tag = MSA }
+		alloc_march = { main_tag = QNG subject_tag = BTU }
+		alloc_march = { main_tag = QNG subject_tag = UHW }
+		ai_chance = { factor = 0 }
+	}
+	option = { # 神罗国家
+		name = my_country_emperor
+		alloc_emperor = { tag_value = FRA }			# 获得神罗皇帝地位
+		alloc_elector = { tag_value = FRA }			# 授予或取消选帝侯地位
+		alloc_march = { main_tag = FRA subject_tag = TUN }
+		alloc_march = { main_tag = FRA subject_tag = SPA }
+		alloc_march = { main_tag = FRA subject_tag = GBR }
+		alloc_march = { main_tag = FRA subject_tag = ITA }
+		alloc_march = { main_tag = FRA subject_tag = SWA }
+		alloc_march = { main_tag = FRA subject_tag = HAN }
+		alloc_march = { main_tag = FRA subject_tag = NED }
+		alloc_march = { main_tag = RUS subject_tag = TUR }
+		alloc_march = { main_tag = RUS subject_tag = BUL }
+		alloc_march = { main_tag = RUS subject_tag = SCA }
+		alloc_march = { main_tag = RUS subject_tag = PLC }
+		alloc_march = { main_tag = RUS subject_tag = PRU }
+		alloc_march = { main_tag = RUS subject_tag = AUH }
+		alloc_tributary = { main_tag = QNG subject_tag = RUS }
+
+		if = {
+			limit = {
+				hre_religion = catholic				# 神罗宗教
+			}
+			cancel_all_elector = { tag_hold = FRA }
+			alloc_elector = { tag_value = SPA }
+			alloc_elector = { tag_value = ITA }
+			alloc_elector = { tag_value = SWA }
+			alloc_elector = { tag_value = AUH }
+			alloc_elector = { tag_value = PLC }
+			# 非历史天主教国家
+			alloc_elector = { tag_value = GBR }
+		}
+		else_if = {
+			limit = {
+				hre_religion_locked = no			# 神罗宗教锁定
+				hre_religion_treaty = yes			# 神罗宗教条约
+			}
+			cancel_all_elector = { tag_hold = FRA }
+		 	alloc_elector = { tag_value = RUS }
+		 	alloc_elector = { tag_value = PRU }
+		 	alloc_elector = { tag_value = NED }
+		 	alloc_elector = { tag_value = GBR }
+			# 非历史其他宗教国家
+		 	alloc_elector = { tag_value = SPA }
+		 	alloc_elector = { tag_value = ITA }
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = { # 神罗省份
+		name = my_province_emperor
+		europe = {											# 大陆
+			if = {
+				limit = {
+					is_capital = yes
+				}
+				owner = {
+					set_in_empire = yes						# 把省份加进神罗
+				}
+			}
+		}
+		macaronesia_area = {
+			if = {
+				limit = {
+					is_part_of_hre = yes
+				}
+				set_in_empire = no
+			}
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = { # 宗教改革前
+		name = my_country_religion_before
+		# 天主教
+		alloc_country_province_religion = { tag_value = SPA religion_value = catholic }
+		alloc_country_province_religion = { tag_value = AUH religion_value = catholic }
+		alloc_country_province_religion = { tag_value = SCA religion_value = catholic }
+		alloc_country_province_religion = { tag_value = PLC religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C00 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C01 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C02 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C03 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C04 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C05 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C06 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C07 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C08 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C09 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C10 religion_value = catholic }
+		alloc_country_province_religion = { tag_value = C11 religion_value = catholic }
+		# 东正教
+		alloc_country_province_religion = { tag_value = RUS religion_value = orthodox }
+		alloc_country_province_religion = { tag_value = BUL religion_value = orthodox }
+		# 科普特正教
+		alloc_country_province_religion = { tag_value = ETH religion_value = coptic }
+		# 逊尼派
+		alloc_country_province_religion = { tag_value = TUN religion_value = sunni }
+		alloc_country_province_religion = { tag_value = EGY religion_value = sunni }
+		alloc_country_province_religion = { tag_value = TUR religion_value = sunni }
+		alloc_country_province_religion = { tag_value = TMB religion_value = sunni }
+		alloc_country_province_religion = { tag_value = ZAN religion_value = sunni }
+		alloc_country_province_religion = { tag_value = ARB religion_value = sunni }
+		alloc_country_province_religion = { tag_value = MSA religion_value = sunni }
+		# 什叶派
+		alloc_country_province_religion = { tag_value = PER religion_value = shiite }
+		# 上座部佛教
+		alloc_country_province_religion = { tag_value = AVA religion_value = buddhism }
+		alloc_country_province_religion = { tag_value = AYU religion_value = buddhism }
+		# 大乘佛教
+		alloc_country_province_religion = { tag_value = DAI religion_value = mahayana }
+		# 神道教
+		alloc_country_province_religion = { tag_value = JAP religion_value = shinto }
+		# 印度教
+		alloc_country_province_religion = { tag_value = BHA religion_value = hinduism }
+		alloc_province_religion = { tag_value = MUG religion_value = hinduism }
+		# 泛灵论
+		alloc_country_province_religion = { tag_value = BTU religion_value = animism }
+		# 拜物教/萨满教
+		alloc_country_province_religion = { tag_value = GZI religion_value = shamanism }
+		alloc_country_province_religion = { tag_value = KON religion_value = shamanism }
+		alloc_country_province_religion = { tag_value = BEN religion_value = shamanism }
+		alloc_province_religion = { tag_value = MAL religion_value = shamanism }
+		# 儒教
+		alloc_country_religion = { tag_value = QNG religion_value = confucianism }
+		alloc_harmonized_religion = { tag_value = QNG religion_value = sunni }
+		alloc_harmonized_religion = { tag_value = QNG religion_value = buddhism }
+		alloc_harmonized_religion = { tag_value = QNG religion_value = vajrayana }
+		alloc_harmonized_religion = { tag_value = QNG religion_value = tengri_pagan_reformed }
+		# 腾格里/长生天
+		alloc_country_religion = { tag_value = SIB religion_value = tengri_pagan_reformed }
+		ai_chance = { factor = 0 }
+	}
+	option = { # 宗教改革后
+		name = my_country_religion_after
+		# 天主教
+		alloc_country_province_religion = { tag_value = KON religion_value = catholic }
+		# 新教
+		alloc_country_province_religion = { tag_value = HAN religion_value = protestant }
+		alloc_country_province_religion = { tag_value = PRU religion_value = protestant }
+		alloc_country_province_religion = { tag_value = SCA religion_value = protestant }
+		alloc_country_province_religion = { tag_value = C01 religion_value = protestant }
+		alloc_country_province_religion = { tag_value = C02 religion_value = protestant }
+		alloc_country_province_religion = { tag_value = C03 religion_value = protestant }
+		# 改革宗
+		alloc_country_province_religion = { tag_value = NED religion_value = reformed }
+		# 圣公宗
+		alloc_country_province_religion = { tag_value = GBR religion_value = anglican }
+		# 东正教
+		alloc_country_province_religion = { tag_value = C00 religion_value = orthodox }
+		ai_chance = { factor = 0 }
+	}
+	option = { # 保存省份宗教
+		name = my_save_province_religion
+		save_province_religion = { tag_value = QNG }
+		save_province_religion = { tag_value = SIB }
+		ai_chance = { factor = 0 }
+	}
+	option = { # 加载省份宗教
+		name = my_load_province_religion
+		alloc_province_religion = { tag_value = TUN religion_value = sunni }
+		alloc_province_religion = { tag_value = EGY religion_value = sunni }
+		alloc_province_religion = { tag_value = TMB religion_value = sunni }
+		alloc_province_religion = { tag_value = ZAN religion_value = sunni }
+		alloc_province_religion = { tag_value = TUR religion_value = sunni }
+		alloc_province_religion = { tag_value = ARB religion_value = sunni }
+		alloc_province_religion = { tag_value = KZH religion_value = sunni }
+		alloc_province_religion = { tag_value = MSA religion_value = sunni }
+		alloc_province_religion = { tag_value = PER religion_value = shiite }
+		alloc_province_religion = { tag_value = MUG religion_value = hinduism }
+		alloc_province_religion = { tag_value = MAL religion_value = shamanism }
+		load_province_religion = { tag_value = QNG }
+		load_province_religion = { tag_value = SIB }
+		ai_chance = { factor = 0 }
+	}
+	option = { # 政府等级
+		name = my_government_rank
+		every_capital_province = {
+			alloc_government_rank = {
+				tag_value = owner
+				rank_value = 3
+			}
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = { # 关闭
+		name = my_close
+		ai_chance = { factor = 100 }
+	}
+}
+
+# event.1x
+
+country_event = {
 	id = my_event.11
 	is_triggered_only = yes
 
@@ -988,6 +1116,8 @@ country_event = {
 		}
 	}
 }
+
+# event.3x
 
 # country_event = {
 # 	id = my_event.31
