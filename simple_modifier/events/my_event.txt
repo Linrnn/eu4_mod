@@ -833,6 +833,7 @@ country_event = {
 	}
 	option = { # 加modifier
 		name = my_try_add_country_modifier
+		try_add_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier }
 		try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier }
 		try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier }
 		try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier }

@@ -29,7 +29,77 @@ my_monomer_modifier = {
 
 fra_rus_qng_modifier = {
 	diplomatic_upkeep = 15						# 外交关系数量
+	imperial_authority_value = 1.0				# 月度帝国权威（数值）：神圣罗马帝国专用
 	imperial_mandate = 1.0						# 月度天命值：中华帝国专用
+}
+
+special_unit_modifier = {
+	# special_unit_forcelimit = 1.0				# 可招募的特殊单位上限
+
+	can_recruit_cossacks = yes					# 允许招募哥萨克：国家修正
+	allowed_cossack_fraction = 1.0				# 可招募哥萨克的比例
+
+	can_recruit_janissaries = yes				# 允许招募耶尼切里：国家修正
+	allow_janissaries_from_own_faith = yes		# 允许自正统信仰省份招募耶尼切里
+
+	can_recruit_hussars = yes					# 允许招募翼骑兵：国家修正
+	# amount_of_hussars = 1000					# 额外可招募的翼骑兵上限
+
+	can_recruit_revolutionary_guards = yes		# 允许招募革命卫队：国家修正
+	allowed_rev_guard_fraction = 1.0			# 可招募革命卫队的比例
+
+	has_tercio = yes							# 允许招募方阵步兵：国家修正
+	allowed_tercio_fraction = 1.0				# 可招募方阵步兵的比例
+
+	has_musketeer = yes							# 允许招募火枪手：国家修正
+	allowed_musketeer_fraction = 1.0			# 可招募火枪手的比例
+
+	has_streltsy = yes							# 允许招募射击军：国家修正
+	allowed_streltsy_fraction = 1.0				# 可招募射击军的比例
+
+	has_mamluks = yes							# 允许招募马穆鲁克：国家修正。需配合省份修正 "local_has_mamluks = yes" ，才能招募马穆鲁克。
+	allowed_mamluks_fraction = 1.0				# 可招募马穆鲁克的比例
+	# amount_of_mamluks = 1000					# 额外可招募的马穆鲁克上限
+
+	has_qizilbash = yes							# 允许招募奇兹尔巴什：国家修正。需配合省份修正 "local_has_qizilbash = yes" ，才能招募奇兹尔巴什。
+	allowed_qizilbash_fraction = 1.0			# 可招募奇兹尔巴什的比例
+	# amount_of_qizilbash = 1000				# 额外可招募的奇兹尔巴什上限
+
+	# has_marines = yes							# 可招募海军陆战队
+	# allowed_marine_fraction = 1.0				# 可招募海军陆战队的比例
+
+	# can_recruit_rajputs = yes					# 允许招募拉杰普特：国家修正
+
+	# has_banners = yes							# 允许招募八旗部队：国家修正
+	# amount_of_banners = 1.0					# 额外可招募的八旗上限
+
+	# can_recruit_cawa = yes					# 允许招募恰瓦：国家修正
+	# amount_of_cawa = 1.0						# 额外可招募的恰瓦上限
+	# cawa_cost_modifier = -0.10				# 招募恰瓦需要的军事点数花费
+
+	# has_carolean = yes						# 允许招募卡尔军：国家修正
+	# amount_of_carolean = 1000					# 额外可招募的卡尔军上限
+
+	# has_samurai = yes							# 允许招募武士：国家修正
+	# allowed_samurai_fraction = 1.0			# 可招募武士的比例
+
+	has_galleass = yes							# 允许建造加莱赛战船：国家修正
+	allowed_galleass_fraction = 1.0				# 可招募加莱赛战船的比例
+
+	has_voc_indiamen = yes						# 允许建造东印度商船：国家修正
+	allowed_voc_indiamen_fraction = 1.0			# 可招募东印度商船的比例
+
+	has_man_of_war = yes						# 允许建造主力舰：国家修正
+	allowed_man_of_war_fraction = 1.0			# 可招募主力舰的比例
+
+	# has_geobukseon = yes						# 允许建造龟船：国家修正
+	# allowed_geobukseon_fraction = 1.0			# 可招募龟船的比例
+
+	# has_galleon = yes							# 允许建造盖伦帆船：国家修正
+	# allowed_galleon_fraction = 1.0			# 可招募盖伦帆船的比例
+
+	# has_caravel = yes							# 允许建造卡拉维尔帆船：国家修正
+	# allowed_caravel_fraction = 1.0			# 可招募卡拉维尔帆船的比例
 }
 
 # my_global_unrest_modifier = {
