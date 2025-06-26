@@ -4,58 +4,65 @@ country_event = {
 	id = my_event.1
 	is_triggered_only = yes
 
-	option = {
+	option = { # 增加行政点
 		name = my_add_adm
-		add_adm_power = 1000			# 增加行政点
+		add_adm_power = 1000
 		ai_chance = {
 			factor = 0
 		}
 	}
-	option = {
+	option = { # 增加外交点
 		name = my_add_dip
-		add_dip_power = 1000			# 增加外交点
+		add_dip_power = 1000
 		ai_chance = {
 			factor = 0
 		}
 	}
-	option = {
+	option = { # 增加军事点
 		name = my_add_mil
-		add_mil_power = 1000			# 增加军事点
+		add_mil_power = 1000
 		ai_chance = {
 			factor = 0
 		}
 	}
-	option = {
-		name = my_add_cash
-		add_treasury = 10000			# 增加金币
-		ai_chance = {
-			factor = 0
-		}
-	}
-	option = {
+	# option = { # 增加金币
+	# 	name = my_add_cash
+	# 	add_treasury = 10000
+	# 	ai_chance = {
+	# 		factor = 0
+	# 	}
+	# }
+	option = { # 增加人力
 		name = my_add_manpower
-		add_manpower = 10				# 增加人力
+		add_manpower = 10							
 		ai_chance = {
 			factor = 0
 		}
 	}
-	option = {
+	option = { # 政府改革
+		name = my_change_government_reform_progress
+		change_government_reform_progress  = 100
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = { # 个人威望
 		name = my_add_prestige
-		add_prestige = 100				# 增加个人威望
+		add_prestige = 100
 		ai_chance = {
 			factor = 0
 		}
 	}
-	option = {
+	option = { # 帝国威望
 		name = my_add_imperial_influence
-		add_imperial_influence = 100	# 增加或减少的帝国权威值
+		add_imperial_influence = 100
 		ai_chance = {
 			factor = 0
 		}
 	}
-	option = {
+	option = { # 领地百分比/阶级忠诚度
 		name = my_estate
-		change_estate_land_share = {	# 领地百分比
+		change_estate_land_share = {
 			estate = estate_burghers	# 市民
 			share = -100
 		}
@@ -67,7 +74,7 @@ country_event = {
 			estate = estate_church		# 教士
 			share = -100
 		}
-		add_estate_loyalty = {			# 忠诚度
+		add_estate_loyalty = {
 			estate = estate_burghers
 			loyalty = 100
 		}
@@ -83,7 +90,7 @@ country_event = {
 			factor = 0
 		}
 	}
-	option = {
+	option = { # 关闭
 		name = my_close
 		ai_chance = {
 			factor = 100
@@ -621,7 +628,7 @@ country_event = {
 		alloc_march = { main_tag = RUS subject_tag = PLC }
 		alloc_march = { main_tag = RUS subject_tag = PRU }
 		alloc_march = { main_tag = RUS subject_tag = AUH }
-		alloc_tributary = { main_tag = QNG subject_tag = RUS }
+		# alloc_tributary = { main_tag = QNG subject_tag = RUS }
 
 		if = {
 			limit = {
@@ -727,10 +734,11 @@ country_event = {
 		alloc_province_religion = { tag_value = MAL religion_value = shamanism }
 		# 儒教
 		alloc_country_religion = { tag_value = QNG religion_value = confucianism }
-		alloc_harmonized_religion = { tag_value = QNG religion_value = sunni }
+		alloc_harmonized_religion_group = { tag_value = QNG religion_group_value = muslim religion_value = sunni }
+		alloc_harmonized_religion_group = { tag_value = QNG religion_group_value = pagan religion_value = animism }
+		alloc_harmonized_religion_group = { tag_value = QNG religion_group_value = pagan religion_value = tengri_pagan_reformed }
 		alloc_harmonized_religion = { tag_value = QNG religion_value = buddhism }
 		alloc_harmonized_religion = { tag_value = QNG religion_value = vajrayana }
-		alloc_harmonized_religion = { tag_value = QNG religion_value = tengri_pagan_reformed }
 		# 腾格里/长生天
 		alloc_country_religion = { tag_value = SIB religion_value = tengri_pagan_reformed }
 		ai_chance = { factor = 0 }
@@ -746,6 +754,7 @@ country_event = {
 		alloc_country_province_religion = { tag_value = C01 religion_value = protestant }
 		alloc_country_province_religion = { tag_value = C02 religion_value = protestant }
 		alloc_country_province_religion = { tag_value = C03 religion_value = protestant }
+		alloc_country_province_religion = { tag_value = C11 religion_value = protestant }
 		# 改革宗
 		alloc_country_province_religion = { tag_value = NED religion_value = reformed }
 		# 圣公宗
@@ -785,6 +794,50 @@ country_event = {
 				rank_value = 3
 			}
 		}
+		ai_chance = { factor = 0 }
+	}
+	option = { # 主流文化
+		name = my_country_culture
+		alloc_province_culture			= { range_value	= 49	culture_value = prussian		}
+		alloc_province_culture			= { range_value	= 50	culture_value = prussian		}
+		alloc_province_culture			= { range_value	= 2969	culture_value = prussian		}
+		alloc_country_culture			= { tag_value	= PRU	culture_value = prussian		}
+		alloc_country_culture			= { tag_value	= ITA	culture_value = umbrian			}
+		alloc_country_culture			= { tag_value	= ARB	culture_value = bedouin_arabic	}
+		alloc_country_culture			= { tag_value	= PER	culture_value = persian			}
+		alloc_country_province_culture	= { tag_value	= C00	culture_value = russian 		}
+		alloc_country_province_culture	= { tag_value	= C01	culture_value = quebecois 		}
+		alloc_country_province_culture	= { tag_value	= C02	culture_value = american 		}
+		alloc_country_province_culture	= { tag_value	= C03	culture_value = louisianans 	}
+		alloc_country_province_culture	= { tag_value	= C04	culture_value = mexican 		}
+		alloc_country_province_culture	= { tag_value	= C05	culture_value = mexican 		}
+		alloc_country_province_culture	= { tag_value	= C06	culture_value = castillian 		}
+		alloc_country_province_culture	= { tag_value	= C07	culture_value = castillian 		}
+		alloc_country_province_culture	= { tag_value	= C08	culture_value = castillian 		}
+		alloc_country_province_culture	= { tag_value	= C09	culture_value = platinean 		}
+		alloc_country_province_culture	= { tag_value	= C10	culture_value = brazilian 		}
+		alloc_country_province_culture	= { tag_value	= C11	culture_value = english 		}
+		ai_chance = { factor = 0 }
+	}
+	option = { # 禁止洗文化
+		name = my_forbid_change_culture
+		if = {
+			limit = {
+				NOT = {
+					has_global_flag = forbid_change_culture
+				}
+			}
+			set_global_flag = forbid_change_culture
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = { # 加modifier
+		name = my_try_add_country_modifier
+		try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier }
+		try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier }
+		try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier }
+		try_create_guarantee = { main_tag = FRA subject_tag = RUS }
+		try_create_guarantee = { main_tag = FRA subject_tag = QNG }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭
@@ -1355,8 +1408,8 @@ country_event = {
 
 country_event = {
 	id = my_event.32
-	title = my_event_31_title
-	desc = my_event_31_desc
+	title = my_event_32_title
+	desc = my_event_32_desc
 
 	mean_time_to_happen = {
 		months = 1
@@ -1472,6 +1525,38 @@ country_event = {
 				# 	#hidden = no
 				# }
 			}
+		}
+	}
+	option = {
+		name = my_close
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = {
+	id = my_event.33
+	title = my_event_33_title
+	desc = my_event_33_desc
+
+	mean_time_to_happen = {
+		months = 1
+	}
+	trigger = {
+		has_global_flag = forbid_change_culture
+		any_owned_province = {
+			has_construction = culture		# 省份在洗文化
+		}
+	}
+	immediate  = {
+		every_owned_province = {
+			if = {
+				limit = {
+					has_construction = culture
+				}
+			}
+			cancel_construction = yes		# 取消省份正在进行的活动
 		}
 	}
 	option = {

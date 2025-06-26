@@ -53,6 +53,38 @@ sub_province_development = {
 	}
 }
 
+try_add_country_modifier = {
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				NOT = {
+					has_country_modifier = $modifier_value$
+				}
+			}
+			add_country_modifier = {
+				name = $modifier_value$
+				duration = -1	# -1:无限时间
+			}
+		}
+	}
+}
+
+try_create_guarantee = {							# 保障独立
+	$main_tag$ = {
+		if = {
+			limit = {
+				exists = yes
+				exists = $subject_tag$
+				NOT = {
+					has_guaranteed = $subject_tag$	# 已经保证独立
+				}
+			}
+			create_guarantee = $subject_tag$		# 给予保障独立的国家
+		}
+	}
+}
+
 alloc_release = {
 	$range_value$ = {
 		if = {
@@ -182,7 +214,7 @@ force_alloc_capital = {
 	}
 }
 
-alloc_emperor = {			# 神罗皇帝
+alloc_emperor = {									# 神罗皇帝
 	$tag_value$ = {
 		if = {
 			limit = {
@@ -194,7 +226,7 @@ alloc_emperor = {			# 神罗皇帝
 	}
 }
 
-alloc_elector = {			# 神罗帝选侯
+alloc_elector = {									# 神罗帝选侯
 	if = {
 		limit = {
 			NOT = {
@@ -227,7 +259,7 @@ cancel_all_elector = {
 	}
 }
 
-alloc_emperor_of_china = {	# 中华帝国
+alloc_emperor_of_china = {							# 中华帝国
 	if = {
 		limit = {
 			$tag_value$ = {
@@ -240,7 +272,7 @@ alloc_emperor_of_china = {	# 中华帝国
 	}
 }
 
-alloc_tributary = {			# 朝贡国
+alloc_tributary = {									# 朝贡国
 	$main_tag$ = {
 		if = {
 			limit = {
@@ -257,11 +289,11 @@ alloc_tributary = {			# 朝贡国
     			subject_type = tributary_state
     			subject = $subject_tag$
 			}
-		}	
+		}
 	}
 }
 
-alloc_march = {				# 卫戍国
+alloc_march = {										# 卫戍国
 	$main_tag$ = {
 		if = {
 			limit = {
@@ -275,11 +307,11 @@ alloc_march = {				# 卫戍国
 				}
 			}
 			create_march = $subject_tag$
-		}	
+		}
 	}
 }
 
-alloc_country_province_religion = {		# 宗教
+alloc_country_province_religion = {					# 宗教
 	$tag_value$ = {
 		if = {
 			limit = {
@@ -294,6 +326,9 @@ alloc_country_province_religion = {		# 宗教
 				}
 				change_religion = $religion_value$
 				force_converted = yes
+			}
+			alloc_role_religion = {
+				religion_value = $religion_value$
 			}
 			every_owned_province = {
 				if = {
@@ -307,7 +342,7 @@ alloc_country_province_religion = {		# 宗教
 	}
 }
 
-alloc_country_religion = {				# 宗教
+alloc_country_religion = {							# 宗教
 	$tag_value$ = {
 		if = {
 			limit = {
@@ -323,11 +358,14 @@ alloc_country_religion = {				# 宗教
 				change_religion = $religion_value$
 				force_converted = yes
 			}
+			alloc_role_religion = {
+				religion_value = $religion_value$
+			}
 		}
 	}
 }
 
-alloc_province_religion = {				# 宗教
+alloc_province_religion = {							# 宗教
 	$tag_value$ = {
 		if = {
 			limit = {
@@ -348,7 +386,27 @@ alloc_province_religion = {				# 宗教
 	}
 }
 
-alloc_harmonized_religion = {			# 宗教和谐
+alloc_harmonized_religion_group = {					# 宗教和谐
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				is_religion_enabled = $religion_value$
+			}
+			if = {
+				limit = {
+					NOT = {
+						religion = $religion_value$
+						has_harmonized_with = $religion_group_value$
+					}
+				}
+				add_harmonized_religion = $religion_value$
+			}
+		}
+	}
+}
+
+alloc_harmonized_religion = {						# 宗教和谐
 	$tag_value$ = {
 		if = {
 			limit = {
@@ -397,17 +455,122 @@ load_province_religion = {
 	}
 }
 
-alloc_government_rank = {			# 政府等级
+alloc_government_rank = {							# 政府等级
 	$tag_value$ = {
 		if = {
 			limit = {
 				exists = yes
-				is_subject = no
+				is_free_or_tributary_trigger = yes
 				NOT = {
 					government_rank = $rank_value$
 				}
 			}
 			set_government_rank = $rank_value$
 		}
+	}
+}
+
+alloc_country_province_culture = {					# 主流文化
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+			}
+			if = {
+				limit = {
+					NOT = {
+						primary_culture = $culture_value$
+					}
+				}
+				change_primary_culture = $culture_value$
+			}
+			alloc_role_culture = {
+				culture_value = $culture_value$
+			}
+			every_owned_province = {
+				if = {
+					limit = {
+						NOT = {
+							culture = $culture_value$
+						}
+					}
+					change_culture = $culture_value$
+				}
+			}
+		}
+	}
+}
+
+alloc_country_culture = {							# 主流文化
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+			}
+			if = {
+				limit = {
+					NOT = {
+						primary_culture = $culture_value$
+					}
+				}
+				change_primary_culture = $culture_value$
+			}
+			alloc_role_culture = {
+				culture_value = $culture_value$
+			}
+		}
+	}
+}
+
+alloc_province_culture = {							# 主流文化
+	$range_value$ = {
+		if = {
+			limit = {
+				NOT = {
+					culture = $culture_value$
+				}
+			}
+			change_culture = $culture_value$
+		}
+	}
+}
+
+alloc_role_religion = {
+	if = {
+		limit = {
+			NOT = {
+				ruler_religion = $religion_value$
+			}
+		}
+		set_ruler_religion = $religion_value$
+	}
+	if = {
+		limit = {
+			has_heir = yes
+			NOT = {
+				heir_religion = $religion_value$
+			}
+		}
+		set_heir_religion = $religion_value$
+	}
+}
+
+alloc_role_culture = {
+	if = {
+		limit = {
+			NOT = {
+				ruler_culture = $culture_value$
+			}
+		}
+		set_ruler_culture = $culture_value$
+	}
+	if = {
+		limit = {
+			has_heir = yes
+			NOT = {
+				heir_culture = $culture_value$
+			}
+		}
+		set_heir_culture = $culture_value$
 	}
 }

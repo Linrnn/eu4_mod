@@ -18,7 +18,7 @@ all_nations = {
 	# 乘法
 	reinforce_cost_modifier = 1					# 补员花费
 	missionary_maintenance_cost = 1				# 传教维护费
-	female_advisor_chance = 0.2					# 出现女性顾问几率
+	female_advisor_chance = 0.3					# 出现女性顾问几率
 	drill_decay_modifier = -0.55				# 陆军操练度损失
 	# global_regiment_recruit_speed = 2			# 陆军征召时间
 	# global_ship_recruit_speed = 4				# 全国船只建造时间

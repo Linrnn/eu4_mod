@@ -27,6 +27,11 @@ my_monomer_modifier = {
 	#can_colony_boost_development = yes 		# 完成殖民的省份生产、税收、人力都+1
 }
 
+fra_rus_qng_modifier = {
+	diplomatic_upkeep = 15						# 外交关系数量
+	imperial_mandate = 1.0						# 月度天命值：中华帝国专用
+}
+
 # my_global_unrest_modifier = {
 #	# 加法
 # 	global_unrest = 200							# 全国叛乱度
