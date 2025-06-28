@@ -220,7 +220,7 @@ country_decisions = {
 
 	my_change_ruler_heir = {
 		major = yes
-		color = { 0 255 255 }
+		color = { 60 179 113 }
 		potential = {
 			ai = no
 			OR = {
@@ -308,7 +308,7 @@ country_decisions = {
 
 	my_get_thing = {
 		major = yes
-		color = { 0 255 255 }
+		color = { 60 179 113 }
 		potential = {
 			ai = no
 		}
@@ -321,9 +321,67 @@ country_decisions = {
 			factor = 0
 		}
 	}
+		
+	my_birth_of_a_new_city = {
+		major = yes
+		color = { 60 179 113 }
+		potential = {
+			ai = no
+		}
+		allow = {
+			any_owned_province = {
+				NOT = {
+					has_province_modifier = birth_of_a_new_city_adm
+					has_province_modifier = birth_of_a_new_city_dip
+					has_province_modifier = birth_of_a_new_city_mil
+				}
+			}
+		}
+		effect = {
+			country_event = {
+				id = my_event.5
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	my_birth_of_a_new_city_remove = {
+		major = yes
+		color = { 60 179 113 }
+		potential = {
+			ai = no
+		}
+		allow = {
+			any_owned_province = {
+				OR = {
+					has_province_modifier = birth_of_a_new_city_adm
+					has_province_modifier = birth_of_a_new_city_dip
+					has_province_modifier = birth_of_a_new_city_mil
+				}
+			}
+		}
+		effect = {
+			try_remove_all_province_modifier = {
+				tag_value = FRA
+				modifier_value = birth_of_a_new_city_adm
+			}
+			try_remove_all_province_modifier = {
+				tag_value = FRA
+				modifier_value = birth_of_a_new_city_dip
+			}
+			try_remove_all_province_modifier = {
+				tag_value = FRA
+				modifier_value = birth_of_a_new_city_mil
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 
 	my_set_province = {
-		major = yes
 		color = { 0 255 255 }
 		potential = {
 			ai = no
@@ -339,7 +397,6 @@ country_decisions = {
 	}
 
 	my_set_country = {
-		major = yes
 		color = { 0 255 255 }
 		potential = {
 			ai = no

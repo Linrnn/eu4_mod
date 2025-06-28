@@ -681,6 +681,11 @@ country_event = {
 		}
 		ai_chance = { factor = 0 }
 	}
+	option = { # 教监
+		name = my_country_papal_controller
+		alloc_papal_controller = { tag_value = FRA }
+		ai_chance = { factor = 0 }
+	}
 	option = { # 宗教改革前
 		name = my_country_religion_before
 		# 天主教
@@ -831,17 +836,116 @@ country_event = {
 		}
 		ai_chance = { factor = 0 }
 	}
-	option = { # 加modifier
+	option = { # 加国家modifier
 		name = my_try_add_country_modifier
-		try_add_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier }
-		try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier }
-		try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier }
-		try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier }
-		try_create_guarantee = { main_tag = FRA subject_tag = RUS }
-		try_create_guarantee = { main_tag = FRA subject_tag = QNG }
+		try_add_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier duration_value = -1 }
+		try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier uration_value = -1 }
+		try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier uration_value = -1 }
+		try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier uration_value = -1 }
+		ai_chance = { factor = 0 }
+	}
+	option = { # 任务
+		name = my_mission
+		# 任务：殖民手段
+		alloc_march = { main_tag = FRA subject_tag = BEN }
+		# 任务：独占印度
+		alloc_march = { main_tag = FRA subject_tag = BHA }
+		# 任务：黄金边区
+		try_remove_country_modifier = {
+			tag_value = FRA
+			modifier_value = fra_golden_march_modifier
+		}
+		# 任务：天主的居所
+		try_remove_country_modifier = {
+			tag_value = FRA
+			modifier_value = fra_golden_march2_modifier
+		}
+		# 任务：拓展法兰西疆域
+		try_add_country_modifier = {
+			tag_value = FRA
+			modifier_value = fra_golden_march3_modifier
+			duration_value = -1
+		}
+		# 任务：荣光之城
+		try_add_country_modifier = {
+			tag_value = FRA
+			modifier_value = fra_host_city_of_lights_modifier
+			duration_value = -1
+		}
+		# 阿维尼翁教廷领地
+		alloc_permanent_claim = {
+			tag_value = FRA
+			range_value = palestine_area
+		}
+		# 任务：巴黎宝座
+		try_add_country_modifier = {
+			tag_value = FRA
+			modifier_value = fra_mission_modifier
+			duration_value = 1
+		}
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭
+		name = my_close
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = {
+	id = my_event.5	# 事件1075改
+	is_triggered_only = yes
+	title = "EVTNAME1075"
+	desc = "EVTDESC1075"
+	picture = ECONOMY_eventPicture
+	goto = invest_province
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					is_overseas = no
+					is_city = yes
+					NOT = {
+						has_province_modifier = birth_of_a_new_city_adm
+						has_province_modifier = birth_of_a_new_city_dip
+						has_province_modifier = birth_of_a_new_city_mil
+					}
+				}
+				save_event_target_as = invest_province
+			}
+		}
+	}
+	option = {	# birth_of_a_new_city_adm
+		name = "EVTOPTA1075"
+		event_target:invest_province = {
+			add_province_modifier = {
+				name = birth_of_a_new_city_adm
+				duration = -1
+			}
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {	# birth_of_a_new_city_dip
+		name = "EVTOPTC1075"
+		event_target:invest_province = {
+			add_province_modifier = {
+				name = birth_of_a_new_city_dip
+				duration = -1
+			}
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {	# birth_of_a_new_city_mil
+		name = "EVTOPTB1075"
+		event_target:invest_province = {
+			add_province_modifier = {
+				name = birth_of_a_new_city_mil
+				duration = -1
+			}
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = {	# close
 		name = my_close
 		ai_chance = { factor = 100 }
 	}

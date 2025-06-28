@@ -64,7 +64,37 @@ try_add_country_modifier = {
 			}
 			add_country_modifier = {
 				name = $modifier_value$
-				duration = -1	# -1:无限时间
+				duration = $duration_value$		# -1:无限时间
+			}
+		}
+	}
+}
+
+try_remove_country_modifier = {
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				has_country_modifier = $modifier_value$
+			}
+			remove_country_modifier = $modifier_value$
+		}
+	}
+}
+
+try_remove_all_province_modifier = {
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+			}
+			every_owned_province = {
+				if = {
+					limit = {
+						has_province_modifier = $modifier_value$
+					}
+					remove_province_modifier = $modifier_value$
+				}
 			}
 		}
 	}
@@ -81,6 +111,24 @@ try_create_guarantee = {							# 保障独立
 				}
 			}
 			create_guarantee = $subject_tag$		# 给予保障独立的国家
+		}
+	}
+}
+
+alloc_permanent_claim = {							# 永久宣称
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				$range_value$ = {
+					NOT = {
+						is_permanent_claim = $tag_value$	# 是永久宣称
+					}
+				}
+			}
+			$range_value$ = {
+				add_permanent_claim = $tag_value$			# 获得永久性宣称的国家
+			}
 		}
 	}
 }
@@ -572,5 +620,19 @@ alloc_role_culture = {
 			}
 		}
 		set_heir_culture = $culture_value$
+	}
+}
+
+alloc_papal_controller = {							# 教监
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				religion = catholic
+				ruler_religion = catholic
+				is_papal_controller = no
+			}
+			transfer_papal_controller = $tag_value$
+		}
 	}
 }
