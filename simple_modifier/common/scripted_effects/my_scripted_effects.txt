@@ -82,6 +82,29 @@ try_remove_country_modifier = {
 	}
 }
 
+try_add_all_province_modifier = {
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+			}
+			every_owned_province = {
+				if = {
+					limit = {
+						NOT = {
+							has_province_modifier = $modifier_value$
+						}
+					}
+					add_province_modifier = {
+						name = $modifier_value$
+						duration = $duration_value$		# -1:无限时间
+					}
+				}
+			}
+		}
+	}
+}
+
 try_remove_all_province_modifier = {
 	$tag_value$ = {
 		if = {
@@ -122,6 +145,7 @@ alloc_permanent_claim = {							# 永久宣称
 				exists = yes
 				$range_value$ = {
 					NOT = {
+						owned_by = $tag_value$
 						is_permanent_claim = $tag_value$	# 是永久宣称
 					}
 				}

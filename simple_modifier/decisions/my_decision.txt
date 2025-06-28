@@ -331,34 +331,10 @@ country_decisions = {
 		allow = {
 			any_owned_province = {
 				NOT = {
-					has_province_modifier = birth_of_a_new_city_adm
-					has_province_modifier = birth_of_a_new_city_dip
-					has_province_modifier = birth_of_a_new_city_mil
-				}
-			}
-		}
-		effect = {
-			country_event = {
-				id = my_event.5
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
-
-	my_birth_of_a_new_city_remove = {
-		major = yes
-		color = { 60 179 113 }
-		potential = {
-			ai = no
-		}
-		allow = {
-			any_owned_province = {
-				OR = {
-					has_province_modifier = birth_of_a_new_city_adm
-					has_province_modifier = birth_of_a_new_city_dip
-					has_province_modifier = birth_of_a_new_city_mil
+					# has_province_modifier = birth_of_a_new_city_adm
+					# has_province_modifier = birth_of_a_new_city_dip
+					# has_province_modifier = birth_of_a_new_city_mil
+					has_province_modifier = birth_of_a_new_city_all
 				}
 			}
 		}
@@ -375,11 +351,50 @@ country_decisions = {
 				tag_value = FRA
 				modifier_value = birth_of_a_new_city_mil
 			}
+			try_add_all_province_modifier = {
+				tag_value = FRA
+				modifier_value = birth_of_a_new_city_all
+				duration_value = -1
+			}
 		}
 		ai_will_do = {
 			factor = 0
 		}
 	}
+
+	# my_birth_of_a_new_city_remove = {
+	# 	major = yes
+	# 	color = { 60 179 113 }
+	# 	potential = {
+	# 		ai = no
+	# 	}
+	# 	allow = {
+	# 		any_owned_province = {
+	# 			OR = {
+	# 				has_province_modifier = birth_of_a_new_city_adm
+	# 				has_province_modifier = birth_of_a_new_city_dip
+	# 				has_province_modifier = birth_of_a_new_city_mil
+	# 			}
+	# 		}
+	# 	}
+	# 	effect = {
+	# 		try_remove_all_province_modifier = {
+	# 			tag_value = FRA
+	# 			modifier_value = birth_of_a_new_city_adm
+	# 		}
+	# 		try_remove_all_province_modifier = {
+	# 			tag_value = FRA
+	# 			modifier_value = birth_of_a_new_city_dip
+	# 		}
+	# 		try_remove_all_province_modifier = {
+	# 			tag_value = FRA
+	# 			modifier_value = birth_of_a_new_city_mil
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
 
 	my_set_province = {
 		color = { 0 255 255 }

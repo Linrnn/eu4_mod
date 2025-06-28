@@ -844,45 +844,31 @@ country_event = {
 		try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier uration_value = -1 }
 		ai_chance = { factor = 0 }
 	}
-	option = { # 任务
-		name = my_mission
+	option = { # 任务条件
+		name = my_mission_trigger
 		# 任务：殖民手段
 		alloc_march = { main_tag = FRA subject_tag = BEN }
 		# 任务：独占印度
 		alloc_march = { main_tag = FRA subject_tag = BHA }
+		# 任务：阿维尼翁教廷领地
+		force_alloc_capital = { province_value = 118 tag_value = PAP }
+		ai_chance = { factor = 0 }
+	}
+	option = { # 任务效果
+		name = my_mission_effect
 		# 任务：黄金边区
-		try_remove_country_modifier = {
-			tag_value = FRA
-			modifier_value = fra_golden_march_modifier
-		}
+		try_remove_country_modifier = { tag_value = FRA modifier_value = fra_golden_march_modifier }
 		# 任务：天主的居所
-		try_remove_country_modifier = {
-			tag_value = FRA
-			modifier_value = fra_golden_march2_modifier
-		}
+		try_remove_country_modifier = { tag_value = FRA modifier_value = fra_golden_march2_modifier }
 		# 任务：拓展法兰西疆域
-		try_add_country_modifier = {
-			tag_value = FRA
-			modifier_value = fra_golden_march3_modifier
-			duration_value = -1
-		}
+		try_add_country_modifier = { tag_value = FRA modifier_value = fra_golden_march3_modifier duration_value = -1 }
 		# 任务：荣光之城
-		try_add_country_modifier = {
-			tag_value = FRA
-			modifier_value = fra_host_city_of_lights_modifier
-			duration_value = -1
-		}
-		# 阿维尼翁教廷领地
-		alloc_permanent_claim = {
-			tag_value = FRA
-			range_value = palestine_area
-		}
+		try_add_country_modifier = { tag_value = FRA modifier_value = fra_host_city_of_lights_modifier duration_value = -1 }
 		# 任务：巴黎宝座
-		try_add_country_modifier = {
-			tag_value = FRA
-			modifier_value = fra_mission_modifier
-			duration_value = 1
-		}
+		try_add_country_modifier = { tag_value = FRA modifier_value = fra_mission_modifier duration_value = 1 }
+		# 任务：阿维尼翁教廷领地
+		alloc_permanent_claim = { tag_value = FRA range_value = palestine_area }
+		alloc_permanent_claim = { tag_value = FRA range_value = italy_region }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭
