@@ -123,6 +123,21 @@ try_remove_all_province_modifier = {
 	}
 }
 
+remove_fake_province = {							# 虚空省份
+	$tag_value$ = {
+		every_owned_province = {
+			if = {
+				limit = {
+					NOT = {
+						range = $tag_value$
+					}
+				}
+				decolonize = yes					# 殖民地
+			}
+		}
+	}
+}
+
 try_create_guarantee = {							# 保障独立
 	$main_tag$ = {
 		if = {

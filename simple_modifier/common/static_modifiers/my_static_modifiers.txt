@@ -1,7 +1,7 @@
 # 全局国家修正
 all_nations = {
 	# 加法
-	num_accepted_cultures = 20					# 增加可接受文化的最大值
+	# num_accepted_cultures = 20				# 增加可接受文化的最大值
 	# possible_policy = 4						# 可选政策数量
 	# colonists = -10							# 殖民队数量
 	# global_manpower = -10						# 全国人力（基础值1=1000人力）

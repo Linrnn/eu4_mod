@@ -70,6 +70,7 @@
  my_mission_effect:0 "mission effect"
  my_try_add_province_modifier:0 "try add province modifier"
  my_colonial_capital:0 "colonial capital"
+ my_colonial_remove:0 "colonial remove"
  my_colonial_own_FRA:0 "colonial own FRA"
  my_province_own_FRA:0 "province own ______ FRA"
  my_province_own_SPA:0 "province own CAS -> SPA"

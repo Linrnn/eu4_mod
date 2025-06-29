@@ -162,6 +162,23 @@ country_event = {
 		alloc_capital = { province_value = 1090 tag_value = C11 }	# 约拉
 		ai_chance = { factor = 0 }
 	}
+	option = { # 虚空省份
+		name = my_colonial_remove
+		remove_fake_province = { tag_value = FRA }
+		remove_fake_province = { tag_value = C00 }
+		remove_fake_province = { tag_value = C01 }
+		remove_fake_province = { tag_value = C02 }
+		remove_fake_province = { tag_value = C03 }
+		remove_fake_province = { tag_value = C04 }
+		remove_fake_province = { tag_value = C05 }
+		remove_fake_province = { tag_value = C06 }
+		remove_fake_province = { tag_value = C07 }
+		remove_fake_province = { tag_value = C08 }
+		remove_fake_province = { tag_value = C09 }
+		remove_fake_province = { tag_value = C10 }
+		remove_fake_province = { tag_value = C11 }
+		ai_chance = { factor = 0 }
+	}
 	option = { # 新大陆
 		name = my_colonial_own_FRA
 		alloc_province = { range_value = colonial_alaska					tag_value = FRA }
@@ -803,9 +820,14 @@ country_event = {
 	}
 	option = { # 主流文化
 		name = my_country_culture
-		alloc_province_culture			= { range_value	= 49	culture_value = prussian		}
-		alloc_province_culture			= { range_value	= 50	culture_value = prussian		}
-		alloc_province_culture			= { range_value	= 2969	culture_value = prussian		}
+		if = {
+			limit = {
+				exists = PRU
+			}
+			alloc_province_culture			= { range_value	= 49	culture_value = prussian		}
+			alloc_province_culture			= { range_value	= 50	culture_value = prussian		}
+			alloc_province_culture			= { range_value	= 2969	culture_value = prussian		}
+		}
 		alloc_country_culture			= { tag_value	= PRU	culture_value = prussian		}
 		alloc_country_culture			= { tag_value	= ITA	culture_value = umbrian			}
 		alloc_country_culture			= { tag_value	= ARB	culture_value = bedouin_arabic	}
