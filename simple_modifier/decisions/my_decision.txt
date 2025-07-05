@@ -330,11 +330,13 @@ country_decisions = {
 		}
 		allow = {
 			any_owned_province = {
-				NOT = {
-					# has_province_modifier = birth_of_a_new_city_adm
-					# has_province_modifier = birth_of_a_new_city_dip
-					# has_province_modifier = birth_of_a_new_city_mil
-					has_province_modifier = birth_of_a_new_city_all
+				OR = {
+					has_province_modifier = birth_of_a_new_city_adm
+					has_province_modifier = birth_of_a_new_city_dip
+					has_province_modifier = birth_of_a_new_city_mil
+					NOT = {
+						has_province_modifier = birth_of_a_new_city_all
+					}
 				}
 			}
 		}

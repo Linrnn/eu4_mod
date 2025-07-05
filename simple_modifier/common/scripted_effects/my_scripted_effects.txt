@@ -317,7 +317,7 @@ alloc_elector = {									# 神罗帝选侯
 	if = {
 		limit = {
 			NOT = {
-				num_of_electors = 8
+				num_of_electors = 7
 			}
 		}
 		$tag_value$ = {

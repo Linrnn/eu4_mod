@@ -154,7 +154,7 @@ country_event = {
 		alloc_capital = { province_value = 893 tag_value = C03 }	# 新奥尔良
 		alloc_capital = { province_value = 4637 tag_value = C04 }	# 奥洛内
 		alloc_capital = { province_value = 852 tag_value = C05 }	# 墨西哥
-		alloc_capital = { province_value = 492 tag_value = C06 }	# 波多黎各
+		alloc_capital = { province_value = 490 tag_value = C06 }	# 圣多明各
 		alloc_capital = { province_value = 828 tag_value = C07 }	# 卡塔赫内
 		alloc_capital = { province_value = 809 tag_value = C08 }	# 利马
 		alloc_capital = { province_value = 778 tag_value = C09 }	# 拉普拉塔河
@@ -889,8 +889,8 @@ country_event = {
 		# 任务：巴黎宝座
 		try_add_country_modifier = { tag_value = FRA modifier_value = fra_mission_modifier duration_value = 1 }
 		# 任务：阿维尼翁教廷领地
-		alloc_permanent_claim = { tag_value = FRA range_value = palestine_area }
-		alloc_permanent_claim = { tag_value = FRA range_value = italy_region }
+		# alloc_permanent_claim = { tag_value = FRA range_value = palestine_area }
+		# alloc_permanent_claim = { tag_value = FRA range_value = italy_region }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭

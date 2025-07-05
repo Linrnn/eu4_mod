@@ -1,0 +1,5636 @@
+#^\s+$
+#^\s+is_free_or_tributary_trigger
+country_decisions = {
+
+	spanish_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_spain_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { tag = SPA }
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			NOT = { tag = FRA }		# Basque is a valid culture for both FRA and SPA
+			NOT = { tag = KNI }		# Maltese is part of iberian culture group
+			NOT = { tag = ADU }
+			NOT = { religion_group = muslim }
+			OR = {
+				ai = no
+				AND = {
+					ARA = { ai = yes }
+					tag = CAS
+				}
+				AND = {
+					CAS = { ai = yes }
+					tag = ARA
+				}
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 3
+					NOT = { exists = SPA }
+				}
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					NOT = { tag = POR }
+				}
+			}
+			OR = {
+				culture_group = iberian
+				primary_culture = basque
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 213	# Barcelona
+				province_id = 214	# Arag�n
+				province_id = 215	# Castilla La Vieja
+				province_id = 216	# Salamanca
+				province_id = 224	# Andalucia
+				province_id = 219	# Toledo
+				province_id = 220	# Valencia
+				province_id = 223	# Granada
+				AND = {
+					region = iberia_region
+					owner = { religion_group = muslim }
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = SPA }
+			adm_tech = 10
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			owns_core_province = 213	# Barcelona
+			owns_core_province = 214	# Arag�n
+			owns_core_province = 215	# Castilla La Vieja
+			owns_core_province = 216	# Salamanca
+			owns_core_province = 224	# Andalucia
+			owns_core_province = 219	# Toledo
+			owns_core_province = 220	# Valencia
+			owns_core_province = 223	# Granada
+			iberia_region = {
+				type = all
+				NOT = { owner = { religion_group = muslim } }
+			}
+		}
+		effect = {
+			change_tag = SPA
+			if = {
+				limit = {
+					NOT = {
+						AND = {
+							has_dlc = "Golden Century"
+							OR = {
+								tag = ARA
+								tag = CAT
+								tag = VAL
+							}
+						}
+					}
+				}
+				swap_non_generic_missions = yes
+			}
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			if = {
+				limit = {
+					has_custom_ideas = no
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			custom_tooltip = spanish_unification_effect.tooltip
+			hidden_effect = {
+				iberia_region = {
+					limit = {
+						NOT = { area = alentejo_area }
+						NOT = { area = beieras_area }
+					}
+					add_permanent_claim = SPA
+				}
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			set_country_flag = formed_spain_flag
+			add_prestige = 25
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				tag = CAS
+				NOT = { is_year = 1530 }
+				ARA = {
+					exists = yes
+					num_of_owned_provinces_with = {
+						value = 15
+						region = iberia_region
+					}
+				}
+				NOT = { is_enemy = ARA }
+				NOT = { is_rival = ARA }
+			}
+			modifier = {
+				factor = 0
+				tag = ARA
+				NOT = { is_year = 1530 }
+				CAS = {
+					exists = yes
+					num_of_owned_provinces_with = {
+						value = 25
+						region = iberia_region
+					}
+				}
+				NOT = { is_enemy = CAS }
+				NOT = { is_rival = CAS }
+			}
+		}
+		ai_importance = 400
+	}
+
+	spanish_nation_diplomatically = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_spain_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			is_tutorial_active = no
+			OR = {
+				tag = CAS
+				tag = ARA
+			}
+			capital_scope = {
+				region = iberia_region
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					OR = {
+						AND = {
+							tag = CAS
+							ARA = {	is_subject_of = CAS	}
+						}
+						AND = {
+							tag = ARA
+							CAS = {	is_subject_of = ARA	}
+						}
+					}
+				}
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					tag = CAS
+					ARA = { NOT = { num_of_cities = 40 } } #Keep this number the same as below
+				}
+				AND = {
+					ai = yes
+					tag = ARA
+					CAS = { NOT = { num_of_cities = 47 } } #Keep this number the same as below
+				}
+			}
+		}
+		allow = {
+			adm_tech = 10
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			OR = {
+				legitimacy = 100
+				devotion = 100
+				republican_tradition = 90
+			}
+			iberia_region = {
+				type = all
+				NOT = { owner = { religion_group = muslim } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = forming_spain_diplomatically_tooltip
+				OR = {
+					AND = {
+						tag = CAS
+						ARA = {	is_subject_of = CAS	}
+					}
+					AND = {
+						tag = ARA
+						CAS = {	is_subject_of = ARA	}
+					}
+				}
+			}
+			OR = {
+				AND = {
+					tag = CAS
+					ARA = {
+						NOT = { num_of_cities = 40 } #Keep this number the same as above. Original 17 +15, +5 with Spain update, +3 with Emperor update
+					}
+				}
+				AND = {
+					tag = ARA
+					CAS = {
+						NOT = { num_of_cities = 47 } #Keep this number the same as above. Original 25 +15, +5 with Spain update, +2 with Emperor update
+					}
+				}
+			}
+		}
+		effect = {
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			if = {
+				limit = {
+					tag = CAS
+					ARA = {
+						ai = yes
+					}
+				}
+				inherit = ARA
+			}
+			if = {
+				limit = {
+					tag = ARA
+					CAS = {
+						ai = yes
+					}
+				}
+				inherit = CAS
+			}
+			change_tag = SPA
+			if = {
+				limit = {
+					NOT = {
+						AND = {
+							has_dlc = "Golden Century"
+							tag = ARA
+						}
+					}
+				}
+				swap_non_generic_missions = yes
+			}
+			on_change_tag_effect = yes
+			if = {
+				limit = {
+					has_custom_ideas = no
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			custom_tooltip = spanish_unification_effect.tooltip
+			hidden_effect = {
+				iberia_region = {
+					limit = {
+						NOT = { area = alentejo_area }
+						NOT = { area = beieras_area }
+					}
+					add_permanent_claim = SPA
+				}
+			}
+			set_country_flag = formed_spain_flag
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 200
+		do_not_integrate = ARA
+		do_not_integrate = CAS
+	}
+
+	english_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_england_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { tag = ENG }
+			NOT = { exists = GBR }
+			NOT = { tag = AVE }
+			NOT = { tag = HLR }
+			NOT = { tag = PAP }
+			OR = {
+				primary_culture = english
+				tag = KOI
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 236		# London
+				province_id = 237		# Oxfordshire
+				province_id = 234		# Wessex
+				province_id = 235		# Kent
+				province_id = 238		# East Anglia
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			is_at_war = no
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			NOT = { exists = ENG }
+			owns_core_province = 237		# Oxfordshire
+			owns_core_province = 234		# Wessex
+			owns_core_province = 235		# Kent
+			owns_core_province = 238		# East Anglia
+			owns_core_province = 236		# London
+			236 = { 						# London
+				is_state = yes
+			}
+		}
+		effect = {
+			236 = { #London
+				move_capital_effect = yes
+			}
+			change_tag = ENG
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			home_counties_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ENG
+			}
+			yorkshire_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ENG
+			}
+			east_midlands_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ENG
+			}
+			west_midlands_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ENG
+			}
+			east_anglia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ENG
+			}
+			wales_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ENG
+			}
+			wessex_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ENG
+			}
+			#Cumbria
+			247 = {
+				if = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ENG
+				}
+			}
+			#Northumberland
+			246 = {
+				if = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ENG
+				}
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			if = {
+				limit = {
+					NOT = { government = monarchy }
+					NOT = { has_government_attribute = locked_government_type }
+				}
+				change_government = monarchy
+			}
+			if = {
+				limit = {
+					OR = {
+						government = monarchy
+						NOT = { has_government_attribute = locked_government_type }
+					}
+					has_not_locked_first_tier_reform = yes
+				}
+				add_government_reform = english_monarchy
+			}
+			set_country_flag = formed_england_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+
+	sardinia_piedmont_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_sardinia_piedmont_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = SPI }
+			OR = {
+				tag = SAV
+				tag = SAR
+				primary_culture = sardinian
+				primary_culture = piedmontese
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = piedmont_area
+				area = savoy_dauphine_area
+				area = liguria_area
+				area = corsica_sardinia_area
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			adm_tech = 10
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			OR = {
+				AND = {
+					tag = SAR
+					NOT = { exists = SAV }
+				}
+				AND = {
+					tag = SAV
+					NOT = { exists = SAR }
+				}
+				AND = {
+					OR = {
+						primary_culture = sardinian
+						primary_culture = piedmontese
+					}
+					NOT = { exists = SAV }
+					NOT = { exists = SAR }
+				}
+			}
+			owns_core_province = 2986		# Cagliari
+			owns_core_province = 103		# Piedmont
+			103 = {							# Piedmont
+				is_state = yes
+			}
+
+			num_of_owned_provinces_with = {
+				value = 3 #there are 4 (1 is Corsica)
+				area = corsica_sardinia_area
+				is_core = root
+			}
+			num_of_owned_provinces_with = {
+				value = 6 #there are 12, but Savoy never owned most of them
+				OR = {
+					area = piedmont_area
+					area = savoy_dauphine_area
+					area = liguria_area
+				}
+				is_core = root
+			}
+		}
+		effect = {
+			103 = {
+				move_capital_effect = yes
+			}
+			change_tag = SPI
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = {
+						government_rank = 2
+					}
+				}
+				set_government_rank = 2
+			}
+			set_country_flag = formed_sardinia_piedmont_flag
+			add_prestige = 10
+
+			if = {
+				limit = {
+					primary_culture = sardinian
+					NOT = { accepted_culture = piedmontese }
+				}
+				add_accepted_culture = piedmontese
+			}
+			else_if = {
+				limit = {
+					primary_culture = piedmontese
+					NOT = { accepted_culture = sardinian }
+				}
+				add_accepted_culture = sardinian
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			if = {
+				limit = {
+					NOT = { was_tag = SAV }
+				}
+				swap_non_generic_missions = yes
+			}
+			on_change_tag_effect = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	sardinia_piedmont_nation_inherit = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_sardinia_piedmont_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = SPI }
+			government = monarchy
+			OR = {
+				AND = {
+					tag = SAV
+					SAR = {
+						ai = yes
+						was_player = no
+					}
+				}
+				AND = {
+					tag = SAR
+					SAV = {
+						ai = yes
+						was_player = no
+					}
+				}
+			}
+		}
+		allow = {
+			adm_tech = 10
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			prestige = 75
+			dip = 3
+			adm = 3
+			OR = {
+				AND = {
+					tag = SAR
+					owns_core_province = 2986			# Cagliari
+					senior_union_with = SAV
+					SAV = {
+						owns_core_province = 103		# Piedmont
+						103 = {							# Piedmont
+							is_state = yes
+						}
+						NOT = { num_of_cities = 12 } #Original 7 + 5
+					}
+				}
+				AND = {
+					tag = SAV
+					owns_core_province = 103			# Piedmont
+					103 = {								# Piedmont
+						is_state = yes
+					}
+					senior_union_with = SAR
+					SAR = {
+						owns_core_province = 2986		# Cagliari
+						NOT = { num_of_cities = 8 } #Original 3 + 5
+					}
+				}
+			}
+		}
+		effect = {
+			103 = {
+				move_capital_effect = yes
+			}
+			if = {
+				limit = {
+					tag = SAV
+				}
+				inherit = SAR
+			}
+			if = {
+				limit = {
+					tag = SAR
+				}
+				inherit = SAV
+			}
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = {
+						government_rank = 2
+					}
+				}
+				set_government_rank = 2
+			}
+			change_tag = SPI
+			set_country_flag = formed_sardinia_piedmont_flag
+			add_prestige = 25
+
+			if = {
+				limit = {
+					primary_culture = sardinian
+					NOT = { accepted_culture = piedmontese }
+				}
+				add_accepted_culture = piedmontese
+			}
+			else_if = {
+				limit = {
+					primary_culture = piedmontese
+					NOT = { accepted_culture = sardinian }
+				}
+				add_accepted_culture = sardinian
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			if = {
+				limit = {
+					NOT = { was_tag = SAV }
+				}
+				swap_non_generic_missions = yes
+			}
+			on_change_tag_effect = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	italian_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_italy_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = ITA }
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			culture_group = latin
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 15
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					region = italy_region
+					root = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 20
+								region = italy_region
+								is_core = root
+							}
+						}
+						owns_core_province = 101
+						owns_core_province = 104
+						owns_core_province = 116
+						owns_core_province = 118
+					}
+				}
+				province_id = 101	# Genoa
+				province_id = 104	# Milan
+				province_id = 116	# Firenze
+				province_id = 118	# Roma
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			adm_tech = 10
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 101	# Genoa
+			owns_core_province = 104	# Milan
+			owns_core_province = 116	# Firenze
+			owns_core_province = 118	# Roma
+			num_of_owned_provinces_with = {
+				value = 20
+				region = italy_region
+				is_core = root
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					is_part_of_hre = yes
+					is_elector = no
+					is_emperor = no
+				}
+				emperor = {
+					add_opinion = {
+						who = root
+						modifier = opinion_left_empire
+					}
+				}
+				set_in_empire = no
+				emperor = {
+					country_event = { id = hre_event.5 }
+				}
+			}
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				hidden_effect = {
+					set_in_empire = no
+				}
+				if = {
+					limit = {
+						NOT = { is_part_of_hre = yes } #for tooltip purposes
+					}
+					set_government_rank = 2
+				}
+			}
+			change_tag = ITA
+			#this is so that a tier 1 reform is always selected, preventing the user from just never selecting one and enjoying loads of absolutism
+			if = {
+				limit = {
+					NOT = { has_reform_on_level = 0 }
+				}
+				add_government_reform = signoria_reform
+			}
+			italy_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ITA
+			}
+			add_prestige = 25
+			ITA = {
+				set_capital = 118
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			set_country_flag = formed_italy_flag
+			set_global_flag = formed_italy_flag_global # for german mission
+		}
+		ai_will_do = {
+			factor = 400
+			modifier = {
+				factor = 0
+				NOT = {
+					calc_true_if = {
+						owns_core_province = 101	# Genoa
+						owns_core_province = 104	# Milan
+						owns_core_province = 116	# Firenze
+						owns_core_province = 118	# Roma
+						amount = 3
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					num_of_cities = 10
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { adm_tech = 8 }
+			}
+		}
+	}
+
+	netherlands_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_netherlands_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				NOT = { exists = NED }
+				ai = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { tag = PAP }
+			NOT = { tag = NED }
+			NOT = { tag = HLR }
+			OR = {
+				primary_culture = dutch
+				primary_culture = flemish
+				primary_culture = frisian
+				tag = BUR
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 95 # Breda
+				province_id = 97 # Amsterdam
+				province_id = 98 # Utrecht
+				province_id = 99 # Gelre
+				province_id = 4383 # Den Haag
+				AND = {
+					region = low_countries_region
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 10
+								region = low_countries_region
+								is_core = root
+							}
+						}
+						owns_core_province = 95
+						owns_core_province = 97
+						owns_core_province = 98
+						owns_core_province = 99
+						owns_core_province = 4383
+					}
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = ned_ignore_tech_requirement_netherlands }
+				}
+				adm_tech = 10
+			}
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			NOT = { exists = NED }
+			owns_core_province = 95 # Breda
+			owns_core_province = 98 # Utrecht
+			owns_core_province = 99 # Gelre
+			owns_core_province = 4383 # Den Haag
+			owns_core_province = 97 # Amsterdam
+			97 = {
+				is_state = yes
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+				region = low_countries_region
+				is_core = root
+			}
+			if = {
+				limit = {
+					tag = BUR
+				}
+				NOT = { has_disaster = dutch_revolt_disaster }
+			}
+		}
+	 	effect = {
+			if = {
+				limit = {
+					is_elector = no
+					is_emperor = no
+					OR = {
+						is_part_of_hre = yes
+						any_owned_province = {
+							is_part_of_hre = yes
+						}
+					}
+				}
+				set_in_empire = no
+				hidden_effect = {
+					every_owned_province = {
+						limit = {
+							is_part_of_hre = yes
+						}
+						set_in_empire = no
+					}
+				}
+			}
+	  		if = {
+	  			limit = {
+	  				tag = BUR
+	  			}
+	  			change_primary_culture = dutch
+				97 = {
+					move_capital_effect = yes
+				}
+			}
+			if = {
+				limit = {
+					tag = BUR
+					exists = FRA
+				}
+	  			france_region = {
+					limit = {
+						owned_by = BUR
+					}
+	  				remove_core = BUR
+	  				add_core = FRA
+	  				cede_province = FRA
+	  			}
+	  		}
+			if = {
+				limit = {
+					tag = BUR
+					exists = FRA
+					BUR = {
+						any_subject_country = {
+							france_region = {
+								owned_by = PREV
+							}
+						}
+					}
+				}
+				every_subject_country = {
+					limit = {
+						france_region = {
+							owned_by = PREV
+						}
+					}
+					france_region = {
+						limit = {
+							owned_by = PREV
+						}
+						remove_core = BUR
+						remove_core = PREV
+						add_core = FRA
+						cede_province = FRA
+					}
+				}
+	  		}
+			change_tag = NED
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			low_countries_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { province_id = 1931 }
+				}
+				add_permanent_claim = NED
+			}
+			if = {
+				limit = {
+					NOT = {
+						government_rank = 2
+					}
+					is_part_of_hre = no
+				}
+				NED = { set_government_rank = 2 }
+			}
+			set_country_flag = formed_netherlands_flag
+			add_prestige = 25
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = NED_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			if = {
+				limit = { is_random_new_world = yes }
+				complete_mission = NED_carribean_colonies
+				complete_mission = NED_new_amsterdam
+				complete_mission = NED_guyana
+				complete_mission = NED_grand_design
+				add_dip_power = 150
+				add_navy_tradition = 10
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { adm_tech = 9 }
+			}
+			modifier = {
+				factor = 0
+				tag = BUR
+				NOT = { is_year = 1500 }
+			}
+			modifier = {
+				factor = 0
+				NOT = { num_of_cities = 3 }
+			}
+			modifier = {
+				factor = 10
+				NOT = {
+					any_ally = {
+						OR = {
+							owns_or_non_sovereign_subject_of = 95
+							owns_or_non_sovereign_subject_of = 97
+							owns_or_non_sovereign_subject_of = 98
+							owns_or_non_sovereign_subject_of = 99
+							owns_or_non_sovereign_subject_of = 4383
+						}
+					}
+				}
+			}
+		}
+		ai_importance = 400
+	}
+
+	swabia_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			was_never_german_regional_tag_trigger = yes
+			NOT = { has_country_flag = formed_swabia_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = SWA }
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+			primary_culture = swabian
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 70
+				province_id = 1872
+				AND = {
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 10
+								culture = swabian
+								continent = europe
+								is_core = root
+							}
+						}
+						owns_core_province = 70
+						owns_core_province = 1872
+					}
+					culture = swabian
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_at_war = no
+			#adm_tech = 10
+			owns_core_province = 70 #Wurttemberg
+			owns_core_province = 1872 #Ulm
+			num_of_owned_provinces_with = {
+				value = 10
+				culture = swabian
+				continent = europe
+				is_core = root
+			}
+		}
+		effect = {
+			change_tag = SWA
+			restore_country_name_effect = yes
+			lower_swabia_area = {
+				limit = {
+					NOT = { owned_by = root }
+					NOT = { is_permanent_claim = root }
+				}
+				add_permanent_claim = root
+			}
+			upper_swabia_area = {
+				limit = {
+					NOT = { owned_by = root }
+					NOT = { is_permanent_claim = root }
+				}
+				add_permanent_claim = root
+			}
+			upper_rhineland_area = {
+				limit = {
+					NOT = { owned_by = root }
+					NOT = { is_permanent_claim = root }
+				}
+				add_permanent_claim = root
+			}
+			#These were also historical territories of the Duchy
+			switzerland_area = {
+				limit = {
+					NOT = { owned_by = root }
+					NOT = { is_permanent_claim = root }
+				}
+				add_permanent_claim = root
+			}
+			romandie_area = {
+				limit = {
+					NOT = { owned_by = root }
+					NOT = { is_permanent_claim = root }
+				}
+				add_permanent_claim = root
+			}
+			4710 = {
+				if = {
+					limit = {
+						NOT = { owned_by = root }
+						NOT = { is_permanent_claim = root }
+					}
+					add_permanent_claim = root
+				}
+			}
+
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			set_country_flag = formed_swabia_flag
+
+			if = {
+				limit = {
+					OR = {
+						is_elector = yes
+						is_part_of_hre = no
+					}
+				}
+				set_government_rank = 2
+			}
+
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+
+			if = {
+				limit = {
+					is_playing_custom_nation = no
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+
+	hannoverian_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			was_never_german_regional_tag_trigger = yes
+			NOT = { has_country_flag = formed_hannover_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { tag = HLR }
+			NOT = { tag = PAP }
+			NOT = { tag = GER }
+			NOT = { tag = PRU }
+			NOT = { tag = HSA }
+			NOT = { tag = SAX } #Saxe-Lauenburg should form either Saxony or Hannover, not both
+			NOT = { exists = HAN }
+			primary_culture = lower_saxon
+			is_colonial_nation = no
+			OR = {
+				ai = no
+				AND = {
+					owns_core_province = 53	# Luneburg
+					owns_core_province = 1758	# Hannover
+				}
+			}
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 53	# Luneburg
+				province_id = 1758	# Hannover
+				AND = {
+					culture = lower_saxon
+					region = north_german_region
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 8 #out of 13 i.e. you can leave out Holstein or the FCs
+								culture = lower_saxon
+								region = north_german_region
+								is_core = root
+							}
+						}
+						owns_core_province = 53
+						owns_core_province = 1758
+					}
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			adm_tech = 10
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			owns_core_province = 53	# Luneburg
+			owns_core_province = 1758	# Hannover
+			1758 = {					# Hannover
+				is_state = yes
+			}
+			num_of_owned_provinces_with = {
+				value = 8 #out of 13 i.e. you can leave out Holstein and stuff
+				culture = lower_saxon
+				region = north_german_region
+				is_core = root
+			}
+			total_development = 100
+		}
+		effect = {
+			1758 = {
+				move_capital_effect = yes
+			}
+			change_tag = HAN
+			1758 = {
+				add_base_tax = 1
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			braunschweig_area = {
+				limit = { NOT = { owned_by = ROOT } }
+				add_permanent_claim = HAN
+			}
+			weser_area = {
+				limit = { NOT = { owned_by = ROOT } }
+				add_permanent_claim = HAN
+			}
+			every_province = {
+				limit = {
+					NOT = { owned_by = ROOT }
+					culture = lower_saxon
+					NOT = { area = braunschweig_area }
+					NOT = { area = weser_area }
+					region = north_german_region
+				}
+				add_permanent_claim = HAN
+			}
+			set_country_flag = formed_hannover_flag
+			add_prestige = 25
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+					OR = {
+						is_elector = yes
+						is_part_of_hre = no
+					}
+				}
+				set_government_rank = 2
+			}
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			if = {
+				limit = {
+					is_playing_custom_nation = no
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	prussian_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_prussia_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			tag = TEU
+			NOT = { has_reform = celestial_empire }
+			OR = {
+				NOT = { exists = PRU }
+				ai = no
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			province_id = 41	# Königsberg
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = PRU }
+			adm_tech = 10
+			is_at_war = no
+			if = {
+				limit = { has_dlc = "Lions of the North" }
+				OR = {
+					custom_trigger_tooltip = {
+						tooltip = teu_prussia_path_ct
+						has_country_flag = teu_prussian_path
+					}
+					religion = protestant
+					religion = reformed
+					religion = hussite
+					religion = anglican
+				}
+			}
+			else = {
+				OR = {
+					religion = protestant
+					religion = reformed
+					religion = hussite
+					religion = anglican
+				}
+			}
+			owns_core_province = 41 # Königsberg
+			41 = { 					# Königsberg
+				is_state = yes
+			}
+		}
+		effect = {
+			41 = {
+				move_capital_effect = yes
+			}
+			change_tag = PRU
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			if = {
+				limit = {
+					has_dlc = "Lions of the North"
+					has_mission = teu_defeat_the_poles
+					NOT = { mission_completed = teu_defeat_the_poles }
+				}
+				custom_tooltip = teu_select_automatically_prussian_path_tt
+				hidden_effect = {
+					complete_mission = teu_defeat_the_poles
+					add_power_projection = {
+						type = mission_rewards_power_projection
+						amount = 25
+					}
+					set_country_flag = teu_prussian_path
+					clr_country_flag = teu_crusader_path
+					swap_non_generic_missions = yes
+					update_mission_previews = yes
+				}
+			}
+			east_prussia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = PRU
+			}
+			west_prussia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = PRU
+			}
+			add_prestige = 25
+			hidden_effect = {
+				if = {
+					limit = {
+						has_dlc = "Lions of the North"
+						has_country_flag = teu_prussian_path
+					}
+					unlock_government_reform = {
+						government_reform = prussian_monarchy_base
+					}
+					unlock_government_reform = {
+						government_reform = prussian_republic_reform
+					}
+					unlock_government_reform = {
+						government_reform = prussian_theocratic_reform
+					}
+				}
+			}
+			if =  {
+				limit = {
+					is_revolutionary = no
+					NOT = { government = republic }
+				}
+				change_government = monarchy
+				if = {
+					limit = {
+						has_dlc = "Lions of the North"
+						has_country_flag = teu_prussian_path
+					}
+					unlock_government_reform = {
+						government_reform = prussian_monarchy_base
+					}
+				}
+				add_government_reform = prussian_monarchy_base
+			}
+			else_if = {
+				limit = {
+					government = republic
+					is_revolutionary = no
+				}
+				if = {
+					limit = {
+						has_dlc = "Lions of the North"
+						has_country_flag = teu_prussian_path
+					}
+					unlock_government_reform = {
+						government_reform = prussian_republic_reform
+					}
+				}
+				add_government_reform = prussian_republic_reform
+			}
+			if = {
+				limit = {
+					has_reform = states_general_reform
+				}
+				remove_government_reform = states_general_reform
+			}
+			every_neighbor_country = {
+				limit = { government = monarchy }
+				add_opinion = { who = ROOT modifier = secularized_monastic_order }
+			}
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = PRU_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 3650
+			}
+			if = {
+				limit = {
+					OR = {
+						is_part_of_hre = no
+						is_elector = yes
+					}
+					# 修改：注释
+					# is_free_or_tributary_trigger = yes
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			set_country_flag = formed_prussia_flag
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { num_of_cities = 10 }
+				NOT = { owns_core_province = 41 }
+			}
+		}
+		ai_importance = 1000
+	}
+
+	prussian_nation_general = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_prussia_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				primary_culture = pommeranian
+				primary_culture = saxon
+				primary_culture = prussian
+			}
+			NOT = { tag = PRU }
+			OR = {
+				NOT = { exists = PRU }
+				ai = no
+			}
+			NOT = { tag = GER }
+			NOT = { tag = HLR }
+			NOT = { tag = BRA }
+			NOT = { has_reform = celestial_empire }
+			NOT = { tag = TEU }
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 41	# Königsberg
+				AND = {
+					OR = {
+						area = west_prussia_area
+						area = east_prussia_area
+					}
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 5
+								OR = {
+									area = west_prussia_area
+									area = east_prussia_area
+								}
+							}
+						}
+					}
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = PRU }
+			adm_tech = 10
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			OR = {
+				religion = protestant
+				religion = reformed
+				religion = hussite
+				religion = anglican
+			}
+			owns_core_province = 41			# Königsberg
+			owns_core_province = 42			# Warmia
+			owns_core_province = 43			# Danzig
+		}
+		effect = {
+			change_tag = PRU
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					OR = {
+						NOT = { has_dlc = "Emperor" }
+						NOT = { hre_size = 1 }
+					}
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			east_prussia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = PRU
+			}
+			west_prussia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = PRU
+			}
+			if =  {
+				limit = {
+					is_revolutionary = no
+					NOT = { government = republic }
+					NOT = { government = theocracy }
+					has_dlc = "Domination"
+				}
+				change_government = monarchy
+				add_government_reform = prussian_monarchy
+			}
+			else_if =  {
+				limit = {
+					is_revolutionary = no
+					NOT = { government = republic }
+					NOT = { government = theocracy }
+					NOT = { has_dlc = "Domination" }
+				}
+				change_government = monarchy
+				add_government_reform = prussian_monarchy_base
+			}
+			else_if = {
+				limit = {
+					government = republic
+					is_revolutionary = no
+				}
+				add_government_reform = prussian_republic_reform
+			}
+			else_if = {
+				limit = {
+					government = theocracy
+					is_revolutionary = no
+				}
+				add_government_reform = prussian_theocratic_reform
+			}
+			if = {
+				limit = {
+					has_reform = states_general_reform
+				}
+				remove_government_reform = states_general_reform
+			}
+			add_prestige = 25
+			change_primary_culture = prussian
+			capital_scope = {
+				change_culture = prussian
+			}
+			random_owned_province = {
+				limit = {
+					is_capital = no
+					OR = {
+						culture = saxon
+						culture = pommeranian
+					}
+				}
+				change_culture = prussian
+			}
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = PRU_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 3650
+			}
+			set_country_flag = formed_prussia_flag
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = { is_religion_enabled = protestant }
+			}
+			modifier = {
+				factor = 0
+				NOT = { num_of_cities = 10 }
+			}
+			modifier = {
+				factor = 0.1
+				any_ally = {
+					OR = {
+						owns = 41
+						owns = 42
+						owns = 43
+					}
+				}
+			}
+		}
+		ai_importance = 100
+	}
+
+	scandinavian_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_scandinavia_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = SCA }
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			culture_group = scandinavian
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 10
+					adm_tech = 18
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1		# Uppland
+				province_id = 6		# Skane
+				province_id = 7		# Vastergotland
+				province_id = 12		# Sjaelland
+				province_id = 15		# Jylland
+				province_id = 17		# Akershus
+				region = scandinavia_region
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			if = {
+				limit = {
+					has_dlc = "Lions of the North"
+				}
+				OR = {
+					adm_tech = 18
+					custom_trigger_tooltip = {
+						tooltip = scandinavian_nation_tt
+						has_country_flag = can_form_scandinavia_earlier
+					}
+				}
+			}
+			else = {
+				adm_tech = 18
+			}
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			owns_core_province = 1		# Uppland
+			owns_core_province = 6		# Skane
+			owns_core_province = 7		# Vastergotland
+			owns_core_province = 12		# Sjaelland
+			owns_core_province = 15		# Jylland
+			owns_core_province = 17		# Akershus
+			num_of_owned_provinces_with = {
+				region = scandinavia_region
+				value = 40
+			}
+		}
+		effect = {
+			change_tag = SCA
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			if = {
+				limit = {
+					has_dlc = "Lions of the North"
+				}
+				custom_tooltip = scandinavian_nation_ct
+				hidden_effect = {
+					if = {
+						limit = { mission_completed = dan_bengal_landfall }
+						bengal_region = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						hindusthan_region = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+					if = {
+						limit = { mission_completed = dan_coast_of_deccan }
+						deccan_region = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						west_india_region = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+					if = {
+						limit = { mission_completed = dan_colonize_the_caribbean }
+						colonial_louisiana = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+								NOT = { owner = { is_subject_of = ROOT } }
+							}
+							add_permanent_claim = ROOT
+						}
+						colonial_mexico = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+								NOT = { owner = { is_subject_of = ROOT } }
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+					if = {
+						limit = { mission_completed = dan_colonize_north_america }
+						colonial_canada = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+								NOT = { owner = { is_subject_of = ROOT } }
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+					if = {
+						limit = { mission_completed = dan_return_of_the_north_sea_empire }
+						flanders_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						picardy_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						normandy_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						brittany_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						ile_de_france_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						loire_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						orleans_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+					if = {
+						limit = { was_tag = DAN }
+						hinter_pommern_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						vorpommern_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						mecklenburg_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						east_prussia_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						west_prussia_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						livonia_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						estonia_ingria_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						curonia_area = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+					if = {
+						limit = { mission_completed = nor_colonize_the_north }
+						rio_grande_region = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+								NOT = { owner = { is_subject_of = ROOT } }
+							}
+							add_permanent_claim = ROOT
+						}
+						california_region = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+								NOT = { owner = { is_subject_of = ROOT } }
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+					if = {
+						limit = { mission_completed = nor_colonize_west_africa }
+						niger_region = {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+				}
+			}
+			scandinavia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = SCA
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 10
+			set_country_flag = formed_scandinavia_flag
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = SCA_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			if = {
+				limit = {
+					religion = norse_pagan_reformed
+				}
+				override_country_name = NORTH_SEA_EMPIRE
+				set_country_flag = renamed_to_north_sea_empire
+				set_country_flag = has_overriden_color_flag
+				change_country_color = { color = { 202 245 251 } }
+			}
+			else = {
+				if = {
+					limit = {
+						has_reform = danish_archkingdom
+					}
+					override_country_name = KLU
+					set_country_flag = is_KLU_flag
+					set_country_flag = has_overriden_color_flag
+					change_country_color = { color = { 255 212 42 } }
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	form_austria_hungary = {
+		major = yes
+		potential = {
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = formed_austria_hungary_flag }
+			NOT = {
+				has_country_flag = hab_blocked_austria_hungary
+			}
+			NOT = { exists = AUH }
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			OR = {
+				tag = HUN
+				tag = HAB
+			}
+			OR = {
+				primary_culture = hungarian
+				primary_culture = austrian
+			}
+			NOT = { has_country_flag = badboy_not_allowed_flag }
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 134
+				province_id = 153
+				province_id = 1772
+				province_id = 1953
+				province_id = 4128
+				province_id = 131
+				province_id = 1863
+				province_id = 133
+				province_id = 129
+				province_id = 1768
+
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = {
+				has_disaster = german_revolt
+				has_disaster = hungarian_revolt
+			}
+			if = {
+				limit = {
+					tag = HUN
+					exists = HAB
+				}
+				HAB = {
+					NOT = { num_of_cities = 35 }
+					junior_union_with = ROOT
+				}
+			}
+			if = {
+				limit = {
+					tag = HAB
+					exists = HUN
+				}
+				HUN = {
+					NOT = { num_of_cities = 40 }
+					junior_union_with = ROOT
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = hab_remove_austria_hungary_tech_requirement
+					}
+				}
+				if = {
+					limit = {
+						mission_completed = hun_a_multicultural_empire
+					}
+					adm_tech = 15
+				}
+				else = {
+					adm_tech = 18
+				}
+			}
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_at_war = no
+			134 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			153 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1772 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1953 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			4128 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			131 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1863 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			133 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			129 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1768 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					is_part_of_hre = yes
+					is_elector = no
+					is_emperor = no
+				}
+				emperor = {
+					add_opinion = {
+						who = root
+						modifier = opinion_left_empire
+					}
+				}
+				set_in_empire = no
+				emperor = {
+					country_event = { id = hre_event.5 }
+				}
+			}
+			add_prestige = 25
+			change_tag = AUH
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
+					is_part_of_hre = no
+				}
+				set_government_rank = 3
+			}
+			on_change_tag_effect = yes
+			if = {
+				limit = {
+					primary_culture = hungarian
+					NOT = { accepted_culture = austrian }
+				}
+				add_accepted_culture_or_dip_power = {
+					culture = austrian
+					dip_reward = yes
+				}
+			}
+			if = {
+				limit = {
+					primary_culture = austrian
+					NOT = { accepted_culture = hungarian }
+				}
+				add_accepted_culture_or_dip_power = {
+					culture = hungarian
+					dip_reward = yes
+				}
+			}
+			if = {
+				limit = {
+					HUN = { junior_union_with = ROOT }
+				}
+				inherit = HUN
+			}
+			if = {
+				limit = {
+					HAB = { junior_union_with = ROOT }
+				}
+				inherit = HAB
+			}
+			if = {
+				limit = {
+					was_tag = HUN
+				}
+				override_country_name = HUNGARY_AUSTRIA
+				set_country_flag = is_HUNGARY_AUSTRIA_flag
+				change_country_color = {
+					color =  { 239 211 175 }
+				}
+				set_country_flag = has_overriden_name_flag
+				set_country_flag = has_overriden_color_flag
+			}
+			set_country_flag = formed_austria_hungary_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			hidden_effect = {
+				every_province = {
+					limit = {
+						is_core = HAB
+					}
+					remove_core = HAB
+				}
+				every_province = {
+					limit = {
+						is_core = HUN
+					}
+					remove_core = HUN
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 400
+			modifier = {
+				factor = 0
+				NOT = { adm_tech = 15 }
+			}
+		}
+	}
+
+	russian_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_russia_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				if = {
+					limit = {
+						overlord = {
+							has_country_flag = feo_russian_cooperation_flag
+						}
+					}
+					always = yes
+				}
+				ai = no
+			}
+			NOT = { tag = POL }
+			NOT = { tag = RUS }
+			OR = {
+				NOT = { exists = RUS }
+				ai = no
+			}
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			OR = {
+				primary_culture = russian
+				primary_culture = novgorodian
+				primary_culture = ryazanian
+				primary_culture = russian_new
+				primary_culture = novgorodian_new
+				primary_culture = ryazanian_new
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 3
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 295			# Moskva
+				province_id = 310			# Novgorod
+				AND = {
+					province_id = 294
+					ROOT = { NOT = { owns_core_province = 308 } }
+				}
+				AND = {
+					province_id = 308
+					ROOT = { NOT = { owns_core_province = 294 } }
+				}
+				AND = {
+					province_id = 301
+					ROOT = { NOT = { owns_core_province = 293 } }
+				}
+				AND = {
+					province_id = 293
+					ROOT = { NOT = { owns_core_province = 301 } }
+				}
+				AND = {
+					province_id = 306
+					ROOT = { NOT = { owns_core_province = 307 } }
+				}
+				AND = {
+					province_id = 307
+					ROOT = { NOT = { owns_core_province = 306 } }
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = RUS }
+			adm_tech = 10
+			NOT = { has_reform = states_general_reform }
+			if = {
+				limit = {
+					overlord = {
+						has_country_flag = feo_russian_cooperation_flag
+					}
+				}
+				always = yes
+			}
+			# 修改：注释
+			# else = {
+			# 	is_free_or_tributary_trigger = yes
+			# }
+			is_nomad = no
+			is_at_war = no
+			owns_core_province = 295			# Moskva
+			owns_core_province = 310			# Novgorod
+			OR = {
+				owns_core_province = 294		# Tver
+				owns_core_province = 308		# Yaroslavl
+			}
+			OR = {
+				owns_core_province = 301		# Ryazan
+				owns_core_province = 293		# Smolensk
+			}
+			OR = {
+				owns_core_province = 306		# Nijni-Novgorod
+				owns_core_province = 307		# Vladimir
+			}
+		}
+		effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						tag = NOV
+					}
+					complete_mission = tr_invade_novgorod_mission
+					complete_mission = tr_subjugate_novgorod
+				}
+			}
+			change_tag = RUS
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { is_revolutionary = no }
+				if = {
+					limit = { government = republic }
+					add_government_reform = great_veche_republic
+				}
+				else = {
+					if = {
+						limit = { NOT = { government = monarchy } }
+						change_government = monarchy
+					}
+					add_government_reform = tsardom
+				}
+			}
+			RUS = { set_government_rank = 3 }
+			russia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = RUS
+			}
+			crimea_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = RUS
+			}
+			ural_region = {
+				limit = {
+					NOT = {
+						owned_by = ROOT
+					}
+					is_empty = no
+				}
+				add_permanent_claim = RUS
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			if = {
+				limit = {
+					has_custom_ideas = no
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_russia_flag
+			add_prestige = 25
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { tag = MOS }
+				NOT = {
+					calc_true_if = {
+						owns_core_province = 295			# Moskva
+						owns_core_province = 310			# Novgorod
+						OR = {
+							owns_core_province = 294		# Tver
+							owns_core_province = 308		# Yaroslavl
+						}
+						OR = {
+							owns_core_province = 301		# Ryazan
+							owns_core_province = 293		# Smolensk
+						}
+						OR = {
+							owns_core_province = 306		# Nijni-Novgorod
+							owns_core_province = 307		# Vladimir
+						}
+						amount = 2
+					}
+				}
+			}
+		}
+		ai_importance = 400
+	}
+
+	pol_commonwealth = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_plc_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = PLC }
+			NOT = { tag = HLR }
+			tag = POL
+			LIT = { exists = yes }
+			OR = {
+				ai = no
+				AND = {
+					senior_union_with = LIT
+					LIT = { #This overlaps with allow for AI, is meant to negate do_not_integrate
+						NOT = { num_of_cities = 60 } #Keep this number the same as in allow. Original 38 +10
+					}
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 262	# Krakow
+				province_id = 257	# Warszawa
+				province_id = 43	# Danzig
+				province_id = 1841	# Marienburg
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			LIT = { was_player = no }
+			LIT = {
+				NOT = { num_of_cities = 60 } #Keep this number the same as in potential. Original 38 +10
+				NOT = { liberty_desire = 25 }
+			}
+			if = {
+				limit = { has_country_flag = pol_tech_8_form_plc_flag }
+				adm_tech = 8
+			}
+			else = { adm_tech = 10 }
+			is_subject = no
+			is_nomad = no
+			stability = 1
+			is_at_war = no
+			owns_core_province = 262				# Krakow
+			owns_core_province = 257				# Warszawa
+			owns_core_province = 43					# Danzig
+			owns_core_province = 1841				# Marienburg
+			senior_union_with = LIT
+			MAZ = { exists = no }
+		}
+		effect = {
+			change_tag = PLC
+			inherit = LIT
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			if = {
+				limit = { NOT = { accepted_culture = lithuanian } }
+				add_accepted_culture_or_dip_power = {
+					culture = lithuanian
+					dip_reward = yes
+					free = yes
+				}
+			}
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			if = {
+				limit = {
+					poland_region = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				poland_region = {
+					add_permanent_claim = PLC
+				}
+			}
+			if = {
+				limit = {
+					white_ruthenia_area = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				white_ruthenia_area = {
+					add_permanent_claim = PLC
+				}
+			}
+			if = {
+				limit = {
+					lithuania_area = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				lithuania_area = {
+					add_permanent_claim = PLC
+				}
+			}
+			if = {
+				limit = {
+					pripyat_area = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				pripyat_area = {
+					add_permanent_claim = PLC
+				}
+			}
+			random_owned_province = {
+				limit = { OR = { culture = polish culture = polish_new } }
+				add_base_tax = 1
+			}
+			set_country_flag = formed_plc_flag
+			add_prestige = 25
+			if = {
+				limit = {
+					has_dlc = "Lions of the North"
+					NOT = { has_estate_privilege = estate_nobles_golden_liberty }
+				}
+				complete_mission = pol_leverage_magnates
+				complete_mission = pol_great_sejm
+				complete_mission = plc_articles_agreement
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+		do_not_integrate = LIT
+	}
+
+	lit_commonwealth = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_plc_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = PLC }
+			NOT = { tag = HLR }
+			tag = LIT
+			POL = {
+				exists = yes
+				ai = yes
+				was_player = no
+			}
+			OR = {
+			ai = no
+				AND = {
+					senior_union_with = POL
+					POL = { #This overlaps with allow for AI, is meant to negate do_not_integrate
+						NOT = { num_of_cities = 40 } #Keep this number the same as in allow. Original 22 + 10
+						NOT = { liberty_desire = 25 }
+					}
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 272	# Vilna
+				province_id = 276	# Minsk
+				province_id = 280	# Kiev
+				province_id = 1941	# Turov
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			POL = {
+				NOT = { num_of_cities = 40 }
+				NOT = { liberty_desire = 25 }
+			} #Keep this number the same as in potential. Original 22+10
+			adm_tech = 10
+			is_subject = no
+			is_nomad = no
+			stability = 3
+			is_at_war = no
+			owns_core_province = 272				# Vilna
+			owns_core_province = 276				# Minsk
+			owns_core_province = 280				# Kiev
+			owns_core_province = 1941				# Turov
+			senior_union_with = POL
+			MAZ = { exists = no }
+		}
+		effect = {
+			change_tag = PLC
+			if = {
+				limit = {
+					OR = {
+						tag = LIT
+						primary_culture = lithuanian
+					}
+				}
+				override_country_name = LPC
+				set_country_flag = is_LPC_flag
+			}
+			else = { restore_country_name = yes }
+			inherit = POL
+			set_country_flag = pol_chose_pu_flag
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			if = {
+				limit = { has_updated_culture = { culture = slavic } }
+				add_accepted_culture_or_dip_power = {
+					culture = polish_new
+					dip_reward = yes
+					free = yes
+				}
+			}
+			else = {
+				add_accepted_culture_or_dip_power = {
+					culture = polish
+					dip_reward = yes
+					free = yes
+				}
+			}
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			if = {
+				limit = {
+					poland_region = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				poland_region = {
+					add_permanent_claim = PLC
+				}
+			}
+			if = {
+				limit = {
+					white_ruthenia_area = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				white_ruthenia_area = {
+					add_permanent_claim = PLC
+				}
+			}
+			if = {
+				limit = {
+					lithuania_area = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				lithuania_area = {
+					add_permanent_claim = PLC
+				}
+			}
+			if = {
+				limit = {
+					pripyat_area = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				pripyat_area = {
+					add_permanent_claim = PLC
+				}
+			}
+			random_owned_province = {
+				limit = { culture = lithuanian }
+				add_base_tax = 1
+			}
+			set_country_flag = formed_plc_flag
+			add_prestige = 25
+			complete_mission = pol_leverage_magnates
+			complete_mission = pol_great_sejm
+			complete_mission = plc_articles_agreement
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 200
+		do_not_integrate = POL
+	}
+
+	commonwealth_enforced = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_plc_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = PLC }
+			LIT = {
+				NOT = { senior_union_with = POL }
+				NOT = { junior_union_with = POL }
+			}
+			POL = {
+				NOT = { senior_union_with = LIT }
+				NOT = { junior_union_with = LIT }
+			}
+			OR = {
+				tag = LIT
+				tag = POL
+			}
+			OR = {
+				ai = no
+				NOT = { exists = POL }
+				NOT = { exists = LIT }
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 272	# Vilna
+				province_id = 276	# Minsk
+				province_id = 280	# Kiev
+				province_id = 1941	# Turov
+				province_id = 262	# Krakow
+				province_id = 257	# Warszawa
+				province_id = 43		# Danzig
+				province_id = 1841	# Marienburg
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			adm_tech = 10
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			stability = 3
+			is_at_war = no
+			owns_core_province = 272				# Vilna
+			owns_core_province = 276				# Minsk
+			owns_core_province = 280				# Kiev
+			owns_core_province = 1941				# Turov
+			owns_core_province = 262				# Krakow
+			owns_core_province = 257				# Warszawa
+			owns_core_province = 43					# Danzig
+			owns_core_province = 1841				# Marienburg
+			MAZ = { exists = no }
+		}
+		effect = {
+			change_tag = PLC
+			if = {
+				limit = {
+					OR = {
+						tag = LIT
+						primary_culture = lithuanian
+					}
+				}
+				override_country_name = LPC
+				set_country_flag = is_LPC_flag
+			}
+			else = { restore_country_name = yes }
+			set_country_flag = pol_chose_pu_flag
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				PLC = { set_government_rank = 2 }
+			}
+			if = {
+				limit = {
+					NOT = { is_or_was_tag = { tag = LIT } }
+				}
+				if = {
+					limit = { has_updated_culture = { culture = slavic } }
+					if = {
+						limit = { NOT = { primary_culture = polish_new } NOT = { accepted_culture = polish_new } }
+						change_primary_culture = polish_new
+					}
+				}
+				else = {
+					if = {
+						limit = { NOT = { primary_culture = polish } NOT = { accepted_culture = polish } }
+						change_primary_culture = polish
+					}
+				}
+				if = {
+					limit = {
+						NOT = { primary_culture = lithuanian }
+						NOT = { accepted_culture = lithuanian }
+					}
+					add_accepted_culture_or_dip_power = {
+						culture = lithuanian
+						dip_reward = yes
+						free = yes
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_updated_culture = { culture = slavic }
+				}
+				add_accepted_culture_or_dip_power = {
+					culture = polish_new
+					dip_reward = yes
+					free = yes
+				}
+			}
+			else = {
+				add_accepted_culture_or_dip_power = {
+					culture = polish
+					dip_reward = yes
+					free = yes
+				}
+			}
+			if = {
+				limit = {
+					poland_region = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				poland_region = {
+					add_permanent_claim = ROOT
+				}
+			}
+			if = {
+				limit = {
+					white_ruthenia_area = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				white_ruthenia_area = {
+					add_permanent_claim = ROOT
+				}
+			}
+			if = {
+				limit = {
+					lithuania_area = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				lithuania_area = {
+					add_permanent_claim = ROOT
+				}
+			}
+			if = {
+				limit = {
+					pripyat_area = {
+						NOT = { owned_by = POL }
+						NOT = { owned_by = LIT }
+						NOT = { owned_by = PLC }
+					}
+				}
+				pripyat_area = {
+					add_permanent_claim = ROOT
+				}
+			}
+			random_owned_province = {
+				limit = { has_owner_culture = yes }
+				add_base_tax = 1
+			}
+			set_country_flag = formed_plc_flag
+			add_prestige = 25
+			if = {
+				limit = {
+					NOT = { was_tag = POL }
+					has_dlc = "Lions of the North"
+				}
+				complete_mission = pol_leverage_magnates
+				complete_mission = pol_great_sejm
+				complete_mission = plc_articles_agreement
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 200
+	}
+
+	egyptian_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_egypt_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { tag = HLR }
+			NOT = { tag = PAP }
+			NOT = { tag = TUR }
+			NOT = { tag = ARB }
+			NOT = { exists = EGY }
+			NOT = { has_reform = celestial_empire }
+			primary_culture = al_misr_arabic
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 3
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 361 # Cairo
+				province_id = 362 # Rashid
+				province_id = 363 # Dumyat
+				province_id = 358 # Alexandria
+				province_id = 359 # Faiyum
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			capital = 361 # Cairo
+			adm_tech = 18
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			owns_core_province = 361 # Cairo
+			owns_core_province = 362 # Rashid
+			owns_core_province = 363 # Dumyat
+			owns_core_province = 358 # Alexandria
+			owns_core_province = 359 # Faiyum
+		}
+		effect = {
+			change_tag = EGY
+			if = {
+				limit = { has_dlc = "King of Kings" }
+				set_country_flag = egyptian_government_reform_flag
+			}
+			if = {
+				limit = {
+					has_reform = mamluk_government
+				}
+				add_stability = -1
+			}
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			add_prestige = 25
+			if = {
+				limit = { has_reform = mamluk_government }
+				remove_government_reform = mamluk_government
+				#set_legacy_government = administrative_monarchy
+			}
+			if = {
+				limit = { has_dlc = "King of Kings" }
+				add_government_reform = egyptian_government_reform
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			random_owned_province = {
+				limit = { culture = al_misr_arabic }
+				add_base_tax = 1
+				add_base_production = 1
+			}
+			361 = {
+				add_base_tax = 1
+				add_base_production = 1
+			}
+			egypt_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = EGY
+			}
+			set_country_flag = formed_egypt_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	arab_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_arabia_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = ARB }
+			NOT = { tag = HLR }
+			NOT = { tag = PAP }
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+			culture_group = turko_semitic #Arabic
+			NOT = { primary_culture = turkish }
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 358			#Alexandria
+				province_id = 361			#Cairo
+				province_id = 377			#Aleppo
+				province_id = 379			#Jerusalem
+				province_id = 382			#Damascus
+				province_id = 384			#Medina
+				province_id = 385			#Mecca
+				province_id = 388			#Aden
+				province_id = 390			#Sanaa
+				province_id = 392			#Al-Arid
+				province_id = 394			#Qatif
+				province_id = 400			#Muscat
+				province_id = 403			#Nizwa
+				province_id = 410			#Baghdad
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_at_war = no
+			if = {
+				limit = {
+					not = { has_country_flag = free_arabia_forming_flag }
+				}
+				adm_tech = 18
+			}
+			religion_group = muslim
+			owns_core_province = 358			#Alexandria
+			owns_core_province = 361			#Cairo
+			owns_core_province = 377			#Aleppo
+			owns_core_province = 379			#Jerusalem
+			owns_core_province = 382			#Damascus
+			owns_core_province = 384			#Medina
+			owns_core_province = 385			#Mecca
+			owns_core_province = 388			#Aden
+			owns_core_province = 390			#Sanaa
+			owns_core_province = 392			#Al-Arid
+			owns_core_province = 394			#Qatif
+			owns_core_province = 400			#Muscat
+			owns_core_province = 403			#Nizwa
+			owns_core_province = 410			#Baghdad
+		}
+		effect = {
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
+				}
+				set_government_rank = 3
+			}
+			mashriq_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ARB
+			}
+			egypt_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { area = lower_nubia_area }
+				}
+				add_permanent_claim = ARB
+			}
+			arabia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ARB
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			set_country_flag = formed_arabia_flag
+			change_tag = ARB
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			country_event = {
+				id = flavor_ARB.10
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				not = { adm_tech = 19 }
+			}
+		}
+		ai_importance = 400
+	}
+
+	persian_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_persia_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			OR = {
+				ai = no
+				NOT = { exists = PER }
+			}
+			if = {
+				limit = {
+					OR = {
+						tag = QAR
+						was_tag = QAR
+						tag = AKK
+						was_tag = AKK
+					}
+					has_dlc = "King of Kings"
+				}
+				has_country_flag = turkoman_can_form_persia
+			}
+			NOT = { tag = MUG }
+			NOT = { tag = PER }
+			NOT = { tag = ERS }
+			NOT = { tag = HLR }
+			NOT = { tag = ROM }
+			NOT = { tag = PAP }
+			NOT = { tag = TUR }
+			NOT = { tag = BYZ }
+			NOT = { tag = ARB }
+			if = {
+				limit = { has_dlc = "King of Kings" }
+				OR = {
+					culture_group = iranian
+					primary_culture = azerbaijani
+				}
+			}
+			else = {
+				OR = {
+					culture_group = iranian
+					primary_culture = azerbaijani
+					tag = AKK
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				and = {
+					root = { tag = TIM }
+					or = {
+						owned_by = TRS
+						owned_by = AFG
+						owned_by = SIS
+						owned_by = FRS
+						owned_by = KHO
+						owned_by = QOM
+						owned_by = LRI
+						owned_by = ARD
+					}
+				}
+				province_id = 414		# Hamadan
+				province_id = 429		# Isfahan
+				province_id = 433		# Yazd
+				province_id = 2213		# Qom
+				province_id = 2215		# Qazvin
+				AND = {
+					province_id = 426
+					ROOT = { NOT = { owns_core_province = 2218 } }
+				}
+				AND = {
+					province_id = 2218
+					ROOT = { NOT = { owns_core_province = 426 } }
+				}
+				AND = {
+					province_id = 416
+					ROOT = { NOT = { owns_core_province = 432 } }
+					ROOT = { NOT = { owns_core_province = 2221 } }
+				}
+				AND = {
+					province_id = 432
+					ROOT = { NOT = { owns_core_province = 416 } }
+					ROOT = { NOT = { owns_core_province = 2221 } }
+				}
+				AND = {
+					province_id = 2221
+					ROOT = { NOT = { owns_core_province = 416 } }
+					ROOT = { NOT = { owns_core_province = 432 } }
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			is_tribal = no
+			NOT = { exists = PER }
+			NOT = { exists = ERS }
+			owns_core_province = 414		# Hamadan
+			owns_core_province = 429		# Isfahan
+			owns_core_province = 433		# Yazd
+			owns_core_province = 2213		# Qom
+			owns_core_province = 2215		# Qazvin
+			OR = {
+				owns_core_province = 426		# Amol
+				owns_core_province = 2218		# Shiraz
+			}
+			OR = {
+				owns_core_province = 416		# Tabriz
+				owns_core_province = 432		# Kerman
+				owns_core_province = 2221		# Mashhad
+			}
+			if = {
+				limit = {
+					tag = TIM
+				}
+				not = { exists = TRS }
+				not = { exists = AFG }
+				not = { exists = SIS }
+				not = { exists = FRS }
+				not = { exists = KHO }
+				not = { exists = QOM }
+				not = { exists = LRI }
+				not = { exists = ARD }
+			}
+		}
+		effect = {
+			change_tag = PER
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government = monarchy }
+					is_revolutionary = no
+				}
+				change_government = monarchy
+			}
+			set_government_rank = 3
+			if = {
+				limit = { is_revolutionary = no NOT = { religion_group = zoroastrian_group } }
+				add_government_reform = persian_government_reform
+			}
+			if = {
+				limit = { is_revolutionary = no religion_group = zoroastrian_group }
+				add_government_reform = zoroastrian_persian_government_reform
+			}
+			if = {
+				limit = {
+					has_reform = states_general_reform
+				}
+				remove_government_reform = states_general_reform
+			}
+			persia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = PER
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			if = {
+				limit = {
+					OR = {
+						NOT = { has_dlc = "King of Kings" }
+						NOT = { primary_culture = mazandarani }
+					}
+					NOT = { primary_culture = persian }
+				}
+				change_primary_culture = persian
+			}
+			set_country_flag = formed_persia_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			if = {
+				limit = { has_dlc = "King of Kings" }
+				unlock_estate = {
+					estate = estate_qizilbash
+				}
+			}
+
+			if = {
+				limit = {
+					has_country_modifier = TIM_dev_cost_until_persia_formation
+				}
+				custom_tooltip = " "
+				remove_country_modifier = TIM_dev_cost_until_persia_formation
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = {
+					calc_true_if = {
+						owns_core_province = 414		# Hamadan
+						owns_core_province = 429		# Isfahan
+						owns_core_province = 433		# Yazd
+						owns_core_province = 2213		# Qom
+						owns_core_province = 2215		# Qazvin
+						OR = {
+							owns_core_province = 426		# Amol
+							owns_core_province = 2218		# Shiraz
+						}
+						OR = {
+							owns_core_province = 416		# Tabriz
+							owns_core_province = 432		# Kerman
+							owns_core_province = 2221		# Mashhad
+						}
+						amount = 5
+					}
+				}
+			}
+		}
+		ai_importance = 400
+	}
+
+	kitara_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_kitara_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { tag = KIT }
+			NOT = { tag = HLR }
+			NOT = { tag = PAP }
+			culture_group = great_lakes_group
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = uganda_area
+				area = rwanda_area
+				province_id = 4065
+				province_id = 4074
+				province_id = 4063
+				province_id = 4061
+				province_id = 4070
+				province_id = 4071
+				province_id = 4072
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = KIT }
+			is_at_war = no
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			uganda_area = {
+				owned_by = ROOT
+				is_core = ROOT
+				type = all
+			}
+			rwanda_area = {
+				owned_by = ROOT
+				is_core = ROOT
+				type = all
+			}
+			owns_core_province = 4065
+			owns_core_province = 4074
+			owns_core_province = 4063
+			owns_core_province = 4061
+			owns_core_province = 4070
+			owns_core_province = 4071
+			owns_core_province = 4072
+		}
+		effect = {
+			change_tag = KIT
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			set_capital = 4064
+			add_prestige = 25
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = KIT_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_kitara_flag
+			create_colony_mission_reward = {
+				province = 4059
+			}
+			create_colony_mission_reward = {
+				province = 4077
+			}
+			create_colony_mission_reward = {
+				province = 4076
+			}
+			create_colony_mission_reward = {
+				province = 4054
+			}
+			create_colony_mission_reward = {
+				province = 4109
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400 #
+	}
+
+	great_zimbabwe_nation = {
+		major = yes
+		potential = {
+			OR = {
+				has_country_flag = zim_can_form_gzi
+				AND = {
+					tag = ZIM
+					NOT = { has_dlc = "Origins" }
+				}
+			}
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_zimbabwe_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			OR = {
+				ai = no
+				AND = {
+					NOT = { exists = GZI }
+					num_of_cities = 3 #Carnage
+				}
+			}
+			NOT = { tag = HLR }
+			NOT = { tag = PAP }
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = butua_area
+				area = lower_zambezi_area
+				area = zimbabwe_area
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = GZI }
+			is_at_war = no
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			butua_area = {
+				is_core = ROOT
+				owned_by = ROOT
+				type = all
+			}
+			lower_zambezi_area = {
+				is_core = ROOT
+				owned_by = ROOT
+				type = all
+			}
+			zimbabwe_area = {
+				is_core = ROOT
+				owned_by = ROOT
+				type = all
+			}
+		}
+		effect = {
+			change_tag = GZI
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = GZI_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_zimbabwe_flag
+			clr_country_flag = zim_can_form_gzi
+			if = {
+				limit = { has_dlc = "Origins" }
+				swap_non_generic_missions = yes
+			}
+			on_change_tag_effect = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400 #
+	}
+
+	manchu_nation_1 = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_manchu_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = MCH }
+			OR = {
+				primary_culture = manchu
+				primary_culture = manchu_new
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				OR = {
+					province_id = 730		#Girin
+					province_id = 2108		#Huncun
+				}
+				OR = {
+					AND = {
+						OR = {
+							culture = manchu
+							culture = manchu_new
+						}
+						ROOT = {
+							NOT = {
+								num_of_owned_provinces_with = {
+									value = 20
+									OR = {
+										culture = manchu
+										culture = manchu_new
+									}
+									owned_by = ROOT
+								}
+							}
+							owns_core_province = 730
+							owns_core_province = 2108
+						}
+					}
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 2108		#Huncun
+			owns_core_province = 730		#Girin
+			730 = {							#Girin
+				is_state = yes
+			}
+			num_of_owned_provinces_with = {
+				custom_trigger_tooltip = {
+					tooltip = manchu_manchuria_decision.tooltip
+					is_core = ROOT
+					OR = {
+						culture = manchu_new
+						culture = manchu
+					}
+				}
+				value = 20
+			}
+		}
+		effect = {
+			add_prestige = 25
+			change_tag = MCH
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			change_primary_culture = manchu_new
+			set_ruler_culture = manchu_new
+			if = {
+				limit = {
+					has_heir = yes
+				}
+				set_heir_culture = manchu_new
+			}
+			if = {
+				limit = {
+					has_consort = yes
+					consort_culture = manchu
+				}
+				set_consort_culture = manchu_new
+			}
+			if = {
+				limit = {
+					is_subject = yes
+				}
+				overlord = {
+					country_event = {
+						id = flavor_mch.8
+					}
+				}
+				grant_independence = yes
+			}
+			hidden_effect = {
+				every_province = {
+					limit = {
+						culture = manchu
+					}
+					change_culture = manchu_new
+				}
+				every_country = {
+					limit = {
+						primary_culture = manchu
+					}
+					change_primary_culture = manchu_new
+					set_ruler_culture = manchu_new
+					if = {
+						limit = {
+							has_heir = yes
+						}
+						set_heir_culture = manchu_new
+					}
+					if = {
+						limit = {
+							has_consort = yes
+							consort_culture = manchu
+						}
+						set_consort_culture = manchu_new
+					}
+				}
+				if = {
+					limit = {
+						KOR = {
+							exists = yes
+							is_subject = yes
+							NOT = { is_subject_of = ROOT }
+						}
+					}
+					KOR = {
+						country_event = {
+							id = flavor_kor.13
+							days = 20
+						}
+					}
+				}
+			}
+			custom_tooltip = manchu_culture_tt
+			730 = {
+				move_capital_effect = yes
+			}
+			manchuria_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					is_city = yes
+				}
+				add_core = MCH
+			}
+			set_country_flag = formed_manchu_flag
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = MCH_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { owns_core_province = 2108 }
+				NOT = { owns_core_province = 730 }
+			}
+		}
+		ai_importance = 1000
+	}
+
+	form_manchu_dynasty = {
+		major = yes
+		potential = {
+			tag = MCH
+			was_never_end_game_tag_trigger = yes
+			normal_or_historical_nations = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = QNG }
+			NOT = { has_country_flag = manchu_dynasty_formed }
+
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 5
+				}
+			}
+
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 704		# Liaoxi
+				province_id = 723		# Xilin Gol
+				province_id = 726		# Liaodong
+				province_id = 1816		# Beijing
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			owns = 704		# Liaoxi
+			owns = 723		# Xilin Gol
+			owns = 726		# Liaodong
+			owns = 1816		# Beijing
+			1816 = {		# Beijing
+				is_state = yes
+			}
+			is_at_war = no
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			NOT = {
+				has_ruler_modifier = tribal_succession_crisis
+			}
+			if = {
+				limit = {
+					has_dlc = "Mandate of Heaven"
+					any_country = {
+						is_emperor_of_china = yes
+					}
+				}
+				is_emperor_of_china = yes
+			}
+			else_if = {
+				limit = {
+					has_dlc = "Common Sense"
+				}
+				government_rank = 3
+			}
+			else = {
+				total_development = 1000
+			}
+		}
+		effect = {
+			1816 = {
+				move_capital_effect = yes
+				change_culture = ROOT
+				add_core = QNG
+			}
+			change_tag = QNG
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			set_government_rank = 3
+			south_china_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = QNG
+			}
+			xinan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = QNG
+			}
+			north_china_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = QNG
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 3650
+			}
+			if = {
+				limit = {
+					has_reform = steppe_horde
+				}
+				change_government = monarchy
+				#set_legacy_government = despotic_monarchy
+			}
+			if = {
+				limit = {
+					technology_group = nomad_group
+				}
+				change_technology_group = chinese
+				change_unit_type = chinese
+			}
+			if = {
+				limit = {
+					NOT = { religion = confucianism }
+				}
+				change_religion = confucianism
+				add_harmonized_religion = tengri_pagan_reformed
+			}
+			add_prestige = 10
+			set_country_flag = manchu_dynasty_formed
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	unite_japan = {
+		major = yes
+		potential = {
+			NOT = { tag = JAP }
+			NOT = { has_country_flag = formed_japan_flag }
+			was_never_end_game_tag_trigger = yes
+			has_reform = shogunate
+			any_country = {
+				vassal_of = ROOT
+				has_reform = daimyo
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1020
+				province_id = 1028
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			NOT = { exists = JAP }
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			num_of_cities = 25
+			owns = 1020
+			owns = 1028
+		}
+		effect = {
+			remove_government_reform = shogunate
+			on_change_tag_effect = yes
+			#set_legacy_government = despotic_monarchy
+			set_government_rank = 3
+			custom_tooltip = unite_japan_subject_tooltip
+			hidden_effect = {
+				every_subject_country = {
+					limit = {
+						has_reform = daimyo
+					}
+					ROOT = {
+						free_vassal = PREV
+					}
+					remove_government_reform = daimyo
+					#set_legacy_government = despotic_monarchy
+					every_owned_province = {
+						remove_core = JAP
+					}
+				}
+			}
+			change_tag = JAP
+			swap_non_generic_missions = yes
+			if = {
+				limit = { ai = no }
+				on_change_tag_effect = yes
+			}
+			restore_country_name = yes
+			set_country_flag = formed_japan_flag
+			if = {
+				limit = {
+					japan_region = { NOT = { country_or_non_sovereign_subject_holds = ROOT } }
+				}
+				japan_region = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			if = {
+				limit = { has_dlc = "Domination" }
+				add_country_modifier = {
+					name = jap_grant_samurai_modifier
+					duration = -1
+				}
+			}
+			change_japan_formable_color = yes
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { num_of_cities = 30 }
+			}
+		}
+	}
+
+	united_japan = {
+		major = yes
+		potential = {
+			has_reform = shogunate
+			NOT = { has_country_flag = formed_japan_flag }
+			was_never_end_game_tag_trigger = yes
+			NOT = { exists = JAP }
+		}
+		allow = {
+			NOT = { exists = JAP }
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			owns = 1020
+			owns = 1028
+			all_country = {
+				NOT = {
+					has_reform = daimyo
+				}
+				NOT = {
+					has_reform = indep_daimyo
+				}
+			}
+			is_at_war = no
+		}
+		effect = {
+			change_tag = JAP
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			restore_country_name_effect = yes
+			remove_government_reform = shogunate
+			#set_legacy_government = despotic_monarchy
+			set_country_flag = formed_japan_flag
+			set_government_rank = 3
+			add_legitimacy = 100
+			add_adm_power = 100
+			add_dip_power = 100
+			add_mil_power = 100
+			if = {
+				limit = {
+					japan_region = { NOT = { country_or_non_sovereign_subject_holds = ROOT } }
+				}
+				japan_region = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			if = {
+				limit = { has_dlc = "Domination" }
+				add_country_modifier = {
+					name = jap_grant_samurai_modifier
+					duration = -1
+				}
+			}
+			change_japan_formable_color = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	united_japan_daimyo = {
+		major = yes
+		potential = {
+			NOT = { tag = JAP }
+			NOT = { has_country_flag = formed_japan_flag }
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_reform = shogunate }
+			NOT = { has_reform = celestial_empire }
+			culture_group = japanese_g
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1020
+				province_id = 1028
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			NOT = { exists = JAP }
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			owns = 1020
+			owns = 1028
+			all_country = {
+				OR = {
+					tag = ROOT
+					AND = {
+						NOT = { has_reform = daimyo }
+						NOT = { has_reform = indep_daimyo }
+						NOT = { has_reform = shogunate }
+					}
+				}
+			}
+			is_at_war = no
+		}
+		effect = {
+			change_tag = JAP
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			restore_country_name_effect = yes
+			set_country_flag = formed_japan_flag
+			remove_non_electors_emperors_from_empire_effect = yes
+			remove_government_reform = daimyo
+			remove_government_reform = indep_daimyo
+			#set_legacy_government = despotic_monarchy
+			set_government_rank = 3
+			add_legitimacy = 100
+			add_adm_power = 100
+			add_dip_power = 100
+			add_mil_power = 100
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			if = {
+				limit = { has_dlc = "Domination" }
+				add_country_modifier = {
+					name = jap_grant_samurai_modifier
+					duration = -1
+				}
+			}
+			if = {
+				limit = { ai = no }
+				on_change_tag_effect = yes
+			}
+			change_japan_formable_color = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	mughal_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_mughal_empire_flag }
+			NOT = { has_country_flag = TIM_lock_mughal_formable }
+			NOT = { has_reform = celestial_empire }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { tag = PER }
+			NOT = { tag = MUG }
+			NOT = { tag = TUR }
+			NOT = { tag = HLR }
+			OR = {
+				NOT = { exists = MUG }
+				ai = no
+			}
+			OR = {
+				culture_group = iranian
+				primary_culture = turkmeni
+				primary_culture = uzbehk
+				primary_culture = kirgiz
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 5
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 507
+				province_id = 2075
+				province_id = 522
+				province_id = 524
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			religion_group = muslim
+			NOT = { exists = MUG }
+			is_at_war = no
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			OR = {
+				owns_core_province = 507 #Lahore
+				owns_core_province = 2075 #Sirhind
+				owns_core_province = 524 #Agra
+			}
+			owns_core_province = 522 	#Delhi
+			522 = {						#Delhi
+				is_state = yes
+			}
+		}
+		effect = {
+			522 = {
+				move_capital_effect = yes
+			}
+			change_tag = MUG
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			change_primary_culture = kanauji
+			set_government_rank = 3
+			522 = {
+			 	add_base_tax = 1
+				add_base_production = 1
+			 	add_base_manpower = 1
+			}
+			hindusthan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = MUG
+			}
+			add_prestige = 25
+
+			if = {
+				limit = {
+					NOT = { technology_group = indian }
+				}
+				change_technology_group = indian
+				change_unit_type = indian
+			}
+			if = {
+				limit = {
+					NOT = { government = monarchy }
+					is_revolutionary = no
+				}
+				change_government = monarchy
+			}
+			if = {
+				limit = {
+					has_dlc = "Dharma"
+					is_revolutionary = no
+				}
+				add_government_reform = indian_sultanate_reform
+			}
+			if = {
+				limit = {
+					OR = {
+						has_dlc = "Dharma"
+						has_dlc = "King of Kings"
+						has_dlc = "Winds of Change"
+					}
+					is_revolutionary = no
+				}
+				add_government_reform = mughal_government
+			}
+			if = {
+				limit = {
+					OR = {
+						has_dlc = "Dharma"
+						has_dlc = "Domination"
+					}
+					reform_level = 3
+				}
+				add_government_reform = mansabdari_reform
+			}
+			if = {
+				limit = {
+					OR = {
+						has_dlc = "Dharma"
+						has_dlc = "King of Kings"
+					}
+					reform_level = 4
+				}
+				add_government_reform = zabt_reform
+			}
+			if = {
+				limit = {
+					has_reform = states_general_reform
+				}
+				remove_government_reform = states_general_reform
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			custom_tooltip = timurid_claims_abandoned_tooltip
+			hidden_effect = {
+				every_province = {
+					limit = {
+						NOT = { owned_by = MUG }
+						OR = {
+							region = persia_region
+							region = khorasan_region
+							region = caucasia_region
+							region = central_asia_region
+						}
+						is_permanent_claim = MUG
+					}
+					remove_claim = MUG
+				}
+				every_province = {
+					limit = {
+						NOT = { owned_by = MUG }
+						OR = {
+							region = persia_region
+							region = khorasan_region
+							region = caucasia_region
+							region = central_asia_region
+						}
+						is_core = MUG
+					}
+					remove_core = MUG
+				}
+			}
+			set_country_flag = formed_mughal_empire_flag
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = { tag = TIM }
+				NOT = { tag = AFG }
+				NOT = { tag = BAL }
+				NOT = { total_development = 350 }
+			}
+		}
+		ai_importance = 600
+	}
+
+	bharat_nation_dravidian = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = formed_india_flag }
+			was_never_end_game_tag_trigger = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = BHA }
+			#NOT = { exists = HIN }
+			NOT = { tag = MUG }
+			culture_group = dravidian
+			OR = {
+				religion_group = dharmic
+				religion = buddhism #Theravada
+				religion = vajrayana
+				religion = mahayana
+			}
+			NOT = { has_reform = steppe_horde }
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 15
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 506 #Multan
+				province_id = 517 #Surat
+				province_id = 524 #Mathura
+				province_id = 536 #Madurai
+				province_id = 539 #Tondainadu
+				province_id = 541 #Vijayanagar
+				province_id = 545 #Daulatabad
+				province_id = 552 #Cuttack
+				province_id = 558 #Pataliputra
+				province_id = 1948 #Bidar
+				province_id = 2052 #Halar
+				province_id = 2099 #Kandy
+				province_id = 4410 #Kumari
+				province_id = 4421 #Seringapatam
+				province_id = 4461 #Ujjain
+				province_id = 4503 #Mansura
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			culture_group = dravidian
+			is_at_war = no
+			stability = 3
+			has_institution = feudalism
+			owns_core_province = 506 #Multan
+			owns_core_province = 517 #Surat
+			owns_core_province = 524 #Mathura
+			owns_core_province = 536 #Madurai
+			owns_core_province = 539 #Tondainadu
+			owns_core_province = 541 #Vijayanagar
+			owns_core_province = 545 #Daulatabad
+			owns_core_province = 552 #Cuttack
+			owns_core_province = 558 #Pataliputra
+			owns_core_province = 1948 #Bidar
+			owns_core_province = 2052 #Halar
+			owns_core_province = 2099 #Kandy
+			owns_core_province = 4410 #Kumari
+			owns_core_province = 4421 #Seringapatam
+			owns_core_province = 4461 #Ujjain
+			owns_core_province = 4503 #Mansura
+		}
+		effect = {
+			change_tag = BHA
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			set_government_rank = 3
+			bengal_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			hindusthan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			west_india_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			deccan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			coromandel_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			add_prestige = 10
+			set_country_flag = formed_india_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					calc_true_if = {
+						owns_core_province = 506 #Multan
+						owns_core_province = 517 #Surat
+						owns_core_province = 518 #Chittor
+						owns_core_province = 524 #Mathura
+						owns_core_province = 536 #Madurai
+						owns_core_province = 539 #Tondainadu
+						owns_core_province = 545 #Daulatabad
+						owns_core_province = 550 #Mahakoshal
+						owns_core_province = 552 #Cuttack
+						owns_core_province = 558 #Pataliputra
+						owns_core_province = 1948 #Bidar
+						owns_core_province = 2052 #Halar
+						owns_core_province = 2099 #Kandy
+						owns_core_province = 4410 #Kumari
+						owns_core_province = 4461 #Ujjain
+						owns_core_province = 4503 #Mansura
+						amount = 8
+					}
+				}
+			}
+		}
+		ai_importance = 50
+	}
+
+	bharat_nation_western_aryan = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = formed_india_flag }
+			was_never_end_game_tag_trigger = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = BHA }
+			#NOT = { exists = HIN }
+			NOT = { tag = MUG }
+			culture_group = western_aryan
+			OR = {
+				religion_group = dharmic
+				religion = buddhism #Theravada
+				religion = vajrayana
+				religion = mahayana
+			}
+			NOT = { has_reform = steppe_horde }
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 15
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 506 #Multan
+				province_id = 517 #Surat
+				province_id = 518 #Chittor
+				province_id = 524 #Mathura
+				province_id = 536 #Madurai
+				province_id = 539 #Tondainadu
+				province_id = 545 #Daulatabad
+				province_id = 550 #Mahakoshal
+				province_id = 552 #Cuttack
+				province_id = 558 #Pataliputra
+				province_id = 1948 #Bidar
+				province_id = 2052 #Halar
+				province_id = 2099 #Kandy
+				province_id = 4410 #Kumari
+				province_id = 4461 #Ujjain
+				province_id = 4503 #Mansura
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			culture_group = western_aryan
+			is_at_war = no
+			stability = 3
+			has_institution = feudalism
+			owns_core_province = 506 #Multan
+			owns_core_province = 517 #Surat
+			owns_core_province = 518 #Chittor
+			owns_core_province = 524 #Mathura
+			owns_core_province = 536 #Madurai
+			owns_core_province = 539 #Tondainadu
+			owns_core_province = 545 #Daulatabad
+			owns_core_province = 550 #Mahakoshal
+			owns_core_province = 552 #Cuttack
+			owns_core_province = 558 #Pataliputra
+			owns_core_province = 1948 #Bidar
+			owns_core_province = 2052 #Halar
+			owns_core_province = 2099 #Kandy
+			owns_core_province = 4410 #Kumari
+			owns_core_province = 4461 #Ujjain
+			owns_core_province = 4503 #Mansura
+		}
+		effect = {
+			change_tag = BHA
+			remove_non_electors_emperors_from_empire_effect = yes
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			set_government_rank = 3
+			bengal_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			hindusthan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			west_india_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			deccan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			coromandel_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			set_country_flag = formed_india_flag
+			add_prestige = 10
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					calc_true_if = {
+						owns_core_province = 506 #Multan
+						owns_core_province = 517 #Surat
+						owns_core_province = 518 #Chittor
+						owns_core_province = 524 #Mathura
+						owns_core_province = 536 #Madurai
+						owns_core_province = 539 #Tondainadu
+						owns_core_province = 545 #Daulatabad
+						owns_core_province = 550 #Mahakoshal
+						owns_core_province = 552 #Cuttack
+						owns_core_province = 558 #Pataliputra
+						owns_core_province = 1948 #Bidar
+						owns_core_province = 2052 #Halar
+						owns_core_province = 2099 #Kandy
+						owns_core_province = 4410 #Kumari
+						owns_core_province = 4461 #Ujjain
+						owns_core_province = 4503 #Mansura
+						amount = 8
+					}
+				}
+			}
+		}
+		ai_importance = 50
+	}
+
+	bharat_nation_hindusthani = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = formed_india_flag }
+			was_never_end_game_tag_trigger = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			#NOT = { exists = HIN }
+			NOT = { exists = BHA }
+			NOT = { tag = MUG }
+			culture_group = hindusthani
+			OR = {
+				religion_group = dharmic
+				religion = buddhism #Theravada
+				religion = vajrayana
+				religion = mahayana
+			}
+			NOT = { has_reform = steppe_horde }
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 15
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 506 #Multan
+				province_id = 507 #Lahore
+				province_id = 517 #Surat
+				province_id = 522 #Delhi
+				province_id = 524 #Mathura
+				province_id = 536 #Madurai
+				province_id = 539 #Tondainadu
+				province_id = 545 #Daulatabad
+				province_id = 552 #Cuttack
+				province_id = 558 #Pataliputra
+				province_id = 1948 #Bidar
+				province_id = 2052 #Halar
+				province_id = 2099 #Kandy
+				province_id = 4410 #Kumari
+				province_id = 4461 #Ujjain
+				province_id = 4503 #Mansura
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			culture_group = hindusthani
+			is_at_war = no
+			stability = 3
+			has_institution = feudalism
+			owns_core_province = 506 #Multan
+			owns_core_province = 507 #Lahore
+			owns_core_province = 517 #Surat
+			owns_core_province = 522 #Delhi
+			owns_core_province = 524 #Mathura
+			owns_core_province = 536 #Madurai
+			owns_core_province = 539 #Tondainadu
+			owns_core_province = 545 #Daulatabad
+			owns_core_province = 552 #Cuttack
+			owns_core_province = 558 #Pataliputra
+			owns_core_province = 1948 #Bidar
+			owns_core_province = 2052 #Halar
+			owns_core_province = 2099 #Kandy
+			owns_core_province = 4410 #Kumari
+			owns_core_province = 4461 #Ujjain
+			owns_core_province = 4503 #Mansura
+		}
+		effect = {
+			change_tag = BHA
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			set_government_rank = 3
+			bengal_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			hindusthan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			west_india_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			deccan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			coromandel_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			set_country_flag = formed_india_flag
+			add_prestige = 10
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					calc_true_if = {
+						owns_core_province = 506 #Multan
+						owns_core_province = 517 #Surat
+						owns_core_province = 518 #Chittor
+						owns_core_province = 524 #Mathura
+						owns_core_province = 536 #Madurai
+						owns_core_province = 539 #Tondainadu
+						owns_core_province = 545 #Daulatabad
+						owns_core_province = 550 #Mahakoshal
+						owns_core_province = 552 #Cuttack
+						owns_core_province = 558 #Pataliputra
+						owns_core_province = 1948 #Bidar
+						owns_core_province = 2052 #Halar
+						owns_core_province = 2099 #Kandy
+						owns_core_province = 4410 #Kumari
+						owns_core_province = 4461 #Ujjain
+						owns_core_province = 4503 #Mansura
+						amount = 8
+					}
+				}
+			}
+		}
+		ai_importance = 50
+	}
+
+	bharat_nation_eastern_aryan = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = formed_india_flag }
+			was_never_end_game_tag_trigger = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = BHA }
+			#NOT = { exists = HIN }
+			NOT = { tag = MUG }
+			culture_group = eastern_aryan
+			OR = {
+				religion_group = dharmic
+				religion = buddhism #Theravada
+				religion = vajrayana
+				religion = mahayana
+			}
+			NOT = { has_reform = steppe_horde }
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 15
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 506 #Multan
+				province_id = 507 #Lahore
+				province_id = 517 #Surat
+				province_id = 522 #Delhi
+				province_id = 524 #Mathura
+				province_id = 536 #Madurai
+				province_id = 539 #Tondainadu
+				province_id = 545 #Daulatabad
+				province_id = 552 #Cuttack
+				province_id = 558 #Pataliputra
+				province_id = 563 #Gauda
+				province_id = 566 #Assam
+				province_id = 1948 #Bidar
+				province_id = 2052 #Halar
+				province_id = 4410 #Kumari
+				province_id = 4503 #Mansura
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			culture_group = eastern_aryan
+			is_at_war = no
+			stability = 3
+			has_institution = feudalism
+			owns_core_province = 506 #Multan
+			owns_core_province = 507 #Lahore
+			owns_core_province = 517 #Surat
+			owns_core_province = 522 #Delhi
+			owns_core_province = 524 #Mathura
+			owns_core_province = 536 #Madurai
+			owns_core_province = 539 #Tondainadu
+			owns_core_province = 545 #Daulatabad
+			owns_core_province = 552 #Cuttack
+			owns_core_province = 558 #Pataliputra
+			owns_core_province = 563 #Gauda
+			owns_core_province = 566 #Assam
+			owns_core_province = 1948 #Bidar
+			owns_core_province = 2052 #Halar
+			owns_core_province = 4410 #Kumari
+			owns_core_province = 4503 #Mansura
+		}
+		effect = {
+			change_tag = BHA
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			set_government_rank = 3
+			bengal_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			hindusthan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			west_india_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			deccan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			coromandel_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			set_country_flag = formed_india_flag
+			add_prestige = 10
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					calc_true_if = {
+						owns_core_province = 506 #Multan
+						owns_core_province = 517 #Surat
+						owns_core_province = 518 #Chittor
+						owns_core_province = 524 #Mathura
+						owns_core_province = 536 #Madurai
+						owns_core_province = 539 #Tondainadu
+						owns_core_province = 545 #Daulatabad
+						owns_core_province = 550 #Mahakoshal
+						owns_core_province = 552 #Cuttack
+						owns_core_province = 558 #Pataliputra
+						owns_core_province = 1948 #Bidar
+						owns_core_province = 2052 #Halar
+						owns_core_province = 2099 #Kandy
+						owns_core_province = 4410 #Kumari
+						owns_core_province = 4461 #Ujjain
+						owns_core_province = 4503 #Mansura
+						amount = 8
+					}
+				}
+			}
+		}
+		ai_importance = 50
+	}
+
+	bharat_nation_central_indic = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = formed_india_flag }
+			was_never_end_game_tag_trigger = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = BHA }
+			#NOT = { exists = HIN }
+			NOT = { tag = MUG }
+			culture_group = central_indic
+			OR = {
+				religion_group = dharmic
+				religion = buddhism #Theravada
+				religion = vajrayana
+				religion = mahayana
+			}
+			NOT = { has_reform = steppe_horde }
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 15
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 506 #Multan
+				province_id = 517 #Surat
+				province_id = 522 #Delhi
+				province_id = 524 #Mathura
+				province_id = 527 #Burhanpur
+				province_id = 536 #Madurai
+				province_id = 545 #Daulatabad
+				province_id = 552 #Cuttack
+				province_id = 553 #Sambalpur
+				province_id = 558 #Pataliputra
+				province_id = 563 #Gauda
+				province_id = 566 #Assam
+				province_id = 1948 #Bidar
+				province_id = 2052 #Halar
+				province_id = 4410 #Kumari
+				province_id = 4503 #Mansura
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			culture_group = central_indic
+			is_at_war = no
+			stability = 3
+			has_institution = feudalism
+			owns_core_province = 506 #Multan
+			owns_core_province = 517 #Surat
+			owns_core_province = 522 #Delhi
+			owns_core_province = 524 #Mathura
+			owns_core_province = 527 #Burhanpur
+			owns_core_province = 536 #Madurai
+			owns_core_province = 545 #Daulatabad
+			owns_core_province = 552 #Cuttack
+			owns_core_province = 553 #Sambalpur
+			owns_core_province = 558 #Pataliputra
+			owns_core_province = 563 #Gauda
+			owns_core_province = 566 #Assam
+			owns_core_province = 1948 #Bidar
+			owns_core_province = 2052 #Halar
+			owns_core_province = 4410 #Kumari
+			owns_core_province = 4503 #Mansura
+		}
+		effect = {
+			change_tag = BHA
+			swap_non_generic_missions = yes
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			set_government_rank = 3
+			bengal_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			hindusthan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			west_india_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			deccan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			coromandel_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = BHA
+			}
+			set_country_flag = formed_india_flag
+			add_prestige = 10
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = {
+					calc_true_if = {
+						owns_core_province = 506 #Multan
+						owns_core_province = 517 #Surat
+						owns_core_province = 518 #Chittor
+						owns_core_province = 524 #Mathura
+						owns_core_province = 536 #Madurai
+						owns_core_province = 539 #Tondainadu
+						owns_core_province = 545 #Daulatabad
+						owns_core_province = 550 #Mahakoshal
+						owns_core_province = 552 #Cuttack
+						owns_core_province = 558 #Pataliputra
+						owns_core_province = 1948 #Bidar
+						owns_core_province = 2052 #Halar
+						owns_core_province = 2099 #Kandy
+						owns_core_province = 4410 #Kumari
+						owns_core_province = 4461 #Ujjain
+						owns_core_province = 4503 #Mansura
+						amount = 8
+					}
+				}
+			}
+		}
+		ai_importance = 50
+	}
+
+	malayan_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_malaya_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				# 修改：注释
+				# is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { exists = MSA }
+			culture_group = malay
+			NOT = { has_reform = steppe_horde }
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+			OR = {
+				ai = no
+				num_of_cities = 12
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				region = malaya_region
+				region = indonesia_region
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			if = {
+				limit = {
+					religion_group = muslim
+				}
+				owns = 617
+				owns = 596
+				owns = 636
+				owns = 641
+				owns = 629
+			}
+			else = {
+				owns = 622
+				owns = 2687
+				owns = 628
+				owns = 638
+				owns = 2390
+			}
+			num_of_owned_provinces_with = {
+				value = 40
+				OR = {
+					region = malaya_region
+					region = indonesia_region
+				}
+			}
+		}
+		effect = {
+			change_tag = MSA
+			on_change_tag_effect = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			malaya_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = MSA
+			}
+			indonesia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = MSA
+			}
+			country_event = {
+				id = flavor_mlc.9
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 3650
+			}
+			set_country_flag = formed_malaya_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			add_prestige = 25
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	unite_hawaii = {
+		major = yes
+		potential = {
+			NOT = { tag = HLR }
+			NOT = { tag = PAP }
+			NOT = { tag = UHW }
+			primary_culture = polynesian
+			capital_scope = {
+				area = northern_polynesia_area
+				is_core = ROOT
+			}
+			northern_polynesia_area = {
+				owned_by = ROOT
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 2
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1240
+				province_id = 4935
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				is_city = no
+			}
+		}
+		allow = {
+			# 修改：注释
+			# is_free_or_tributary_trigger = yes
+			is_at_war = no
+			capital_scope = {
+				area = northern_polynesia_area
+				is_core = ROOT
+			}
+			num_of_owned_provinces_with = {
+				value = 4
+				area = northern_polynesia_area
+				is_city = yes
+			}
+			NOT = { exists = UHW }
+		}
+		effect = {
+			change_tag = UHW
+			on_change_tag_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			northern_polynesia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = UHW
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+}
