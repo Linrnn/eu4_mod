@@ -536,7 +536,14 @@ load_province_religion = {
 				exists = yes
 			}
 			every_owned_province = {
-				change_religion = variable:my_province_religion
+				if = {
+					limit = {
+						NOT = {
+							religion = variable:my_province_religion
+						}
+					}
+					change_religion = variable:my_province_religion
+				}
 			}
 		}
 	}

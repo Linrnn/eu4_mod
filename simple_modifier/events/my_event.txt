@@ -812,14 +812,15 @@ country_event = {
 		alloc_province_religion = { tag_value = TUN religion_value = sunni }
 		alloc_province_religion = { tag_value = EGY religion_value = sunni }
 		alloc_province_religion = { tag_value = TMB religion_value = sunni }
-		alloc_province_religion = { tag_value = ZAN religion_value = sunni }
 		alloc_province_religion = { tag_value = TUR religion_value = sunni }
 		alloc_province_religion = { tag_value = ARB religion_value = sunni }
 		alloc_province_religion = { tag_value = KZH religion_value = sunni }
-		alloc_province_religion = { tag_value = MSA religion_value = sunni }
 		alloc_province_religion = { tag_value = PER religion_value = shiite }
-		alloc_province_religion = { tag_value = MUG religion_value = hinduism }
 		alloc_province_religion = { tag_value = MAL religion_value = shamanism }
+		alloc_province_religion = { tag_value = ZAN religion_value = shamanism }
+		alloc_province_religion = { tag_value = MUG religion_value = hinduism }
+		alloc_province_religion = { tag_value = DLH religion_value = hinduism }
+		alloc_province_religion = { tag_value = MSA religion_value = hinduism }
 		load_province_religion = { tag_value = QNG }
 		load_province_religion = { tag_value = SIB }
 		ai_chance = { factor = 0 }
@@ -911,11 +912,61 @@ country_event = {
 	}
 	option = { # 作弊
 		name = my_cheat
+		# alloc_government_rank = {
+		# 	tag_value = QNG
+		# 	rank_value = 3
+		# }
 		# alloc_country_culture = { tag_value = KIT culture_value = ganda }
 		# alloc_country_culture = { tag_value = SCA culture_value = swedish }
 		# alloc_country_culture = { tag_value = PER culture_value = persian }
 		# alloc_country_culture = { tag_value = MCH culture_value = manchu_new }
-		ai_chance = { factor = 100 }
+		# religion
+		# alloc_country_religion = { tag_value = MAL religion_value = sunni }
+		# alloc_country_religion = { tag_value = ZAN religion_value = sunni }
+		# alloc_province_religion = { tag_value = MAL religion_value = shamanism }
+		# alloc_province_religion = { tag_value = ZAN religion_value = shamanism }
+		# alloc_province_religion = { tag_value = MLC religion_value = hinduism }
+		# 2165 = { change_religion = buddhism }
+		# 738 = { change_religion = animism }
+		# 2155 = { change_religion = animism }
+		# 2748 = { change_religion = animism }
+		# 1033 = { change_religion = animism }
+		# 4658 = { change_religion = animism }
+		# 692 = { change_religion = confucianism }
+		# 4195 = { change_religion = confucianism }
+		# 2109 = { change_religion = vajrayana }
+		# 2191 = { change_religion = vajrayana }
+		# 4676 = { change_religion = vajrayana }
+		# tibet_region = { change_religion = vajrayana }
+		# 1850 = { change_religion = tengri_pagan_reformed }
+		# 2104 = { change_religion = tengri_pagan_reformed }
+		# 4662 = { change_religion = tengri_pagan_reformed }
+		# 4665 = { change_religion = tengri_pagan_reformed }
+		# 4666 = { change_religion = tengri_pagan_reformed }
+		# 4221 = { change_religion = tengri_pagan_reformed }
+		# 4668 = { change_religion = tengri_pagan_reformed }
+		# 4680 = { change_religion = tengri_pagan_reformed }
+		# 4682 = { change_religion = tengri_pagan_reformed }
+		# 719 = { change_religion = tengri_pagan_reformed }
+		# 716 = { change_religion = tengri_pagan_reformed }
+		# 714 = { change_religion = tengri_pagan_reformed }
+		# 4688 = { change_religion = tengri_pagan_reformed }
+		# 2433 = { change_religion = tengri_pagan_reformed }
+		# 1065 = { change_religion = tengri_pagan_reformed }
+		# 1066 = { change_religion = tengri_pagan_reformed }
+		# 480 = { change_religion = tengri_pagan_reformed }
+		# 2127 = { change_religion = shiite }
+		# every_country = {
+		# 	if = {
+		# 		limit = {
+		# 			num_of_rebel_armies = 1		# 叛军军队数量 
+		# 		}
+		# 		every_owned_province = {
+		# 			clear_rebels = yes			# 清除当前作用域省份的所有叛军
+		# 		}
+		# 	}
+		# }
+		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭
 		name = my_close
@@ -1585,7 +1636,7 @@ country_event = {
 				add_prosperity = -5				# 繁荣度
 				add_devastation = 5				# 荒废度
 				add_local_autonomy = 5			# 自治度
-				add_nationalism = 1				# 分离主义
+				add_nationalism = 2				# 分离主义
 				add_center_of_trade_level = -1	# 贸易中心等级
 
 				# building
