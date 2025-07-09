@@ -614,79 +614,79 @@ country_event = {
 	option = { # 中国皇帝
 		name = my_emperor_of_china
 		alloc_emperor_of_china = { tag_value = QNG }
-		alloc_march = { main_tag = QNG subject_tag = EGY }
-		alloc_march = { main_tag = QNG subject_tag = ETH }
-		alloc_march = { main_tag = QNG subject_tag = ARB }
-		alloc_march = { main_tag = QNG subject_tag = PER }
-		alloc_march = { main_tag = QNG subject_tag = TMB }
-		alloc_march = { main_tag = QNG subject_tag = MAL }
-		alloc_march = { main_tag = QNG subject_tag = BEN }
-		alloc_march = { main_tag = QNG subject_tag = KON }
-		alloc_march = { main_tag = QNG subject_tag = ZAN }
-		alloc_march = { main_tag = QNG subject_tag = KIT }
-		alloc_march = { main_tag = QNG subject_tag = BUG }
-		alloc_march = { main_tag = QNG subject_tag = GZI }
-		alloc_march = { main_tag = QNG subject_tag = SIB }
-		alloc_march = { main_tag = QNG subject_tag = KZH }
-		alloc_march = { main_tag = QNG subject_tag = JAP }
-		alloc_march = { main_tag = QNG subject_tag = MUG }
-		alloc_march = { main_tag = QNG subject_tag = BHA }
-		alloc_march = { main_tag = QNG subject_tag = AVA }
-		alloc_march = { main_tag = QNG subject_tag = DAI }
-		alloc_march = { main_tag = QNG subject_tag = AYU }
-		alloc_march = { main_tag = QNG subject_tag = MSA }
-		alloc_march = { main_tag = QNG subject_tag = BTU }
-		alloc_march = { main_tag = QNG subject_tag = UHW }
+		# alloc_march = { main_tag = QNG subject_tag = EGY }
+		# alloc_march = { main_tag = QNG subject_tag = ETH }
+		# alloc_march = { main_tag = QNG subject_tag = ARB }
+		# alloc_march = { main_tag = QNG subject_tag = PER }
+		# alloc_march = { main_tag = QNG subject_tag = TMB }
+		# alloc_march = { main_tag = QNG subject_tag = MAL }
+		# alloc_march = { main_tag = QNG subject_tag = BEN }
+		# alloc_march = { main_tag = QNG subject_tag = KON }
+		# alloc_march = { main_tag = QNG subject_tag = ZAN }
+		# alloc_march = { main_tag = QNG subject_tag = KIT }
+		# alloc_march = { main_tag = QNG subject_tag = BUG }
+		# alloc_march = { main_tag = QNG subject_tag = GZI }
+		# alloc_march = { main_tag = QNG subject_tag = SIB }
+		# alloc_march = { main_tag = QNG subject_tag = KZH }
+		# alloc_march = { main_tag = QNG subject_tag = JAP }
+		# alloc_march = { main_tag = QNG subject_tag = MUG }
+		# alloc_march = { main_tag = QNG subject_tag = BHA }
+		# alloc_march = { main_tag = QNG subject_tag = AVA }
+		# alloc_march = { main_tag = QNG subject_tag = DAI }
+		# alloc_march = { main_tag = QNG subject_tag = AYU }
+		# alloc_march = { main_tag = QNG subject_tag = MSA }
+		# alloc_march = { main_tag = QNG subject_tag = BTU }
+		# alloc_march = { main_tag = QNG subject_tag = UHW }
 		ai_chance = { factor = 0 }
 	}
-	option = { # 神罗国家
-		name = my_country_emperor
-		alloc_emperor = { tag_value = FRA }			# 获得神罗皇帝地位
-		alloc_elector = { tag_value = FRA }			# 授予或取消选帝侯地位
-		alloc_march = { main_tag = FRA subject_tag = TUN }
-		alloc_march = { main_tag = FRA subject_tag = SPA }
-		alloc_march = { main_tag = FRA subject_tag = GBR }
-		alloc_march = { main_tag = FRA subject_tag = ITA }
-		alloc_march = { main_tag = FRA subject_tag = SWA }
-		alloc_march = { main_tag = FRA subject_tag = HAN }
-		alloc_march = { main_tag = FRA subject_tag = NED }
-		alloc_march = { main_tag = RUS subject_tag = TUR }
-		alloc_march = { main_tag = RUS subject_tag = BUL }
-		alloc_march = { main_tag = RUS subject_tag = SCA }
-		alloc_march = { main_tag = RUS subject_tag = PLC }
-		alloc_march = { main_tag = RUS subject_tag = PRU }
-		alloc_march = { main_tag = RUS subject_tag = AUH }
-		# alloc_tributary = { main_tag = QNG subject_tag = RUS }
+	# option = { # 神罗国家
+	# 	name = my_country_emperor
+	# 	alloc_emperor = { tag_value = FRA }			# 获得神罗皇帝地位
+	# 	alloc_elector = { tag_value = FRA }			# 授予或取消选帝侯地位
+	# 	alloc_march = { main_tag = FRA subject_tag = TUN }
+	# 	alloc_march = { main_tag = FRA subject_tag = SPA }
+	# 	alloc_march = { main_tag = FRA subject_tag = GBR }
+	# 	alloc_march = { main_tag = FRA subject_tag = ITA }
+	# 	alloc_march = { main_tag = FRA subject_tag = SWA }
+	# 	alloc_march = { main_tag = FRA subject_tag = HAN }
+	# 	alloc_march = { main_tag = FRA subject_tag = NED }
+	# 	alloc_march = { main_tag = RUS subject_tag = TUR }
+	# 	alloc_march = { main_tag = RUS subject_tag = BUL }
+	# 	alloc_march = { main_tag = RUS subject_tag = SCA }
+	# 	alloc_march = { main_tag = RUS subject_tag = PLC }
+	# 	alloc_march = { main_tag = RUS subject_tag = PRU }
+	# 	alloc_march = { main_tag = RUS subject_tag = AUH }
+	# 	# alloc_tributary = { main_tag = QNG subject_tag = RUS }
 
-		if = {
-			limit = {
-				hre_religion = catholic				# 神罗宗教
-			}
-			cancel_all_elector = { tag_hold = FRA }
-			alloc_elector = { tag_value = SPA }
-			alloc_elector = { tag_value = ITA }
-			alloc_elector = { tag_value = SWA }
-			alloc_elector = { tag_value = AUH }
-			alloc_elector = { tag_value = PLC }
-			# 非历史天主教国家
-			alloc_elector = { tag_value = GBR }
-		}
-		else_if = {
-			limit = {
-				hre_religion_locked = no			# 神罗宗教锁定
-				hre_religion_treaty = yes			# 神罗宗教条约
-			}
-			cancel_all_elector = { tag_hold = FRA }
-		 	alloc_elector = { tag_value = RUS }
-		 	alloc_elector = { tag_value = PRU }
-		 	alloc_elector = { tag_value = NED }
-		 	alloc_elector = { tag_value = GBR }
-			# 非历史其他宗教国家
-		 	alloc_elector = { tag_value = SPA }
-		 	alloc_elector = { tag_value = ITA }
-		}
-		ai_chance = { factor = 0 }
-	}
+	# 	if = {
+	# 		limit = {
+	# 			hre_religion = catholic				# 神罗宗教
+	# 		}
+	# 		cancel_all_elector = { tag_hold = FRA }
+	# 		alloc_elector = { tag_value = SPA }
+	# 		alloc_elector = { tag_value = ITA }
+	# 		alloc_elector = { tag_value = SWA }
+	# 		alloc_elector = { tag_value = AUH }
+	# 		alloc_elector = { tag_value = PLC }
+	# 		# 非历史天主教国家
+	# 		alloc_elector = { tag_value = GBR }
+	# 	}
+	# 	else_if = {
+	# 		limit = {
+	# 			hre_religion_locked = no			# 神罗宗教锁定
+	# 			hre_religion_treaty = yes			# 神罗宗教条约
+	# 		}
+	# 		cancel_all_elector = { tag_hold = FRA }
+	# 	 	alloc_elector = { tag_value = RUS }
+	# 	 	alloc_elector = { tag_value = PRU }
+	# 	 	alloc_elector = { tag_value = NED }
+	# 	 	alloc_elector = { tag_value = GBR }
+	# 		# 非历史其他宗教国家
+	# 	 	alloc_elector = { tag_value = SPA }
+	# 	 	alloc_elector = { tag_value = ITA }
+	# 	}
+	# 	ai_chance = { factor = 0 }
+	# }
 	option = { # 神罗省份
 		name = my_province_emperor
 		europe = {											# 大陆
@@ -709,11 +709,11 @@ country_event = {
 		}
 		ai_chance = { factor = 0 }
 	}
-	option = { # 教监
-		name = my_country_papal_controller
-		alloc_papal_controller = { tag_value = FRA }
-		ai_chance = { factor = 0 }
-	}
+	# option = { # 教监
+	# 	name = my_country_papal_controller
+	# 	alloc_papal_controller = { tag_value = FRA }
+	# 	ai_chance = { factor = 0 }
+	# }
 	option = { # 改革呼声
 		name = my_add_reform_desire
 		add_reform_desire = 100
@@ -825,16 +825,16 @@ country_event = {
 		load_province_religion = { tag_value = SIB }
 		ai_chance = { factor = 0 }
 	}
-	option = { # 政府等级
-		name = my_government_rank
-		every_capital_province = {
-			alloc_government_rank = {
-				tag_value = owner
-				rank_value = 3
-			}
-		}
-		ai_chance = { factor = 0 }
-	}
+	# option = { # 政府等级
+	# 	name = my_government_rank
+	# 	every_capital_province = {
+	# 		alloc_government_rank = {
+	# 			tag_value = owner
+	# 			rank_value = 3
+	# 		}
+	# 	}
+	# 	ai_chance = { factor = 0 }
+	# }
 	option = { # 主流文化
 		name = my_country_culture
 		if = {
@@ -875,24 +875,24 @@ country_event = {
 		}
 		ai_chance = { factor = 0 }
 	}
-	option = { # 加国家modifier
-		name = my_try_add_country_modifier
-		try_add_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier duration_value = -1 }
-		try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier uration_value = -1 }
-		try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier uration_value = -1 }
-		try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier uration_value = -1 }
-		ai_chance = { factor = 0 }
-	}
-	option = { # 任务条件
-		name = my_mission_trigger
-		# 任务：殖民手段
-		alloc_march = { main_tag = FRA subject_tag = BEN }
-		# 任务：独占印度
-		alloc_march = { main_tag = FRA subject_tag = BHA }
-		# 任务：阿维尼翁教廷领地
-		force_alloc_capital = { province_value = 118 tag_value = PAP }
-		ai_chance = { factor = 0 }
-	}
+	# option = { # 加国家modifier
+	# 	name = my_try_add_country_modifier
+	# 	try_add_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier duration_value = -1 }
+	# 	try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier uration_value = -1 }
+	# 	try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier uration_value = -1 }
+	# 	try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier uration_value = -1 }
+	# 	ai_chance = { factor = 0 }
+	# }
+	# option = { # 任务条件
+	# 	name = my_mission_trigger
+	# 	# 任务：殖民手段
+	# 	alloc_march = { main_tag = FRA subject_tag = BEN }
+	# 	# 任务：独占印度
+	# 	alloc_march = { main_tag = FRA subject_tag = BHA }
+	# 	# 任务：阿维尼翁教廷领地
+	# 	force_alloc_capital = { province_value = 118 tag_value = PAP }
+	# 	ai_chance = { factor = 0 }
+	# }
 	option = { # 任务效果
 		name = my_mission_effect
 		# 任务：黄金边区
@@ -912,60 +912,46 @@ country_event = {
 	}
 	option = { # 作弊
 		name = my_cheat
-		# alloc_government_rank = {
-		# 	tag_value = QNG
-		# 	rank_value = 3
-		# }
-		# alloc_country_culture = { tag_value = KIT culture_value = ganda }
-		# alloc_country_culture = { tag_value = SCA culture_value = swedish }
-		# alloc_country_culture = { tag_value = PER culture_value = persian }
-		# alloc_country_culture = { tag_value = MCH culture_value = manchu_new }
-		# religion
-		# alloc_country_religion = { tag_value = MAL religion_value = sunni }
-		# alloc_country_religion = { tag_value = ZAN religion_value = sunni }
-		# alloc_province_religion = { tag_value = MAL religion_value = shamanism }
-		# alloc_province_religion = { tag_value = ZAN religion_value = shamanism }
-		# alloc_province_religion = { tag_value = MLC religion_value = hinduism }
-		# 2165 = { change_religion = buddhism }
-		# 738 = { change_religion = animism }
-		# 2155 = { change_religion = animism }
-		# 2748 = { change_religion = animism }
-		# 1033 = { change_religion = animism }
-		# 4658 = { change_religion = animism }
-		# 692 = { change_religion = confucianism }
-		# 4195 = { change_religion = confucianism }
-		# 2109 = { change_religion = vajrayana }
-		# 2191 = { change_religion = vajrayana }
-		# 4676 = { change_religion = vajrayana }
-		# tibet_region = { change_religion = vajrayana }
-		# 1850 = { change_religion = tengri_pagan_reformed }
-		# 2104 = { change_religion = tengri_pagan_reformed }
-		# 4662 = { change_religion = tengri_pagan_reformed }
-		# 4665 = { change_religion = tengri_pagan_reformed }
-		# 4666 = { change_religion = tengri_pagan_reformed }
-		# 4221 = { change_religion = tengri_pagan_reformed }
-		# 4668 = { change_religion = tengri_pagan_reformed }
-		# 4680 = { change_religion = tengri_pagan_reformed }
-		# 4682 = { change_religion = tengri_pagan_reformed }
-		# 719 = { change_religion = tengri_pagan_reformed }
-		# 716 = { change_religion = tengri_pagan_reformed }
-		# 714 = { change_religion = tengri_pagan_reformed }
-		# 4688 = { change_religion = tengri_pagan_reformed }
-		# 2433 = { change_religion = tengri_pagan_reformed }
-		# 1065 = { change_religion = tengri_pagan_reformed }
-		# 1066 = { change_religion = tengri_pagan_reformed }
-		# 480 = { change_religion = tengri_pagan_reformed }
-		# 2127 = { change_religion = shiite }
 		# every_country = {
-		# 	if = {
-		# 		limit = {
-		# 			num_of_rebel_armies = 1		# 叛军军队数量 
+		# 	every_owned_province = {
+		# 		if = {
+		# 			limit = {
+		# 				is_city = yes
+		# 				NOT = {
+		# 					controlled_by = PREV
+		# 				}
+		# 			}
+		# 			change_controller = PREV
+		# 			clear_rebels = yes
 		# 		}
-		# 		every_owned_province = {
-		# 			clear_rebels = yes			# 清除当前作用域省份的所有叛军
-		# 		}
+		# 		set_local_autonomy = 0
 		# 	}
 		# }
+		alloc_province_culture = { range_value = 1952 culture_value = transylvanian } # 特兰西瓦尼亚
+		alloc_province_culture = { range_value = 4108 culture_value = bemba			} # 本巴
+		alloc_province_culture = { range_value = 4109 culture_value = luba			} # 卢巴
+		alloc_province_culture = { range_value = 1177 culture_value = khoisan		} # 科伊桑
+		alloc_province_culture = { range_value = 4054 culture_value = masaba		} # 马萨巴
+		alloc_province_culture = { range_value = 4059 culture_value = masaba		} # 马萨巴
+		alloc_province_culture = { range_value = 1217 culture_value = nubian		} # 努比亚
+		alloc_province_culture = { range_value = 1207 culture_value = somali		} # 索马里
+		alloc_province_culture = { range_value = 1208 culture_value = somali		} # 索马里
+		alloc_province_culture = { range_value = 2781 culture_value = somali		} # 索马里
+		alloc_province_culture = { range_value = 2779 culture_value = somali		} # 索马里
+		alloc_province_culture = { range_value = 2792 culture_value = somali		} # 索马里
+		alloc_province_culture = { range_value = 2793 culture_value = somali		} # 索马里
+		alloc_province_culture = { range_value = 1210 culture_value = harari		} # 哈勒尔
+		alloc_province_culture = { range_value = 2773 culture_value = harari		} # 哈勒尔
+		alloc_province_culture = { range_value = 1218 culture_value = sidamo		} # 锡达莫
+		alloc_province_culture = { range_value = 2756 culture_value = sidamo		} # 锡达莫
+		alloc_province_culture = { range_value = 4158 culture_value = oromo			} # 奥罗莫
+		alloc_province_culture = { range_value = 4289 culture_value = luri			} # 卢尔
+		alloc_province_culture = { range_value = 624  culture_value = sundanese		} # 巽他
+		alloc_province_culture = { range_value = 630  culture_value = sundanese		} # 巽他
+		alloc_province_culture = { range_value = 2688 culture_value = sundanese		} # 巽他
+		alloc_province_culture = { range_value = 4791 culture_value = sundanese		} # 巽他
+		alloc_province_culture = { range_value = 648  culture_value = moluccan		} # 糜鹿加
+		alloc_province_culture = { range_value = 4802 culture_value = bornean		} # 婆罗洲
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭
