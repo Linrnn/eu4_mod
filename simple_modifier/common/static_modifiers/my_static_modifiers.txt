@@ -62,6 +62,7 @@ all_nations = {
 
 # 最近的叛乱
 recent_uprising = {
-	local_unrest = -10
+	# 以下是原版修正
+	# local_unrest = -10
 	picture = "recent_uprising"
 }

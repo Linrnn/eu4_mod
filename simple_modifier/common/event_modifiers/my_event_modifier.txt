@@ -28,7 +28,7 @@ my_monomer_modifier = {
 }
 
 fra_rus_qng_modifier = {
-	diplomatic_upkeep = 15						# 外交关系数量
+	# diplomatic_upkeep = 15					# 外交关系数量
 	imperial_authority_value = 1.0				# 月度帝国权威（数值）：神圣罗马帝国专用
 	imperial_mandate = 1.0						# 月度天命值：中华帝国专用
 }

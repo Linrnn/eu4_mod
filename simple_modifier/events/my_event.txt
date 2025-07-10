@@ -875,14 +875,14 @@ country_event = {
 		}
 		ai_chance = { factor = 0 }
 	}
-	# option = { # 加国家modifier
-	# 	name = my_try_add_country_modifier
-	# 	try_add_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier duration_value = -1 }
-	# 	try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier uration_value = -1 }
-	# 	try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier uration_value = -1 }
-	# 	try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier uration_value = -1 }
-	# 	ai_chance = { factor = 0 }
-	# }
+	option = { # 加国家modifier
+		name = my_try_add_country_modifier
+		try_add_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier duration_value = -1 }
+		try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier duration_value = -1 }
+		# try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier duration_value = -1 }
+		try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier duration_value = -1 }
+		ai_chance = { factor = 0 }
+	}
 	# option = { # 任务条件
 	# 	name = my_mission_trigger
 	# 	# 任务：殖民手段
@@ -910,48 +910,52 @@ country_event = {
 		# alloc_permanent_claim = { tag_value = FRA range_value = italy_region }
 		ai_chance = { factor = 0 }
 	}
+	option = { # 清空叛军
+		name = my_clear_rebels
+		every_country = {
+			if = {
+				limit = {
+					num_of_rebel_armies = 1
+					NOT = {
+						tag = REB # 叛军
+						tag = PIR # 海盗
+						tag = NAT # 土著
+					}
+				}
+				every_owned_province = {
+					if = {
+						limit = {
+							is_city = yes
+							OR = {
+								units_in_province = REB
+								units_in_province = PIR
+								units_in_province = NAT
+							}
+						}
+						clear_rebels = yes
+					}
+					if = {
+						limit = {
+							is_city = yes
+							NOT = {
+								controlled_by = PREV
+							}
+							OR = {
+								controlled_by = REB
+								controlled_by = PIR
+								controlled_by = NAT
+							}
+						}
+						change_controller = PREV
+					}
+				}
+			}
+		}
+		ai_chance = { factor = 0 }
+	}
 	option = { # 作弊
 		name = my_cheat
-		# every_country = {
-		# 	every_owned_province = {
-		# 		if = {
-		# 			limit = {
-		# 				is_city = yes
-		# 				NOT = {
-		# 					controlled_by = PREV
-		# 				}
-		# 			}
-		# 			change_controller = PREV
-		# 			clear_rebels = yes
-		# 		}
-		# 		set_local_autonomy = 0
-		# 	}
-		# }
-		alloc_province_culture = { range_value = 1952 culture_value = transylvanian } # 特兰西瓦尼亚
-		alloc_province_culture = { range_value = 4108 culture_value = bemba			} # 本巴
-		alloc_province_culture = { range_value = 4109 culture_value = luba			} # 卢巴
-		alloc_province_culture = { range_value = 1177 culture_value = khoisan		} # 科伊桑
-		alloc_province_culture = { range_value = 4054 culture_value = masaba		} # 马萨巴
-		alloc_province_culture = { range_value = 4059 culture_value = masaba		} # 马萨巴
-		alloc_province_culture = { range_value = 1217 culture_value = nubian		} # 努比亚
-		alloc_province_culture = { range_value = 1207 culture_value = somali		} # 索马里
-		alloc_province_culture = { range_value = 1208 culture_value = somali		} # 索马里
-		alloc_province_culture = { range_value = 2781 culture_value = somali		} # 索马里
-		alloc_province_culture = { range_value = 2779 culture_value = somali		} # 索马里
-		alloc_province_culture = { range_value = 2792 culture_value = somali		} # 索马里
-		alloc_province_culture = { range_value = 2793 culture_value = somali		} # 索马里
-		alloc_province_culture = { range_value = 1210 culture_value = harari		} # 哈勒尔
-		alloc_province_culture = { range_value = 2773 culture_value = harari		} # 哈勒尔
-		alloc_province_culture = { range_value = 1218 culture_value = sidamo		} # 锡达莫
-		alloc_province_culture = { range_value = 2756 culture_value = sidamo		} # 锡达莫
-		alloc_province_culture = { range_value = 4158 culture_value = oromo			} # 奥罗莫
-		alloc_province_culture = { range_value = 4289 culture_value = luri			} # 卢尔
-		alloc_province_culture = { range_value = 624  culture_value = sundanese		} # 巽他
-		alloc_province_culture = { range_value = 630  culture_value = sundanese		} # 巽他
-		alloc_province_culture = { range_value = 2688 culture_value = sundanese		} # 巽他
-		alloc_province_culture = { range_value = 4791 culture_value = sundanese		} # 巽他
-		alloc_province_culture = { range_value = 648  culture_value = moluccan		} # 糜鹿加
-		alloc_province_culture = { range_value = 4802 culture_value = bornean		} # 婆罗洲
+		# swap_free_idea_group	# 为当前作用域检测国家理念是否相符，若不符则重置为正确的国家理念
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭

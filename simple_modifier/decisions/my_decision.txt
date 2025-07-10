@@ -220,7 +220,7 @@ country_decisions = {
 
 	my_change_ruler_heir = {
 		major = yes
-		color = { 60 179 113 }
+		color = { 0 255 255 }
 		potential = {
 			ai = no
 			OR = {
@@ -272,6 +272,62 @@ country_decisions = {
 			factor = 0
 		}
 	}
+	my_get_thing = {
+		major = yes
+		color = { 0 255 255 }
+		potential = {
+			ai = no
+		}
+		effect = {
+			country_event = {
+				id = my_event.1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	my_cash_add = {
+		major = yes
+		color = { 0 255 255 }
+		potential = {
+			ai = no
+		}
+		effect = {
+			add_treasury = 10000
+			change_variable = {
+				which = my_cash_loan
+				value = 1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	my_cash_remove = {
+		major = yes
+		color = { 0 255 255 }
+		potential = {
+			ai = no
+		}
+		allow = {
+			treasury = 20000
+			check_variable = {
+				which = my_cash_loan
+				value = 1
+			}
+		}
+		effect = {
+			add_treasury = -20000
+			subtract_variable = {
+				which = my_cash_loan
+				value = 1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 	# add_global_modifier = {
 	# 	major = yes
 	# 	potential = {
@@ -304,15 +360,28 @@ country_decisions = {
 	# 	}
 	# }
 
-	my_get_thing = {
-		major = yes
+	my_set_province = {
 		color = { 60 179 113 }
 		potential = {
 			ai = no
 		}
 		effect = {
 			country_event = {
-				id = my_event.1
+				id = my_event.3
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	my_set_country = {
+		color = { 60 179 113 }
+		potential = {
+			ai = no
+		}
+		effect = {
+			country_event = {
+				id = my_event.4
 			}
 		}
 		ai_will_do = {
@@ -320,7 +389,6 @@ country_decisions = {
 		}
 	}
 	my_birth_of_a_new_city = {
-		major = yes
 		color = { 60 179 113 }
 		potential = {
 			ai = no
@@ -361,8 +429,7 @@ country_decisions = {
 		}
 	}
 	# my_birth_of_a_new_city_remove = {
-	# 	major = yes
-	# 	color = { 60 179 113 }
+	#	color = { 60 179 113 }
 	# 	potential = {
 	# 		ai = no
 	# 	}
@@ -393,35 +460,6 @@ country_decisions = {
 	# 		factor = 0
 	# 	}
 	# }
-
-	my_set_province = {
-		color = { 0 255 255 }
-		potential = {
-			ai = no
-		}
-		effect = {
-			country_event = {
-				id = my_event.3
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	my_set_country = {
-		color = { 0 255 255 }
-		potential = {
-			ai = no
-		}
-		effect = {
-			country_event = {
-				id = my_event.4
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
 
 	# my_test_religion_reformed = {
 	# 	major = yes
@@ -651,47 +689,6 @@ country_decisions = {
 	# 		factor = 0
 	# 	}
 	# }
-
-	my_cash_add = {
-		major = yes
-		color = { 0 127 127 }
-		potential = {
-			ai = no
-		}
-		effect = {
-			add_treasury = 10000
-			change_variable = {
-				which = my_cash_loan
-				value = 1
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
-	my_cash_remove = {
-		major = yes
-		color = { 0 127 127 }
-		potential = {
-			ai = no
-		}
-		allow = {
-			check_variable = {
-				which = my_cash_loan
-				value = 1
-			}
-		}
-		effect = {
-			add_treasury = -10000
-			subtract_variable = {
-				which = my_cash_loan
-				value = 1
-			}
-		}
-		ai_will_do = {
-			factor = 0
-		}
-	}
 
 	#add_my_global_unrest_modifier = {
 	#	major = yes
