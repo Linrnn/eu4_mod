@@ -344,10 +344,8 @@ country_event = {
 		alloc_province = { range_value = sloboda_ukraine_area			tag_value = MOS }
 		alloc_province = { range_value = white_ruthenia_area			tag_value = MOS }
 		alloc_province = { range_value = podolia_volhynia_area			tag_value = MOS }
-		alloc_province = { range_value = pripyat_area					tag_value = MOS }
 		alloc_province = { range_value = smolensk_area					tag_value = MOS }
 		alloc_province = { range_value = minsk_area						tag_value = MOS }
-		alloc_province = { range_value = volhynia_area					tag_value = MOS }
 		alloc_province = { range_value = chernigov_area					tag_value = MOS }
 		ai_chance = { factor = 0 }
 	}
@@ -363,6 +361,8 @@ country_event = {
 		alloc_province = { range_value = sandomierz_area				tag_value = POL }
 		alloc_province = { range_value = kuyavia_area					tag_value = POL }
 		alloc_province = { range_value = podlasie_area					tag_value = POL }
+		alloc_province = { range_value = pripyat_area					tag_value = POL }
+		alloc_province = { range_value = volhynia_area					tag_value = POL }
 		alloc_province = { range_value = samogitia_area					tag_value = POL }
 		alloc_province = { range_value = west_prussia_area				tag_value = POL }
 		alloc_province = { range_value = lithuania_area					tag_value = POL }
@@ -1015,39 +1015,39 @@ country_event = {
 		# 	}
 		# }
 
-		every_country = {
-			if = {
-				limit = {
-					NOT = {
-						tag = REB
-						tag = PIR
-						tag = NAT
-						tag = FRA
-						march_of = FRA
-						vassal_of = FRA
-						junior_union_with = FRA
-						is_colonial_nation_of = FRA
-					}
-				}
-				every_country = {
-					if = {
-						limit = {
-							NOT = {
-								tag = REB
-								tag = PIR
-								tag = NAT
-								tag = FRA
-								march_of = FRA
-								vassal_of = FRA
-								junior_union_with = FRA
-								is_colonial_nation_of = FRA
-							}
-						}
-						add_truce_with = PREV
-					}
-				}
-			}
-		}
+		# every_country = {
+		# 	if = {
+		# 		limit = {
+		# 			NOT = {
+		# 				tag = REB
+		# 				tag = PIR
+		# 				tag = NAT
+		# 				tag = FRA
+		# 				march_of = FRA
+		# 				vassal_of = FRA
+		# 				junior_union_with = FRA
+		# 				is_colonial_nation_of = FRA
+		# 			}
+		# 		}
+		# 		every_country = {
+		# 			if = {
+		# 				limit = {
+		# 					NOT = {
+		# 						tag = REB
+		# 						tag = PIR
+		# 						tag = NAT
+		# 						tag = FRA
+		# 						march_of = FRA
+		# 						vassal_of = FRA
+		# 						junior_union_with = FRA
+		# 						is_colonial_nation_of = FRA
+		# 					}
+		# 				}
+		# 				add_truce_with = PREV
+		# 			}
+		# 		}
+		# 	}
+		# }
 
 		ai_chance = { factor = 0 }
 	}

@@ -37,7 +37,7 @@ fra_rus_qng_modifier = {
 other_emeny_modifier = {
 	development_cost = -10						# 提升发展度花费
 	defensiveness = 10							# 全国防御效率
-	global_institution_spread = 10				# 全局思潮传播速度
+	# global_institution_spread = 10				# 全局思潮传播速度
 }
 
 special_unit_modifier = {
