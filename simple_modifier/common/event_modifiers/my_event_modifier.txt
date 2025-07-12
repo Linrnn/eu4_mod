@@ -16,12 +16,13 @@ my_monomer_modifier = {
 	# 乘法
 	#culture_conversion_cost = -12				# 转化省份文化的外交点数花费
 	#build_cost = -10							# 建筑花费
-	#development_cost = -2000.0					# 提升发展度花费
+	#development_cost = -0.1					# 提升发展度花费
 	#build_time = -1.5							# 建筑时间
 	#development_cost = -5.5					# 提升发展度花费
 	#core_creation = -1.5						# 建造核心花费
 	#province_warscore_cost = -0.5				# 省份战争分数花费：割取敌方省份战争分数花费，此为全局buff
 	#colonist_placement_chance = 0.25			# 殖民过程中移民的安置概率，只在殖民过程中起效
+	#global_institution_spread = 0.1			# 全局思潮传播速度
 
 	# 恒定
 	#can_colony_boost_development = yes 		# 完成殖民的省份生产、税收、人力都+1
@@ -31,6 +32,12 @@ fra_rus_qng_modifier = {
 	# diplomatic_upkeep = 15					# 外交关系数量
 	imperial_authority_value = 1.0				# 月度帝国权威（数值）：神圣罗马帝国专用
 	imperial_mandate = 1.0						# 月度天命值：中华帝国专用
+}
+
+other_emeny_modifier = {
+	development_cost = -10						# 提升发展度花费
+	defensiveness = 10							# 全国防御效率
+	global_institution_spread = 10				# 全局思潮传播速度
 }
 
 special_unit_modifier = {

@@ -22,6 +22,7 @@ all_nations = {
 	missionary_maintenance_cost = 1				# 传教维护费
 	female_advisor_chance = 0.3					# 出现女性顾问几率
 	drill_decay_modifier = -0.55				# 陆军操练度损失
+	# defensiveness = -0.01						# 全国防御效率
 	# global_regiment_recruit_speed = 2			# 陆军征召时间
 	# global_ship_recruit_speed = 4				# 全国船只建造时间
 	# merc_maintenance_modifier = 1				# 雇佣兵维护费

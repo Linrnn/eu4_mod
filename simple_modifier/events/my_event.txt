@@ -905,6 +905,16 @@ country_event = {
 		try_add_country_modifier = { tag_value = FRA modifier_value = fra_host_city_of_lights_modifier duration_value = -1 }
 		# 任务：巴黎宝座
 		try_add_country_modifier = { tag_value = FRA modifier_value = fra_mission_modifier duration_value = 1 }
+		# 任务：工业之火
+		every_owned_province = {
+			if = {
+				limit = { 
+					OR = {  trade_goods = copper trade_goods = iron trade_goods = gold }
+					NOT = { has_province_modifier = fra_metal_barons_modifier }
+				}
+				add_province_modifier = { name = fra_metal_barons_modifier duration = -1 }
+			}
+		}
 		# 任务：阿维尼翁教廷领地
 		# alloc_permanent_claim = { tag_value = FRA range_value = palestine_area }
 		# alloc_permanent_claim = { tag_value = FRA range_value = italy_region }
@@ -956,6 +966,89 @@ country_event = {
 	option = { # 作弊
 		name = my_cheat
 		# swap_free_idea_group	# 为当前作用域检测国家理念是否相符，若不符则重置为正确的国家理念
+
+		# every_country = {
+		# 	if = {
+		# 		limit = {
+		# 			NOT = {
+		# 				tag = REB
+		# 				tag = PIR
+		# 				tag = NAT
+		# 				tag = FRA
+		# 				march_of = FRA
+		# 				vassal_of = FRA
+		# 				junior_union_with = FRA
+		# 				is_colonial_nation_of = FRA
+		# 				has_country_modifier = other_emeny_modifier
+		# 			}
+		# 		}
+		# 		add_country_modifier = {
+		# 			name = other_emeny_modifier
+		# 			duration = 18000
+		# 		}
+		# 	}
+		# }
+
+		# every_country = {
+		# 	if = {
+		# 		limit = {
+		# 			NOT = {
+		# 				tag = REB # 叛军
+		# 				tag = PIR # 海盗
+		# 				tag = NAT # 土著
+		# 			}
+		# 		}
+		# 		every_owned_province = {
+		# 			if = {
+		# 				limit = {
+		# 					is_city = yes
+		# 					NOT = {
+		# 						controlled_by = PREV
+		# 						controlled_by = REB
+		# 						controlled_by = PIR
+		# 						controlled_by = NAT
+		# 					}
+		# 				}
+		# 				change_controller = PREV
+		# 			}
+		# 		}
+		# 	}
+		# }
+
+		every_country = {
+			if = {
+				limit = {
+					NOT = {
+						tag = REB
+						tag = PIR
+						tag = NAT
+						tag = FRA
+						march_of = FRA
+						vassal_of = FRA
+						junior_union_with = FRA
+						is_colonial_nation_of = FRA
+					}
+				}
+				every_country = {
+					if = {
+						limit = {
+							NOT = {
+								tag = REB
+								tag = PIR
+								tag = NAT
+								tag = FRA
+								march_of = FRA
+								vassal_of = FRA
+								junior_union_with = FRA
+								is_colonial_nation_of = FRA
+							}
+						}
+						add_truce_with = PREV
+					}
+				}
+			}
+		}
+
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭
