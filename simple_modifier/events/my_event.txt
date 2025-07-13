@@ -716,7 +716,7 @@ country_event = {
 	# }
 	option = { # 改革呼声
 		name = my_add_reform_desire
-		add_reform_desire = 100
+		add_reform_desire = 0.5
 		ai_chance = { factor = 0 }
 	}
 	option = { # 宗教改革前
@@ -942,7 +942,7 @@ country_event = {
 								units_in_province = NAT
 							}
 						}
-						clear_rebels = yes
+						clear_rebels = yes		# 清除当前作用域省份的所有叛军	
 					}
 					if = {
 						limit = {
@@ -963,10 +963,69 @@ country_event = {
 		}
 		ai_chance = { factor = 0 }
 	}
+	option = { # 和平条约
+		name = my_truce
+		every_country = {
+			if = {
+				limit = {
+					NOT = {
+						tag = REB
+						tag = PIR
+						tag = NAT
+						tag = ROOT
+						march_of = ROOT
+						vassal_of = ROOT
+						junior_union_with = ROOT
+						is_colonial_nation_of = ROOT
+					}
+				}
+				every_country = {
+					if = {
+						limit = {
+							NOT = {
+								tag = REB
+								tag = PIR
+								tag = NAT
+								tag = ROOT
+								march_of = ROOT
+								vassal_of = ROOT
+								junior_union_with = ROOT
+								is_colonial_nation_of = ROOT
+							}
+						}
+						add_truce_with = PREV		# 与指定国家签订一个和平条约
+					}
+				}
+			}
+		}
+		ai_chance = { factor = 0 }
+	}
+	option = { # 包围网
+		name = my_coalition_against
+		every_country = {
+			if = {
+				limit = {
+					NOT = {
+						tag = REB
+						tag = PIR
+						tag = NAT
+						tag = ROOT
+						march_of = ROOT
+						vassal_of = ROOT
+						junior_union_with = ROOT
+						is_colonial_nation_of = ROOT
+					}
+				}
+				form_coalition_against = ROOT	# 在指定作用域国家创建或加入一个包围网联盟
+			}
+		}
+		ai_chance = { factor = 0 }
+	}
 	option = { # 作弊
 		name = my_cheat
 		# swap_free_idea_group	# 为当前作用域检测国家理念是否相符，若不符则重置为正确的国家理念
 
+		# 添加“other_emeny_modifier”修正
 		# every_country = {
 		# 	if = {
 		# 		limit = {
@@ -989,13 +1048,14 @@ country_event = {
 		# 	}
 		# }
 
+		# 收复失地
 		# every_country = {
 		# 	if = {
 		# 		limit = {
 		# 			NOT = {
-		# 				tag = REB # 叛军
-		# 				tag = PIR # 海盗
-		# 				tag = NAT # 土著
+		# 				tag = REB
+		# 				tag = PIR
+		# 				tag = NAT
 		# 			}
 		# 		}
 		# 		every_owned_province = {
@@ -1010,40 +1070,6 @@ country_event = {
 		# 					}
 		# 				}
 		# 				change_controller = PREV
-		# 			}
-		# 		}
-		# 	}
-		# }
-
-		# every_country = {
-		# 	if = {
-		# 		limit = {
-		# 			NOT = {
-		# 				tag = REB
-		# 				tag = PIR
-		# 				tag = NAT
-		# 				tag = FRA
-		# 				march_of = FRA
-		# 				vassal_of = FRA
-		# 				junior_union_with = FRA
-		# 				is_colonial_nation_of = FRA
-		# 			}
-		# 		}
-		# 		every_country = {
-		# 			if = {
-		# 				limit = {
-		# 					NOT = {
-		# 						tag = REB
-		# 						tag = PIR
-		# 						tag = NAT
-		# 						tag = FRA
-		# 						march_of = FRA
-		# 						vassal_of = FRA
-		# 						junior_union_with = FRA
-		# 						is_colonial_nation_of = FRA
-		# 					}
-		# 				}
-		# 				add_truce_with = PREV
 		# 			}
 		# 		}
 		# 	}
