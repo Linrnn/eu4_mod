@@ -629,6 +629,36 @@ alloc_province_culture = {							# 主流文化
 	}
 }
 
+set_province_development = {						# 发展度
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+			}
+			every_owned_province = {
+				if = {
+					limit = {
+						base_tax = 2
+					}
+					set_base_tax = 1
+				}
+				if = {
+					limit = {
+						base_production = 2
+					}
+					set_base_production = 1
+				}
+				if = {
+					limit = {
+						base_manpower = 2
+					}
+					set_base_manpower = 1
+				}
+			}
+		}
+	}
+}
+
 alloc_role_religion = {
 	if = {
 		limit = {

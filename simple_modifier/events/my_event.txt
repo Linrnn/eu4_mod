@@ -2,6 +2,8 @@ namespace = my_event
 
 country_event = {
 	id = my_event.1
+	title = my_event_1_title
+	desc = my_event_1_desc
 	is_triggered_only = yes
 
 	option = { # 增加行政点
@@ -150,6 +152,8 @@ country_event = {
 
 country_event = {
 	id = my_event.3
+	title = my_event_3_title
+	desc = my_event_3_desc
 	is_triggered_only = yes
 
 	option = { # 殖民领
@@ -609,6 +613,8 @@ country_event = {
 
 country_event = {
 	id = my_event.4
+	title = my_event_4_title
+	desc = my_event_4_desc
 	is_triggered_only = yes
 
 	option = { # 中国皇帝
@@ -803,26 +809,42 @@ country_event = {
 	}
 	option = { # 保存省份宗教
 		name = my_save_province_religion
-		save_province_religion = { tag_value = QNG }
-		save_province_religion = { tag_value = SIB }
+		# save_province_religion = { tag_value = QNG }
+		# save_province_religion = { tag_value = SIB }
+		every_province = {
+			export_to_variable = {
+				which = my_province_religion
+				value = religion
+			}
+		}
 		ai_chance = { factor = 0 }
 	}
 	option = { # 加载省份宗教
 		name = my_load_province_religion
-		alloc_province_religion = { tag_value = TUN religion_value = sunni }
-		alloc_province_religion = { tag_value = EGY religion_value = sunni }
-		alloc_province_religion = { tag_value = TMB religion_value = sunni }
-		alloc_province_religion = { tag_value = TUR religion_value = sunni }
-		alloc_province_religion = { tag_value = ARB religion_value = sunni }
-		alloc_province_religion = { tag_value = KZH religion_value = sunni }
-		alloc_province_religion = { tag_value = PER religion_value = shiite }
-		alloc_province_religion = { tag_value = MAL religion_value = shamanism }
-		alloc_province_religion = { tag_value = ZAN religion_value = shamanism }
-		alloc_province_religion = { tag_value = MUG religion_value = hinduism }
-		alloc_province_religion = { tag_value = DLH religion_value = hinduism }
-		alloc_province_religion = { tag_value = MSA religion_value = hinduism }
-		load_province_religion = { tag_value = QNG }
-		load_province_religion = { tag_value = SIB }
+		# alloc_province_religion = { tag_value = TUN religion_value = sunni }
+		# alloc_province_religion = { tag_value = EGY religion_value = sunni }
+		# alloc_province_religion = { tag_value = TMB religion_value = sunni }
+		# alloc_province_religion = { tag_value = TUR religion_value = sunni }
+		# alloc_province_religion = { tag_value = ARB religion_value = sunni }
+		# alloc_province_religion = { tag_value = KZH religion_value = sunni }
+		# alloc_province_religion = { tag_value = PER religion_value = shiite }
+		# alloc_province_religion = { tag_value = MAL religion_value = shamanism }
+		# alloc_province_religion = { tag_value = ZAN religion_value = shamanism }
+		# alloc_province_religion = { tag_value = MUG religion_value = hinduism }
+		# alloc_province_religion = { tag_value = DLH religion_value = hinduism }
+		# alloc_province_religion = { tag_value = MSA religion_value = hinduism }
+		# load_province_religion = { tag_value = QNG }
+		# load_province_religion = { tag_value = SIB }
+		every_province = {
+			if = {
+				limit = {
+					NOT = {
+						religion = variable:my_province_religion
+					}
+				}
+				change_religion = variable:my_province_religion
+			}
+		}
 		ai_chance = { factor = 0 }
 	}
 	# option = { # 政府等级
@@ -861,6 +883,22 @@ country_event = {
 		alloc_country_province_culture	= { tag_value	= C09	culture_value = platinean 		}
 		alloc_country_province_culture	= { tag_value	= C10	culture_value = brazilian 		}
 		alloc_country_province_culture	= { tag_value	= C11	culture_value = english 		}
+		ai_chance = { factor = 0 }
+	}
+	option = { # 发展度
+		name = my_country_development
+		set_province_development = { tag_value = C00 }
+		set_province_development = { tag_value = C01 }
+		set_province_development = { tag_value = C02 }
+		set_province_development = { tag_value = C03 }
+		set_province_development = { tag_value = C04 }
+		set_province_development = { tag_value = C05 }
+		set_province_development = { tag_value = C06 }
+		set_province_development = { tag_value = C07 }
+		set_province_development = { tag_value = C08 }
+		set_province_development = { tag_value = C09 }
+		set_province_development = { tag_value = C10 }
+		set_province_development = { tag_value = C11 }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 禁止洗文化
@@ -1140,6 +1178,51 @@ country_event = {
 	option = {	# close
 		name = my_close
 		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = {
+	id = my_event.6
+	title = my_event_6_title
+	desc = my_event_6_desc
+	is_triggered_only = yes
+
+	option = {
+		name = my_add_cash
+		add_treasury = 10000
+		change_variable = {
+			which = my_cash_loan
+			value = 1
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = {
+		name = my_sub_cash
+		if = {
+			limit = {
+				treasury = 15000
+				check_variable = {
+					which = my_cash_loan
+					value = 1
+				}
+			}
+			add_treasury = -15000
+			subtract_variable = {
+				which = my_cash_loan
+				value = 1
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	option = { # 关闭
+		name = my_close
+		ai_chance = {
+			factor = 100
+		}
 	}
 }
 
@@ -1749,30 +1832,49 @@ country_event = {
 				add_center_of_trade_level = -1	# 贸易中心等级
 
 				# building
+				if = {
+					limit = {
+						has_building = fort_18th
+					}
+					remove_building = fort_17th
+				}
+				else_if = {
+					limit = {
+						has_building = fort_17th
+					}
+					remove_building = fort_16th
+				}
+				else_if = {
+					limit = {
+						has_building = fort_16th
+					}
+					remove_building = fort_15th
+				}
+
 				remove_building = marketplace
 				remove_building = workshop
 				remove_building = temple
 				remove_building = barracks
 				remove_building = shipyard
-				remove_building = fort_15th
+				# remove_building = fort_15th
 				remove_building = coastal_defence
 				remove_building = courthouse
 				remove_building = dock
 				remove_building = regimental_camp
-				remove_building = fort_16th
+				# remove_building = fort_16th
 				remove_building = naval_battery
 				remove_building = cathedral
 				remove_building = university
 				remove_building = trade_depot
 				remove_building = grand_shipyard
 				remove_building = training_fields
-				remove_building = fort_17th
+				# remove_building = fort_17th
 				remove_building = stock_exchange
 				remove_building = counting_house
 				remove_building = town_hall
 				remove_building = drydock
 				remove_building = conscription_center
-				remove_building = fort_18th
+				# remove_building = fort_18th
 				# manufactory
 				remove_building = wharf
 				remove_building = weapons

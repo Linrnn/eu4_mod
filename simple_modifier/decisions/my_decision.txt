@@ -287,6 +287,21 @@ country_decisions = {
 			factor = 0
 		}
 	}
+	# my_cash = {
+	# 	major = yes
+	# 	color = { 0 255 255 }
+	# 	potential = {
+	# 		ai = no
+	# 	}
+	# 	effect = {
+	# 		country_event = {
+	# 			id = my_event.6
+	# 		}
+	# 	}
+	# 	ai_will_do = {
+	# 		factor = 0
+	# 	}
+	# }
 	my_cash_add = {
 		major = yes
 		color = { 0 255 255 }
@@ -311,14 +326,14 @@ country_decisions = {
 			ai = no
 		}
 		allow = {
-			treasury = 20000
+			treasury = 15000
 			check_variable = {
 				which = my_cash_loan
 				value = 1
 			}
 		}
 		effect = {
-			add_treasury = -20000
+			add_treasury = -15000
 			subtract_variable = {
 				which = my_cash_loan
 				value = 1
@@ -399,9 +414,9 @@ country_decisions = {
 					has_province_modifier = birth_of_a_new_city_adm
 					has_province_modifier = birth_of_a_new_city_dip
 					has_province_modifier = birth_of_a_new_city_mil
-					NOT = {
-						has_province_modifier = birth_of_a_new_city_all
-					}
+					# NOT = {
+					# 	has_province_modifier = birth_of_a_new_city_all
+					# }
 				}
 			}
 		}
@@ -418,11 +433,11 @@ country_decisions = {
 				tag_value = FRA
 				modifier_value = birth_of_a_new_city_mil
 			}
-			try_add_all_province_modifier = {
-				tag_value = FRA
-				modifier_value = birth_of_a_new_city_all
-				duration_value = -1
-			}
+			# try_add_all_province_modifier = {
+			# 	tag_value = FRA
+			# 	modifier_value = birth_of_a_new_city_all
+			# 	duration_value = -1
+			# }
 		}
 		ai_will_do = {
 			factor = 0
