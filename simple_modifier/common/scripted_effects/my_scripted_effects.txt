@@ -514,16 +514,29 @@ alloc_harmonized_religion = {						# 宗教和谐
 }
 
 save_province_religion = {
-	$tag_value$ = {
-		if = {
-			limit = {
-				exists = yes
+	# $tag_value$ = {
+	# 	if = {
+	# 		limit = {
+	# 			exists = yes
+	# 		}
+	# 		every_owned_province = {
+	# 			export_to_variable = {
+	# 				which = my_province_religion
+	# 				value = religion
+	# 			}
+	# 		}
+	# 	}
+	# }
+	if = {
+		limit = {
+			NOT = {
+				religion = 0
 			}
-			every_owned_province = {
-				export_to_variable = {
-					which = my_province_religion
-					value = religion
-				}
+		}
+		$range_value$ = {
+			export_to_variable = {
+				which = my_province_religion
+				value = religion
 			}
 		}
 	}
@@ -709,6 +722,28 @@ alloc_papal_controller = {							# 教监
 				is_papal_controller = no
 			}
 			transfer_papal_controller = $tag_value$
+		}
+	}
+}
+
+alloc_casus_belli = {								# 战争借口
+	$main_tag$ = {
+		if = {
+			limit = {
+				exists = yes
+				is_subject = no
+				# NOI = {
+				# 	has_casus_belli = {
+				# 		type = $cb_value$
+				# 		target = $target_tag$
+				# 	}
+				# }
+			}
+			add_casus_belli = {
+				type = $cb_value$
+				target = $target_tag$
+				month = $duration_value$
+			}
 		}
 	}
 }

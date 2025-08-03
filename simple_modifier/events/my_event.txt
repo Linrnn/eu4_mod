@@ -705,14 +705,14 @@ country_event = {
 				}
 			}
 		}
-		macaronesia_area = {
-			if = {
-				limit = {
-					is_part_of_hre = yes
-				}
-				set_in_empire = no
-			}
-		}
+		# macaronesia_area = {
+		# 	if = {
+		# 		limit = {
+		# 			is_part_of_hre = yes
+		# 		}
+		# 		set_in_empire = no
+		# 	}
+		# }
 		ai_chance = { factor = 0 }
 	}
 	# option = { # 教监
@@ -720,11 +720,11 @@ country_event = {
 	# 	alloc_papal_controller = { tag_value = FRA }
 	# 	ai_chance = { factor = 0 }
 	# }
-	option = { # 改革呼声
-		name = my_add_reform_desire
-		add_reform_desire = 0.5
-		ai_chance = { factor = 0 }
-	}
+	# option = { # 改革呼声
+	# 	name = my_add_reform_desire
+	# 	add_reform_desire = 0.5
+	# 	ai_chance = { factor = 0 }
+	# }
 	option = { # 宗教改革前
 		name = my_country_religion_before
 		# 天主教
@@ -732,7 +732,6 @@ country_event = {
 		alloc_country_province_religion = { tag_value = AUH religion_value = catholic }
 		alloc_country_province_religion = { tag_value = SCA religion_value = catholic }
 		alloc_country_province_religion = { tag_value = PLC religion_value = catholic }
-		alloc_country_province_religion = { tag_value = C00 religion_value = catholic }
 		alloc_country_province_religion = { tag_value = C01 religion_value = catholic }
 		alloc_country_province_religion = { tag_value = C02 religion_value = catholic }
 		alloc_country_province_religion = { tag_value = C03 religion_value = catholic }
@@ -745,6 +744,7 @@ country_event = {
 		alloc_country_province_religion = { tag_value = C10 religion_value = catholic }
 		alloc_country_province_religion = { tag_value = C11 religion_value = catholic }
 		# 东正教
+		alloc_country_province_religion = { tag_value = C00 religion_value = orthodox }
 		alloc_country_province_religion = { tag_value = RUS religion_value = orthodox }
 		alloc_country_province_religion = { tag_value = BUL religion_value = orthodox }
 		# 科普特正教
@@ -800,8 +800,10 @@ country_event = {
 		alloc_country_province_religion = { tag_value = C03 religion_value = protestant }
 		alloc_country_province_religion = { tag_value = C11 religion_value = protestant }
 		# 改革宗
+		alloc_country_province_religion = { tag_value = HOL religion_value = reformed }
 		alloc_country_province_religion = { tag_value = NED religion_value = reformed }
 		# 圣公宗
+		alloc_country_province_religion = { tag_value = ENG religion_value = anglican }
 		alloc_country_province_religion = { tag_value = GBR religion_value = anglican }
 		# 东正教
 		alloc_country_province_religion = { tag_value = C00 religion_value = orthodox }
@@ -809,14 +811,19 @@ country_event = {
 	}
 	option = { # 保存省份宗教
 		name = my_save_province_religion
-		# save_province_religion = { tag_value = QNG }
-		# save_province_religion = { tag_value = SIB }
-		every_province = {
-			export_to_variable = {
-				which = my_province_religion
-				value = religion
-			}
-		}
+		save_province_religion = { tag_value = central_asia_region }
+		save_province_religion = { tag_value = manchuria_region }
+		save_province_religion = { tag_value = mongolia_region }
+		save_province_religion = { tag_value = tibet_region }
+		save_province_religion = { tag_value = north_china_region }
+		save_province_religion = { tag_value = xinan_region }
+		save_province_religion = { tag_value = south_china_region }
+		# every_province = {
+		# 	export_to_variable = {
+		# 		which = my_province_religion
+		# 		value = religion
+		# 	}
+		# }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 加载省份宗教
@@ -839,6 +846,7 @@ country_event = {
 			if = {
 				limit = {
 					NOT = {
+						religion = 0
 						religion = variable:my_province_religion
 					}
 				}
@@ -859,13 +867,17 @@ country_event = {
 	# }
 	option = { # 主流文化
 		name = my_country_culture
-		if = {
-			limit = {
-				exists = PRU
+		every_province = {
+			if = {
+				limit = {
+					culture = 0
+					OR = {
+						# is_city = yes
+						is_empty = yes
+					}
+				}
+				change_culture = portugese
 			}
-			alloc_province_culture			= { range_value	= 49	culture_value = prussian		}
-			alloc_province_culture			= { range_value	= 50	culture_value = prussian		}
-			alloc_province_culture			= { range_value	= 2969	culture_value = prussian		}
 		}
 		alloc_country_culture			= { tag_value	= PRU	culture_value = prussian		}
 		alloc_country_culture			= { tag_value	= ITA	culture_value = umbrian			}
@@ -913,14 +925,14 @@ country_event = {
 		}
 		ai_chance = { factor = 0 }
 	}
-	option = { # 加国家modifier
-		name = my_try_add_country_modifier
-		try_add_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier duration_value = -1 }
-		try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier duration_value = -1 }
-		# try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier duration_value = -1 }
-		try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier duration_value = -1 }
-		ai_chance = { factor = 0 }
-	}
+	# option = { # 加国家modifier
+	# 	name = my_try_add_country_modifier
+	# 	try_add_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier duration_value = -1 }
+	# 	try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier duration_value = -1 }
+	# 	# try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier duration_value = -1 }
+	# 	try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier duration_value = -1 }
+	# 	ai_chance = { factor = 0 }
+	# }
 	# option = { # 任务条件
 	# 	name = my_mission_trigger
 	# 	# 任务：殖民手段
@@ -931,134 +943,142 @@ country_event = {
 	# 	force_alloc_capital = { province_value = 118 tag_value = PAP }
 	# 	ai_chance = { factor = 0 }
 	# }
-	option = { # 任务效果
-		name = my_mission_effect
-		# 任务：黄金边区
-		try_remove_country_modifier = { tag_value = FRA modifier_value = fra_golden_march_modifier }
-		# 任务：天主的居所
-		try_remove_country_modifier = { tag_value = FRA modifier_value = fra_golden_march2_modifier }
-		# 任务：拓展法兰西疆域
-		try_add_country_modifier = { tag_value = FRA modifier_value = fra_golden_march3_modifier duration_value = -1 }
-		# 任务：荣光之城
-		try_add_country_modifier = { tag_value = FRA modifier_value = fra_host_city_of_lights_modifier duration_value = -1 }
-		# 任务：巴黎宝座
-		try_add_country_modifier = { tag_value = FRA modifier_value = fra_mission_modifier duration_value = 1 }
-		# 任务：工业之火
-		every_owned_province = {
-			if = {
-				limit = { 
-					OR = {  trade_goods = copper trade_goods = iron trade_goods = gold }
-					NOT = { has_province_modifier = fra_metal_barons_modifier }
-				}
-				add_province_modifier = { name = fra_metal_barons_modifier duration = -1 }
-			}
-		}
-		# 任务：阿维尼翁教廷领地
-		# alloc_permanent_claim = { tag_value = FRA range_value = palestine_area }
-		# alloc_permanent_claim = { tag_value = FRA range_value = italy_region }
+	option = { # 战争借口
+		name = my_add_casus_belli
+		alloc_casus_belli = { main_tag = FRA cb_value = cb_vassalize_mission target_tag = ENG duration_value = 1 }
+		alloc_casus_belli = { main_tag = FRA cb_value = cb_vassalize_mission target_tag = GBR duration_value = 1 }
+		alloc_casus_belli = { main_tag = FRA cb_value = cb_vassalize_mission target_tag = CAS duration_value = 1 }
+		alloc_casus_belli = { main_tag = FRA cb_value = cb_vassalize_mission target_tag = SPA duration_value = 1 }
 		ai_chance = { factor = 0 }
 	}
-	option = { # 清空叛军
-		name = my_clear_rebels
-		every_country = {
-			if = {
-				limit = {
-					num_of_rebel_armies = 1
-					NOT = {
-						tag = REB # 叛军
-						tag = PIR # 海盗
-						tag = NAT # 土著
-					}
-				}
-				every_owned_province = {
-					if = {
-						limit = {
-							is_city = yes
-							OR = {
-								units_in_province = REB
-								units_in_province = PIR
-								units_in_province = NAT
-							}
-						}
-						clear_rebels = yes		# 清除当前作用域省份的所有叛军	
-					}
-					if = {
-						limit = {
-							is_city = yes
-							NOT = {
-								controlled_by = PREV
-							}
-							OR = {
-								controlled_by = REB
-								controlled_by = PIR
-								controlled_by = NAT
-							}
-						}
-						change_controller = PREV
-					}
-				}
-			}
-		}
-		ai_chance = { factor = 0 }
-	}
-	option = { # 和平条约
-		name = my_truce
-		every_country = {
-			if = {
-				limit = {
-					NOT = {
-						tag = REB
-						tag = PIR
-						tag = NAT
-						tag = ROOT
-						march_of = ROOT
-						vassal_of = ROOT
-						junior_union_with = ROOT
-						is_colonial_nation_of = ROOT
-					}
-				}
-				every_country = {
-					if = {
-						limit = {
-							NOT = {
-								tag = REB
-								tag = PIR
-								tag = NAT
-								tag = ROOT
-								march_of = ROOT
-								vassal_of = ROOT
-								junior_union_with = ROOT
-								is_colonial_nation_of = ROOT
-							}
-						}
-						add_truce_with = PREV		# 与指定国家签订一个和平条约
-					}
-				}
-			}
-		}
-		ai_chance = { factor = 0 }
-	}
-	option = { # 包围网
-		name = my_coalition_against
-		every_country = {
-			if = {
-				limit = {
-					NOT = {
-						tag = REB
-						tag = PIR
-						tag = NAT
-						tag = ROOT
-						march_of = ROOT
-						vassal_of = ROOT
-						junior_union_with = ROOT
-						is_colonial_nation_of = ROOT
-					}
-				}
-				form_coalition_against = ROOT	# 在指定作用域国家创建或加入一个包围网联盟
-			}
-		}
-		ai_chance = { factor = 0 }
-	}
+	# option = { # 任务效果
+	# 	name = my_mission_effect
+	# 	# 任务：黄金边区
+	# 	try_remove_country_modifier = { tag_value = FRA modifier_value = fra_golden_march_modifier }
+	# 	# 任务：天主的居所
+	# 	try_remove_country_modifier = { tag_value = FRA modifier_value = fra_golden_march2_modifier }
+	# 	# 任务：拓展法兰西疆域
+	# 	try_add_country_modifier = { tag_value = FRA modifier_value = fra_golden_march3_modifier duration_value = -1 }
+	# 	# 任务：荣光之城
+	# 	try_add_country_modifier = { tag_value = FRA modifier_value = fra_host_city_of_lights_modifier duration_value = -1 }
+	# 	# 任务：巴黎宝座
+	# 	try_add_country_modifier = { tag_value = FRA modifier_value = fra_mission_modifier duration_value = 1 }
+	# 	# 任务：工业之火
+	# 	every_owned_province = {
+	# 		if = {
+	# 			limit = { 
+	# 				OR = {  trade_goods = copper trade_goods = iron trade_goods = gold }
+	# 				NOT = { has_province_modifier = fra_metal_barons_modifier }
+	# 			}
+	# 			add_province_modifier = { name = fra_metal_barons_modifier duration = -1 }
+	# 		}
+	# 	}
+	# 	# 任务：阿维尼翁教廷领地
+	# 	# alloc_permanent_claim = { tag_value = FRA range_value = palestine_area }
+	# 	# alloc_permanent_claim = { tag_value = FRA range_value = italy_region }
+	# 	ai_chance = { factor = 0 }
+	# }
+	# option = { # 清空叛军
+	# 	name = my_clear_rebels
+	# 	every_country = {
+	# 		if = {
+	# 			limit = {
+	# 				num_of_rebel_armies = 1
+	# 				NOT = {
+	# 					tag = REB # 叛军
+	# 					tag = PIR # 海盗
+	# 					tag = NAT # 土著
+	# 				}
+	# 			}
+	# 			every_owned_province = {
+	# 				if = {
+	# 					limit = {
+	# 						is_city = yes
+	# 						OR = {
+	# 							units_in_province = REB
+	# 							units_in_province = PIR
+	# 							units_in_province = NAT
+	# 						}
+	# 					}
+	# 					clear_rebels = yes		# 清除当前作用域省份的所有叛军	
+	# 				}
+	# 				if = {
+	# 					limit = {
+	# 						is_city = yes
+	# 						NOT = {
+	# 							controlled_by = PREV
+	# 						}
+	# 						OR = {
+	# 							controlled_by = REB
+	# 							controlled_by = PIR
+	# 							controlled_by = NAT
+	# 						}
+	# 					}
+	# 					change_controller = PREV
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# 	ai_chance = { factor = 0 }
+	# }
+	# option = { # 和平条约
+	# 	name = my_truce
+	# 	every_country = {
+	# 		if = {
+	# 			limit = {
+	# 				NOT = {
+	# 					tag = REB
+	# 					tag = PIR
+	# 					tag = NAT
+	# 					tag = ROOT
+	# 					march_of = ROOT
+	# 					vassal_of = ROOT
+	# 					junior_union_with = ROOT
+	# 					is_colonial_nation_of = ROOT
+	# 				}
+	# 			}
+	# 			every_country = {
+	# 				if = {
+	# 					limit = {
+	# 						NOT = {
+	# 							tag = REB
+	# 							tag = PIR
+	# 							tag = NAT
+	# 							tag = ROOT
+	# 							march_of = ROOT
+	# 							vassal_of = ROOT
+	# 							junior_union_with = ROOT
+	# 							is_colonial_nation_of = ROOT
+	# 						}
+	# 					}
+	# 					add_truce_with = PREV		# 与指定国家签订一个和平条约
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# 	ai_chance = { factor = 0 }
+	# }
+	# option = { # 包围网
+	# 	name = my_coalition_against
+	# 	every_country = {
+	# 		if = {
+	# 			limit = {
+	# 				NOT = {
+	# 					tag = REB
+	# 					tag = PIR
+	# 					tag = NAT
+	# 					tag = ROOT
+	# 					march_of = ROOT
+	# 					vassal_of = ROOT
+	# 					junior_union_with = ROOT
+	# 					is_colonial_nation_of = ROOT
+	# 				}
+	# 			}
+	# 			form_coalition_against = ROOT	# 在指定作用域国家创建或加入一个包围网联盟
+	# 		}
+	# 	}
+	# 	ai_chance = { factor = 0 }
+	# }
 	option = { # 作弊
 		name = my_cheat
 		# swap_free_idea_group	# 为当前作用域检测国家理念是否相符，若不符则重置为正确的国家理念
@@ -1113,6 +1133,13 @@ country_event = {
 		# 	}
 		# }
 
+		# alloc_casus_belli = { main_tag = FRA cb_value = cb_vassalize_mission target_tag = POR duration_value = 1 }
+		# ITA = { set_in_empire = yes }
+		# NED = { set_in_empire = yes }
+		# SPA = { set_in_empire = yes }
+		# GBR = { set_in_empire = yes }
+		# SWA = { set_in_empire = yes }
+		# HAN = { set_in_empire = yes }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭

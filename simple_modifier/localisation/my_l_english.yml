@@ -72,6 +72,7 @@
  my_forbid_change_culture:0 "forbid change culture"
  my_try_add_country_modifier:0 "try add country modifier"
  my_mission_trigger:0 "mission trigger"
+ my_add_casus_belli:0 "casus belli"
  my_mission_effect:0 "mission effect"
  my_clear_rebels:0 "clear rebels"
  my_truce:0 "truce"

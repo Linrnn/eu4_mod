@@ -1,15 +1,14 @@
 # 全局国家修正
 all_nations = {
 	# 加法
-	global_monthly_devastation = -0.2			# 所有省份的荒废度
-	global_autonomy = -0.15						# 全省份自治度月度变化
+	global_monthly_devastation = -0.1			# 所有省份的荒废度
+	global_autonomy = -0.1						# 全省份自治度月度变化
 	global_allowed_num_of_buildings = 10		# 所有省份可建筑的格子
 	global_allowed_num_of_manufactories = 5		# 所有省份可建筑的工厂数量
-	# drill_decay_modifier = -0.55				# 陆军操练度损失
+	# colonists = -10							# 殖民队数量
  	# global_unrest = -100						# 全国叛乱度
 	# num_accepted_cultures = 20				# 增加可接受文化的最大值
 	# possible_policy = 4						# 可选政策数量
-	# colonists = -10							# 殖民队数量
 	# global_manpower = -10						# 全国人力（基础值1=1000人力）
 	# country_admin_power = -3					# 每月额外获得行政君主力量点数
 	# country_diplomatic_power = -3				# 每月额外获得外交君主力量点数
@@ -25,6 +24,7 @@ all_nations = {
 	reinforce_cost_modifier = 1					# 补员花费
 	missionary_maintenance_cost = 1				# 传教维护费
 	female_advisor_chance = 0.3					# 出现女性顾问几率
+	drill_decay_modifier = -0.55				# 陆军操练度损失
 	# development_cost = -0.5					# 提升发展度花费
 	# defensiveness = -0.01						# 全国防御效率
 	# global_regiment_recruit_speed = 2			# 陆军征召时间
@@ -55,7 +55,7 @@ all_nations = {
 
 	# 恒定
 	may_recruit_female_generals = yes			# 允许招募女将军
-	can_not_build_colonies = yes				# 禁止该国建立殖民地
+	# can_not_build_colonies = yes				# 禁止该国建立殖民地
 	# block_settlement_growth = yes				# 阻止垦殖
 
 	# 以下是原版修正
