@@ -223,26 +223,26 @@ country_decisions = {
 		color = { 0 255 255 }
 		potential = {
 			ai = no
-			OR = {
-				has_heir = yes
-				# has_consort = yes
-			}
+			# OR = {
+			# 	has_heir = yes
+			# 	has_consort = yes
+			# }
 		}
 		allow = {
 			OR = {
 				NOT = { adm = 6 }
 				NOT = { dip = 6 }
 				NOT = { mil = 6 }
-				if = {
-					limit = { has_heir = yes }
+				AND = {
+					has_heir = yes
 					OR = {
 						NOT = { heir_adm = 6 }
 						NOT = { heir_dip = 6 }
 						NOT = { heir_mil = 6 }
 					}
 				}
-				# if = {
-				# 	limit = { has_consort = yes }
+				# AND = {
+				# 	has_consort = yes
 				# 	OR = {
 				# 		NOT = { consort_adm = 6 }
 				# 		NOT = { consort_dip = 6 }
