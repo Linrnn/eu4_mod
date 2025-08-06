@@ -28,6 +28,29 @@ my_monomer_modifier = {
 	#can_colony_boost_development = yes 		# 完成殖民的省份生产、税收、人力都+1
 }
 
+only_fra_modifier = {
+	imperial_authority_value = 1.0				# 月度帝国权威（数值）：神圣罗马帝国专用
+	yearly_revolutionary_zeal = 4				# 年度革命热情
+	max_revolutionary_zeal = 20					# 最大革命热情上限
+	all_estate_possible_privileges = 4			# 本国 所有阶层的特权槽
+	all_estate_loyalty_equilibrium = 0.1		# 本国 所有阶层忠诚度修正
+	all_estate_influence_modifier = -0.5		# 本国 所有阶层影响力修正
+	possible_policy = 3							# 可用策略槽个数（同时增加三种类别的可用政策槽）
+	missionaries = 2							# 传教士数量
+
+	allowed_rev_guard_fraction = 0.3			# 可招募革命卫队的比例
+	has_musketeer = yes							# 允许招募火枪手：国家修正
+	allowed_musketeer_fraction = 0.5			# 可招募火枪手的比例
+	can_recruit_hussars = yes					# 允许招募翼骑兵：国家修正
+	amount_of_hussars = 500						# 额外可招募的翼骑兵上限
+	has_galleass = yes							# 允许建造加莱赛战船：国家修正
+	allowed_galleass_fraction = 0.5				# 可招募加莱赛战船的比例
+	has_voc_indiamen = yes						# 允许建造东印度商船：国家修正
+	allowed_voc_indiamen_fraction = 0.5			# 可招募东印度商船的比例
+	has_man_of_war = yes						# 允许建造主力舰：国家修正
+	allowed_man_of_war_fraction = 0.7			# 可招募主力舰的比例
+}
+
 fra_rus_qng_modifier = {
 	# diplomatic_upkeep = 15					# 外交关系数量
 	imperial_authority_value = 1.0				# 月度帝国权威（数值）：神圣罗马帝国专用
@@ -44,7 +67,7 @@ special_unit_modifier = {
 	# special_unit_forcelimit = 1.0				# 可招募的特殊单位上限
 
 	# can_recruit_revolutionary_guards = yes	# 允许招募革命卫队：国家修正
-	# allowed_rev_guard_fraction = 1.0			# 可招募革命卫队的比例
+	allowed_rev_guard_fraction = 1.0			# 可招募革命卫队的比例
 
 	has_musketeer = yes							# 允许招募火枪手：国家修正
 	allowed_musketeer_fraction = 1.0			# 可招募火枪手的比例

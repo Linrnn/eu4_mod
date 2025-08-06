@@ -715,6 +715,11 @@ country_event = {
 		# }
 		ai_chance = { factor = 0 }
 	}
+	option = { # 信仰守护者
+		name = my_defender_of_faith
+		alloc_my_defender_of_faith = { tag_value = FRA religion_value = catholic }
+		ai_chance = { factor = 0 }
+	}
 	# option = { # 教监
 	# 	name = my_country_papal_controller
 	# 	alloc_papal_controller = { tag_value = FRA }
@@ -925,14 +930,14 @@ country_event = {
 		}
 		ai_chance = { factor = 0 }
 	}
-	# option = { # 加国家modifier
-	# 	name = my_try_add_country_modifier
-	# 	try_add_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier duration_value = -1 }
-	# 	try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier duration_value = -1 }
-	# 	# try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier duration_value = -1 }
-	# 	try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier duration_value = -1 }
-	# 	ai_chance = { factor = 0 }
-	# }
+	option = { # 加国家modifier
+		name = my_add_country_modifier
+		try_add_country_modifier = { tag_value = FRA modifier_value = only_fra_modifier duration_value = -1 }
+		# try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier duration_value = -1 }
+		# try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier duration_value = -1 }
+		# try_add_country_modifier = { tag_value = QNG modifier_value = fra_rus_qng_modifier duration_value = -1 }
+		ai_chance = { factor = 0 }
+	}
 	# option = { # 任务条件
 	# 	name = my_mission_trigger
 	# 	# 任务：殖民手段
@@ -1082,6 +1087,12 @@ country_event = {
 	option = { # 作弊
 		name = my_cheat
 		# swap_free_idea_group	# 为当前作用域检测国家理念是否相符，若不符则重置为正确的国家理念
+		# try_remove_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier }
+		# try_remove_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier }
+		# try_add_country_modifier = { tag_value = FRA modifier_value = only_fra_modifier duration_value = -1 }
+		# alloc_capital = { province_value = 50 tag_value = BRA }
+		PRU = { set_in_empire = yes }
+		AUH = { set_in_empire = yes }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭

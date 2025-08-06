@@ -726,6 +726,24 @@ alloc_papal_controller = {							# 教监
 	}
 }
 
+alloc_my_defender_of_faith = {						# 信仰守护者
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				religion = $religion_value$
+				ruler_religion = $religion_value$
+				is_defender_of_faith = no
+			}
+			set_defender_of_the_faith = {
+				who = $tag_value$
+				religion = $religion_value$
+			}
+			add_treasury = -500
+		}
+	}
+}
+
 alloc_casus_belli = {								# 战争借口
 	$main_tag$ = {
 		if = {

@@ -1,0 +1,105 @@
+revolutionary_empire_reform = {
+	lock_level_when_selected = yes
+	icon = "rioting_burning_2"
+	allow_normal_conversion = no
+
+	potential = {
+		has_reform = revolutionary_empire_reform
+	}
+
+	legacy_equivalent = revolutionary_empire
+	valid_for_new_country = no
+	uses_revolutionary_zeal = yes
+	revolutionary = yes
+	# 修改：注释
+	# is_eligible_for_hre_emperor = no		# 没有资格成为神圣罗马帝国皇帝
+	fixed_rank = 3
+
+	# 修改：新增
+	custom_attributes = {
+		diet_increases_not_influence = yes	# 召开议事会不再增加影响力
+	}
+	# 修改：新增
+	states_general_mechanic = {				# 启用革命者VS君主派机制
+		revolutionaries = {
+			land_morale = 0.1
+			republican_tradition = 0.1
+			yearly_revolutionary_zeal = 0.25
+		}
+		monarchists = {
+			diplomatic_reputation = 1
+			manpower_recovery_speed = 0.1
+			global_unrest = -1
+		}
+	}
+
+	modifiers = {
+		global_manpower_modifier = 0.25
+		land_morale = 0.10
+		global_autonomy = -0.2
+		governing_capacity = 150
+		max_revolutionary_zeal = 50
+		papal_influence = -100
+		allowed_rev_guard_fraction = 0.2
+	}
+
+	custom_attributes = {
+		locked_government_type = yes
+	}
+
+	conditional = {
+		allow = {
+			has_dlc = "Rights of Man"
+		}
+		factions = {
+			rr_jacobins
+			rr_royalists
+			rr_girondists
+		}
+	}
+
+	removed_effect = {
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_flag = is_revolutionary_china_flag
+					is_revolutionary = no
+				}
+				clr_country_flag = is_revolutionary_china_flag
+				restore_country_name = yes
+				override_country_name = CHINA_STRING
+				set_country_flag = is_china_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = is_revolutionary_turkey_flag
+					is_revolutionary = no
+				}
+				clr_country_flag = is_revolutionary_turkey_flag
+				restore_country_name = yes
+				override_country_name = TURKEY_STRING
+				set_country_flag = is_turkey_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = is_revolutionary_gurkani_flag
+					is_revolutionary = no
+				}
+				clr_country_flag = is_revolutionary_gurkani_flag
+				restore_country_name = yes
+				override_country_name = GURKANI_EMPIRE_STRING
+				set_country_flag = is_gurkani_flag
+			}
+			if = {
+				limit = {
+					has_country_flag = is_revolutionary_iran_flag
+					is_revolutionary = no
+				}
+				clr_country_flag = is_revolutionary_iran_flag
+				restore_country_name = yes
+				override_country_name = IRAN_STRING
+				set_country_flag = is_iran_flag
+			}
+		}
+	}
+}
