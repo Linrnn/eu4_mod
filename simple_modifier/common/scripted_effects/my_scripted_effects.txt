@@ -765,3 +765,124 @@ alloc_casus_belli = {								# 战争借口
 		}
 	}
 }
+
+try_remove_building = {								# 移除建筑
+	if = {
+		limit = {
+			has_building = $building_value$
+		}
+		remove_building = $building_value$
+	}
+}
+
+building_sub_fort_level = {
+	if = {
+		limit = {
+			has_building = fort_18th
+		}
+		remove_building = fort_18th
+		add_building = fort_17th
+	}
+	else_if = {
+		limit = {
+			has_building = fort_17th
+		}
+		remove_building = fort_17th
+		add_building = fort_16th
+	}
+	else_if = {
+		limit = {
+			has_building = fort_16th
+		}
+		remove_building = fort_16th
+		add_building = fort_15th
+	}
+}
+
+building_remove_fort = {
+	try_remove_building = { building_value = fort_15th }
+	try_remove_building = { building_value = fort_16th }
+	try_remove_building = { building_value = fort_17th }
+	try_remove_building = { building_value = fort_18th }
+}
+
+remove_all_building = {
+	try_remove_building = { building_value = marketplace }
+	try_remove_building = { building_value = workshop }
+	try_remove_building = { building_value = temple }
+	try_remove_building = { building_value = barracks }
+	try_remove_building = { building_value = shipyard }
+	# try_remove_building = { building_value = fort_15th }
+	try_remove_building = { building_value = coastal_defence }
+	try_remove_building = { building_value = courthouse }
+	try_remove_building = { building_value = dock }
+	try_remove_building = { building_value = regimental_camp }
+	# try_remove_building = { building_value = fort_16th }
+	try_remove_building = { building_value = naval_battery }
+	try_remove_building = { building_value = cathedral }
+	try_remove_building = { building_value = university }
+	try_remove_building = { building_value = trade_depot }
+	try_remove_building = { building_value = grand_shipyard }
+	try_remove_building = { building_value = training_fields }
+	# try_remove_building = { building_value = fort_17th }
+	try_remove_building = { building_value = stock_exchange }
+	try_remove_building = { building_value = counting_house }
+	try_remove_building = { building_value = town_hall }
+	try_remove_building = { building_value = drydock }
+	try_remove_building = { building_value = conscription_center }
+	# try_remove_building = { building_value = fort_18th }
+	# manufactory
+	try_remove_building = { building_value = wharf }
+	try_remove_building = { building_value = weapons }
+	try_remove_building = { building_value = textile }
+	try_remove_building = { building_value = plantations }
+	try_remove_building = { building_value = tradecompany }
+	try_remove_building = { building_value = farm_estate }
+	try_remove_building = { building_value = mills }
+	try_remove_building = { building_value = furnace }
+	try_remove_building = { building_value = ramparts }
+	try_remove_building = { building_value = soldier_households }
+	try_remove_building = { building_value = impressment_offices }
+	try_remove_building = { building_value = state_house }
+	# native building
+	try_remove_building = { building_value = native_earthwork }
+	try_remove_building = { building_value = native_palisade }
+	try_remove_building = { building_value = native_fortified_house }
+	try_remove_building = { building_value = native_ceremonial_fire_pit }
+	try_remove_building = { building_value = native_irrigation }
+
+	try_remove_building = { building_value = native_storehouse }
+	try_remove_building = { building_value = native_longhouse }
+	try_remove_building = { building_value = native_sweat_lodge }
+	try_remove_building = { building_value = native_great_trail }
+
+	# 伏尔泰的噩梦
+	# building
+	try_remove_building = { building_value = fort_14th }
+	try_remove_building = { building_value = road_network }
+	try_remove_building = { building_value = post_office }
+	try_remove_building = { building_value = harbour }
+	try_remove_building = { building_value = armory }
+	try_remove_building = { building_value = college }
+	try_remove_building = { building_value = customs_house }
+	try_remove_building = { building_value = arsenal }
+	try_remove_building = { building_value = monument }
+	try_remove_building = { building_value = artisan }
+	try_remove_building = { building_value = watchman }
+	# native building
+	try_remove_building = { building_value = native_three_sisters_field }
+}
+
+remove_all_province_building = {
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+			}
+			every_owned_province = {
+				building_remove_fort = { }
+				remove_all_building = { }
+			}
+		}
+	}
+}

@@ -916,6 +916,18 @@ country_event = {
 		set_province_development = { tag_value = C09 }
 		set_province_development = { tag_value = C10 }
 		set_province_development = { tag_value = C11 }
+		remove_all_province_building = { tag_value = C00 }
+		remove_all_province_building = { tag_value = C01 }
+		remove_all_province_building = { tag_value = C02 }
+		remove_all_province_building = { tag_value = C03 }
+		remove_all_province_building = { tag_value = C04 }
+		remove_all_province_building = { tag_value = C05 }
+		remove_all_province_building = { tag_value = C06 }
+		remove_all_province_building = { tag_value = C07 }
+		remove_all_province_building = { tag_value = C08 }
+		remove_all_province_building = { tag_value = C09 }
+		remove_all_province_building = { tag_value = C10 }
+		remove_all_province_building = { tag_value = C11 }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 禁止洗文化
@@ -1087,12 +1099,17 @@ country_event = {
 	option = { # 作弊
 		name = my_cheat
 		# swap_free_idea_group	# 为当前作用域检测国家理念是否相符，若不符则重置为正确的国家理念
-		# try_remove_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier }
-		# try_remove_country_modifier = { tag_value = FRA modifier_value = special_unit_modifier }
-		# try_add_country_modifier = { tag_value = FRA modifier_value = only_fra_modifier duration_value = -1 }
-		# alloc_capital = { province_value = 50 tag_value = BRA }
 		PRU = { set_in_empire = yes }
 		AUH = { set_in_empire = yes }
+		add_accepted_culture = telegu
+		add_accepted_culture = castillian
+		add_accepted_culture = portugese
+		add_accepted_culture = aragonese
+		add_power_projection = {
+			type = zim_african_great_power
+			amount = 20
+		}
+		# 修改西班牙/尼德兰任务
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭
@@ -1812,91 +1829,8 @@ country_event = {
 				add_center_of_trade_level = -1	# 贸易中心等级
 
 				# building
-				if = {
-					limit = {
-						has_building = fort_18th
-					}
-					remove_building = fort_18th
-					add_building = fort_17th
-				}
-				else_if = {
-					limit = {
-						has_building = fort_17th
-					}
-					remove_building = fort_17th
-					add_building = fort_16th
-				}
-				else_if = {
-					limit = {
-						has_building = fort_16th
-					}
-					remove_building = fort_16th
-					add_building = fort_15th
-				}
-
-				remove_building = marketplace
-				remove_building = workshop
-				remove_building = temple
-				remove_building = barracks
-				remove_building = shipyard
-				# remove_building = fort_15th
-				remove_building = coastal_defence
-				remove_building = courthouse
-				remove_building = dock
-				remove_building = regimental_camp
-				# remove_building = fort_16th
-				remove_building = naval_battery
-				remove_building = cathedral
-				remove_building = university
-				remove_building = trade_depot
-				remove_building = grand_shipyard
-				remove_building = training_fields
-				# remove_building = fort_17th
-				remove_building = stock_exchange
-				remove_building = counting_house
-				remove_building = town_hall
-				remove_building = drydock
-				remove_building = conscription_center
-				# remove_building = fort_18th
-				# manufactory
-				remove_building = wharf
-				remove_building = weapons
-				remove_building = textile
-				remove_building = plantations
-				remove_building = tradecompany
-				remove_building = farm_estate
-				remove_building = mills
-				remove_building = furnace
-				remove_building = ramparts
-				remove_building = soldier_households
-				remove_building = impressment_offices
-				remove_building = state_house
-				# native building
-				remove_building = native_earthwork
-				remove_building = native_palisade
-				remove_building = native_fortified_house
-				remove_building = native_ceremonial_fire_pit
-				remove_building = native_irrigation
-				remove_building = native_storehouse
-				remove_building = native_longhouse
-				remove_building = native_sweat_lodge
-				remove_building = native_great_trail
-
-				# 伏尔泰的噩梦
-				# building
-				remove_building = fort_14th
-				remove_building = road_network
-				remove_building = post_office
-				remove_building = harbour
-				remove_building = armory
-				remove_building = college
-				remove_building = customs_house
-				remove_building = arsenal
-				remove_building = monument
-				remove_building = artisan
-				remove_building = watchman
-				# native building
-				remove_building = native_three_sisters_field
+				building_sub_fort_level = { }
+				remove_all_building = { }
 
 				# remove_province_modifier = my_local_unrest_modifier
 				# add_province_modifier
