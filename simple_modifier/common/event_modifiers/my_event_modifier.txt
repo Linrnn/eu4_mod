@@ -48,23 +48,22 @@ only_fra_modifier = {
 	# land_forcelimit_modifier = 0.1				# 修正陆军上限（百分比）
 	naval_forcelimit_modifier = 1					# 海军上限修正（百分比）
 	# 特殊部队修正
-	allowed_rev_guard_fraction = 0.3				# 可招募革命卫队的比例
 	has_musketeer = yes								# 允许招募火枪手：国家修正
-	allowed_musketeer_fraction = 0.5				# 可招募火枪手的比例
+	allowed_musketeer_fraction = 0.4				# 可招募火枪手的比例
 	can_recruit_hussars = yes						# 允许招募翼骑兵：国家修正
-	amount_of_hussars = 500							# 额外可招募的翼骑兵上限
+	amount_of_hussars = 100							# 额外可招募的翼骑兵上限
 	has_man_of_war = yes							# 允许建造主力舰：国家修正
-	allowed_man_of_war_fraction = 0.7				# 可招募主力舰的比例
+	allowed_man_of_war_fraction = 0.9				# 可招募主力舰的比例
 	has_voc_indiamen = yes							# 允许建造东印度商船：国家修正
-	allowed_voc_indiamen_fraction = 0.5				# 可招募东印度商船的比例
+	allowed_voc_indiamen_fraction = 0.4				# 可招募东印度商船的比例
 	has_galleass = yes								# 允许建造加莱赛战船：国家修正
-	allowed_galleass_fraction = 0.5					# 可招募加莱赛战船的比例
 }
 
 fra_rus_qng_modifier = {
 	# diplomatic_upkeep = 15					# 外交关系数量
-	imperial_authority_value = 1.0				# 月度帝国权威（数值）：神圣罗马帝国专用
+	# imperial_authority_value = 1.0			# 月度帝国权威（数值）：神圣罗马帝国专用
 	imperial_mandate = 1.0						# 月度天命值：中华帝国专用
+	governing_capacity = 5000					# 行政容量上限
 }
 
 other_emeny_modifier = {

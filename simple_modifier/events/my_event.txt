@@ -612,6 +612,69 @@ country_event = {
 		alloc_province = { range_value = eastern_polynesia_area					tag_value = HAW }
 		ai_chance = { factor = 0 }
 	}
+	option = { # 蒙古 KHA
+		name = my_mongolia
+		force_alloc_capital = { province_value = 1816 tag_value = KHA }
+		alloc_country_religion = { tag_value = KHA religion_value = confucianism }
+		alloc_emperor_of_china = { tag_value = KHA }
+		try_add_country_modifier = { tag_value = KHA modifier_value = fra_rus_qng_modifier duration_value = -1 }
+		every_country = {
+			if = {
+				limit = {
+					NOT = {
+						tag = REB
+						tag = PIR
+						tag = NAT
+						tag = KHA
+						tag = ROOT
+						march_of = ROOT
+						vassal_of = ROOT
+						junior_union_with = ROOT
+						is_colonial_nation_of = ROOT
+					}
+				}
+				KHA = {
+					inherit = PREV
+				}
+			}
+		}
+		every_province = {
+			if = {
+				limit = {
+					is_empty = yes
+				}
+				add_core = KHA
+				cede_province = KHA
+			}
+		}
+		remove_fake_province = { tag_value = KHA }
+		KHA = {
+			every_owned_province = {
+				if = {
+					limit = {
+						NOT = {
+							is_core = KHA
+						}
+					}
+					add_core = KHA
+				}
+			}
+		}
+		# KHA = {
+		# 	every_owned_province = {
+		# 		if = {
+		# 			limit = {
+		# 				NOT = {
+		# 					religion = 0
+		# 					religion = variable:my_province_religion
+		# 				}
+		# 			}
+		# 			change_religion = variable:my_province_religion
+		# 		}
+		# 	}
+		# }
+		ai_chance = { factor = 0 }
+	}
 	option = { # 关闭
 		name = my_close
 		ai_chance = { factor = 100 }
@@ -1154,16 +1217,7 @@ country_event = {
 	option = { # 作弊
 		name = my_cheat
 		# swap_free_idea_group	# 为当前作用域检测国家理念是否相符，若不符则重置为正确的国家理念
-		# try_add_country_modifier = { tag_value = FRA modifier_value = india_trade_co duration_value = -1 }
-		RUS = { set_in_empire = yes }
-		PLC = {
-			every_owned_province = {
-				if = {
-					limit = { NOT = { religion = catholic } }
-					change_religion = catholic
-				}
-			}
-		}
+		# add_estate_loyalty = { estate = estate_janissaries loyalty = 100 }
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭

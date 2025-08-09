@@ -80,6 +80,7 @@
  my_clear_rebels:0 "clear rebels"
  my_truce:0 "truce"
  my_coalition_against:0 "coalition against"
+ my_mongolia:0 "mongolia"
  my_cheat:0 "cheat"
  my_try_add_province_modifier:0 "try add province modifier"
  my_colonial_capital:0 "colonial capital"
