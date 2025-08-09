@@ -55,6 +55,13 @@ country_event = {
 			factor = 0
 		}
 	}
+	option = { # 正统度
+		name = my_add_legitimacy
+		add_legitimacy = 100
+		ai_chance = {
+			factor = 0
+		}
+	}
 	option = { # 帝国威望
 		name = my_add_imperial_influence
 		add_imperial_influence = 100
@@ -884,6 +891,9 @@ country_event = {
 				change_culture = portugese
 			}
 		}
+		alloc_province_culture			= { range_value	= 49	culture_value = prussian		}
+		alloc_province_culture			= { range_value	= 50	culture_value = prussian		}
+		alloc_province_culture			= { range_value	= 2969	culture_value = prussian		}
 		alloc_country_culture			= { tag_value	= PRU	culture_value = prussian		}
 		alloc_country_culture			= { tag_value	= ITA	culture_value = umbrian			}
 		alloc_country_culture			= { tag_value	= ARB	culture_value = bedouin_arabic	}
@@ -930,6 +940,47 @@ country_event = {
 		remove_all_province_building = { tag_value = C11 }
 		ai_chance = { factor = 0 }
 	}
+	option = { # 粉碎革命
+		name = my_crushing_revolution
+		every_country = {
+			if = {
+				limit = { is_revolutionary = yes }
+				# any_owned_province = {
+				# 	if = {		# 移除革命中心
+				# 		limit = { is_center_of_revolution = yes }
+				# 		remove_center_of_revolution = yes
+				# 	}
+				# }
+				if = {
+					limit = { NOT = { tag = ROOT } }
+					if = {
+						limit = { has_country_flag = last_revolutionary_country }
+						save_event_target_as = last_revolutionary_country
+					}
+					if = {
+						limit = { has_reform = junior_revolutionary_republic_reform }
+						change_government_to_monarchy = yes
+						add_government_reform = revolutionary_empire_reform
+					}
+					if = {
+						limit = { has_reform = revolutionary_empire_reform }
+						add_government_reform = autocracy_reform
+						add_legitimacy = 100
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { tag = ROOT } }
+				every_owned_province = {
+					if = {		# 移除省份革命进度
+						limit = { has_revolution_in_province = yes}
+						remove_revolution_from_province_effect = yes
+					}
+				}
+			}
+		}
+		ai_chance = { factor = 0 }
+	}
 	option = { # 禁止洗文化
 		name = my_forbid_change_culture
 		if = {
@@ -944,6 +995,10 @@ country_event = {
 	}
 	option = { # 加国家modifier
 		name = my_add_country_modifier
+		add_power_projection = {
+			type = mission_rewards_power_projection
+			amount = 50
+		}
 		try_add_country_modifier = { tag_value = FRA modifier_value = only_fra_modifier duration_value = -1 }
 		# try_add_country_modifier = { tag_value = FRA modifier_value = fra_rus_qng_modifier duration_value = -1 }
 		# try_add_country_modifier = { tag_value = RUS modifier_value = fra_rus_qng_modifier duration_value = -1 }
@@ -1099,17 +1154,16 @@ country_event = {
 	option = { # 作弊
 		name = my_cheat
 		# swap_free_idea_group	# 为当前作用域检测国家理念是否相符，若不符则重置为正确的国家理念
-		PRU = { set_in_empire = yes }
-		AUH = { set_in_empire = yes }
-		add_accepted_culture = telegu
-		add_accepted_culture = castillian
-		add_accepted_culture = portugese
-		add_accepted_culture = aragonese
-		add_power_projection = {
-			type = zim_african_great_power
-			amount = 20
+		# try_add_country_modifier = { tag_value = FRA modifier_value = india_trade_co duration_value = -1 }
+		RUS = { set_in_empire = yes }
+		PLC = {
+			every_owned_province = {
+				if = {
+					limit = { NOT = { religion = catholic } }
+					change_religion = catholic
+				}
+			}
 		}
-		# 修改西班牙/尼德兰任务
 		ai_chance = { factor = 0 }
 	}
 	option = { # 关闭

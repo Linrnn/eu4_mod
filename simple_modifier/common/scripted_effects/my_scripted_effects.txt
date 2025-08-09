@@ -886,3 +886,26 @@ remove_all_province_building = {
 		}
 	}
 }
+
+try_crushing_revolution = {
+	$tag_value$ = {
+		if = {
+			limit = {
+				exists = yes
+				is_revolutionary = yes
+				OR = {
+					has_reform = junior_revolutionary_republic_reform
+					has_reform = revolutionary_empire_reform
+				}
+			}
+
+			add_government_reform = noble_elite_reform
+			# add_government_reform = parliamentary_reform
+			# add_republican_tradition = 100
+
+			# add_government_reform = revolutionary_empire_reform
+			# add_government_reform = autocracy_reform
+			# add_legitimacy = 100
+		}
+	}
+}

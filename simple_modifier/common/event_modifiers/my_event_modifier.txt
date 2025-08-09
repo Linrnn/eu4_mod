@@ -30,32 +30,35 @@ my_monomer_modifier = {
 
 only_fra_modifier = {
 	# 国家修正
-	imperial_authority_value = 1.0				# 月度帝国权威（数值）：神圣罗马帝国专用
-	yearly_revolutionary_zeal = 4				# 年度革命热情
-	max_revolutionary_zeal = 20					# 最大革命热情上限
-	all_estate_possible_privileges = 4			# 本国 所有阶层的特权槽
-	all_estate_loyalty_equilibrium = 0.1		# 本国 所有阶层忠诚度修正
-	all_estate_influence_modifier = -0.5		# 本国 所有阶层影响力修正
-	possible_policy = 4							# 可用策略槽个数（同时增加三种类别的可用政策槽）
+	# imperial_authority_value = 1.0				# 月度帝国权威（数值）：神圣罗马帝国专用
+	yearly_revolutionary_zeal = 4					# 年度革命热情
+	# max_revolutionary_zeal = 20					# 最大革命热情上限
+	all_estate_possible_privileges = 4				# 本国 所有阶层的特权槽
+	all_estate_loyalty_equilibrium = 0.1			# 本国 所有阶层忠诚度修正
+	all_estate_influence_modifier = -0.5			# 本国 所有阶层影响力修正
+	reduced_liberty_desire_on_other_continent = 35	# 消减附庸国对首都在不同大陆的宗主国的自由渴望度（此项应用于宗主国）
+	possible_policy = 2								# 可用策略槽个数（同时增加三种类别的可用政策槽）
+	province_warscore_cost = -0.25					# 省份战争分数花费：割取敌方省份战争分数花费，此为全局buff
 	# 陆军/海军修正
-	discipline = 0.05							# 训练度
-	land_morale = 0.1							# 陆军士气
-	naval_morale = 0.1							# 海军士气
-	army_tradition = 1							# 年度陆军传统
-	land_forcelimit_modifier = 0.05				# 修正陆军上限（百分比）
-	naval_forcelimit_modifier = 0.85			# 海军上限修正（百分比）
+	discipline = 0.05								# 训练度
+	land_morale = 0.1								# 陆军士气
+	naval_morale = 0.1								# 海军士气
+	army_tradition = 1								# 年度陆军传统
+	# navy_tradition = 1							# 年度海军传统
+	# land_forcelimit_modifier = 0.1				# 修正陆军上限（百分比）
+	naval_forcelimit_modifier = 1					# 海军上限修正（百分比）
 	# 特殊部队修正
-	allowed_rev_guard_fraction = 0.3			# 可招募革命卫队的比例
-	has_musketeer = yes							# 允许招募火枪手：国家修正
-	allowed_musketeer_fraction = 0.5			# 可招募火枪手的比例
-	can_recruit_hussars = yes					# 允许招募翼骑兵：国家修正
-	amount_of_hussars = 500						# 额外可招募的翼骑兵上限
-	has_man_of_war = yes						# 允许建造主力舰：国家修正
-	allowed_man_of_war_fraction = 0.7			# 可招募主力舰的比例
-	has_voc_indiamen = yes						# 允许建造东印度商船：国家修正
-	allowed_voc_indiamen_fraction = 0.5			# 可招募东印度商船的比例
-	has_galleass = yes							# 允许建造加莱赛战船：国家修正
-	allowed_galleass_fraction = 0.5				# 可招募加莱赛战船的比例
+	allowed_rev_guard_fraction = 0.3				# 可招募革命卫队的比例
+	has_musketeer = yes								# 允许招募火枪手：国家修正
+	allowed_musketeer_fraction = 0.5				# 可招募火枪手的比例
+	can_recruit_hussars = yes						# 允许招募翼骑兵：国家修正
+	amount_of_hussars = 500							# 额外可招募的翼骑兵上限
+	has_man_of_war = yes							# 允许建造主力舰：国家修正
+	allowed_man_of_war_fraction = 0.7				# 可招募主力舰的比例
+	has_voc_indiamen = yes							# 允许建造东印度商船：国家修正
+	allowed_voc_indiamen_fraction = 0.5				# 可招募东印度商船的比例
+	has_galleass = yes								# 允许建造加莱赛战船：国家修正
+	allowed_galleass_fraction = 0.5					# 可招募加莱赛战船的比例
 }
 
 fra_rus_qng_modifier = {
