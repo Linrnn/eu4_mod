@@ -7,7 +7,7 @@ all_nations = {
 	global_allowed_num_of_manufactories = 5		# 所有省份可建筑的工厂数量
 	# merchants = 1								# 商人数量
 	# colonists = -10							# 殖民队数量
- 	global_unrest = -100						# 全国叛乱度
+ 	# global_unrest = -100						# 全国叛乱度
 	# num_accepted_cultures = 20				# 增加可接受文化的最大值
 	# possible_policy = 4						# 可选政策数量
 	# global_manpower = -10						# 全国人力（基础值1=1000人力）
